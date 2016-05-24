@@ -1,0 +1,2 @@
+KEY,English,Chinese
+Info,Fuck you,呵呵
