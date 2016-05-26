@@ -211,6 +211,10 @@
     <Compile Include="Assets\Scripts\Demo\RemoveButton.cs" />
     <Compile Include="Assets\Scripts\Demo\SimpleButton.cs" />
     <Compile Include="Assets\Scripts\Demo\SpriteStar.cs" />
+    <Compile Include="Assets\Scripts\Game\EventController.cs" />
+    <Compile Include="Assets\Scripts\Game\GlobalDefine.cs" />
+    <Compile Include="Assets\Scripts\Game\Shine.cs" />
+    <Compile Include="Assets\Scripts\Game\Star.cs" />
     <Compile Include="Assets\Scripts\Singletons\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
