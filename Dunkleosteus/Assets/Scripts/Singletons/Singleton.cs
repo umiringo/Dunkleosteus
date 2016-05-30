@@ -32,6 +32,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     }
                     if (_instance == null)
                     {
+                        //创建一个新的gameobject来放置此单例
                         GameObject singleton = new GameObject();
                         _instance = singleton.AddComponent<T>();
                         singleton.name = "Singleton_" + typeof(T).ToString();
