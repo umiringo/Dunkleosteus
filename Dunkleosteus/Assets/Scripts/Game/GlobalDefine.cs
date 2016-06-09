@@ -3,8 +3,8 @@ namespace GlobalDefines
 {
 	public enum StarState
     {
-        NORMAL = 1,
-        CHOSEN = 2,
-        CONNECTED = 3,
+        Normal = 1,
+        Chosen = 2,
+        Connected = 3,
     }
 }

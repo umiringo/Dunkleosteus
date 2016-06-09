@@ -18,13 +18,17 @@ public class EventController : MonoBehaviour {
     public void OnStarClicked(GameObject go, int index)
     {
         Debug.Log("Index = " + index + " star be clicked!");
-        if(go.GetComponent<Star>().state == StarState.NORMAL)
+        if(go.GetComponent<Star>().state == StarState.Normal)
         {
-            go.GetComponent<Star>().UpdateStatus(StarState.CHOSEN);
+            go.GetComponent<Star>().UpdateStatus(StarState.Chosen);
+        }
+        else if(go.GetComponent<Star>().state == StarState.Chosen)
+        {
+            go.GetComponent<Star>().UpdateStatus(StarState.Connected);
         }
         else
         {
-            go.GetComponent<Star>().UpdateStatus(StarState.NORMAL);
+            go.GetComponent<Star>().UpdateStatus(StarState.Normal);
         }
         
     }

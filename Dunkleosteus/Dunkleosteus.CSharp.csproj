@@ -215,6 +215,7 @@
     <Compile Include="Assets\Scripts\Game\GlobalDefine.cs" />
     <Compile Include="Assets\Scripts\Game\Shine.cs" />
     <Compile Include="Assets\Scripts\Game\Star.cs" />
+    <Compile Include="Assets\Scripts\Singletons\GamePlayMgr.cs" />
     <Compile Include="Assets\Scripts\Singletons\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
