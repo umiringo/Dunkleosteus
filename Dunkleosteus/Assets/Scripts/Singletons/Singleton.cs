@@ -11,6 +11,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
+            Debug.Log("Get Instantce");
             if (applicationIsQutting)
             {
                 Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
@@ -20,8 +21,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             lock(_lock)
             {
-                if(_instance = null)
+                if(_instance == null)
                 {
+                    Debug.Log("Begin to create Instantce");
                     _instance = (T)FindObjectOfType(typeof(T));
                     if(FindObjectsOfType(typeof(T)).Length > 1)
                     {
@@ -47,6 +49,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         Debug.Log("[Singleton] Using instance already created: " + _instance.gameObject.name);
                     }
                 }
+                Debug.Log("after create Instance");
                 return _instance;
             }
         }

@@ -5,6 +5,6 @@ namespace GlobalDefines
     {
         Normal = 1,
         Chosen = 2,
-        Connected = 3,
+        Linked = 3,
     }
 }

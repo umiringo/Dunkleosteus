@@ -6,7 +6,7 @@ public class EventController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        //Debug.Log(GamePlayMgr.Instance.identify);
 	}
 	
 	// Update is called once per frame
@@ -15,16 +15,18 @@ public class EventController : MonoBehaviour {
 	}
 
     //TODO jft
-    public void OnStarClicked(GameObject go, int index)
+    public void OnStarClicked(GameObject go)
     {
-        Debug.Log("Index = " + index + " star be clicked!");
+        Star goStar = go.GetComponent<Star>();
+        Debug.Log("Index = " + goStar.index + " star be clicked!");
+        Debug.Log(GamePlayMgr.Instance.identify);
         if(go.GetComponent<Star>().state == StarState.Normal)
         {
             go.GetComponent<Star>().UpdateStatus(StarState.Chosen);
         }
         else if(go.GetComponent<Star>().state == StarState.Chosen)
         {
-            go.GetComponent<Star>().UpdateStatus(StarState.Connected);
+            go.GetComponent<Star>().UpdateStatus(StarState.Linked);
         }
         else
         {

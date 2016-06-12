@@ -7,7 +7,18 @@ public class Star : MonoBehaviour {
     public GameObject starChild;
     public GameObject shineChild;
     public int index;
-    public StarState state;
+    private StarState _state;
+    public StarState state
+    {
+        get
+        {
+            return _state;
+        }
+        set
+        {
+            _state = value;
+        }
+    }
     
     // inner property
     private UISprite starSprite;
@@ -28,7 +39,7 @@ public class Star : MonoBehaviour {
 	
 	}
 
-    public void UpdateStatus(GlobalDefines.StarState s)
+    public void UpdateStatus(StarState s)
     {
         Debug.Log("Star.UpdateStatus, s = " + s.ToString());
         RefreshStar(s);
@@ -37,7 +48,7 @@ public class Star : MonoBehaviour {
     private void EnterNormal()
     {
         Debug.Log("Star.EnterNormal");
-        state = GlobalDefines.StarState.Normal;
+        state = StarState.Normal;
         //change sprite to blue
         starSprite.spriteName = "circle_50_50_50cce5";
         starSprite.MakePixelPerfect();
@@ -61,7 +72,7 @@ public class Star : MonoBehaviour {
     private void EnterConnected()
     {
         Debug.Log("Star.EnterConnected");
-        state = GlobalDefines.StarState.Connected;
+        state = GlobalDefines.StarState.Linked;
         //change sprite to yellow
         starSprite.spriteName = "circle_50_50_f8b711";
         starSprite.MakePixelPerfect();
