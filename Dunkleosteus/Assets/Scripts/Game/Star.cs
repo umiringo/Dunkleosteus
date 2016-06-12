@@ -94,7 +94,7 @@ public class Star : MonoBehaviour {
                 //显示绿色，大一号
                 this.EnterChosen();
                 break;
-            case StarState.Connected:
+            case StarState.Linked:
                 this.EnterConnected();
                 break;
             default:
