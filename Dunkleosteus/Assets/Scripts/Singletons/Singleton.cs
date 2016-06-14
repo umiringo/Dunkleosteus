@@ -9,11 +9,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public static T Instance
     {
-        get
-        {
+        get {
             Debug.Log("Get Instantce");
-            if (applicationIsQutting)
-            {
+            if (applicationIsQutting) {
                 Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
                                 "' already destroyed on application quit." +
                                 " Won't create again - returning null.");
@@ -21,19 +19,16 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             lock(_lock)
             {
-                if(_instance == null)
-                {
+                if(_instance == null) {
                     Debug.Log("Begin to create Instantce");
                     _instance = (T)FindObjectOfType(typeof(T));
-                    if(FindObjectsOfType(typeof(T)).Length > 1)
-                    {
+                    if(FindObjectsOfType(typeof(T)).Length > 1) {
                         Debug.LogError("[Singleton] Something went really wrong " +
                                 " - there should never be more than 1 singleton!" +
                                 " Reopening the scene might fix it. " + typeof(T));
                         return _instance;
                     }
-                    if (_instance == null)
-                    {
+                    if (_instance == null) {
                         //创建一个新的gameobject来放置此单例
                         GameObject singleton = new GameObject();
                         _instance = singleton.AddComponent<T>();
@@ -44,8 +39,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                                     " is needed in the scene, so '" + singleton +
                                     "' was created with DontDestroyOnLoad.");
                     }
-                    else
-                    {
+                    else {
                         Debug.Log("[Singleton] Using instance already created: " + _instance.gameObject.name);
                     }
                 }

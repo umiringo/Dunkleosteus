@@ -10,12 +10,10 @@ public class Star : MonoBehaviour {
     private StarState _state;
     public StarState state
     {
-        get
-        {
+        get {
             return _state;
         }
-        set
-        {
+        set {
             _state = value;
         }
     }
@@ -26,7 +24,8 @@ public class Star : MonoBehaviour {
     private Shine shineLogic;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         starSprite = starChild.GetComponent<UISprite>();
         shineSprite = shineChild.GetComponent<UISprite>();
         shineLogic = shineChild.GetComponent<Shine>();
@@ -35,7 +34,8 @@ public class Star : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	
 	}
 

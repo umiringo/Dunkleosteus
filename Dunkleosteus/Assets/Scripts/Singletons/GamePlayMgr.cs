@@ -9,18 +9,15 @@ class LinkedPair
     public GameObject line;
     public LinkedPair(int b, int e, GameObject l)
     {
-        if(b > e)
-        {
+        if(b > e) {
             indexBegin = b;
             indexEnd = e;
         }
-        else if(e > b)
-        {
+        else if(e > b) {
             indexBegin = e;
             indexEnd = b;
         }
-        else
-        {
+        else {
             Debug.LogError("GamePlayMgr:LinkedPair: Wired situation! indexBegin should euqals indexEnd! " + b.ToString() + e.ToString());
             return;
         }
@@ -28,8 +25,7 @@ class LinkedPair
     }
     public bool EqualPair(int s, int e)
     {
-        if((indexBegin == s && indexEnd == e) || (indexBegin == e && indexEnd == s))
-        {
+        if((indexBegin == s && indexEnd == e) || (indexBegin == e && indexEnd == s)) {
             return true;
         }
         return false;
@@ -48,7 +44,8 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     private GameObject _readyEnd;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         _connectedLineList = new List<LinkedPair>();
         _starHashTable = new Hashtable();
         _readyBegin = null;
@@ -56,7 +53,8 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	
 	}
 
@@ -69,8 +67,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     {
         foreach( LinkedPair lp in _connectedLineList )
         {
-            if(lp.EqualPair(b,e))
-            {
+            if( lp.EqualPair(b, e) ) {
                 return true;
             }
         }
@@ -82,8 +79,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     {
         for ( int i = 0; i < _connectedLineList.Count; ++i )
         {
-            if(_connectedLineList[i].EqualPair(b, e))
-            {
+            if(_connectedLineList[i].EqualPair(b, e)) {
                 return i;
             }
         }
@@ -93,8 +89,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     //Check whether star(s) is already have be connected
     public bool IsStarLinked(int s)
     {
-        if(_starHashTable.Contains(s) && (int)_starHashTable[s] > 0)
-        {
+        if(_starHashTable.Contains(s) && (int)_starHashTable[s] > 0) {
             return true;
         }
         return false;
@@ -109,8 +104,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     //Add a line, this function is also the key logic of linked
     public void AddLinkedLine(GameObject goBegin, GameObject goEnd)
     {
-        if(goBegin == null || goEnd == null)
-        {
+        if(goBegin == null || goEnd == null) {
             Debug.LogError("GamePlayMgr:AddLinkedLine: Something wrong, star GameObject cant be null!");
             return;
         }
@@ -119,27 +113,23 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 
         //Check whether already linke
         int index = this.GetLinkedLine(indexB, indexE);
-        if(index == -1)
-        {
+        if(index == -1) {
             //Already linked, try to delete it
             Debug.Log("GamePlayMgr:AddLinkedLine: Already linked, try to delete it. start = " + indexB.ToString() + " end = " + indexE.ToString());
             GameObject goLine = _connectedLineList[index].line;
             //delte from list
             _connectedLineList.RemoveAt(index);
             //modify hash table
-            if(IsStarLinked(indexB))
-            {
+            if(IsStarLinked(indexB)) {
                 _starHashTable[indexB] = (int)_starHashTable[indexB] - 1;
             }
-            if(IsStarLinked(indexE))
-            {
+            if(IsStarLinked(indexE)) {
                 _starHashTable[indexE] = (int)_starHashTable[indexE] - 1;
             }
             //delete the line
             Destroy(goLine);
         }
-        else
-        {
+        else {
             //Try to link two stars
         }
         

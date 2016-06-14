@@ -5,12 +5,14 @@ using GlobalDefines;
 public class EventController : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         //Debug.Log(GamePlayMgr.Instance.identify);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	
 	}
 
@@ -20,16 +22,13 @@ public class EventController : MonoBehaviour {
         Star goStar = go.GetComponent<Star>();
         Debug.Log("Index = " + goStar.index + " star be clicked!");
         Debug.Log(GamePlayMgr.Instance.identify);
-        if(go.GetComponent<Star>().state == StarState.Normal)
-        {
+        if(go.GetComponent<Star>().state == StarState.Normal) {
             go.GetComponent<Star>().UpdateStatus(StarState.Chosen);
         }
-        else if(go.GetComponent<Star>().state == StarState.Chosen)
-        {
+        else if(go.GetComponent<Star>().state == StarState.Chosen) {
             go.GetComponent<Star>().UpdateStatus(StarState.Linked);
         }
-        else
-        {
+        else {
             go.GetComponent<Star>().UpdateStatus(StarState.Normal);
         }
         

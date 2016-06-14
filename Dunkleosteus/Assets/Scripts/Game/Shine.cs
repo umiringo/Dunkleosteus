@@ -6,7 +6,8 @@ public class Shine : MonoBehaviour {
     private int shineIntervalMax;
     private UIPlayTween playTween;
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         shineIntervalMin = 5;
         shineIntervalMax = 10;
         playTween = GetComponent<UIPlayTween>();
@@ -14,9 +15,11 @@ public class Shine : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	
 	}
+    
     public void StartShine()
     {
         StopAllCoroutines(); //stop shine first
