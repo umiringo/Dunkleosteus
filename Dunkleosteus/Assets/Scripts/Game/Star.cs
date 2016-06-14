@@ -45,6 +45,21 @@ public class Star : MonoBehaviour {
         RefreshStar(s);
     }
 
+    public void SetNormal() 
+    {
+
+    }
+
+    public void SetChosen() 
+    {
+
+    }
+
+    public void SetLinked()
+    {
+
+    }
+
     private void EnterNormal()
     {
         Debug.Log("Star.EnterNormal");
