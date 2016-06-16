@@ -9,7 +9,7 @@ public class Shine : MonoBehaviour {
 	void Start () 
     {
         shineIntervalMin = 5;
-        shineIntervalMax = 10;
+        shineIntervalMax = 20;
         playTween = GetComponent<UIPlayTween>();
         playTween.resetOnPlay = true;
 	}
@@ -29,7 +29,6 @@ public class Shine : MonoBehaviour {
     IEnumerator DoShine()
     {
         int interval = Random.Range(shineIntervalMin, shineIntervalMax);
-        Debug.Log("Start Shine, Shine.DoShine:interval = " + interval.ToString());
         yield return new WaitForSeconds(interval);
         //tween 启动
         playTween.Play(true);
@@ -39,7 +38,6 @@ public class Shine : MonoBehaviour {
 
     public void StopShine()
     {
-        Debug.Log("Stop Shine !");
         StopAllCoroutines();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour 
+public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour 
 {
     private static T _instance;
     private static bool applicationIsQutting = false;
@@ -47,8 +47,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 return _instance;
             }
         }
+       
     }
-
     public void OnDestroy()
     {
         applicationIsQutting = true;

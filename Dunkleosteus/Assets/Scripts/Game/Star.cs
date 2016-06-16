@@ -30,7 +30,7 @@ public class Star : MonoBehaviour {
         shineSprite = shineChild.GetComponent<UISprite>();
         shineLogic = shineChild.GetComponent<Shine>();
 
-        this.EnterNormal();
+        this.SetNormal();
 	}
 	
 	// Update is called once per frame
@@ -39,30 +39,8 @@ public class Star : MonoBehaviour {
 	
 	}
 
-    public void UpdateStatus(StarState s)
-    {
-        Debug.Log("Star.UpdateStatus, s = " + s.ToString());
-        RefreshStar(s);
-    }
-
     public void SetNormal() 
     {
-
-    }
-
-    public void SetChosen() 
-    {
-
-    }
-
-    public void SetLinked()
-    {
-
-    }
-
-    private void EnterNormal()
-    {
-        Debug.Log("Star.EnterNormal");
         state = StarState.Normal;
         //change sprite to blue
         starSprite.spriteName = "circle_50_50_50cce5";
@@ -73,9 +51,8 @@ public class Star : MonoBehaviour {
         shineLogic.StartShine();
     }
 
-    private void EnterChosen()
+    public void SetChosen() 
     {
-        Debug.Log("Star.EnterChosen");
         state = GlobalDefines.StarState.Chosen;
         //change sprite to green
         starSprite.spriteName = "circle_60_60_28ed7b";
@@ -84,9 +61,8 @@ public class Star : MonoBehaviour {
         shineLogic.StopShine();
     }
 
-    private void EnterConnected()
+    public void SetLinked()
     {
-        Debug.Log("Star.EnterConnected");
         state = GlobalDefines.StarState.Linked;
         //change sprite to yellow
         starSprite.spriteName = "circle_50_50_f8b711";
@@ -96,25 +72,4 @@ public class Star : MonoBehaviour {
         shineSprite.MakePixelPerfect();
         shineLogic.StartShine();
     }
-
-    //TODO test function
-    private void RefreshStar(GlobalDefines.StarState s)
-    {
-        switch (s)
-        {
-            case StarState.Normal:
-                this.EnterNormal();
-                break;
-            case StarState.Chosen:
-                //显示绿色，大一号
-                this.EnterChosen();
-                break;
-            case StarState.Linked:
-                this.EnterConnected();
-                break;
-            default:
-                break;
-        }
-    }
-
 }

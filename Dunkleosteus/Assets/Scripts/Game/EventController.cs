@@ -8,6 +8,7 @@ public class EventController : MonoBehaviour {
 	void Start () 
     {
         //Debug.Log(GamePlayMgr.Instance.identify);
+        GamePlayMgr.Instance.Init();
 	}
 	
 	// Update is called once per frame

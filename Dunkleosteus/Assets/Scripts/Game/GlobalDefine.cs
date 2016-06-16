@@ -12,6 +12,7 @@ namespace GlobalDefines
     {
         public static readonly string LinkedLinePrefabPath = "Prefabs/LinkedLine";
         public static readonly string LineContainerPath = "LineContainer";
+        public static readonly string UIRootPath = "UI Root";
     }
     
 }

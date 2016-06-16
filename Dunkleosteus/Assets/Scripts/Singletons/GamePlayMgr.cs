@@ -40,7 +40,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     public string identify = "GamePlayMgr";
 
     private List<LinkedPair> _linkedLineList;
-    private Hashtable _starHashTable;
+    private Dictionary<int, int> _starDictionary;
     private GameObject _readyStar;
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
@@ -48,11 +48,11 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 	// Use this for initialization
 	void Start () 
     {
-        _linkedLineList = new List<LinkedPair>();
-        _starHashTable = new Hashtable();
-        _readyStar = null;
-        _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        _LineContainer = GameObject.Find(PathContainer.LineContainerPath);
+        //_linkedLineList = new List<LinkedPair>();
+        //_starDictionary = new Dictionary<int, int>();
+        //_readyStar = null;
+        //_LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
+        //_LineContainer = GameObject.Find(PathContainer.LineContainerPath);
 	}
 	
 	// Update is called once per frame
@@ -61,15 +61,35 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 	
 	}
 
+    public void Init()
+    {
+        _linkedLineList = new List<LinkedPair>();
+        _starDictionary = new Dictionary<int, int>();
+        _readyStar = null;
+        _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
+        _LineContainer = GameObject.Find(PathContainer.LineContainerPath);
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////
     /// Interfaces                                                                  ///
     ///////////////////////////////////////////////////////////////////////////////////
     public void OnStarClicked(GameObject goStar)
     {
-        Debug.Log("GamePlayMgr:OnStarClick");
+        int index = goStar.GetComponent<Star>().index;
         //Check whether ready
         if (_readyStar == null) {
             //first one
+            _readyStar = goStar;
+            RefreshStar(goStar);
+        }
+        else {
+            if(_readyStar.GetComponent<Star>().index == index) {
+                _readyStar = null;
+                RefreshStar(goStar);
+            }
+            else {
+                TryLinkStar(_readyStar, goStar);
+            }
         }
     }
 
@@ -103,7 +123,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     //Check whether star(s) is already have be connected
     private bool IsStarLinked(int s)
     {
-        if (_starHashTable.Contains(s) && (int)_starHashTable[s] > 0) {
+        if (_starDictionary.ContainsKey(s) && _starDictionary[s] > 0) {
             return true;
         }
         return false;
@@ -116,14 +136,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
         int indexStar = starComponent.index;
         //Check whether is ready
         if (_readyStar != null && _readyStar.GetComponent<Star>().index == indexStar) {
-            //ready state, waiting for second star
-            if (IsStarLinked(indexStar)) {
-                //linked
-                starComponent.SetLinked();
-            }
-            else {
-                starComponent.SetChosen();
-            }
+            starComponent.SetChosen();
         }
         else {
             //Not ready
@@ -136,11 +149,24 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
         }
     }
 
+    private float CaculateAngle(Transform begin, Transform end)
+    {
+        float angle = 0.0f;
+        angle =Mathf.Rad2Deg*Mathf.Atan ((begin.position.y - end.position.y) / (begin.position.x - end.position.x));
+        //if (begin.position.x - end.position.x < 0) {
+        //    angle -= 90.0f;
+        //}
+        //else {
+        //    angle += 90.0f;
+        //}
+
+        return angle;
+    }
+
     //Add a line, this function is also the key logic of linked
-    private void AddLinkedLine(GameObject goBegin, GameObject goEnd)
+    private void TryLinkStar(GameObject goBegin, GameObject goEnd)
     {
         if (goBegin == null || goEnd == null) {
-            Debug.LogError("GamePlayMgr:AddLinkedLine: Something wrong, star GameObject cant be null!");
             return;
         }
         int indexB = goBegin.GetComponent<Star>().index;
@@ -148,49 +174,99 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 
         //Check whether already linke
         int index = this.GetLinkedLine(indexB, indexE);
-        if (index == -1) {
+        if (index >= 0) {
             //Already linked, try to delete it
-            Debug.Log("GamePlayMgr:AddLinkedLine: Already linked, try to delete it. start = " + indexB.ToString() + " end = " + indexE.ToString());
             GameObject goLine = _linkedLineList[index].line;
             //delte from list
             _linkedLineList.RemoveAt(index);
             //modify hash table
             if(IsStarLinked(indexB)) {
-                _starHashTable[indexB] = (int)_starHashTable[indexB] - 1;
+                _starDictionary[indexB]--;
             }
             if(IsStarLinked(indexE)) {
-                _starHashTable[indexE] = (int)_starHashTable[indexE] - 1;
+                _starDictionary[indexE]--;
             }
             //delete the line
             Destroy(goLine);
         }
         else {
             // Try to link two stars
-
+            
+            Transform beginTransform = goBegin.transform;
+            Transform endTransform = goEnd.transform;
             // Instantiate line
             GameObject linkedLine = Instantiate(_LineTemplate);
             linkedLine.transform.parent = _LineContainer.transform;
-            linkedLine.transform.localPosition = new Vector3(0, 0, 0);
-            linkedLine.transform.localRotation = Quaternion.identity;
+            UISprite lineSprite = linkedLine.GetComponent<UISprite>();
+            lineSprite.pivot = UIWidget.Pivot.Center;
+            // Modify pivot
+            if (beginTransform.position.x > endTransform.position.x) {
+                if (beginTransform.position.y > endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.TopRight;
+                }
+                else if (beginTransform.position.y < endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.BottomRight;
+                }
+                else {
+                    lineSprite.pivot = UIWidget.Pivot.Right;
+                }
+            }
+            else if (beginTransform.position.x < endTransform.position.x) {
+                if (beginTransform.position.y > endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.TopLeft;
+                }
+                else if (beginTransform.position.y < endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.BottomLeft;
+                }
+                else {
+                    lineSprite.pivot = UIWidget.Pivot.Left;
+                }
+            }
+            else {
+                if (beginTransform.position.y > endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.Top;
+                }
+                else if (beginTransform.position.y < endTransform.position.y) {
+                    lineSprite.pivot = UIWidget.Pivot.Bottom;
+                }
+                else {
+                    lineSprite.pivot = UIWidget.Pivot.Center;
+                }
+            }
+
+            float angle = CaculateAngle(goBegin.transform, goEnd.transform);
+            linkedLine.transform.position = goBegin.transform.position;
+            linkedLine.transform.rotation = Quaternion.Euler(0, 0, angle);
+            linkedLine.transform.localScale = new Vector3(1, 1, 1);
+
+            float distance = Vector3.Distance(beginTransform.position, endTransform.position);
+            float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
+            int width = (int)(distance / scale);
+
+            TweenWidth lineTweenWidth = linkedLine.GetComponent<TweenWidth>();
+            lineTweenWidth.from = 0;
+            lineTweenWidth.to = width;
+
+            linkedLine.SetActive(true);
 
             // Add record to List
             LinkedPair lp = new LinkedPair(indexB, indexE, linkedLine);
             _linkedLineList.Add(lp);
             // Add record to Hash
-            if (_starHashTable.ContainsKey(indexB)) {
-                _starHashTable[indexB] = (int)_starHashTable[indexB] + 1;
+            if (_starDictionary.ContainsKey(indexB)) {
+                _starDictionary[indexB]++;
             }
             else {
-                _starHashTable[indexB] = 1;
+                _starDictionary[indexB] = 1;
             }
-            if (_starHashTable.ContainsKey(indexE)) {
-                _starHashTable[indexE] = (int)_starHashTable[indexE] + 1;
+            if (_starDictionary.ContainsKey(indexE)) {
+                _starDictionary[indexE]++;
             }
             else {
-                _starHashTable[indexE] = 1;
+                _starDictionary[indexE] = 1;
             }
             // Draw Line
-            //linkedLine.GetComponent<LineDrawer>.Draw(goBegin, goEnd);
+            //linkedLine.GetComponent<LineDrawer>().Draw(goBegin, goEnd);
         }
         
         // Reset ready starts
