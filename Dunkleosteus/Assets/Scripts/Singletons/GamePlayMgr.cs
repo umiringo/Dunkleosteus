@@ -41,18 +41,18 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
 
     private List<LinkedPair> _linkedLineList;
     private Dictionary<int, int> _starDictionary;
+    private List<int> _correctAnswerList;
+    private List<int> _answerList;
     private GameObject _readyStar;
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
 
+    // TODO test code
+    private GameObject _labelWin;
 	// Use this for initialization
 	void Start () 
     {
-        //_linkedLineList = new List<LinkedPair>();
-        //_starDictionary = new Dictionary<int, int>();
-        //_readyStar = null;
-        //_LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        //_LineContainer = GameObject.Find(PathContainer.LineContainerPath);
+     
 	}
 	
 	// Update is called once per frame
@@ -65,9 +65,17 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     {
         _linkedLineList = new List<LinkedPair>();
         _starDictionary = new Dictionary<int, int>();
+        _answerList = new List<int>();
+        _correctAnswerList = new List<int>();
         _readyStar = null;
         _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _LineContainer = GameObject.Find(PathContainer.LineContainerPath);
+        _labelWin = GameObject.Find("Label_Win");
+
+        //Test code TODO
+        _correctAnswerList.Add(102);
+        _correctAnswerList.Add(103);
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +104,41 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////
-    //Check whether line(b,e) is already existed
+    // Check whether answer is correct
+    private bool CheckAnswer()
+    {
+        return _correctAnswerList.TrueForAll(_answerList.Contains) && _answerList.TrueForAll(_correctAnswerList.Contains);
+    }
+    // Add Answer to list
+    private void AddAnswerToList(int indexBegin, int indexEnd)
+    {
+        // Add Answer to list
+        int answerMark = 0;
+        if (indexBegin > indexEnd) {
+            answerMark = indexEnd * 100 + indexBegin;
+        }
+        else {
+            answerMark = indexBegin * 100 + indexEnd;
+        }
+        if (_answerList.Contains(answerMark)) {
+            Debug.Log("GamePlayMgr.AddAnswerToList: Some is rong, answerMark exist. mark = " + answerMark);
+            return;
+        }
+        _answerList.Add(answerMark);
+
+        // Check whether sucess
+        if (CheckAnswer()) {
+            // Do win logic
+            _labelWin.GetComponent<UILabel>().text = "Win!";
+        }
+    }
+
+    private void RemoveAnswerFromList(int indexBegin, int indexEnd)
+    {
+
+    }
+
+    // Check whether line(b,e) is already existed
     private bool HaveLinkedLine(int b, int e)
     {
         foreach( LinkedPair lp in _linkedLineList )
@@ -188,6 +230,8 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
             }
             //delete the line
             Destroy(goLine);
+
+            //remove two star from anwser
         }
         else {
             // Try to link two stars
@@ -267,6 +311,9 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
             }
             // Draw Line
             //linkedLine.GetComponent<LineDrawer>().Draw(goBegin, goEnd);
+
+            //Add two star to answerList
+            this.AddAnswerToList(indexB, indexE);
         }
         
         // Reset ready starts
@@ -274,5 +321,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr> {
         // Refresh the stars state
         this.RefreshStar(goBegin);
         this.RefreshStar(goEnd);
+
+        
     }
 }
