@@ -8,6 +8,11 @@ public class Star : MonoBehaviour {
     public GameObject shineChild;
     public int index;
     private StarState _state;
+
+    public string blueStarPath;
+    public string yellowStarPath;
+    public string greenStarPath;
+
     public StarState state
     {
         get {
@@ -43,10 +48,10 @@ public class Star : MonoBehaviour {
     {
         state = StarState.Normal;
         //change sprite to blue
-        starSprite.spriteName = "circle_50_50_50cce5";
+        starSprite.spriteName = blueStarPath;
         starSprite.MakePixelPerfect();
         //start to shine
-        shineSprite.spriteName = "circle_50_50_50cce5";
+        shineSprite.spriteName = blueStarPath;
         shineSprite.MakePixelPerfect();
         shineLogic.StartShine();
     }
@@ -55,7 +60,7 @@ public class Star : MonoBehaviour {
     {
         state = GlobalDefines.StarState.Chosen;
         //change sprite to green
-        starSprite.spriteName = "circle_60_60_28ed7b";
+        starSprite.spriteName = greenStarPath;
         starSprite.MakePixelPerfect();
         //stop shine
         shineLogic.StopShine();
@@ -65,10 +70,10 @@ public class Star : MonoBehaviour {
     {
         state = GlobalDefines.StarState.Linked;
         //change sprite to yellow
-        starSprite.spriteName = "circle_50_50_f8b711";
+        starSprite.spriteName = yellowStarPath;
         starSprite.MakePixelPerfect();
         //start to shine
-        shineSprite.spriteName = "circle_50_50_f8b711";
+        shineSprite.spriteName = yellowStarPath;
         shineSprite.MakePixelPerfect();
         shineLogic.StartShine();
     }

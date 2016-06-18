@@ -14,5 +14,10 @@ namespace GlobalDefines
         public static readonly string LineContainerPath = "LineContainer";
         public static readonly string UIRootPath = "UI Root";
     }
+
+    public class DefineNumber
+    {
+        public static readonly int LineDepth = 39;
+    }
     
 }

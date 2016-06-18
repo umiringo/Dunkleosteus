@@ -4,11 +4,11 @@ using GlobalDefines;
 
 public class EventController : MonoBehaviour {
 
+    public LevelPlayMgr gamePlay;
 	// Use this for initialization
 	void Start () 
     {
-        //Debug.Log(GamePlayMgr.Instance.identify);
-        GamePlayMgr.Instance.Init();
+
 	}
 	
 	// Update is called once per frame
@@ -17,9 +17,8 @@ public class EventController : MonoBehaviour {
 	
 	}
 
-    //TODO jft
     public void OnStarClicked(GameObject go)
     {
-        GamePlayMgr.Instance.OnStarClicked(go);
+        gamePlay.OnStarClicked(go);
     }
 }
