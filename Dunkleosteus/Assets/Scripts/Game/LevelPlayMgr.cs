@@ -41,7 +41,7 @@ public class LevelPlayMgr : MonoBehaviour {
     private List<int> _answerList;
     private GameObject _readyStar;
     private GameObject _LineTemplate;
-    public GameObject _LineContainer;
+    private GameObject _LineContainer;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +51,9 @@ public class LevelPlayMgr : MonoBehaviour {
         _correctAnswerList = new List<int>();
         _readyStar = null;
         _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
+        _LineContainer = GameObject.Find("GameContainer/Sky/LineContainer");
+
+        TemplateMgr.Instance.Init();
 	}
 	
 	// Update is called once per frame

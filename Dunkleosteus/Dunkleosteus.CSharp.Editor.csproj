@@ -106,8 +106,18 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Dunkleosteus.CSharp.Plugins.csproj">
+      <Project>{1B302D33-0BC7-3855-35D5-720A5B3C5586}</Project>
+      <Name>Dunkleosteus.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="Dunkleosteus.CSharp.csproj">
       <Project>{B3D42B31-8BC9-2009-D12A-8DE01B2DE428}</Project>
       <Name>Dunkleosteus.CSharp</Name>
@@ -201,6 +211,7 @@
     <Compile Include="Assets\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\JSON Tests\TroubleShoot.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />

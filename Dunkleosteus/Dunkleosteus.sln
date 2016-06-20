@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dunkleosteus.CSharp.Plugins", "Dunkleosteus.CSharp.Plugins.csproj", "{1B302D33-0BC7-3855-35D5-720A5B3C5586}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dunkleosteus.CSharp", "Dunkleosteus.CSharp.csproj", "{B3D42B31-8BC9-2009-D12A-8DE01B2DE428}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dunkleosteus.CSharp.Editor", "Dunkleosteus.CSharp.Editor.csproj", "{5281143A-1383-8EC3-5818-40A6B015F0B3}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B302D33-0BC7-3855-35D5-720A5B3C5586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B302D33-0BC7-3855-35D5-720A5B3C5586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B302D33-0BC7-3855-35D5-720A5B3C5586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B302D33-0BC7-3855-35D5-720A5B3C5586}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3D42B31-8BC9-2009-D12A-8DE01B2DE428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3D42B31-8BC9-2009-D12A-8DE01B2DE428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3D42B31-8BC9-2009-D12A-8DE01B2DE428}.Release|Any CPU.ActiveCfg = Release|Any CPU
