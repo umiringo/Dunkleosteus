@@ -98,7 +98,9 @@ namespace SimpleJSON
         {
             return "JSONNode";
         }
- 
+        
+        public virtual IEnumerable<string> Keys { get { yield break; } }
+        
         #endregion common interface
  
         #region typecasting properties
@@ -677,6 +679,16 @@ namespace SimpleJSON
     public class JSONClass : JSONNode, IEnumerable
     {
         private Dictionary<string,JSONNode> m_Dict = new Dictionary<string,JSONNode>();
+        
+        public override IEnumerable<string> Keys
+        {
+            get
+            {
+                foreach (var key in m_Dict.Keys)
+                    yield return key;
+            }
+        }
+        
         public override JSONNode this[string aKey]
         {
             get

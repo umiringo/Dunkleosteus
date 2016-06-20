@@ -42,6 +42,12 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _readyStar;
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
+    private string _name;
+    public string name {
+        get {
+            return _name;
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -52,7 +58,8 @@ public class LevelPlayMgr : MonoBehaviour {
         _readyStar = null;
         _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _LineContainer = GameObject.Find("GameContainer/Sky/LineContainer");
-
+        
+        //TODO just for test
         TemplateMgr.Instance.Init();
 	}
 	
@@ -85,6 +92,24 @@ public class LevelPlayMgr : MonoBehaviour {
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////
+    
+    #region InnerFuction
+    // Load template data
+    private void LoadTemplateData(string fileName, string levelName)
+    {
+        string configString = TemplateMgr.Instance.GetTemplateString(fileName, levelName)
+        if(configString != "") {
+            JSONNode jo = JSON.Parse(configString);
+            // load name
+            _name = jo["name"];
+            // load answer
+            JsonArray answerList = jsonObject["answer"] as JsonArray;
+            foreach( JsonObject answerObject in answerList) {
+                int tmpAnswer = answerObject.ToInt();
+                _answerList.Add(tmpAnswer);
+            }
+        }
+    }
     // Check whether answer is correct
     private bool CheckAnswer()
     {
@@ -300,7 +325,6 @@ public class LevelPlayMgr : MonoBehaviour {
         // Refresh the stars state
         this.RefreshStar(goBegin);
         this.RefreshStar(goEnd);
-
-
     }
+    #endregion
 }

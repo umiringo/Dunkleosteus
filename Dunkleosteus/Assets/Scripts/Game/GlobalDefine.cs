@@ -20,4 +20,8 @@ namespace GlobalDefines
         public static readonly int LineDepth = 39;
     }
     
+    public class ConfigFileName
+    {
+        public static readonly string LevelInfo = "level_info";
+    }
 }
