@@ -18,7 +18,6 @@ public class LineDrawer : MonoBehaviour {
 
     public void Draw(GameObject goBegin, GameObject goEnd)
     {
-        Debug.Log("Begin to Draw Line");
         lineRender = GetComponent<LineRenderer>();
         Vector3 posBegin = goBegin.GetComponent<Transform>().position;
         Vector3 posEnd = goEnd.GetComponent<Transform>().position;

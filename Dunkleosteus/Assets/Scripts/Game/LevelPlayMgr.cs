@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GlobalDefines;
+using SimpleJSON;
 
 class LinkedPair
 {
@@ -42,12 +43,14 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _readyStar;
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
-    private string _name;
-    public string name {
+    private string _levelName;
+    public string levelName {
         get {
-            return _name;
+            return _levelName;
         }
     }
+
+    public GameObject _gameContainer;
 
 	// Use this for initialization
 	void Start () {
@@ -61,6 +64,8 @@ public class LevelPlayMgr : MonoBehaviour {
         
         //TODO just for test
         TemplateMgr.Instance.Init();
+
+        this.LoadTemplateData("level_info", "Scorpius");
 	}
 	
 	// Update is called once per frame
@@ -97,17 +102,14 @@ public class LevelPlayMgr : MonoBehaviour {
     // Load template data
     private void LoadTemplateData(string fileName, string levelName)
     {
-        string configString = TemplateMgr.Instance.GetTemplateString(fileName, levelName)
-        if(configString != "") {
-            JSONNode jo = JSON.Parse(configString);
+        JSONNode jo = TemplateMgr.Instance.GetTemplateString(fileName, levelName);
             // load name
-            _name = jo["name"];
+        _levelName = jo["name"];
             // load answer
-            JsonArray answerList = jsonObject["answer"] as JsonArray;
-            foreach( JsonObject answerObject in answerList) {
-                int tmpAnswer = answerObject.ToInt();
-                _answerList.Add(tmpAnswer);
-            }
+        JSONArray answerList = jo["answer"] as JSONArray;
+        foreach( JSONNode answerObject in answerList) {
+            int tmpAnswer = answerObject.AsInt;
+            _correctAnswerList.Add(tmpAnswer);
         }
     }
     // Check whether answer is correct
@@ -134,13 +136,26 @@ public class LevelPlayMgr : MonoBehaviour {
 
         // Check whether sucess
         if (CheckAnswer()) {
-            // Do win logic
+            _gameContainer.GetComponent<GameContainer>().GameWin();
         }
     }
 
     private void RemoveAnswerFromList(int indexBegin, int indexEnd)
     {
+        // just remove from _answerList
+        int answerMark = 0;
+        if (indexBegin > indexEnd) {
+            answerMark = indexEnd * 100 + indexBegin;
+        }
+        else {
+            answerMark = indexBegin * 100 + indexEnd;
+        }
+        _answerList.Remove(answerMark);
 
+        // Check whether sucess
+        if (CheckAnswer()) {
+            _gameContainer.GetComponent<GameContainer>().GameWin();
+        }
     }
 
     // Check whether line(b,e) is already existed
@@ -198,12 +213,6 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         float angle = 0.0f;
         angle = Mathf.Rad2Deg * Mathf.Atan((begin.position.y - end.position.y) / (begin.position.x - end.position.x));
-        //if (begin.position.x - end.position.x < 0) {
-        //    angle -= 90.0f;
-        //}
-        //else {
-        //    angle += 90.0f;
-        //}
 
         return angle;
     }
@@ -235,6 +244,7 @@ public class LevelPlayMgr : MonoBehaviour {
             Destroy(goLine);
 
             //remove two star from anwser
+            this.RemoveAnswerFromList(indexB, indexE);
         }
         else {
             // Try to link two stars

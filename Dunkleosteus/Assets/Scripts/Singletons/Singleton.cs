@@ -10,7 +10,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     public static T Instance
     {
         get {
-            Debug.Log("Get Instantce");
             if (applicationIsQutting) {
                 Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
                                 "' already destroyed on application quit." +
@@ -43,7 +42,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         Debug.Log("[Singleton] Using instance already created: " + _instance.gameObject.name);
                     }
                 }
-                Debug.Log("after create Instance");
                 return _instance;
             }
         }
