@@ -43,6 +43,7 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _readyStar;
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
+    private GameObject _gameContainer;
     private string _levelName;
     public string levelName {
         get {
@@ -50,7 +51,7 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
 
-    public GameObject _gameContainer;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -60,8 +61,8 @@ public class LevelPlayMgr : MonoBehaviour {
         _correctAnswerList = new List<int>();
         _readyStar = null;
         _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        _LineContainer = GameObject.Find("GameContainer/Sky/LineContainer");
-        
+        _LineContainer = GameObject.Find( _levelName + "Container/Sky/LineContainer");
+        _gameContainer = GameObject.Find( _levelName + "Container");
         //TODO just for test
         TemplateMgr.Instance.Init();
 
