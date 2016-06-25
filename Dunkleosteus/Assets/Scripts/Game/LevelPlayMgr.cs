@@ -44,6 +44,7 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _LineTemplate;
     private GameObject _LineContainer;
     private GameObject _gameContainer;
+    private EventController _eventController;
     private string _levelName;
     public string levelName {
         get {
@@ -63,6 +64,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _LineContainer = GameObject.Find( _levelName + "Container/Sky/LineContainer");
         _gameContainer = GameObject.Find( _levelName + "Container");
+        _eventController = _gameContainer.GetComponent<EventController>();
         //TODO just for test
         TemplateMgr.Instance.Init();
 
@@ -76,7 +78,7 @@ public class LevelPlayMgr : MonoBehaviour {
     ///////////////////////////////////////////////////////////////////////////////////
     /// Interfaces                                                                  ///
     ///////////////////////////////////////////////////////////////////////////////////
-    public void OnStarClicked(GameObject goStar)
+    public void TriggerStar(GameObject goStar)
     {
         int index = goStar.GetComponent<Star>().index;
         //Check whether ready
@@ -94,6 +96,11 @@ public class LevelPlayMgr : MonoBehaviour {
                 TryLinkStar(_readyStar, goStar);
             }
         }
+    }
+    
+    public void ShowMenu()
+    {
+        //TODO
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
@@ -137,7 +144,7 @@ public class LevelPlayMgr : MonoBehaviour {
 
         // Check whether sucess
         if (CheckAnswer()) {
-            _gameContainer.GetComponent<GameContainer>().GameWin();
+            _eventController.OnGameWin();
         }
     }
 

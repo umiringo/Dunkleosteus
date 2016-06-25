@@ -5,6 +5,7 @@ using GlobalDefines;
 public class EventController : MonoBehaviour {
 
     public LevelPlayMgr gamePlay;
+    public GameContainer gameContainer;
 	// Use this for initialization
 	void Start () 
     {
@@ -17,8 +18,23 @@ public class EventController : MonoBehaviour {
 	
 	}
 
-    public void OnStarClicked(GameObject go)
+    public void OnStarTouched(GameObject go)
     {
-        gamePlay.OnStarClicked(go);
+        gamePlay.TriggerStar(go);
+    }
+    
+    public void OnCardTouched(GameObject go)
+    {
+        gameContainer.BeginToFlop(go);
+    }
+    
+    public void OnGameWin()
+    {
+        gameContainer.GameWin();
+    }
+    
+    public void OnDetailTriggered()
+    {
+        gamePlay.ShowMenu();
     }
 }
