@@ -16,15 +16,17 @@ public class GameContainer : MonoBehaviour {
     public float duration = 1.0f;
     
     private bool detailTriggered;
+
+    private UIPlayTween winTween;
 	void Start () 
     {
         triggerGameObject = null;
         detailTriggered = false;
         
         detailGameObject.transform.localEulerAngles = new Vector3(0, 90, 0);
-        skyTween = starGameObject.GetComponent<TweenRotation>();
+        skyTween = skyGameObject.GetComponent<TweenRotation>();
         if (skyTween == null) {
-            skyTween = starGameObject.AddComponent<TweenRotation>();
+            skyTween = skyGameObject.AddComponent<TweenRotation>();
         }
         detailTween = detailGameObject.GetComponent<TweenRotation>();
         if (detailTween == null) {
@@ -45,11 +47,13 @@ public class GameContainer : MonoBehaviour {
         skyTween.onFinished.Add(new EventDelegate(SkyTweenEventDelegate));
         detailTween.onFinished.Add(new EventDelegate(DetailTweenEventDelegate));
         
-        //set play tween(scale)'s onFinished TODO
+        //set winTween
+        winTween = gameObject.GetComponent<UIPlayTween>();
+        winTween.onFinished.Add(new EventDelegate(WinPlayTweenEventDelegate));
         
         //unable star and detail box collider
-        skyGameObject.GetComponent<BoxCollider2D>().enable = false;
-        detailGameObject.GetComponent<BoxCollider2D>().enable = false;
+        skyGameObject.GetComponent<BoxCollider>().enabled = false;
+        detailGameObject.GetComponent<BoxCollider>().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -63,12 +67,13 @@ public class GameContainer : MonoBehaviour {
         //unable star touch
         SwitchStarsBoxCollider(false);
         //start scale
+        winTween.Play(true);
     }
     
     public void SwitchStarsBoxCollider(bool enable)
     {
         foreach(Transform child in starContainer.transform) {
-            child.gameObject.GetComponent<BoxCollider2D>().enabled = enable;
+            child.gameObject.GetComponent<BoxCollider>().enabled = enable;
         }
     }
 
@@ -78,8 +83,8 @@ public class GameContainer : MonoBehaviour {
     public void BeginToFlop(GameObject touchedGameObject)
     {
         triggerGameObject = touchedGameObject;
-        if (touchedGameObject == starGameObject) {
-            starTween.Play(true);
+        if (touchedGameObject == skyGameObject) {
+            skyTween.Play(true);
             if(!detailTriggered){
                 // show the menu
                 eventController.OnDetailTriggered();
@@ -92,27 +97,27 @@ public class GameContainer : MonoBehaviour {
     }
     
     //starTween.onFinished
-    public StarTweenEventDelegate()
+    public void SkyTweenEventDelegate()
     {
-        if(triggerGameObject == starGameObject) {
-            detailGameObject.Play(true);
+        if(triggerGameObject == skyGameObject) {
+            detailTween.Play(true);
         }
     }
     
     //detailTween.onFinish
-    public DetailTweenEventDelegate()
+    public void DetailTweenEventDelegate()
     {
         if(triggerGameObject == detailGameObject) {
-            starTween.Play(false);
+            skyTween.Play(false);
         }
     }
     
     //winTween.onFinish
-    public WinPlayTweenEventDelegate()
+    public void WinPlayTweenEventDelegate()
     {
         //enable star and detail box collider
-        starGameObject.GetComponent<BoxCollider2D>().enable = true;
-        detailGameObject.GetComponent<BoxCollider2D>().enable = true;
+        skyGameObject.GetComponent<BoxCollider>().enabled = true;
+        detailGameObject.GetComponent<BoxCollider>().enabled = true;
              
     }
     

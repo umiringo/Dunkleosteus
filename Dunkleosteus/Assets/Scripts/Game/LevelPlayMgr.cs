@@ -41,8 +41,8 @@ public class LevelPlayMgr : MonoBehaviour {
     private List<int> _correctAnswerList;
     private List<int> _answerList;
     private GameObject _readyStar;
-    private GameObject _LineTemplate;
-    private GameObject _LineContainer;
+    private GameObject _lineTemplate;
+    private GameObject _lineContainer;
     private GameObject _gameContainer;
     private EventController _eventController;
     private string _levelName;
@@ -61,10 +61,8 @@ public class LevelPlayMgr : MonoBehaviour {
         _answerList = new List<int>();
         _correctAnswerList = new List<int>();
         _readyStar = null;
-        _LineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        _LineContainer = GameObject.Find( _levelName + "Container/Sky/LineContainer");
-        _gameContainer = GameObject.Find( _levelName + "Container");
-        _eventController = _gameContainer.GetComponent<EventController>();
+        _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
+
         //TODO just for test
         TemplateMgr.Instance.Init();
 
@@ -119,6 +117,9 @@ public class LevelPlayMgr : MonoBehaviour {
             int tmpAnswer = answerObject.AsInt;
             _correctAnswerList.Add(tmpAnswer);
         }
+        _lineContainer = GameObject.Find(_levelName + "Container/Sky/LineContainer");
+        _gameContainer = GameObject.Find(_levelName + "Container");
+        _eventController = _gameContainer.GetComponent<EventController>();
     }
     // Check whether answer is correct
     private bool CheckAnswer()
@@ -260,8 +261,8 @@ public class LevelPlayMgr : MonoBehaviour {
             Transform beginTransform = goBegin.transform;
             Transform endTransform = goEnd.transform;
             // Instantiate line
-            GameObject linkedLine = Instantiate(_LineTemplate);
-            linkedLine.transform.parent = _LineContainer.transform;
+            GameObject linkedLine = Instantiate(_lineTemplate);
+            linkedLine.transform.parent = _lineContainer.transform;
             UISprite lineSprite = linkedLine.GetComponent<UISprite>();
             lineSprite.pivot = UIWidget.Pivot.Center;
             lineSprite.depth = DefineNumber.LineDepth;
