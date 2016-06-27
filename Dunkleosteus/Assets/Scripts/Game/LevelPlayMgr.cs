@@ -52,8 +52,6 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
 
-    
-
 	// Use this for initialization
 	void Start () {
         _linkedLineList = new List<LinkedPair>();
@@ -76,6 +74,11 @@ public class LevelPlayMgr : MonoBehaviour {
     ///////////////////////////////////////////////////////////////////////////////////
     /// Interfaces                                                                  ///
     ///////////////////////////////////////////////////////////////////////////////////
+    // Load Level Data
+    public void LoadLevel(string name)
+    {
+
+    }
     public void TriggerStar(GameObject goStar)
     {
         int index = goStar.GetComponent<Star>().index;
@@ -308,7 +311,9 @@ public class LevelPlayMgr : MonoBehaviour {
 
             float distance = Vector3.Distance(beginTransform.position, endTransform.position);
             float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
-            int width = (int)(distance / scale);
+            float containerScale = _gameContainer.transform.localScale.x;
+            int width = (int)(distance / scale / containerScale);
+            //int width = (int)(distance / scale);
 
             TweenWidth lineTweenWidth = linkedLine.GetComponent<TweenWidth>();
             lineTweenWidth.from = 0;
