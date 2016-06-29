@@ -34,8 +34,14 @@ public class EventController : MonoBehaviour {
         gameContainer.GameWin();
     }
     
+    public void OnWinTweenPlayed()
+    {
+        gamePlay.ShowComplete();
+    }
+
     public void OnDetailTriggered()
     {
         gamePlay.ShowMenu();
     }
+
 }

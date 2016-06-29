@@ -45,6 +45,9 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _lineContainer;
     private GameObject _gameContainer;
     private EventController _eventController;
+    public GameObject _completeLabel;
+    public GameObject _menu;
+
     private string _levelName;
     public string levelName {
         get {
@@ -60,7 +63,8 @@ public class LevelPlayMgr : MonoBehaviour {
         _correctAnswerList = new List<int>();
         _readyStar = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-
+        _completeLabel.SetActive(false);
+        _menu.SetActive(false);
         //TODO just for test
         TemplateMgr.Instance.Init();
 
@@ -99,9 +103,16 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
     
+    public void ShowComplete()
+    {
+        _menu.SetActive(false);
+        _completeLabel.SetActive(true);
+    }
+
     public void ShowMenu()
     {
-        //TODO
+        _completeLabel.GetComponent<TweenAlpha>().Play(false);
+        _menu.SetActive(true);
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///

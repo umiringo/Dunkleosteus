@@ -118,7 +118,9 @@ public class GameContainer : MonoBehaviour {
         //enable star and detail box collider
         skyGameObject.GetComponent<BoxCollider>().enabled = true;
         detailGameObject.GetComponent<BoxCollider>().enabled = true;
-             
+        
+        //show complete label
+        eventController.OnWinTweenPlayed();
     }
     
 }
