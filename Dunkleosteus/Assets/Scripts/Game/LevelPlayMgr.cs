@@ -45,8 +45,10 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _lineContainer;
     private GameObject _gameContainer;
     private EventController _eventController;
+
     public GameObject _completeLabel;
     public GameObject _menu;
+    public UILabel _levelNameLabel;
 
     private string _levelName;
     public string levelName {
@@ -56,24 +58,28 @@ public class LevelPlayMgr : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         _linkedLineList = new List<LinkedPair>();
         _starDictionary = new Dictionary<int, int>();
-        _answerList = new List<int>();
         _correctAnswerList = new List<int>();
+        _answerList = new List<int>();
         _readyStar = null;
+        _lineTemplate = null;
+        _lineContainer = null;
+        _gameContainer = null;
+        _eventController = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _completeLabel.SetActive(false);
         _menu.SetActive(false);
-        //TODO just for test
-        TemplateMgr.Instance.Init();
 
-        this.LoadTemplateData("level_info", "Scorpius");
+    }
+
+	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
     ///////////////////////////////////////////////////////////////////////////////////
     /// Interfaces                                                                  ///
@@ -81,8 +87,43 @@ public class LevelPlayMgr : MonoBehaviour {
     // Load Level Data
     public void LoadLevel(string name)
     {
+        // clear all data
+        _linkedLineList.Clear();
+        _starDictionary.Clear();
+        _correctAnswerList.Clear();
+        _answerList.Clear();
+        _readyStar = null;
+        Destroy(_gameContainer); // Try to destroy the gamecontainer
+        _lineContainer = null;
+        _gameContainer = null;
+        _eventController = null;
+        _completeLabel.SetActive(false);
+        _menu.SetActive(false);
+        _levelNameLabel.text = "";
+      
 
+        // Load template data
+        JSONNode jo = TemplateMgr.Instance.GetTemplateString("level_info", name);
+        // Load name
+        _levelName = jo["name"];
+        _levelNameLabel.text = _levelName;
+        // Load answer
+        JSONArray answerList = jo["answer"] as JSONArray;
+        foreach (JSONNode answerObject in answerList) {
+            int tmpAnswer = answerObject.AsInt;
+            _correctAnswerList.Add(tmpAnswer);
+        }
+        // Load GameContainer
+        _gameContainer = Instantiate(Resources.Load(PathContainer.ScorpiusContainer)) as GameObject;
+        _gameContainer.transform.parent = this.gameObject.transform;
+        _gameContainer.transform.localPosition = Vector3.zero;
+        _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
+        _gameContainer.GetComponent<EventController>().gamePlay = this;
+
+        _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
+        _eventController = _gameContainer.GetComponent<EventController>();
     }
+
     public void TriggerStar(GameObject goStar)
     {
         int index = goStar.GetComponent<Star>().index;
@@ -119,22 +160,6 @@ public class LevelPlayMgr : MonoBehaviour {
     ///////////////////////////////////////////////////////////////////////////////////
     
     #region InnerFuction
-    // Load template data
-    private void LoadTemplateData(string fileName, string levelName)
-    {
-        JSONNode jo = TemplateMgr.Instance.GetTemplateString(fileName, levelName);
-            // load name
-        _levelName = jo["name"];
-            // load answer
-        JSONArray answerList = jo["answer"] as JSONArray;
-        foreach( JSONNode answerObject in answerList) {
-            int tmpAnswer = answerObject.AsInt;
-            _correctAnswerList.Add(tmpAnswer);
-        }
-        _lineContainer = GameObject.Find(_levelName + "Container/Sky/LineContainer");
-        _gameContainer = GameObject.Find(_levelName + "Container");
-        _eventController = _gameContainer.GetComponent<EventController>();
-    }
     // Check whether answer is correct
     private bool CheckAnswer()
     {

@@ -13,6 +13,8 @@ namespace GlobalDefines
         public static readonly string LinkedLinePrefabPath = "Prefabs/LinkedLine";
         public static readonly string LineContainerPath = "LineContainer";
         public static readonly string UIRootPath = "UI Root";
+
+        public static readonly string ScorpiusContainer = "Prefabs/Constellation/ScorpiusContainer";
     }
 
     public class DefineNumber
@@ -23,5 +25,5 @@ namespace GlobalDefines
     public class ConfigFileName
     {
         public static readonly string LevelInfo = "level_info";
-    }
+            }
 }
