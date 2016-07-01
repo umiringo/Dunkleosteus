@@ -3,8 +3,8 @@
         "name" : "Scorpius",
         "answer" : [102, 203, 304, 205, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415]
     },
-    "Triangulum" : {
-        "name" : "Triangulum",
-        "answer" : [102, 203, 103]
+    "Sagitta" : {
+        "name" : "Sagitta",
+        "answer" : [102, 203, 204]
     }
 }
