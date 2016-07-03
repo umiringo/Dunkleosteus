@@ -52,17 +52,11 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -226,6 +220,10 @@
     <Compile Include="Assets\Scripts\Demo\RemoveButton.cs" />
     <Compile Include="Assets\Scripts\Demo\SimpleButton.cs" />
     <Compile Include="Assets\Scripts\Demo\SpriteStar.cs" />
+    <Compile Include="Assets\Scripts\FSM\FiniteState.cs" />
+    <Compile Include="Assets\Scripts\FSM\FiniteStateEvent.cs" />
+    <Compile Include="Assets\Scripts\FSM\FiniteStateEventSystem.cs" />
+    <Compile Include="Assets\Scripts\FSM\FiniteStateMachine.cs" />
     <Compile Include="Assets\Scripts\Game\EventController.cs" />
     <Compile Include="Assets\Scripts\Game\GameContainer.cs" />
     <Compile Include="Assets\Scripts\Game\GameDirector.cs" />
