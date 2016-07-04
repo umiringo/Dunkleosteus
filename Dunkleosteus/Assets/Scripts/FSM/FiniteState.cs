@@ -19,7 +19,7 @@ public class FiniteState
     protected IState _stateObject;
     protected string _stateName;
     protected FiniteStateMachine _owner;
-    protected Dictionary<string, FiniteStateEvent> transferEventDic;
+    protected Dictionary<string, FiniteStateEvent> transferEventMap;
 
     public FiniteState(IState obj,string name, FiniteStateMachine owner, FiniteStateMachine.EnterState enter, FiniteStateMachine.PushState push, FiniteStateMachine.PopState pop)
     {
@@ -29,7 +29,7 @@ public class FiniteState
         enterDelegate = enter;
         pushDelegate = push;
         popDelegate = pop;
-        transferEventDic = new Dictionary<string, FiniteStateEvent>();
+        transferEventMap = new Dictionary<string, FiniteStateEvent>();
     }
 
     public IState StateObject
@@ -51,28 +51,28 @@ public class FiniteState
     public FiniteStateEvent On(string eventName)
     {
         FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return newEvent;
     }
 
     public void Trigger(string eventName)
     {
-        transferEventDic[eventName].Execute(null, null, null);
+        transferEventMap[eventName].Execute(null, null, null);
     }
 
     public void Trigger(string eventName, object param)
     {
-        transferEventDic[eventName].Execute(param, null, null);
+        transferEventMap[eventName].Execute(param, null, null);
     }
 
     public void Trigger(string eventName, object param1, object param2)
     {
-        transferEventDic[eventName].Execute(param1, param2, null);
+        transferEventMap[eventName].Execute(param1, param2, null);
     }
 
     public void Trigger(string eventName, object param1, object param2, object param3)
     {
-        transferEventDic[eventName].Execute(param1, param2, param3);
+        transferEventMap[eventName].Execute(param1, param2, param3);
     }
 
     public FiniteStateEvent On<T>(string eventName, Func<T, bool> action)
@@ -89,7 +89,7 @@ public class FiniteState
             action(param);
             return true;
         };
-       transferEventDic.Add(eventName, newEvent);
+       transferEventMap.Add(eventName, newEvent);
        return this;
     }
 
@@ -107,7 +107,7 @@ public class FiniteState
             action(param);
             return true;
         };
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return this;
     }
 
@@ -132,7 +132,7 @@ public class FiniteState
             action(param1, param2);
             return true;
         };
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return this;
     }
 
@@ -157,7 +157,7 @@ public class FiniteState
             action(param1, param2);
             return true;
         };
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return this;
     }
 
@@ -189,7 +189,7 @@ public class FiniteState
             action(param1, param2, param3);
             return true;
         };
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return this;
     }
 
@@ -221,7 +221,7 @@ public class FiniteState
             action(param1, param2, param3);
             return true;
         };
-        transferEventDic.Add(eventName, newEvent);
+        transferEventMap.Add(eventName, newEvent);
         return this;       
     }
 
