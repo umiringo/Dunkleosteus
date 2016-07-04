@@ -57,6 +57,17 @@ public class FiniteStateEvent
 
     public void Execute(object o1, object o2, object o3)
     {
-
+        if( type == EventType.Enter ) {
+            enterDelegate(targetState);
+        }
+        else if( type == EventType.Push ) {
+            pushDelegate(targetState, owner.CurrentState.StateName);
+        }
+        else if( type == EventType.Pop ) {
+            popDelegate();
+        }
+        else if( action != null ) {
+            action(o1, o2, o3);
+        }
     }
 }

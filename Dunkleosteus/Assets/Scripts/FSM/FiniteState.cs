@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -77,6 +78,151 @@ public class FiniteState
     public FiniteStateEvent On<T>(string eventName, Func<T, bool> action)
     {
         FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-       
+        newEvent.action = delegate(object o1, object o2, obejct o3) {
+            T param;
+            try {
+                param = (T)o1;
+            }
+            catch {
+                param = default(T);
+            }
+            action(param);
+            return true;
+        };
+       transferEventDic.Add(eventName, newEvent);
+       return this;
     }
+
+    public FiniteStateEvent On<T>(string eventName, Action<T> action)
+    {
+        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
+        newEvent.action = delegate(object o1, object o2, object o3) {
+            T param;
+            try {
+                param = (T)o1;
+            }
+            catch {
+                param = default(T);
+            }
+            action(param);
+            return true;
+        };
+        transferEventDic.Add(eventName, newEvent);
+        return this;
+    }
+
+    public FiniteStateEvent On<T1, T2>(string eventName, Func<T1, T2, bool> action) 
+    {
+        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
+        newEvent.action = delegate(object o1, object o2, object o3) {
+            T1 param1;
+            T2 param2;
+            try {
+                param1 = (T1)o1;
+            }
+            catch {
+                param1 = default(T1);
+            }
+            try {
+                param2 = (T2)o2;
+            }
+            catch {
+                param2 = default(T2);
+            }
+            action(param1, param2);
+            return true;
+        };
+        transferEventDic.Add(eventName, newEvent);
+        return this;
+    }
+
+    public FiniteStateEvent On<T1, T2>(string eventName, Action<T1, T2> action) 
+    {
+        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
+        newEvent.action = delegate(object o1, object o2, object o3) {
+            T1 param1;
+            T2 param2;
+            try {
+                param1 = (T1)o1;
+            }
+            catch {
+                param1 = default(T1);
+            }
+            try {
+                param2 = (T2)o2;
+            }
+            catch {
+                param2 = default(T2);
+            }
+            action(param1, param2);
+            return true;
+        };
+        transferEventDic.Add(eventName, newEvent);
+        return this;
+    }
+
+    public FiniteStateEvent On<T1, T2, T3>(string eventName, Func<T1, T2, T3, bool> action)
+    {
+        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
+        newEvent.action = delegate(object o1, object o2, object o3) {
+            T1 param1;
+            T2 param2;
+            T3 param3;
+            try {
+                param1 = (T1)o1;
+            }
+            catch {
+                param1 = default(T1);
+            }
+            try {
+                param2 = (T2)o2;
+            }
+            catch {
+                param2 = default(T2);
+            }
+            try {
+                param3 = (T3)o3;
+            }
+            catch {
+                param3 = default(T3);
+            }
+            action(param1, param2, param3);
+            return true;
+        };
+        transferEventDic.Add(eventName, newEvent);
+        return this;
+    }
+
+    public FiniteStateEvent On<T1, T2, T3>(string eventName, Action<T1, T2, T3> action)
+    {
+        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
+        newEvent.action = delegate(object o1, object o2, object o3) {
+            T1 param1;
+            T2 param2;
+            T3 param3;
+            try {
+                param1 = (T1)o1;
+            }
+            catch {
+                param1 = default(T1);
+            }
+            try {
+                param2 = (T2)o2;
+            }
+            catch {
+                param2 = default(T2);
+            }
+            try {
+                param3 = (T3)o3;
+            }
+            catch {
+                param3 = default(T3);
+            }
+            action(param1, param2, param3);
+            return true;
+        };
+        transferEventDic.Add(eventName, newEvent);
+        return this;       
+    }
+
 }
