@@ -13,12 +13,12 @@ public class CardViewState : FiniteState
         _stateID = StateID.CardView;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
     
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
       
     }

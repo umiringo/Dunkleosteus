@@ -13,12 +13,12 @@ public class LevelSelectState : FiniteState
         _stateID = StateID.LevelSelect;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
     
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
       
     }

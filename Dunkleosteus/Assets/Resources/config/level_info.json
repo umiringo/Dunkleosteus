@@ -1,4 +1,5 @@
 {
+    "LevelSelect" : [ "Scorpius" , "Sagitta"],
     "Scorpius" : {
         "name" : "Scorpius",
         "answer" : [102, 203, 304, 205, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415]

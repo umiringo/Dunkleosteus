@@ -49,7 +49,7 @@ public class LevelPlayMgr : MonoBehaviour {
     public GameObject _completeLabel;
     public GameObject _menu;
     public UILabel _levelNameLabel;
-
+    public GameDirector director;
     private string _levelName;
     public string levelName {
         get {
@@ -154,6 +154,16 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         _completeLabel.GetComponent<TweenAlpha>().Play(false);
         _menu.SetActive(true);
+    }
+
+    public void OnBackToLevelSelect()
+    {
+
+    }
+
+    public void OnNextLevel()
+    {
+
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
@@ -386,5 +396,21 @@ public class LevelPlayMgr : MonoBehaviour {
         this.RefreshStar(goBegin);
         this.RefreshStar(goEnd);
     }
+
+    private string GetNextLevelName()
+    {
+        if (_levelName == null) {
+            return null;
+        }
+
+        // If current is the last one
+        for (int i = 0; i < director.levelList.Count; ++i) {
+            if (director.levelList[i] == _levelName) {
+
+            }
+        }
+        return null;
+    }
     #endregion
+
 }

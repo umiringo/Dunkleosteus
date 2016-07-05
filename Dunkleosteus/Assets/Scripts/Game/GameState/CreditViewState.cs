@@ -13,12 +13,12 @@ public class CreditViewState : FiniteState
         _stateID = StateID.CreditView;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
     
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
       
     }

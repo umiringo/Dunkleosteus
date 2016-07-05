@@ -13,12 +13,12 @@ public class MainMenuState : FiniteState
         _stateID = StateID.MainMenu;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
         // Show logo and menu View 
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
         // Hide logo and menu view        
     }

@@ -7,14 +7,18 @@ public class GameDirector : MonoBehaviour {
     public GameObject startPanelTest;
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
+    public List<string> levelList;
 
     private FiniteStateMachine _fsm;
 	
+    
     void Awake() {
         // Init template data
         TemplateMgr.Instance.Init();
         // Init finite state machine
         InitFiniteStateMachine();
+        // Init level list;
+        InitLevelList();
     }
 
     void Start () {
@@ -70,8 +74,12 @@ public class GameDirector : MonoBehaviour {
         _fsm.AddFiniteState(optionMenu);
         _fsm.AddFiniteState(creditView);
         _fsm.AddFiniteState(cardView);
-        _fsm.AddFiniteState(gameScene);s
+        _fsm.AddFiniteState(gameScene);
     }
+
+    private void InitLevelList()
+    { }
+
 
 
 }

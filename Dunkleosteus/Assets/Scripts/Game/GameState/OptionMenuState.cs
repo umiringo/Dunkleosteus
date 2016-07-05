@@ -13,12 +13,12 @@ public class OptionMenuState : FiniteState
         _stateID = StateID.OptionMenu;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
     
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
       
     }

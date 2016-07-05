@@ -15,13 +15,13 @@ public class FiniteStateMachine
 
     public FiniteStateMachine()
     {
-        _stateList = new List<FSMState>();
+        _stateList = new List<FiniteState>();
         _currentStateID = StateID.NullStateID;
     }
 
     public void AddFiniteState(FiniteState fs)
     {
-        if( s == null ) {
+        if( fs == null ) {
             Debug.LogError("FiniteStateMachine Error: Null reference is not allowed");
             return;
         }
@@ -35,7 +35,7 @@ public class FiniteStateMachine
 
         foreach( FiniteState fState in _stateList ) {
             if( fState.ID == fs.ID ) {
-                Debug.LogError("FiniteStateMachine Error: Impossible to add state " + s.ID.ToString() + " because state has already been added !");
+                Debug.LogError("FiniteStateMachine Error: Impossible to add state " + fs.ID.ToString() + " because state has already been added !");
                 return;
             }
         }
@@ -72,7 +72,7 @@ public class FiniteStateMachine
         }
 
         _currentStateID = id;
-        foreach( FiniteState fs in state ) {
+        foreach (FiniteState fs in _stateList) {
             if( fs.ID == _currentStateID ) {
                 _currentState.DoBeforeExit();
                 _currentState = fs;

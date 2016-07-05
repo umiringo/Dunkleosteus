@@ -13,12 +13,12 @@ public class GameSceneState : FiniteState
         _stateID = StateID.GameScene;
     }
 
-    public virtual void DoBeforeEnter() 
+    public override void DoBeforeEnter() 
     {
     
     }
 
-    public virtual void DoBeforeExit()
+    public override void DoBeforeExit()
     {
       
     }
