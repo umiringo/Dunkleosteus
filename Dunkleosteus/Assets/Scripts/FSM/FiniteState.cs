@@ -1,228 +1,82 @@
-﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public interface IState
+public enum StateTransition
 {
-    void OnEnter(string preState);
-    void OnExit(string nextState);
-    void OnUpdate();
+    NullTransition = 0,
+    PressStart = 1,
+    ViewOption = 2,
+    ViewCredit = 3,
+    ViewCard = 4,
+    ChoseLevel = 5,
+    BackToLevelSelect = 6,
 }
 
-public class FiniteState
+public enum StateID
 {
-    protected FiniteStateMachine.EnterState enterDelegate;
-    protected FiniteStateMachine.PushState pushDelegate;
-    protected FiniteStateMachine.PopState popDelegate;
+    NullStateID = 0,
+    MainMenu = 1,
+    LevelSelect = 2,
+    OptionMenu = 3,
+    CreditView = 4,
+    CardView = 5,
+    GameScene = 6,
+}
 
-    protected IState _stateObject;
-    protected string _stateName;
-    protected FiniteStateMachine _owner;
-    protected Dictionary<string, FiniteStateEvent> transferEventMap;
+public abstract class FiniteState
+{
+    protected Dictionary<StateTransition, StateID> _stateTransitionMap = new Dictionary<StateTransition, StateID>();
+    protected StateID _stateID;
+    public StateID ID { get { return _stateID; }}
 
-    public FiniteState(IState obj,string name, FiniteStateMachine owner, FiniteStateMachine.EnterState enter, FiniteStateMachine.PushState push, FiniteStateMachine.PopState pop)
+    public void AddTransition(StateTransition trans, StateID id)
     {
-        _stateObject = obj;
-        _stateName = name;
-        _owner = owner;
-        enterDelegate = enter;
-        pushDelegate = push;
-        popDelegate = pop;
-        transferEventMap = new Dictionary<string, FiniteStateEvent>();
-    }
-
-    public IState StateObject
-    {
-        get
-        {
-            return _stateObject;
+        if( trans == StateTransition.NullTransition ) {
+            Debug.LogError("FiniteState Error: NullTransition is not allowed for a real transition");
+            return;
         }
-    }
-
-    public string StateName
-    {
-        get
-        {
-            return _stateName;
+        if( id == StateID.NullStateID ) {
+            Debug.LogError("FiniteState Error: NullStateID is not allowed for a real ID");
+            return;
         }
-    }
-    
-    public FiniteStateEvent On(string eventName)
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        transferEventMap.Add(eventName, newEvent);
-        return newEvent;
+
+        if( _stateTransitionMap.ContainsKey(trans) ) {
+            Debug.LogError("FiniteState Error: State " + _stateID.ToString() + " already has transition " + trans.ToString() + "! Cant Insert another one !");
+            return;
+        }
+        _stateTransitionMap.Add(trans, id);
     }
 
-    public void Trigger(string eventName)
+    public void DeleteTransition(StateTransition trans)
     {
-        transferEventMap[eventName].Execute(null, null, null);
+        if( trans == StateTransition.NullTransition )
+        {
+            Debug.LogError("FiniteState Error: NullTransition is not allowed for a real transition");
+            return;
+        }
+
+        if(_stateTransitionMap.ContainsKey(trans))
+        {
+            _stateTransitionMap.Remove(trans);
+            return;
+        }
+        Debug.LogError("FiniteState Error: Transition " + trans.ToString() + " - " + _stateID.ToString() + " was not existed! ");
     }
 
-    public void Trigger(string eventName, object param)
+    public StateID GetTargetState(StateTransition trans)
     {
-        transferEventMap[eventName].Execute(param, null, null);
+        if(_stateTransitionMap.ContainsKey(trans))
+        {
+            return _stateTransitionMap[trans];
+        }
+        return StateID.NullStateID;
     }
 
-    public void Trigger(string eventName, object param1, object param2)
-    {
-        transferEventMap[eventName].Execute(param1, param2, null);
-    }
+    public virtual void DoBeforeEnter() {}
+    public virtual void DoBeforeExit() {}
 
-    public void Trigger(string eventName, object param1, object param2, object param3)
-    {
-        transferEventMap[eventName].Execute(param1, param2, param3);
-    }
-
-    public FiniteStateEvent On<T>(string eventName, Func<T, bool> action)
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, obejct o3) {
-            T param;
-            try {
-                param = (T)o1;
-            }
-            catch {
-                param = default(T);
-            }
-            action(param);
-            return true;
-        };
-       transferEventMap.Add(eventName, newEvent);
-       return this;
-    }
-
-    public FiniteStateEvent On<T>(string eventName, Action<T> action)
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, object o3) {
-            T param;
-            try {
-                param = (T)o1;
-            }
-            catch {
-                param = default(T);
-            }
-            action(param);
-            return true;
-        };
-        transferEventMap.Add(eventName, newEvent);
-        return this;
-    }
-
-    public FiniteStateEvent On<T1, T2>(string eventName, Func<T1, T2, bool> action) 
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, object o3) {
-            T1 param1;
-            T2 param2;
-            try {
-                param1 = (T1)o1;
-            }
-            catch {
-                param1 = default(T1);
-            }
-            try {
-                param2 = (T2)o2;
-            }
-            catch {
-                param2 = default(T2);
-            }
-            action(param1, param2);
-            return true;
-        };
-        transferEventMap.Add(eventName, newEvent);
-        return this;
-    }
-
-    public FiniteStateEvent On<T1, T2>(string eventName, Action<T1, T2> action) 
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, object o3) {
-            T1 param1;
-            T2 param2;
-            try {
-                param1 = (T1)o1;
-            }
-            catch {
-                param1 = default(T1);
-            }
-            try {
-                param2 = (T2)o2;
-            }
-            catch {
-                param2 = default(T2);
-            }
-            action(param1, param2);
-            return true;
-        };
-        transferEventMap.Add(eventName, newEvent);
-        return this;
-    }
-
-    public FiniteStateEvent On<T1, T2, T3>(string eventName, Func<T1, T2, T3, bool> action)
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, object o3) {
-            T1 param1;
-            T2 param2;
-            T3 param3;
-            try {
-                param1 = (T1)o1;
-            }
-            catch {
-                param1 = default(T1);
-            }
-            try {
-                param2 = (T2)o2;
-            }
-            catch {
-                param2 = default(T2);
-            }
-            try {
-                param3 = (T3)o3;
-            }
-            catch {
-                param3 = default(T3);
-            }
-            action(param1, param2, param3);
-            return true;
-        };
-        transferEventMap.Add(eventName, newEvent);
-        return this;
-    }
-
-    public FiniteStateEvent On<T1, T2, T3>(string eventName, Action<T1, T2, T3> action)
-    {
-        FiniteStateEvent newEvent = new FiniteStateEvent(eventName, null, this, _owner, enterDelegate, pushDelegate, popDelegate);
-        newEvent.action = delegate(object o1, object o2, object o3) {
-            T1 param1;
-            T2 param2;
-            T3 param3;
-            try {
-                param1 = (T1)o1;
-            }
-            catch {
-                param1 = default(T1);
-            }
-            try {
-                param2 = (T2)o2;
-            }
-            catch {
-                param2 = default(T2);
-            }
-            try {
-                param3 = (T3)o3;
-            }
-            catch {
-                param3 = default(T3);
-            }
-            action(param1, param2, param3);
-            return true;
-        };
-        transferEventMap.Add(eventName, newEvent);
-        return this;       
-    }
-
+    // public abstract void Reason(GameObject go);
+    // public abstract void Act(GameObject go);
 }

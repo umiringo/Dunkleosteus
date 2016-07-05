@@ -1,128 +1,84 @@
-﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 public class FiniteStateMachine
 {
-    public delegate void EnterState(string stateName);
-    public delegate void PushState(string stateName, string lastStateName);
-    public delegate void PopState();
+    private List<FiniteState> _stateList;
 
-    protected Dictionary<string, FiniteState> stateDic;
-    protected string entryPoint;
-    protected Stack<FiniteState> stateStack;
+    private StateID _currentStateID;
+    public StateID CurrentStateID { get { return _currentStateID; } }
 
-    public FiniteState State(string stateName)
-    {
-        return stateDic[stateName];
-    }
-
-    public void EntryPoint(string startName)
-    {
-        entryPoint = startName;
-    }
-
-    public FiniteState CurrentState
-    {
-        get
-        {
-            if (stateStack.Count <= 0) {
-                return null;
-            }
-            return stateStack.Peek();
-        }
-    }
+    private FiniteState _currentState;
+    public FiniteState CurretnState { get { return _currentState; } }
 
     public FiniteStateMachine()
     {
-        stateDic = new Dictionary<string, FiniteState>();
-        entryPoint = null;
-        stateStack = new Stack<FiniteState>();
+        _stateList = new List<FSMState>();
+        _currentStateID = StateID.NullStateID;
     }
 
-    public void Register(string stateName, IState stateObject)
+    public void AddFiniteState(FiniteState fs)
     {
-        if (stateDic.Count == 0) {
-            entryPoint = stateName;
+        if( s == null ) {
+            Debug.LogError("FiniteStateMachine Error: Null reference is not allowed");
+            return;
         }
-        stateDic.Add(stateName, new FiniteState(stateObject, this, stateName, Enter, PushState, Pop));
-    }
-    public void Update()
-    {
-        if (CurrentState == null) {
-            stateStack.Push(stateDic[entryPoint]);
-            CurrentState.StateObject.OnEnter(null);
+
+        if( _stateList.Count == 0 ) {
+            _stateList.Add(fs);
+            _currentState = fs;
+            _currentStateID = fs.ID;
+            return;
         }
-        CurrentState.StateObject.OnUpdate();
-    }
 
-    protected void Push(string stateName, string lastStateName)
-    {
-        stateStack.Push(stateDic[stateName]);
-        stateStack.Peek().StateObject.OnEnter(lastStateName);
-    }
-
-    public void Push(string newState)
-    {
-        string lastStateName = null;
-        if (stateStack.Count > 1) {
-            lastStateName = stateStack.Peek().StateName;
-        }
-        Push(newState, lastStateName);
-    }
-
-    public void Enter(string stateName)
-    {
-        Push(stateName, Pop(stateName));
-    }
-
-    public void Pop()
-    {
-        Pop(null);
-    }
-
-    protected string Pop(string newName)
-    {
-        FiniteState lastState = stateStack.Peek();
-        string newStateName = null;
-        if (newName == null && stateStack.Count > 1) {
-            int index = 0;
-            foreach (FiniteState item in stateStack) {
-                if (index++ == stateStack.Count - 2) {
-                    newStateName = item.StateName;
-                }
+        foreach( FiniteState fState in _stateList ) {
+            if( fState.ID == fs.ID ) {
+                Debug.LogError("FiniteStateMachine Error: Impossible to add state " + s.ID.ToString() + " because state has already been added !");
+                return;
             }
         }
-        else {
-            newStateName = newName;
+        _stateList.Add(fs);
+    }
+
+    public void DeleteFiniteState(StateID id)
+    {
+        if( id == StateID.NullStateID ) {
+            Debug.LogError("FiniteStateMachine Error: NullStateID is not allowed for a real state!");
+            return;
         }
-        string lastStateName = null;
-        if (lastState != null) {
-            lastStateName = lastState.StateName;
-            lastState.StateObject.OnExit(newStateName);
+
+        foreach( FiniteState fs in _stateList ) {
+            if( fs.ID == id ) {
+                _stateList.Remove(fs);
+                return;
+            }
         }
-        stateStack.Pop();
-        return lastStateName;
+        Debug.LogError("FiniteStateMachine Error: Impossible to delete state " + id.ToString() + " because state was not existed!");
     }
 
-    public void Trigger(string eventName)
+    public void PerformTransition(StateTransition trans)
     {
-        CurrentState.Trigger(eventName);
-    }
+        if( trans == StateTransition.NullTransition ) {
+            Debug.LogError("FiniteStateMachine Error: NullTransition is not allowed for a real transition!");
+            return;
+        }
 
-    public void Trigger(string eventName, object param)
-    {
-        CurrentState.Trigger(eventName, param);
-    }
+        StateID id = _currentState.GetTargetState(trans);
+        if( id == StateID.NullStateID ) {
+            Debug.LogError("FiniteStateMachine Error: " + _currentStateID.ToString() + " does not have a target state for transition " + trans.ToString() + "!");
+            return;
+        }
 
-    public void Trigger(string eventName, object param1, object param2)
-    {
-        CurrentState.Trigger(eventName, param1, param2);
-    }
-
-    public void Trigger(string eventName, object param1, object param2, object param3)
-    {
-        CurrentState.Trigger(eventName, param1, param2, param3);
+        _currentStateID = id;
+        foreach( FiniteState fs in state ) {
+            if( fs.ID == _currentStateID ) {
+                _currentState.DoBeforeExit();
+                _currentState = fs;
+                _currentState.DoBeforeEnter();
+                break;
+            }
+        }
     }
 }
