@@ -55,12 +55,6 @@ public class GameDirector : MonoBehaviour {
         levelSelect.AddTransition(StateTransition.ViewCard, StateID.CardView);
         levelSelect.AddTransition(StateTransition.ChoseLevel, StateID.GameScene);
 
-        OptionMenuState optionMenu = new OptionMenuState(this);
-        optionMenu.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
-
-        CreditViewState creditView = new CreditViewState(this);
-        creditView.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
-
         CardViewState cardView = new CardViewState(this);
         cardView.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
 
@@ -71,8 +65,6 @@ public class GameDirector : MonoBehaviour {
         _fsm = new FiniteStateMachine();
         _fsm.AddFiniteState(mainMenu);
         _fsm.AddFiniteState(levelSelect);
-        _fsm.AddFiniteState(optionMenu);
-        _fsm.AddFiniteState(creditView);
         _fsm.AddFiniteState(cardView);
         _fsm.AddFiniteState(gameScene);
     }

@@ -72,7 +72,6 @@ public class LevelPlayMgr : MonoBehaviour {
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _completeLabel.SetActive(false);
         _menu.SetActive(false);
-
     }
 
 	void Start () {
@@ -163,6 +162,11 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnNextLevel()
     {
+        // Find next level Name
+
+        // Check if the last one 
+
+        // Load next data or game ending
 
     }
     ///////////////////////////////////////////////////////////////////////////////////
@@ -406,7 +410,13 @@ public class LevelPlayMgr : MonoBehaviour {
         // If current is the last one
         for (int i = 0; i < director.levelList.Count; ++i) {
             if (director.levelList[i] == _levelName) {
-
+                    if( i == director.levelList.Count - 1) {
+                        // The last Level
+                        return "fin";
+                    }
+                    else {
+                        return director.levelList[i + 1];
+                    }
             }
         }
         return null;

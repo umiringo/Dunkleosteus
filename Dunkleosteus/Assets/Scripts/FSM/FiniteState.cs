@@ -7,11 +7,9 @@ public enum StateTransition
 {
     NullTransition = 0,
     PressStart = 1,
-    ViewOption = 2,
-    ViewCredit = 3,
-    ViewCard = 4,
-    ChoseLevel = 5,
-    BackToLevelSelect = 6,
+    ViewCard = 2,
+    ChoseLevel = 3,
+    BackToLevelSelect = 4,
 }
 
 public enum StateID
@@ -19,10 +17,8 @@ public enum StateID
     NullStateID = 0,
     MainMenu = 1,
     LevelSelect = 2,
-    OptionMenu = 3,
-    CreditView = 4,
-    CardView = 5,
-    GameScene = 6,
+    CardView = 3,
+    GameScene = 4,
 }
 
 public abstract class FiniteState
