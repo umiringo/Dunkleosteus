@@ -14,7 +14,7 @@ namespace GlobalDefines
         public static readonly string LineContainerPath = "LineContainer";
         public static readonly string UIRootPath = "UI Root";
 
-        public static readonly string ScorpiusContainer = "Prefabs/Constellation/ScorpiusContainer";
+        public static readonly string ContainerPath = "Prefabs/Constellation/";
     }
 
     public class DefineNumber

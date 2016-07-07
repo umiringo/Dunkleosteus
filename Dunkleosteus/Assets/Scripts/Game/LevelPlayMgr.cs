@@ -113,7 +113,7 @@ public class LevelPlayMgr : MonoBehaviour {
             _correctAnswerList.Add(tmpAnswer);
         }
         // Load GameContainer
-        _gameContainer = Instantiate(Resources.Load(PathContainer.ScorpiusContainer)) as GameObject;
+        _gameContainer = Instantiate(Resources.Load(PathContainer.ContainerPath + name + "Container" )) as GameObject;
         _gameContainer.transform.parent = this.gameObject.transform;
         _gameContainer.transform.localPosition = Vector3.zero;
         _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
@@ -162,6 +162,8 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnNextLevel()
     {
+        // Just for test TODO
+        this.LoadLevel("Scorpius");
         // Find next level Name
 
         // Check if the last one 

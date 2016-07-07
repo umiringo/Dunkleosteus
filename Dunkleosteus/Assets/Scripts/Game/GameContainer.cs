@@ -64,6 +64,7 @@ public class GameContainer : MonoBehaviour {
 
     public void GameWin()
     {
+        Debug.Log("GameWin!!!!!!!!!");
         //unable star touch
         SwitchStarsBoxCollider(false);
         //start scale

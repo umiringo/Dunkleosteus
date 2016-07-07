@@ -226,11 +226,9 @@
     <Compile Include="Assets\Scripts\Game\GameContainer.cs" />
     <Compile Include="Assets\Scripts\Game\GameDirector.cs" />
     <Compile Include="Assets\Scripts\Game\GameState\CardViewState.cs" />
-    <Compile Include="Assets\Scripts\Game\GameState\CreditViewState.cs" />
     <Compile Include="Assets\Scripts\Game\GameState\GameSceneState.cs" />
     <Compile Include="Assets\Scripts\Game\GameState\LevelSelectState.cs" />
     <Compile Include="Assets\Scripts\Game\GameState\MainMenuState.cs" />
-    <Compile Include="Assets\Scripts\Game\GameState\OptionMenuState.cs" />
     <Compile Include="Assets\Scripts\Game\GlobalDefine.cs" />
     <Compile Include="Assets\Scripts\Game\LevelPlayMgr.cs" />
     <Compile Include="Assets\Scripts\Game\LineDrawer.cs" />

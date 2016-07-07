@@ -16,13 +16,13 @@ public class GameDirector : MonoBehaviour {
         // Init template data
         TemplateMgr.Instance.Init();
         // Init finite state machine
-        InitFiniteStateMachine();
+        //InitFiniteStateMachine();
         // Init level list;
         InitLevelList();
     }
 
     void Start () {
-        
+        StartGame();   
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class GameDirector : MonoBehaviour {
     {
         Debug.Log("GameDirector.StartGame");
         startPanelTest.SetActive(false);
-        levelMgr.LoadLevel("Scorpius");
+        levelMgr.LoadLevel("Sagitta");
         playPanel.SetActive(true);
     }
 
@@ -50,8 +50,6 @@ public class GameDirector : MonoBehaviour {
         mainMenu.AddTransition(StateTransition.PressStart, StateID.LevelSelect);
 
         LevelSelectState levelSelect = new LevelSelectState(this);
-        levelSelect.AddTransition(StateTransition.ViewOption, StateID.OptionMenu);
-        levelSelect.AddTransition(StateTransition.ViewCredit, StateID.CreditView);
         levelSelect.AddTransition(StateTransition.ViewCard, StateID.CardView);
         levelSelect.AddTransition(StateTransition.ChoseLevel, StateID.GameScene);
 
