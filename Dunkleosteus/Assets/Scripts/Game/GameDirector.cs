@@ -68,8 +68,13 @@ public class GameDirector : MonoBehaviour {
     }
 
     private void InitLevelList()
-    { }
-
-
-
+    { 
+        // Get level info array
+        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigFileName.LevelSelect);
+        foreach (JSONNode levelObject in answerList) {
+            string tmpLevel = levelObject.AsString;
+            levelList.Add(tmpLevel);
+            Debug.Log("tmpLevel = " + tmpLevel);
+        }
+    }
 }
