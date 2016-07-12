@@ -15,11 +15,13 @@ public class MainMenuState : FiniteState
 
     public override void DoBeforeEnter() 
     {
-        // Show logo and menu View 
+        // Show logo and menu view
+        gameDirector.EnterMainMenuState();
     }
 
     public override void DoBeforeExit()
     {
         // Hide logo and menu view        
+        gameDirector.ExitMainMenuState();
     }
 }

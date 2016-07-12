@@ -15,11 +15,11 @@ public class GameSceneState : FiniteState
 
     public override void DoBeforeEnter() 
     {
-    
+        gameDirector.EnterGameSceneState();
     }
 
     public override void DoBeforeExit()
     {
-      
+        gameDirector.EnterGameSceneState();
     }
 }

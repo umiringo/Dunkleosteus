@@ -162,13 +162,21 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnNextLevel()
     {
-        // Just for test TODO
-        this.LoadLevel("Scorpius");
         // Find next level Name
-
+        string nextLevelName = this.GetNextLevelName();
         // Check if the last one 
-
+        if (nextLevelName == null) {
+            Debug.LogError("LevelPlayMgr.OnNextLevel Error! nextLevelName == null! levelName = " + this._levelName);
+            return;
+        }
         // Load next data or game ending
+        if (nextLevelName == "fin") {
+            Debug.Log("LevelPlayMgr.OnNextLevel Game Ending !!!");
+            // Do ending logic
+            return;
+        }
+
+        this.LoadLevel(nextLevelName);
 
     }
     ///////////////////////////////////////////////////////////////////////////////////
@@ -412,13 +420,13 @@ public class LevelPlayMgr : MonoBehaviour {
         // If current is the last one
         for (int i = 0; i < director.levelList.Count; ++i) {
             if (director.levelList[i] == _levelName) {
-                    if( i == director.levelList.Count - 1) {
-                        // The last Level
-                        return "fin";
-                    }
-                    else {
-                        return director.levelList[i + 1];
-                    }
+                if (i == director.levelList.Count - 1) {
+                    // The last Level
+                    return "fin";
+                }
+                else {
+                    return director.levelList[i + 1];
+                }
             }
         }
         return null;

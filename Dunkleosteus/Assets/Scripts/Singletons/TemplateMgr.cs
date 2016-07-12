@@ -25,7 +25,7 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     public void Init()
     {
         _templatePool = new Dictionary<string, JSONClass>();
-        this.Load(ConfigFileName.LevelInfo);
+        this.Load(ConfigKey.LevelInfo);
     }
 
     private bool Load(string fileName)
@@ -54,7 +54,7 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     {
         var levelDictionary = _templatePool[fileName];
         if(levelDictionary == null) {
-            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName)
+            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
         return levelDictionary[levelName];
@@ -63,8 +63,8 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     public JSONArray GetTemplateArray(string fileName, string levelName)
     {
         var levelDictionary = _templatePool[fileName];
-        if(levelDictionary == null)
-            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName)
+        if(levelDictionary == null) {
+            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
         return levelDictionary[levelName] as JSONArray;

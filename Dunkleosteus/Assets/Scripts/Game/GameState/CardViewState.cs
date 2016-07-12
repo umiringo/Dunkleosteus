@@ -15,11 +15,11 @@ public class CardViewState : FiniteState
 
     public override void DoBeforeEnter() 
     {
-    
+        gameDirector.EnterCardViewState();
     }
 
     public override void DoBeforeExit()
     {
-      
+        gameDirector.ExitCardViewState();
     }
 }

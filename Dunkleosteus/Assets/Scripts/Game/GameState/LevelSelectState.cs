@@ -15,11 +15,11 @@ public class LevelSelectState : FiniteState
 
     public override void DoBeforeEnter() 
     {
-    
+        gameDirector.EnterLevelSelectState();
     }
 
     public override void DoBeforeExit()
     {
-      
+        gameDirector.ExitLevelSelectState();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleJSON;
+using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
 
@@ -16,13 +18,13 @@ public class GameDirector : MonoBehaviour {
         // Init template data
         TemplateMgr.Instance.Init();
         // Init finite state machine
-        //InitFiniteStateMachine();
+        InitFiniteStateMachine();
         // Init level list;
         InitLevelList();
     }
 
     void Start () {
-        StartGame();   
+        //StartGame();   
 	}
 	
 	// Update is called once per frame
@@ -32,9 +34,8 @@ public class GameDirector : MonoBehaviour {
 
     public void StartGame()
     {
-        Debug.Log("GameDirector.StartGame");
         startPanelTest.SetActive(false);
-        levelMgr.LoadLevel("Sagitta");
+        levelMgr.LoadLevel("Scorpius");
         playPanel.SetActive(true);
     }
 
@@ -70,11 +71,53 @@ public class GameDirector : MonoBehaviour {
     private void InitLevelList()
     { 
         // Get level info array
-        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigFileName.LevelSelect);
-        foreach (JSONNode levelObject in answerList) {
-            string tmpLevel = levelObject.AsString;
+        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
+        foreach (JSONNode levelObject in ja) {
+            string tmpLevel = levelObject;
             levelList.Add(tmpLevel);
-            Debug.Log("tmpLevel = " + tmpLevel);
         }
     }
+
+    #region StateInterface
+    public void EnterMainMenuState()
+    {
+        Debug.Log("GameDirector : Enter MainMenuState.");
+    }
+
+    public void ExitMainMenuState()
+    {
+        Debug.Log("GameDirector : Exit MainMenuState.");
+    }
+
+    public void EnterLevelSelectState()
+    {
+        Debug.Log("GameDirector : Enter LevelSelectState.");
+    }
+
+    public void ExitLevelSelectState()
+    {
+        Debug.Log("GameDirector : Exit LevelSelectState.");
+    }
+
+    public void EnterGameSceneState()
+    {
+        Debug.Log("GameDirector : Enter GameSceneState.");
+    }
+
+    public void ExitGameSceneState()
+    {
+        Debug.Log("GameDirector : Exit GameSceneState.");
+    }
+
+    public void EnterCardViewState()
+    {
+        Debug.Log("GameDirector : Enter CardViewState.");
+    }
+
+    public void ExitCardViewState()
+    {
+        Debug.Log("GameDirector : Exit CardViewState.");
+    }
+
+    #endregion
 }

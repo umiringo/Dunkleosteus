@@ -20,7 +20,6 @@ public class EventController : MonoBehaviour {
 
     public void OnStarTouched(GameObject go)
     {
-        Debug.Log("EventController.OnStarTouched!");
         gamePlay.TriggerStar(go);
     }
     

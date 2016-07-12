@@ -22,9 +22,9 @@ namespace GlobalDefines
         public static readonly int LineDepth = 39;
     }
     
-    public class ConfigFileName
+    public class ConfigKey
     {
         public static readonly string LevelInfo = "level_info";
-        public static readonly string LevelSelect = "LevelSelect"
+        public static readonly string LevelSelect = "LevelSelect";
     }
 }
