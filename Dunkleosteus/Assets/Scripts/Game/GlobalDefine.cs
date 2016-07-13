@@ -27,4 +27,9 @@ namespace GlobalDefines
         public static readonly string LevelInfo = "level_info";
         public static readonly string LevelSelect = "LevelSelect";
     }
+
+    public class PlayerPrefsKey
+    {
+        public static readonly string LatestLevel = "LatestLevel";
+    }
 }

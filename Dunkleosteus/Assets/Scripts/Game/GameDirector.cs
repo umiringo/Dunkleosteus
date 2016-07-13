@@ -10,7 +10,11 @@ public class GameDirector : MonoBehaviour {
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
     public List<string> levelList;
+    
 
+    private Dictionary<string, int> level2IndexDic;
+    private int currentCatagory;
+    private int currentLevel;
     private FiniteStateMachine _fsm;
 	
     
@@ -21,6 +25,8 @@ public class GameDirector : MonoBehaviour {
         InitFiniteStateMachine();
         // Init level list;
         InitLevelList();
+        // Init playerprefs
+        LoadPlayerPrefs():
     }
 
     void Start () {
@@ -76,6 +82,19 @@ public class GameDirector : MonoBehaviour {
             string tmpLevel = levelObject;
             levelList.Add(tmpLevel);
         }
+        for(int i = 0; i < levelList.Count; ++i) {
+            level2IndexDic.Add(levelList[i], i);
+        }
+    }
+
+    private void LoadPlayerPrefs()
+    {
+        currentLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        if(currentLevel == string.defaultValue) {
+            currentLevel = levelList[0];
+            PlayerPrefs.SetString(PlayerPrefsKey, currentLevel);
+        }
+        Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel);
     }
 
     #region StateInterface
