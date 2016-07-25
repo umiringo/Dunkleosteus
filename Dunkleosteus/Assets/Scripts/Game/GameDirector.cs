@@ -10,13 +10,16 @@ public class GameDirector : MonoBehaviour {
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
     public List<string> levelList;
-    
 
-    private Dictionary<string, int> level2IndexDic;
+
+    private Dictionary<string, int> level2IndexDic = new Dictionary<string, int>();
     private int currentCatagory;
     private string currentLevel;
     private FiniteStateMachine _fsm;
-	
+
+    public GameObject panelMainMenu;
+    public GameObject panelLevelSelect;
+
     
     void Awake() {
         // Init template data
@@ -100,21 +103,25 @@ public class GameDirector : MonoBehaviour {
     #region StateInterface
     public void EnterMainMenuState()
     {
+        panelMainMenu.SetActive(true);
         Debug.Log("GameDirector : Enter MainMenuState.");
     }
 
     public void ExitMainMenuState()
     {
+        panelMainMenu.SetActive(false);
         Debug.Log("GameDirector : Exit MainMenuState.");
     }
 
     public void EnterLevelSelectState()
     {
+        panelLevelSelect.SetActive(true);
         Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
     public void ExitLevelSelectState()
     {
+        panelLevelSelect.SetActive(false);
         Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
@@ -136,6 +143,18 @@ public class GameDirector : MonoBehaviour {
     public void ExitCardViewState()
     {
         Debug.Log("GameDirector : Exit CardViewState.");
+    }
+
+    #endregion
+
+
+    #region Callback
+
+    public void OnStarGame()
+    {
+        Debug.Log("GameDirector : OnStarGame");
+        // Enter level select state
+        _fsm.PerformTransition(StateTransition.PressStart);
     }
 
     #endregion

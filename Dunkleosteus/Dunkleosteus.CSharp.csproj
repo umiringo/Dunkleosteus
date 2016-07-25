@@ -231,7 +231,7 @@
     <Compile Include="Assets\Scripts\Game\GameState\MainMenuState.cs" />
     <Compile Include="Assets\Scripts\Game\GlobalDefine.cs" />
     <Compile Include="Assets\Scripts\Game\LevelPlayMgr.cs" />
-    <Compile Include="Assets\Scripts\Game\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\Game\LevelSelectMgr.cs" />
     <Compile Include="Assets\Scripts\Game\LineDrawer.cs" />
     <Compile Include="Assets\Scripts\Game\Shine.cs" />
     <Compile Include="Assets\Scripts\Game\Star.cs" />
