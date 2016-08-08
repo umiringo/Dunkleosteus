@@ -60,6 +60,7 @@ public class LevelPlayMgr : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
+        Debug.Log("LevelPlayMgr:Awake");
         _linkedLineList = new List<LinkedPair>();
         _starDictionary = new Dictionary<int, int>();
         _correctAnswerList = new List<int>();
@@ -86,6 +87,7 @@ public class LevelPlayMgr : MonoBehaviour {
     // Load Level Data
     public void LoadLevel(string name)
     {
+        Debug.Log("LevelPlayMgr:LoadLevel name = " + name);
         // clear all data
         _linkedLineList.Clear();
         _starDictionary.Clear();

@@ -6,7 +6,7 @@ using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
 
-    public GameObject startPanelTest;
+    public GameObject startPanel;
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
     public List<string> levelList;
@@ -20,7 +20,6 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelMainMenu;
     public GameObject panelLevelSelect;
 
-    
     void Awake() {
         // Init template data
         TemplateMgr.Instance.Init();
@@ -43,7 +42,7 @@ public class GameDirector : MonoBehaviour {
 
     public void StartGame()
     {
-        startPanelTest.SetActive(false);
+       // startPanelTest.SetActive(false);
         levelMgr.LoadLevel("Scorpius");
         playPanel.SetActive(true);
     }
@@ -127,6 +126,8 @@ public class GameDirector : MonoBehaviour {
 
     public void EnterGameSceneState()
     {
+        playPanel.SetActive(true);
+        levelMgr.LoadLevel(currentLevel);
         Debug.Log("GameDirector : Enter GameSceneState.");
     }
 
@@ -157,5 +158,12 @@ public class GameDirector : MonoBehaviour {
         _fsm.PerformTransition(StateTransition.PressStart);
     }
 
+    public void OnSelectLevel(string level)
+    {
+        Debug.Log("GameDirector : OnSelectLevel level = " + level);
+        this.currentLevel = level;
+        _fsm.PerformTransition(StateTransition.ChoseLevel);
+       
+    }
     #endregion
 }

@@ -43,7 +43,7 @@ public class TemplateMgr : Singleton<TemplateMgr> {
         }
         var jo = JSON.Parse(file.text) as JSONClass;
         _templatePool[fileName] = jo;
-
+        Debug.Log("TemplateMgr Load fileName = " + fileName + " Success!");
         return true;
     }
     
