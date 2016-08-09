@@ -29,6 +29,8 @@ public class GameDirector : MonoBehaviour {
         InitLevelList();
         // Init player prefs
         LoadPlayerPrefs();
+        // Init Localization
+        InitLocalization();
     }
 
     void Start () {
@@ -97,6 +99,11 @@ public class GameDirector : MonoBehaviour {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel);
+    }
+
+    private void InitLocalization()
+    {
+        Localization.language = "SChinese";
     }
 
     #region StateInterface
