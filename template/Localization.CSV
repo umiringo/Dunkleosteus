@@ -1,3 +1,92 @@
-KEY,English,SChinese,TChinese,Japanese
+﻿KEY,English,SChinese,TChinese,Japanese
 Language,English,SChinese,TChinese,Japanese
-LK_StartGame,Tap to Start,点击开始,点击开始,Tap to Start
+LKStartGame,Tap to Start,点击开始,点击开始,Tap to Start
+LKTitle,Star Painter,星空画家,星空画家,星空画家
+LKAquariusTitle,Aquarius,水瓶座,水瓶座,みずがめ座
+LKAriesTitle,Aries,白羊座,白羊座,おひつじ座
+LKCancerTitle,Cancer,巨蟹座,巨蟹座,かに座
+LKCapricornusTitle,Capricornus,摩羯座,摩羯座,やぎ座
+LKGeminiTitle,Gemini,双子座,雙子座,ふたご座
+LKLeoTitle,Leo,狮子座,獅子座,しし座
+LKLibraTitle,Libra,天秤座,天秤座,てんびん座
+LKOphiuchusTitle,Ophiuchus,蛇夫座,蛇夫座,へびつかい座
+LKPiscesTitle,Pisces,双鱼座,雙魚座,うお座
+LKSagittariusTitle,Sagittarius,射手座,人馬座,いて座
+LKScorpiusTitle,Scorpius,天蝎座,天蠍座,さそり座
+LKTaurusTitle,Taurus,金牛座,金牛座,おうし座
+LKVirgoTitle,Virgo,处女座,室女座,おとめ座
+LKBootes,Bo?tes,牧夫座,牧夫座,うしかい座
+LKCamelopardalis,Camelopardalis,鹿豹座,鹿豹座,きりん座
+LKCanesVenatici,Canes Venatici,猎犬座,獵犬座,りょうけん座
+LKComaBerenices,Coma Berenices,后发座,后髮座,かみのけ座
+LKCoronaBorealis,Corona Borealis,北冕座,北冕座,かんむり座
+LKDraco,Draco,天龙座,天龍座,りゅう座
+LKLeoMinor,Leo Minor,小狮座,小獅座,こじし座
+LKLynx,Lynx,天猫座,天貓座,やまねこ座
+LKUrsaMajor,Ursa Major,大熊座,小熊座,おおぐま座
+LKUrsaMinor,Ursa Minor,小熊座,小熊座,こぐま座
+LKCarina,Carina,船底座,船底座,りゅうこつ座
+LKColumba,Columba,天鸽座,天鴿座,はと座
+LKDelphinus,Delphinus,海豚座,海豚座,いるか座
+LKEquuleus,Equuleus,小马座,小馬座,こうま座
+LKEridanus,Eridanus,波江座,波江座,エリダヌス座
+LKPiscisAustrinus,Piscis Austrinus,南鱼座,南魚座,みなみのうお座
+LKPuppis,Puppis,船尾座,船尾座,とも座
+LKPyxis,Pyxis,罗盘座,羅盤座,らしんばん座
+LKVela,Vela,船帆座,船帆座,ほ座
+LKAntlia,Antlia,唧筒座,唧筒座,ポンプ座
+LKCaelum,Caelum,雕具座,雕具座,ちょうこくぐ座
+LKCircinus,Circinus,圆规座,圓規座,コンパス座
+LKFornax,Fornax,天炉座,天爐座,ろ座
+LKHorologium,Horologium,时钟座,時鐘座,とけい座
+LKMensa,Mensa,山案座,山案座,テーブルさん座
+LKMicroscopium,Microscopium,显微镜座,顯微鏡座,けんびきょう座
+LKNorma,Norma,矩尺座,矩尺座,じょうぎ座
+LKOctans,Octans,南极座,南極座,はちぶんぎ座
+LKPictor,Pictor,绘架座,繪架座,がか座
+LKReticulum,Reticulum,网罟座,網罟座,レチクル座
+LKSculptor,Sculptor,玉夫座,玉夫座,ちょうこくしつ座
+LKTelescopium,Telescopium,望远镜座,望遠鏡座,ぼうえんきょう座
+LKApus,Apus,天燕座,天燕座,ふうちょう座
+LKChamaeleon,Chamaeleon,蝘蜓座,蝘蜓座,カメレオン座
+LKDorado,Dorado,剑鱼座,劍魚座,かじき座
+LKGrus,Grus,天鹤座,天鶴座,つる座
+LKHydrus,Hydrus,水蛇座,水蛇座,みずへび座
+LKIndus,Indus,印第安座,印第安座,インディアン座
+LKMusca,Musca,苍蝇座,蒼蠅座,はえ座
+LKPavo,Pavo,孔雀座,孔雀座,くじゃく座
+LKPhoenix,Phoenix,凤凰座,鳳凰座,ほうおう座
+LKTucana,Tucana,杜鹃座,杜鵑座,きょしちょう座
+LKVolans,Volans,飞鱼座,飛魚座,とびうお座
+LKAquila,Aquila,天鹰座,天鷹座,わし座
+LKAra,Ara,天坛座,天壇座,さいだん座
+LKCentaurus,Centaurus,半人马座,半人馬座,ケンタウルス座
+LKCoronaAustralis,Corona Australis,南冕座,南冕座,みなみのかんむり座
+LKCorvus,Corvus,乌鸦座,烏鴉座,からす座
+LKCrater,Crater,巨爵座,巨爵座,コップ座
+LKCrux,Crux,南十字座,南十字座,みなみじゅうじ座
+LKCygnus,Cygnus,天鹅座,天鵝座 ,はくちょう座
+LKHercules,Hercules,武仙座,武仙座,ヘルクレス座
+LKHydra,Hydra,长蛇座,長蛇座,うみへび座
+LKLupus,Lupus,豺狼座,豺狼座,おおかみ座
+LKLyra,Lyra,天琴座,天琴座,こと座
+LKSagitta,Sagitta,天箭座,天箭座,や座
+LKScutum,Scutum,盾牌座,盾牌座,たて座
+LKSerpens,Serpens,巨蛇座,巨蛇座,へび座
+LKSextans,Sextans,六分仪座,六分儀座,ろくぶんぎ座
+LKTriangulumAustrale,Triangulum Australe,南三角座,南三角座,みなみのさんかく座
+LKVulpecula,Vulpecula,狐狸座,狐狸座,こぎつね座
+LKCanisMajor,Canis Major,大犬座,大犬座,おおいぬ座
+LKCanisMinor,Canis Minor,小犬座,小犬座,こいぬ座
+LKLepus,Lepus,天兔座,天兔座,うさぎ座
+LKMonoceros,Monoceros,麒麟座,麒麟座,いっかくじゅう座
+LKOrion,Orion,猎户座,獵戶座,オリオン座
+LKAndromeda,Andromeda,仙女座,仙女座,アンドロメダ座
+LKAuriga,Auriga,御夫座,御夫座,ぎょしゃ座
+LKCassiopeia,Cassiopeia,仙后座,仙后座,カシオペヤ座
+LKCepheus,Cepheus,仙王座,仙王座,ケフェウス座
+LKCetus,Cetus,鲸鱼座,鯨魚座,くじら座
+LKLacerta,Lacerta,蝎虎座,蠍虎座,とかげ座
+LKPegasus,Pegasus,飞马座,飛馬座,ペガスス座
+LKPerseus,Perseus,英仙座,英仙座,ペルセウス座
+LKTriangulum,Triangulum,三角座,三角座,さんかく座
