@@ -48,9 +48,11 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public GameObject _completeLabel;
     public GameObject _menu;
-    public UILabel _levelNameLabel;
+    public UILocalize _levelNameLabel;
+    public GameObject _levelComplete;
     public GameDirector director;
     private string _levelName;
+  
     public string levelName {
         get {
             return _levelName;
@@ -72,6 +74,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _eventController = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         _completeLabel.SetActive(false);
+        _levelComplete.SetActive(false);
         _menu.SetActive(false);
     }
 
@@ -100,14 +103,14 @@ public class LevelPlayMgr : MonoBehaviour {
         _eventController = null;
         _completeLabel.SetActive(false);
         _menu.SetActive(false);
-        _levelNameLabel.text = "";
+        //_levelNameLabel.text = "";
       
 
         // Load template data
         JSONNode jo = TemplateMgr.Instance.GetTemplateString("level_info", name);
         // Load name
         _levelName = jo["name"];
-        _levelNameLabel.text = _levelName;
+        _levelNameLabel.key = "LK" + _levelName + "Title";
         // Load answer
         JSONArray answerList = jo["answer"] as JSONArray;
         foreach (JSONNode answerObject in answerList) {
@@ -149,11 +152,13 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         _menu.SetActive(false);
         _completeLabel.SetActive(true);
+        _levelComplete.SetActive(true);
     }
 
     public void ShowMenu()
     {
-        _completeLabel.GetComponent<TweenAlpha>().Play(false);
+        _completeLabel.SetActive(false);
+        _levelComplete.GetComponent<TweenAlpha>().Play(true);
         _menu.SetActive(true);
     }
 

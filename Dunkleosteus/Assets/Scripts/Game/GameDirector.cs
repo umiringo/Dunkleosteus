@@ -103,7 +103,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "SChinese";
+        Localization.language = "Japanese";
     }
 
     #region StateInterface
