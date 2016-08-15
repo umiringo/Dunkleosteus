@@ -1,19 +1,88 @@
 {
     "LevelSelect" : [ "Scorpius" , "Sagitta"],
-    "Scorpius" : {
-        "name" : "Scorpius",
-        "answer" : [102, 203, 304, 205, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415]
-    },
-    "Sagitta" : {
-        "name" : "Sagitta",
-        "answer" : [102, 203, 204]
-    },
     "Aquarius" : {
         "name" : "Aquarius",
-        "answer" : [102, 203, 104, 405, 106, 607, 708, 709, 810, 811, 1012, 1216, 1113, 1314, 1415, 1516]
+        "answer" : [102, 203, 104, 405, 106, 607, 708, 709, 810, 811, 1012, 1216, 1113, 1314, 1415, 1516],
+        "position" : "23h / -15°",
+        "season" : "LKAutumn"
     },
     "Aries" : {
         "name" : "Aries",
-        "answer" : [102, 203, 304]
+        "answer" : [102, 203, 304],
+        "position" : "3h / 20°",
+        "season" : "LKAutumn"
+    },
+    "Cancer" : {
+        "name" : "Cancer",
+        "answer" : [102],
+        "position" : "9h / 30°",
+        "season" : "LKSpring"
+    },
+    "Capricornus" : {
+        "name" : "Capricornus",
+        "answer" : [102],
+        "position" : "23h / -20°",
+        "season" : "LKAutumn"
+    },
+    "Gemini" : {
+        "name" : "Gemini",
+        "answer" : [102],
+        "position" : "7h / 22°",
+        "season" : "LKWinter"
+    },
+    "Leo" : {
+        "name" : "Leo",
+        "answer" : [102],
+        "position" : "11h / 15°",
+        "season" : "LKSpring"
+    },
+    "Libra" : {
+        "name" : "Libra",
+        "answer" : [102],
+        "position" : "15h / -14°",
+        "season" : "LKSummer"
+    },
+    "Ophiuchus" : {
+        "name" : "Ophiuchus",
+        "answer" : [102],
+        "position" : "17h / -5°",
+        "season" : "LKSummer"
+    },
+    "Pisces" : {
+        "name" : "Pisces",
+        "answer" : [102],
+        "position" : " 0h / 10°",
+        "season" : "LKAutumn"
+    },
+    "Sagittarius" : {
+        "name" : "Sagittarius",
+        "answer" : [102],
+        "position" : "19h / -25°",
+        "season" : "LKSummer"
+    },
+    "Scorpius" : {
+        "name" : "Scorpius",
+        "answer" : [102, 203, 304, 205, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415],
+        "position" : "17h / -40°",
+        "season" : "LKSummer"
+    },
+    "Taurus" : {
+        "name" : "Taurus",
+        "answer" : [102],
+        "position" : "4h / 18°",
+        "season" : "LKWinter"
+    },
+    "Virgo" : {
+        "name" : "Virgo",
+        "answer" : [102],
+        "position" : "13h / -2°",
+        "season" : "LKSpring"
+    },
+    "Sagitta" : {
+        "name" : "Sagitta",
+        "answer" : [102, 203, 204],
+        "position" : "20h / 19°",
+        "season" : "LKSummer"
     }
+
 }
