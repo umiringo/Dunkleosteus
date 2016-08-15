@@ -14,7 +14,7 @@
     },
     "Cancer" : {
         "name" : "Cancer",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 506, 607, 206, 307],
         "position" : "9h / 30°",
         "season" : "LKSpring"
     },
