@@ -1,6 +1,19 @@
 {
-    "Catagory" : [""],
-    "LevelSelect" : [ "Scorpius" , "Sagitta"],
+    "Catagory" : ["Zodiac", "Perseus" , "Hercules" , "Orion" , "HeavenlyWaters", "Bayer", "LaCaille"],
+    "LevelSelect" : [ "Aquarius",
+                      "Aries",
+                      "Cancer",
+                      "Capricornus",
+                      "Gemini",
+                      "Leo",
+                      "Libra",
+                      "Ophiuchus",
+                      "Pisces",
+                      "Sagittarius",
+                      "Scorpius",
+                      "Taurus",
+                      "Virgo"
+                    ],
 
     "Aquarius" : {
         "name" : "Aquarius",
