@@ -1,3 +1,15 @@
-﻿using UnityEngine;using System.Collections;public class LevelSelectMgr : MonoBehaviour {
+﻿using UnityEngine;
+using System.Collections;
 
-    public string levelName;	// Use this for initialization	void Start () {		}		// Update is called once per frame	void Update () {		}}
+public class LevelSelectMgr : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}

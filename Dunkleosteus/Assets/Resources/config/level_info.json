@@ -1,18 +1,7 @@
 {
     "Catagory" : ["Zodiac", "Perseus" , "Hercules" , "Orion" , "HeavenlyWaters", "Bayer", "LaCaille"],
-    "LevelSelect" : [ "Aquarius",
-                      "Aries",
-                      "Cancer",
-                      "Capricornus",
-                      "Gemini",
-                      "Leo",
-                      "Libra",
-                      "Ophiuchus",
-                      "Pisces",
-                      "Sagittarius",
-                      "Scorpius",
-                      "Taurus",
-                      "Virgo"
+    "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius",
+                      "Leo", "Pisces", "Taurus", "Sagittarius"
                     ],
 
     "Aquarius" : {
