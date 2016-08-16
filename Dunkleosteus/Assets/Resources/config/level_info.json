@@ -198,10 +198,424 @@
         "season" : "LKWinter",
         "family" : 3
     },
+    "PiscisAustrinus" : {
+        "name" : "PiscisAustrinus",
+        "answer" : [102],
+        "position" : "22h / -30°",
+        "season" : "LKAutumn",
+        "family" : 3
+    },
+    "Puppis" : {
+        "name" : "Puppis",
+        "answer" : [102],
+        "position" : "7h / -32°",
+        "season" : "LKWinter",
+        "family" : 3
+    },
+    "Pyxis" : {
+        "name" : "Pyxis",
+        "answer" : [102],
+        "position" : "9h / -30°",
+        "season" : "LKSpring",
+        "family" : 3
+    },
+    "Vela" : {
+        "name" : "Vela",
+        "answer" : [102],
+        "position" : "9h / -50°",
+        "season" : "LKSpring",
+        "family" : 3
+    },
+    "Antlia" : {
+        "name" : "Antlia",
+        "answer" : [102],
+        "position" : "9h / 11°",
+        "season" : "LKSpring",
+        "family" : 4
+    },
+    "Caelum" : {
+        "name" : "Caelum",
+        "answer" : [102],
+        "position" : "5h / -38°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Circinus" : {
+        "name" : "Circinus",
+        "answer" : [102],
+        "position" : "15h / -63°",
+        "season" : "LKSummer",
+        "family" : 4
+    },
+    "Fornax" : {
+        "name" : "Fornax",
+        "answer" : [102],
+        "position" : "3h / -32°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Horologium" : {
+        "name" : "Horologium",
+        "answer" : [102],
+        "position" : "3h / -60°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Mensa" : {
+        "name" : "Mensa",
+        "answer" : [102],
+        "position" : "5h / -77°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Microscopium" : {
+        "name" : "Microscopium",
+        "answer" : [102],
+        "position" : "21h / -36°",
+        "season" : "LKAutumn",
+        "family" : 4
+    },
+    "Norma" : {
+        "name" : "Norma",
+        "answer" : [102],
+        "position" : "16h / -50°",
+        "season" : "LKSummer",
+        "family" : 4
+    },
+    "Octans" : {
+        "name" : "Octans",
+        "answer" : [102],
+        "position" : "22h / -90°",
+        "season" : "LKAutumn",
+        "family" : 4
+    },
+    "Pictor" : {
+        "name" : "Pictor",
+        "answer" : [102],
+        "position" : "6h / -52°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Reticulum" : {
+        "name" : "Reticulum",
+        "answer" : [102],
+        "position" : "4h / -60°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Sculptor" : {
+        "name" : "Sculptor",
+        "answer" : [102],
+        "position" : "0h / -30°",
+        "season" : "LKWinter",
+        "family" : 4
+    },
+    "Telescopium" : {
+        "name" : "Telescopium",
+        "answer" : [102],
+        "position" : "19h / -50°",
+        "season" : "LKSummer",
+        "family" : 4
+    },
+    "Apus" : {
+        "name" : "Apus",
+        "answer" : [102],
+        "position" : "16h / -76°",
+        "season" : "LKSummer",
+        "family" : 5
+    },
+    "Chamaeleon" : {
+        "name" : "Chamaeleon",
+        "answer" : [102],
+        "position" : "11h / -80°",
+        "season" : "LKSpring",
+        "family" : 5
+    },
+    "Dorado" : {
+        "name" : "Dorado",
+        "answer" : [102],
+        "position" : "5h / -65°",
+        "season" : "LKWinter",
+        "family" : 5
+    },
+    "Grus" : {
+        "name" : "Grus",
+        "answer" : [102],
+        "position" : "22h / -47°",
+        "season" : "LKWinter",
+        "family" : 5
+    },
+    "Hydrus" : {
+        "name" : "Hydrus",
+        "answer" : [102],
+        "position" : "3h / -70°",
+        "season" : "LKWinter",
+        "family" : 5
+    },
+    "Indus" : {
+        "name" : "Indus",
+        "answer" : [102],
+        "position" : "22h / -60°",
+        "season" : "LKAutumn",
+        "family" : 5
+    },
+    "Musca" : {
+        "name" : "Musca",
+        "answer" : [102],
+        "position" : "12h / -70°",
+        "season" : "LKSpring",
+        "family" : 5
+    },
+    "Pavo" : {
+        "name" : "Pavo",
+        "answer" : [102],
+        "position" : "20h / -65°",
+        "season" : "LKSummer",
+        "family" : 5
+    },
+    "Phoenix" : {
+        "name" : "Phoenix",
+        "answer" : [102],
+        "position" : "0h / -50°",
+        "season" : "LKWinter",
+        "family" : 5
+    },
+    "Tucana" : {
+        "name" : "Tucana",
+        "answer" : [102],
+        "position" : "0h / -65°",
+        "season" : "LKWinter",
+        "family" : 5
+    },
+    "Volans" : {
+        "name" : "Volans",
+        "answer" : [102],
+        "position" : "8h / -70°",
+        "season" : "LKSpring",
+        "family" : 5
+    },
+    "Aquila" : {
+        "name" : "Aquila",
+        "answer" : [102],
+        "position" : "20h / 5°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Ara" : {
+        "name" : "Ara",
+        "answer" : [102],
+        "position" : "17h / -54°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Centaurus" : {
+        "name" : "Centaurus",
+        "answer" : [102],
+        "position" : "13h / -50°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "CoronaAustralis" : {
+        "name" : "CoronaAustralis",
+        "answer" : [102],
+        "position" : "19h / -40°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Corvus" : {
+        "name" : "Corvus",
+        "answer" : [102],
+        "position" : "12h / -20°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "Crater" : {
+        "name" : "Crater",
+        "answer" : [102],
+        "position" : "11h / -16°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "Crux" : {
+        "name" : "Crux",
+        "answer" : [102],
+        "position" : "12h / -60°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "Cygnus" : {
+        "name" : "Cygnus",
+        "answer" : [102],
+        "position" : "23h / -42°",
+        "season" : "LKAutumn",
+        "family" : 6
+    },
+    "Hercules" : {
+        "name" : "Hercules",
+        "answer" : [102],
+        "position" : "17h / 30°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Hydra" : {
+        "name" : "Hydra",
+        "answer" : [102],
+        "position" : "10h / -20°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "Lupus" : {
+        "name" : "Lupus",
+        "answer" : [102],
+        "position" : "15h / -43°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Lyra" : {
+        "name" : "Lyra",
+        "answer" : [102],
+        "position" : "19h / 40°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
     "Sagitta" : {
         "name" : "Sagitta",
         "answer" : [102, 203, 204],
         "position" : "20h / 19°",
-        "season" : "LKSummer"
-    }
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Scutum" : {
+        "name" : "Scutum",
+        "answer" : [102],
+        "position" : "19h / -10°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Serpens" : {
+        "name" : "Serpens",
+        "answer" : [102],
+        "position" : "16h~18h / 10°~-5°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Sextans" : {
+        "name" : "Sextans",
+        "answer" : [102],
+        "position" : "10h / 0°",
+        "season" : "LKSpring",
+        "family" : 6
+    },
+    "TriangulumAustrale" : {
+        "name" : "TriangulumAustrale",
+        "answer" : [102],
+        "position" : "16h / -65°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "Vulpecula" : {
+        "name" : "Vulpecula",
+        "answer" : [102],
+        "position" : "20h / 25°",
+        "season" : "LKSummer",
+        "family" : 6
+    },
+    "CanisMajor" : {
+        "name" : "CanisMajor",
+        "answer" : [102],
+        "position" : "7h / -20°",
+        "season" : "LKWinter",
+        "family" : 7
+    },
+    "CanisMinor" : {
+        "name" : "CanisMinor",
+        "answer" : [102],
+        "position" : "8h / 5°",
+        "season" : "LKSpring",
+        "family" : 7
+    },
+    "Lepus" : {
+        "name" : "Lepus",
+        "answer" : [102],
+        "position" : "6h / -20°",
+        "season" : "LKWinter",
+        "family" : 7
+    },
+    "Monoceros" : {
+        "name" : "Monoceros",
+        "answer" : [102],
+        "position" : "7h / -8°",
+        "season" : "LKSpring",
+        "family" : 7
+    },
+    "Orion" : {
+        "name" : "Orion",
+        "answer" : [102],
+        "position" : "5h / 5°",
+        "season" : "LKWinter",
+        "family" : 7
+    },
+    "Andromeda" : {
+        "name" : "Andromeda",
+        "answer" : [102],
+        "position" : "1h / 38°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Auriga" : {
+        "name" : "Auriga",
+        "answer" : [102],
+        "position" : "6h / 40°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Cassiopeia" : {
+        "name" : "Cassiopeia",
+        "answer" : [102],
+        "position" : "1h / 60°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Cepheus" : {
+        "name" : "Cepheus",
+        "answer" : [102],
+        "position" : "22h / 70°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Cetus" : {
+        "name" : "Cetus",
+        "answer" : [102],
+        "position" : "1h / -11°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Lacerta" : {
+        "name" : "Lacerta",
+        "answer" : [102],
+        "position" : "22h / 45°",
+        "season" : "LKAutumn",
+        "family" : 8
+    },
+    "Pegasus" : {
+        "name" : "Pegasus",
+        "answer" : [102],
+        "position" : "23h / 15°",
+        "season" : "LKAutumn",
+        "family" : 8
+    },
+    "Perseus" : {
+        "name" : "Perseus",
+        "answer" : [102],
+        "position" : "3h / 45°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
+    "Triangulum" : {
+        "name" : "Triangulum",
+        "answer" : [102],
+        "position" : "2h / 30°",
+        "season" : "LKWinter",
+        "family" : 8
+    },
 }
