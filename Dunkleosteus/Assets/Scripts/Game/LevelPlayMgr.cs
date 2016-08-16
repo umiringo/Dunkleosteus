@@ -111,11 +111,6 @@ public class LevelPlayMgr : MonoBehaviour {
         _lineContainer = null;
         _gameContainer = null;
         _eventController = null;
-        _labelLevelTitle = null;
-        _labelLevelLatin = null;
-        _labelLevelSeason = null;
-        _labelLevelPosition = null;
-        _labelLevelInfo = null;
         _completeLabel.SetActive(false);
         _menu.SetActive(false);
 
@@ -137,16 +132,16 @@ public class LevelPlayMgr : MonoBehaviour {
         _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
         _gameContainer.GetComponent<EventController>().gamePlay = this;
         // Init gameContainer's component
-        _labelLevelTitle = GameObject.Find(_gameContainer.name);
+        _labelLevelTitle = _gameContainer.transform.Find("Detail/LabelContainer/LabelName").gameObject.GetComponent<UILocalize>();
         _labelLevelTitle.key = "LK" + _levelName + "Title";
-        _labelLevelLatin = GameObject.Find(_gameContainer.name);
-        _labelLevelLatin = "LK" + _levelName + "Latin";
-        _labelLevelSeason = GameObject.Find(_gameContainer.name);
-        _labelLevelSeason = jo["season"];
-        _labelLevelPosition = GameObject.Find(_gameContainer.name);
+        _labelLevelLatin = _gameContainer.transform.Find("Detail/LabelContainer/ContainerInfo/LabelLatin").gameObject.GetComponent<UILocalize>();
+        _labelLevelLatin.key = "LK" + _levelName + "Latin";
+        _labelLevelSeason = _gameContainer.transform.Find("Detail/LabelContainer/ContainerInfo/LabelSeason").gameObject.GetComponent<UILocalize>();
+        _labelLevelSeason.key = jo["season"];
+        _labelLevelPosition = _gameContainer.transform.Find("Detail/LabelContainer/ContainerInfo/LabelPosition").gameObject.GetComponent<UILabel>();
         _labelLevelPosition.text = jo["position"];
-        _labelLevelInfo = GameObject.Find(_gameContainer.name);
-        _labelLevelInfo = "LK" + _levelName + "Info";
+        _labelLevelInfo = _gameContainer.transform.Find("Detail/LabelContainer/LabelInfo").gameObject.GetComponent<UILocalize>();
+        _labelLevelInfo.key = "LK" + _levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         _eventController = _gameContainer.GetComponent<EventController>();
     }
