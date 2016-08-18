@@ -67,7 +67,6 @@ public class LevelPlayMgr : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
-        Debug.Log("LevelPlayMgr:Awake");
         _linkedLineList = new List<LinkedPair>();
         _starDictionary = new Dictionary<int, int>();
         _correctAnswerList = new List<int>();

@@ -211,12 +211,15 @@ public class GameDirector : MonoBehaviour {
 
     public int GetCatagoryIndex(string level)
     {
-        return 
+        return level2IndexDic[level].catagory;
     }
 
     public string GetCatagoryString(string level)
     {
-
+        int catagory = level2IndexDic[level];
+        //TODO 
+        return "";
     }
+
     #endregion
 }
