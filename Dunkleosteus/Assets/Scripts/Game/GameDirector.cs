@@ -4,15 +4,25 @@ using System.Collections.Generic;
 using SimpleJSON;
 using GlobalDefines;
 
+public class LevelIndexCatagory {
+    int index;
+    int catagory;
+    public LevelIndexCatagory(int i, int c) {
+        index = i;
+        catagory = c;
+    }
+}
+
 public class GameDirector : MonoBehaviour {
 
     public GameObject startPanel;
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
+    public LevelSelectMgr levelSelectMgr;
     public List<string> levelList;
 
 
-    private Dictionary<string, int> level2IndexDic = new Dictionary<string, int>();
+    private Dictionary<string, LevelIndexCatagory> level2IndexDic = new Dictionary<string, LevelIndexCatagory>();
     private int currentCatagory;
     private string currentLevel;
     private FiniteStateMachine _fsm;
@@ -87,7 +97,7 @@ public class GameDirector : MonoBehaviour {
             levelList.Add(tmpLevel);
         }
         for(int i = 0; i < levelList.Count; ++i) {
-            level2IndexDic.Add(levelList[i], i);
+            level2IndexDic.Add(levelList[i], new LevelIndexCatagory(i, levelList.family));
         }
     }
 
@@ -128,6 +138,9 @@ public class GameDirector : MonoBehaviour {
     public void ExitLevelSelectState()
     {
         panelLevelSelect.SetActive(false);
+        string catagory = ""; // TODO
+        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
+        levelSelectMgr.Show(catagory, lastestLevel);
         Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
@@ -171,6 +184,39 @@ public class GameDirector : MonoBehaviour {
         this.currentLevel = level;
         _fsm.PerformTransition(StateTransition.ChoseLevel);
        
+    }
+    #endregion
+
+    #region public interface
+    public bool CompareLevelIndex(string level1, string level2)
+    {
+        int levelIndex1 = level2IndexDic[level1].index; // current
+        int levelIndex2 = level2IndexDic[level2].index; // lastest
+        int levelCatagory1 = level2IndexDic[level1].catagory;
+        int levelCatagory2 = level2IndexDic[level2].catagory;
+        if(levelCatagory1 < levelCatagory2) {
+            return false;
+        }
+        else if(levelCatagory1 > levelCatagory2) {
+            return true;
+        }
+        else {
+            if(levelIndex1 < levelIndex2) {
+                return false;
+            } 
+            return true;
+        }
+        return false;
+    }
+
+    public int GetCatagoryIndex(string level)
+    {
+        return 
+    }
+
+    public string GetCatagoryString(string level)
+    {
+
     }
     #endregion
 }

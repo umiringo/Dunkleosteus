@@ -24,8 +24,9 @@ namespace GlobalDefines
     
     public class ConfigKey
     {
-        public static readonly string LevelInfo = "level_info";
+        public static readonly string LevelInfo = "LevelInfo";
         public static readonly string LevelSelect = "LevelSelect";
+        public static readonly string Catagory = "Catagory";
     }
 
     public class PlayerPrefsKey
