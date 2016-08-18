@@ -5,8 +5,8 @@ using SimpleJSON;
 using GlobalDefines;
 
 public class LevelIndexCatagory {
-    int index;
-    int catagory;
+    public int index;
+    public int catagory;
     public LevelIndexCatagory(int i, int c) {
         index = i;
         catagory = c;
@@ -97,7 +97,8 @@ public class GameDirector : MonoBehaviour {
             levelList.Add(tmpLevel);
         }
         for(int i = 0; i < levelList.Count; ++i) {
-            level2IndexDic.Add(levelList[i], new LevelIndexCatagory(i, levelList.family));
+            JSONNode jo = TemplateMgr.Instance.GetTemplateString("LevelInfo", levelList[i]);
+            level2IndexDic.Add(levelList[i], new LevelIndexCatagory(i, jo["catagory"].AsInt));
         }
     }
 
@@ -206,7 +207,6 @@ public class GameDirector : MonoBehaviour {
             } 
             return true;
         }
-        return false;
     }
 
     public int GetCatagoryIndex(string level)
@@ -216,7 +216,7 @@ public class GameDirector : MonoBehaviour {
 
     public string GetCatagoryString(string level)
     {
-        int catagory = level2IndexDic[level];
+       // int catagory = level2IndexDic[level].catagory;
         //TODO 
         return "";
     }

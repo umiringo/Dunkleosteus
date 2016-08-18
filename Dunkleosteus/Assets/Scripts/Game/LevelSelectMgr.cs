@@ -15,15 +15,15 @@ public class LevelSelectMgr : MonoBehaviour {
 	
 	}
 
-    void Show(string catagory, string level) {
+    public void Show(string catagory, string level) {
         // Show current catagory and level
         // 根据类型设定levelContainer TODO
         // Test, igonre catagory
 
         // Circle to set visible
         foreach (Transform child in _levelContainer.transform) {
-            LevelSelect levelSelect = child.gameObject:GetComponent<LevelSelect>()
-            levelSelect.Show(lastestLevel, _director);
+            LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
+            levelSelect.Show(true);
         }
     }
 }

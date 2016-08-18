@@ -114,7 +114,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _menu.SetActive(false);
 
         // Load template data
-        JSONNode jo = TemplateMgr.Instance.GetTemplateString("level_info", name);
+        JSONNode jo = TemplateMgr.Instance.GetTemplateString("LevelInfo", name);
         // Load name
         _levelName = jo["name"];
         _levelNameLabel.key = "LK" + _levelName + "Title";
