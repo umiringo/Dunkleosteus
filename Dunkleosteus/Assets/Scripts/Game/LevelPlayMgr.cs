@@ -114,7 +114,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _menu.SetActive(false);
 
         // Load template data
-        JSONNode jo = TemplateMgr.Instance.GetTemplateString("LevelInfo", name);
+        JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, name);
         // Load name
         _levelName = jo["name"];
         _levelNameLabel.key = "LK" + _levelName + "Title";
@@ -187,7 +187,8 @@ public class LevelPlayMgr : MonoBehaviour {
     public void OnNextLevel()
     {
         // Find next level Name
-        string nextLevelName = this.GetNextLevelName();
+        string nextLevelName = director.GetNextLevel()
+        director.CompleteLevel(_levelName);
         // Check if the last one 
         if (nextLevelName == null) {
             Debug.LogError("LevelPlayMgr.OnNextLevel Error! nextLevelName == null! levelName = " + this._levelName);
@@ -201,7 +202,11 @@ public class LevelPlayMgr : MonoBehaviour {
         }
 
         this.LoadLevel(nextLevelName);
+    }
 
+    public void OnGameWin()
+    {
+        director.CompleteLevel(_levelName);
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
@@ -232,13 +237,14 @@ public class LevelPlayMgr : MonoBehaviour {
 
         // Check whether sucess
         if (CheckAnswer()) {
+            // Win
             _eventController.OnGameWin();
         }
     }
 
     private void RemoveAnswerFromList(int indexBegin, int indexEnd)
     {
-        // just remove from _answerList
+        // Just remove from _answerList
         int answerMark = 0;
         if (indexBegin > indexEnd) {
             answerMark = indexEnd * 100 + indexBegin;
@@ -265,7 +271,7 @@ public class LevelPlayMgr : MonoBehaviour {
         return false;
     }
 
-    //Get the reference of line(b,e)
+    // Get the reference of line(b,e)
     private int GetLinkedLine(int b, int e)
     {
         for (int i = 0; i < _linkedLineList.Count; ++i) {
@@ -276,7 +282,7 @@ public class LevelPlayMgr : MonoBehaviour {
         return -1;
     }
 
-    //Check whether star(s) is already have be connected
+    // Check whether star(s) is already have be connected
     private bool IsStarLinked(int s)
     {
         if (_starDictionary.ContainsKey(s) && _starDictionary[s] > 0) {
@@ -285,17 +291,17 @@ public class LevelPlayMgr : MonoBehaviour {
         return false;
     }
 
-    //Refresh Stars state
+    // Refresh Stars state
     private void RefreshStar(GameObject goStar)
     {
         Star starComponent = goStar.GetComponent<Star>();
         int indexStar = starComponent.index;
-        //Check whether is ready
+        // Check whether is ready
         if (_readyStar != null && _readyStar.GetComponent<Star>().index == indexStar) {
             starComponent.SetChosen();
         }
         else {
-            //Not ready
+            // Not ready
             if (IsStarLinked(indexStar)) {
                 starComponent.SetLinked();
             }
@@ -313,7 +319,7 @@ public class LevelPlayMgr : MonoBehaviour {
         return angle;
     }
 
-    //Add a line, this function is also the key logic of linked
+    // Add a line, this function is also the key logic of linked
     private void TryLinkStar(GameObject goBegin, GameObject goEnd)
     {
         if (goBegin == null || goEnd == null) {
@@ -435,26 +441,6 @@ public class LevelPlayMgr : MonoBehaviour {
         this.RefreshStar(goEnd);
     }
 
-    private string GetNextLevelName()
-    {
-        if (_levelName == null) {
-            return null;
-        }
-
-        // If current is the last one
-        for (int i = 0; i < director.levelList.Count; ++i) {
-            if (director.levelList[i] == _levelName) {
-                if (i == director.levelList.Count - 1) {
-                    // The last Level
-                    return "fin";
-                }
-                else {
-                    return director.levelList[i + 1];
-                }
-            }
-        }
-        return null;
-    }
     #endregion
 
 }

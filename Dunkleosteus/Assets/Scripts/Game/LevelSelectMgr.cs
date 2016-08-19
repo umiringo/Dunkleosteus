@@ -15,15 +15,19 @@ public class LevelSelectMgr : MonoBehaviour {
 	
 	}
 
-    public void Show(string catagory, string level) {
-        // Show current catagory and level
-        // 根据类型设定levelContainer TODO
+    // Show current catagory and level
+    public void Show(string lastestlevel) {
         // Test, igonre catagory
-
         // Circle to set visible
         foreach (Transform child in _levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
-            levelSelect.Show(true);
+            // Check whether level avaliable
+            if(_diretor.CompareLevel(levelSelect.levelName, lastestlevel) >= 0) {
+                levelSelect.Show(true);
+            }
+            else {
+                levelSelect.Show(false);
+            }
         }
     }
 }

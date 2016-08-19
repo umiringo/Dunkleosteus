@@ -4,25 +4,13 @@ using System.Collections.Generic;
 using SimpleJSON;
 using GlobalDefines;
 
-public class LevelIndexCatagory {
-    public int index;
-    public int catagory;
-    public LevelIndexCatagory(int i, int c) {
-        index = i;
-        catagory = c;
-    }
-}
-
 public class GameDirector : MonoBehaviour {
 
     public GameObject startPanel;
     public GameObject playPanel;
     public LevelPlayMgr levelMgr;
     public LevelSelectMgr levelSelectMgr;
-    public List<string> levelList;
-
-
-    private Dictionary<string, LevelIndexCatagory> level2IndexDic = new Dictionary<string, LevelIndexCatagory>();
+    private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private int currentCatagory;
     private string currentLevel;
     private FiniteStateMachine _fsm;
@@ -43,8 +31,7 @@ public class GameDirector : MonoBehaviour {
         InitLocalization();
     }
 
-    void Start () {
-        //StartGame();   
+    void Start () {   
 	}
 	
 	// Update is called once per frame
@@ -52,17 +39,21 @@ public class GameDirector : MonoBehaviour {
 	
 	}
 
-    public void StartGame()
-    {
-       // startPanelTest.SetActive(false);
-        levelMgr.LoadLevel("Scorpius");
-        playPanel.SetActive(true);
-    }
-
     public void TriggerTransition(StateTransition trans)
     {
         _fsm.PerformTransition(trans);
     } 
+
+    public void CompleteLevel(string levelName)
+    {
+        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        string nextLevel = GetNextLevel()
+        if(nextLevel == "fin") {
+            // TODO Ending logic
+        } else {
+            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, nextLevel);
+        }
+    }
 
     private void InitFiniteStateMachine()
     {
@@ -90,15 +81,10 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLevelList()
     { 
-        // Get level info array
-        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
-        foreach (JSONNode levelObject in ja) {
-            string tmpLevel = levelObject;
-            levelList.Add(tmpLevel);
-        }
-        for(int i = 0; i < levelList.Count; ++i) {
-            JSONNode jo = TemplateMgr.Instance.GetTemplateString("LevelInfo", levelList[i]);
-            level2IndexDic.Add(levelList[i], new LevelIndexCatagory(i, jo["catagory"].AsInt));
+        // Build levelname to index Hash
+        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect)
+        for(int i = 0; i < ja.Count; ++i) {
+            levelHash.Add(ja[i]["name"], i);
         }
     }
 
@@ -106,10 +92,11 @@ public class GameDirector : MonoBehaviour {
     {
         currentLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
         if(currentLevel == "") {
-            currentLevel = levelList[0];
+            currentLevel = DefineString.FirstLevel;
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
-        Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel);
+        currentCatagory = this.GetCatagoryString(currentLevel);
+        Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
 
     private void InitLocalization()
@@ -133,15 +120,15 @@ public class GameDirector : MonoBehaviour {
     public void EnterLevelSelectState()
     {
         panelLevelSelect.SetActive(true);
+        string catagory = ""; // TODO
+        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        levelSelectMgr.Show(lastestLevel);
         Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
     public void ExitLevelSelectState()
     {
         panelLevelSelect.SetActive(false);
-        string catagory = ""; // TODO
-        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
-        levelSelectMgr.Show(catagory, lastestLevel);
         Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
@@ -182,44 +169,47 @@ public class GameDirector : MonoBehaviour {
     public void OnSelectLevel(string level)
     {
         Debug.Log("GameDirector : OnSelectLevel level = " + level);
-        this.currentLevel = level;
+        currentLevel = level;
+        currentCatagory = GetCatagoryString(level);
         _fsm.PerformTransition(StateTransition.ChoseLevel);
        
     }
     #endregion
 
     #region public interface
-    public bool CompareLevelIndex(string level1, string level2)
+    public int CompareLevel(string level1, string level2) 
     {
-        int levelIndex1 = level2IndexDic[level1].index; // current
-        int levelIndex2 = level2IndexDic[level2].index; // lastest
-        int levelCatagory1 = level2IndexDic[level1].catagory;
-        int levelCatagory2 = level2IndexDic[level2].catagory;
-        if(levelCatagory1 < levelCatagory2) {
-            return false;
-        }
-        else if(levelCatagory1 > levelCatagory2) {
-            return true;
-        }
-        else {
-            if(levelIndex1 < levelIndex2) {
-                return false;
-            } 
-            return true;
-        }
+        return indexHash[level1] - indexHash[level2];
     }
 
     public int GetCatagoryIndex(string level)
     {
-        return level2IndexDic[level].catagory;
+        JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
+        return levelInfoJo["catagory"].AsInt;
     }
 
     public string GetCatagoryString(string level)
     {
-       // int catagory = level2IndexDic[level].catagory;
-        //TODO 
-        return "";
+        JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
+        int catagory = levelInfoJo["catagory"].AsInt;
+        
+        JSONArray catagoryInfo = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory);
+        return catagoryInfo[catagory].AsString;
     }
 
+    public string GetNextLevel()
+    {
+        int index = levelHash[currentLevel];
+        return GetLevelByIndex(index + 1);
+    }
+
+    public string GetLevelByIndex(int index)
+    {
+        JSONArray levelSelectInfo = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
+        if(index >= levelSelectInfo.Count) {
+            return "fin";
+        }
+        return catagoryInfo[index]["name"]
+    }
     #endregion
 }

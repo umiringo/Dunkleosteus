@@ -50,23 +50,23 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     ///////////////////////////////////////////////////////////////////////////////
     // Interface                                                                 //
     ///////////////////////////////////////////////////////////////////////////////
-    public JSONNode GetTemplateString(string fileName, string levelName) 
+    public JSONNode GetTemplateString(string fileName, string name) 
     {
         var levelDictionary = _templatePool[fileName];
         if(levelDictionary == null) {
             Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
-        return levelDictionary[levelName];
+        return levelDictionary[name];
     }
 
-    public JSONArray GetTemplateArray(string fileName, string levelName)
+    public JSONArray GetTemplateArray(string fileName, string name)
     {
         var levelDictionary = _templatePool[fileName];
         if(levelDictionary == null) {
             Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
-        return levelDictionary[levelName] as JSONArray;
+        return levelDictionary[name] as JSONArray;
     }
 }

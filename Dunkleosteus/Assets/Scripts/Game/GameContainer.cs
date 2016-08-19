@@ -47,11 +47,11 @@ public class GameContainer : MonoBehaviour {
         skyTween.onFinished.Add(new EventDelegate(SkyTweenEventDelegate));
         detailTween.onFinished.Add(new EventDelegate(DetailTweenEventDelegate));
         
-        //set winTween
+        // Set winTween
         winTween = gameObject.GetComponent<UIPlayTween>();
         winTween.onFinished.Add(new EventDelegate(WinPlayTweenEventDelegate));
         
-        //unable star and detail box collider
+        // Unable star and detail box collider
         skyGameObject.GetComponent<BoxCollider>().enabled = false;
         detailGameObject.GetComponent<BoxCollider>().enabled = false;
 	}
@@ -64,10 +64,9 @@ public class GameContainer : MonoBehaviour {
 
     public void GameWin()
     {
-        Debug.Log("GameWin!!!!!!!!!");
-        //unable star touch
+        // Unable star touch
         SwitchStarsBoxCollider(false);
-        //start scale
+        // Start scale
         winTween.Play(true);
     }
     
@@ -87,7 +86,7 @@ public class GameContainer : MonoBehaviour {
         if (touchedGameObject == skyGameObject) {
             skyTween.Play(true);
             if(!detailTriggered){
-                // show the menu
+                // Show the menu
                 eventController.OnDetailTriggered();
                 detailTriggered = true;
             }
@@ -97,7 +96,7 @@ public class GameContainer : MonoBehaviour {
         }
     }
     
-    //starTween.onFinished
+    // StarTween.onFinished
     public void SkyTweenEventDelegate()
     {
         if(triggerGameObject == skyGameObject) {
@@ -105,7 +104,7 @@ public class GameContainer : MonoBehaviour {
         }
     }
     
-    //detailTween.onFinish
+    // DetailTween.onFinish
     public void DetailTweenEventDelegate()
     {
         if(triggerGameObject == detailGameObject) {
@@ -113,14 +112,14 @@ public class GameContainer : MonoBehaviour {
         }
     }
     
-    //winTween.onFinish
+    // WinTween.onFinish
     public void WinPlayTweenEventDelegate()
     {
-        //enable star and detail box collider
+        // Enable star and detail box collider
         skyGameObject.GetComponent<BoxCollider>().enabled = true;
         detailGameObject.GetComponent<BoxCollider>().enabled = true;
         
-        //show complete label
+        // Show complete label
         eventController.OnWinTweenPlayed();
     }
     

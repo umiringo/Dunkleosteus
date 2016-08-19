@@ -33,4 +33,9 @@ namespace GlobalDefines
     {
         public static readonly string LatestLevel = "LatestLevel";
     }
+
+    public class DefineString
+    {
+        public static readonly string FirstLevel = "Aries";
+    }
 }

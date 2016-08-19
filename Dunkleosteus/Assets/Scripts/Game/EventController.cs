@@ -31,6 +31,8 @@ public class EventController : MonoBehaviour {
     public void OnGameWin()
     {
         gameContainer.GameWin();
+        // Do win logic
+        gamePlay.OnGameWin();
     }
     
     public void OnWinTweenPlayed()
