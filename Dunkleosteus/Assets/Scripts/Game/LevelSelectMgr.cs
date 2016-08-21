@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using GlobalDefines;
 public class LevelSelectMgr : MonoBehaviour {
 
     public GameDirector _director;
     public GameObject _levelContainer;
+    public UILocalize _labelCatagory;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,18 +17,27 @@ public class LevelSelectMgr : MonoBehaviour {
 	}
 
     // Show current catagory and level
-    public void Show(string lastestlevel) {
+    public void Show(string lastestlevel, string currentLevel) {
         // Test, igonre catagory
         // Circle to set visible
         foreach (Transform child in _levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
             // Check whether level avaliable
-            if(_diretor.CompareLevel(levelSelect.levelName, lastestlevel) >= 0) {
-                levelSelect.Show(true);
+            int ret = _director.CompareLevel(levelSelect.levelName, lastestlevel);
+            if(ret > 0) {
+                //unabled
+                levelSelect.Show(LevelState.Unabled);
+            }
+            else if(ret < 0) {
+                levelSelect.Show(LevelState.Finished);
             }
             else {
-                levelSelect.Show(false);
+                levelSelect.Show(LevelState.Current);
             }
         }
+
+        string catagoryName = _director.GetCatagoryString(currentLevel);
+        //show label by catagory name
+        _labelCatagory.key = "LK" + catagoryName;
     }
 }

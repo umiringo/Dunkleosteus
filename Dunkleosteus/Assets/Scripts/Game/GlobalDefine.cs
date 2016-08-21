@@ -8,6 +8,13 @@ namespace GlobalDefines
         Linked = 3,
     }
 
+    public enum LevelState
+    {
+        Finished = 1,
+        Current = 2,
+        Unabled = 3,
+    }
+
     public class PathContainer
     {
         public static readonly string LinkedLinePrefabPath = "Prefabs/LinkedLine";
@@ -15,6 +22,13 @@ namespace GlobalDefines
         public static readonly string UIRootPath = "UI Root";
 
         public static readonly string ContainerPath = "Prefabs/Constellation/";
+
+        public static readonly string YellowCircle = "circle_80_80_f8b711";
+        public static readonly string BlueCircle = "circle_80_80_50cce5";
+        public static readonly string GreenCircle = "circle_80_80_28ed7b";
+        public static readonly string YellowSmallSquare = "square_10_10_f8b711";
+        public static readonly string BlueSmallSquare = "square_10_10_50cce5";
+        public static readonly string GreenSmallSquare = "square_10_10_28ed7b";
     }
 
     public class DefineNumber

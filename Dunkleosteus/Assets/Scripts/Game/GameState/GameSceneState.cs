@@ -20,6 +20,6 @@ public class GameSceneState : FiniteState
 
     public override void DoBeforeExit()
     {
-        gameDirector.EnterGameSceneState();
+        gameDirector.ExitGameSceneState();
     }
 }

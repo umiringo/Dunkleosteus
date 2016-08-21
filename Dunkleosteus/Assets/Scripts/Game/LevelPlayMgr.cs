@@ -106,11 +106,13 @@ public class LevelPlayMgr : MonoBehaviour {
         _correctAnswerList.Clear();
         _answerList.Clear();
         _readyStar = null;
-        Destroy(_gameContainer); // Try to destroy the gamecontainer
+        DestroyImmediate(_gameContainer); // Try to destroy the gamecontainer
         _lineContainer = null;
         _gameContainer = null;
         _eventController = null;
         _completeLabel.SetActive(false);
+        _levelComplete.SetActive(false);
+        _levelComplete.GetComponent<TweenAlpha>().ResetToBeginning();
         _menu.SetActive(false);
 
         // Load template data
@@ -181,14 +183,14 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnBackToLevelSelect()
     {
-
+        director.OnBackSelectLevel();
     }
 
     public void OnNextLevel()
     {
         // Find next level Name
-        string nextLevelName = director.GetNextLevel()
-        director.CompleteLevel(_levelName);
+        string nextLevelName = director.GetNextLevel();
+        director.FinishLevel(_levelName);
         // Check if the last one 
         if (nextLevelName == null) {
             Debug.LogError("LevelPlayMgr.OnNextLevel Error! nextLevelName == null! levelName = " + this._levelName);
@@ -206,7 +208,7 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnGameWin()
     {
-        director.CompleteLevel(_levelName);
+        director.FinishLevel(_levelName);
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///

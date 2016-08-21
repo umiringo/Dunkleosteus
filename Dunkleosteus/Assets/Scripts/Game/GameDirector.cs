@@ -44,10 +44,13 @@ public class GameDirector : MonoBehaviour {
         _fsm.PerformTransition(trans);
     } 
 
-    public void CompleteLevel(string levelName)
+    public void FinishLevel(string levelName)
     {
         string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        string nextLevel = GetNextLevel()
+        string nextLevel = GetNextLevel();
+        if (CompareLevel(nextLevel, lastestLevel) <= 0) {
+            return;
+        }
         if(nextLevel == "fin") {
             // TODO Ending logic
         } else {
@@ -80,22 +83,24 @@ public class GameDirector : MonoBehaviour {
     }
 
     private void InitLevelList()
-    { 
+    {
         // Build levelname to index Hash
-        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect)
+        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
         for(int i = 0; i < ja.Count; ++i) {
-            levelHash.Add(ja[i]["name"], i);
+            levelHash.Add(ja[i], i);
         }
     }
 
     private void LoadPlayerPrefs()
     {
+        PlayerPrefs.DeleteAll();
         currentLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
         if(currentLevel == "") {
-            currentLevel = DefineString.FirstLevel;
+            //currentLevel = DefineString.FirstLevel;
+            currentLevel = "Scorpius";
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
-        currentCatagory = this.GetCatagoryString(currentLevel);
+        currentCatagory = this.GetCatagoryIndex(currentLevel);
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
 
@@ -120,9 +125,8 @@ public class GameDirector : MonoBehaviour {
     public void EnterLevelSelectState()
     {
         panelLevelSelect.SetActive(true);
-        string catagory = ""; // TODO
         string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        levelSelectMgr.Show(lastestLevel);
+        levelSelectMgr.Show(lastestLevel, currentLevel);
         Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
@@ -141,6 +145,7 @@ public class GameDirector : MonoBehaviour {
 
     public void ExitGameSceneState()
     {
+        playPanel.SetActive(false);
         Debug.Log("GameDirector : Exit GameSceneState.");
     }
 
@@ -161,25 +166,33 @@ public class GameDirector : MonoBehaviour {
 
     public void OnStarGame()
     {
-        Debug.Log("GameDirector : OnStarGame");
         // Enter level select state
         _fsm.PerformTransition(StateTransition.PressStart);
     }
 
     public void OnSelectLevel(string level)
     {
-        Debug.Log("GameDirector : OnSelectLevel level = " + level);
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        if (CompareLevel(level, latestLevel) > 0) {
+            return;
+        }
+        // Check the level is availiable
         currentLevel = level;
-        currentCatagory = GetCatagoryString(level);
         _fsm.PerformTransition(StateTransition.ChoseLevel);
        
     }
+
+    public void OnBackSelectLevel()
+    {
+        _fsm.PerformTransition(StateTransition.BackToLevelSelect);
+    }
+
     #endregion
 
     #region public interface
     public int CompareLevel(string level1, string level2) 
     {
-        return indexHash[level1] - indexHash[level2];
+        return levelHash[level1] - levelHash[level2];
     }
 
     public int GetCatagoryIndex(string level)
@@ -192,9 +205,9 @@ public class GameDirector : MonoBehaviour {
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
         int catagory = levelInfoJo["catagory"].AsInt;
-        
-        JSONArray catagoryInfo = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory);
-        return catagoryInfo[catagory].AsString;
+
+        JSONNode catagoryInfo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, ConfigKey.Catagory);
+        return catagoryInfo[catagory - 1];
     }
 
     public string GetNextLevel()
@@ -209,7 +222,8 @@ public class GameDirector : MonoBehaviour {
         if(index >= levelSelectInfo.Count) {
             return "fin";
         }
-        return catagoryInfo[index]["name"]
+        return levelSelectInfo[index];
     }
+
     #endregion
 }
