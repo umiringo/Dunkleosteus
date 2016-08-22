@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
@@ -48,12 +48,15 @@ public class GameDirector : MonoBehaviour {
     {
         string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         string nextLevel = GetNextLevel();
-        if (CompareLevel(nextLevel, lastestLevel) <= 0) {
+        if(nextLevel == "fin") {
+            // Game ending
             return;
         }
-        if(nextLevel == "fin") {
-            // TODO Ending logic
-        } else {
+        currentLevel = nextLevel;
+        currentCatagory = GetCatagoryIndex(currentLevel);
+        // Not ending
+        if (CompareLevel(nextLevel, lastestLevel) > 0) {
+            // Save
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, nextLevel);
         }
     }
@@ -96,8 +99,7 @@ public class GameDirector : MonoBehaviour {
         PlayerPrefs.DeleteAll();
         currentLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
         if(currentLevel == "") {
-            //currentLevel = DefineString.FirstLevel;
-            currentLevel = "Scorpius";
+            currentLevel = DefineString.FirstLevel;
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
@@ -179,7 +181,6 @@ public class GameDirector : MonoBehaviour {
         // Check the level is availiable
         currentLevel = level;
         _fsm.PerformTransition(StateTransition.ChoseLevel);
-       
     }
 
     public void OnBackSelectLevel()
@@ -189,7 +190,8 @@ public class GameDirector : MonoBehaviour {
 
     public void OnStartNextLevel()
     {
-        
+        // currentLevel already next level
+        levelMgr.LoadLevel(currentLevel);  
     }
     #endregion
 

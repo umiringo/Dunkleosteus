@@ -188,7 +188,12 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnNextLevel()
     {
-        director.OnStartNextLevel();
+        string nextLevel = director.GetNextLevel();
+        if(nextLevel == "fin") {
+            director.OnBackSelectLevel();
+        } else {
+            director.OnStartNextLevel();  
+        }
     }
 
     public void OnGameWin()
@@ -243,7 +248,8 @@ public class LevelPlayMgr : MonoBehaviour {
 
         // Check whether sucess
         if (CheckAnswer()) {
-            _gameContainer.GetComponent<GameContainer>().GameWin();
+            // Win
+            _eventController.OnGameWin();
         }
     }
 
@@ -265,6 +271,7 @@ public class LevelPlayMgr : MonoBehaviour {
             if (_linkedLineList[i].EqualPair(b, e)) {
                 return i;
             }
+
         }
         return -1;
     }
