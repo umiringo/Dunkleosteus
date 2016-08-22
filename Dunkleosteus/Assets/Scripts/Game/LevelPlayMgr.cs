@@ -188,22 +188,7 @@ public class LevelPlayMgr : MonoBehaviour {
 
     public void OnNextLevel()
     {
-        // Find next level Name
-        string nextLevelName = director.GetNextLevel();
-        director.FinishLevel(_levelName);
-        // Check if the last one 
-        if (nextLevelName == null) {
-            Debug.LogError("LevelPlayMgr.OnNextLevel Error! nextLevelName == null! levelName = " + this._levelName);
-            return;
-        }
-        // Load next data or game ending
-        if (nextLevelName == "fin") {
-            Debug.Log("LevelPlayMgr.OnNextLevel Game Ending !!!");
-            // Do ending logic
-            return;
-        }
-
-        this.LoadLevel(nextLevelName);
+        director.OnStartNextLevel();
     }
 
     public void OnGameWin()

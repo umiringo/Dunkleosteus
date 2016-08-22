@@ -187,6 +187,10 @@ public class GameDirector : MonoBehaviour {
         _fsm.PerformTransition(StateTransition.BackToLevelSelect);
     }
 
+    public void OnStartNextLevel()
+    {
+        
+    }
     #endregion
 
     #region public interface
