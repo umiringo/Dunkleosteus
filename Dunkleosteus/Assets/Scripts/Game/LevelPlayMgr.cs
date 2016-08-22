@@ -200,10 +200,10 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         director.FinishLevel(_levelName);
     }
+
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////
-    
     #region InnerFuction
     // Check whether answer is correct
     private bool CheckAnswer()
