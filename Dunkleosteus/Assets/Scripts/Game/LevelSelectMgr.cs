@@ -18,26 +18,22 @@ public class LevelSelectMgr : MonoBehaviour {
 
     // Show current catagory and level
     public void Show(string lastestlevel, string currentLevel) {
-        // Test, igonre catagory
+        string catagoryName = _director.GetCatagoryString(currentLevel);
+        _labelCatagory.key = "LK" + catagoryName;
+        // 显示特定的界面，还需要可以切换 TODO
         // Circle to set visible
         foreach (Transform child in _levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
             // Check whether level avaliable
             int ret = _director.CompareLevel(levelSelect.levelName, lastestlevel);
-            if(ret > 0) {
-                //unabled
+            if(ret > 1) {
                 levelSelect.Show(LevelState.Unabled);
-            }
-            else if(ret < 0) {
+            } else if(ret < 1) {
                 levelSelect.Show(LevelState.Finished);
-            }
-            else {
+            } else {
                 levelSelect.Show(LevelState.Current);
             }
         }
 
-        string catagoryName = _director.GetCatagoryString(currentLevel);
-        //show label by catagory name
-        _labelCatagory.key = "LK" + catagoryName;
     }
 }

@@ -5,18 +5,17 @@ using SimpleJSON;
 using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
-
-    public GameObject startPanel;
-    public GameObject playPanel;
     public LevelPlayMgr levelMgr;
     public LevelSelectMgr levelSelectMgr;
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private int currentCatagory;
-    private string currentLevel;
+    private string currentLevel; // 当前正在进行的关卡
     private FiniteStateMachine _fsm;
 
-    public GameObject panelMainMenu;
-    public GameObject panelLevelSelect;
+    public GameObject panelStart; // 开始界面 
+    public GameObject panelMainMenu; // 主菜单界面
+    public GameObject panelLevelSelect; // 关卡选择界面
+    public GameObject panelPlay; // 游戏界面
 
     void Awake() {
         // Init template data
@@ -43,23 +42,6 @@ public class GameDirector : MonoBehaviour {
     {
         _fsm.PerformTransition(trans);
     } 
-
-    public void FinishLevel(string levelName)
-    {
-        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        string nextLevel = GetNextLevel();
-        if(nextLevel == "fin") {
-            // Game ending
-            return;
-        }
-        currentLevel = nextLevel;
-        currentCatagory = GetCatagoryIndex(currentLevel);
-        // Not ending
-        if (CompareLevel(nextLevel, lastestLevel) > 0) {
-            // Save
-            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, nextLevel);
-        }
-    }
 
     private void InitFiniteStateMachine()
     {
@@ -97,12 +79,19 @@ public class GameDirector : MonoBehaviour {
     private void LoadPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
-        currentLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "");
-        if(currentLevel == "") {
-            currentLevel = DefineString.FirstLevel;
+        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        if(lastestLevel == "") {
+            lastestLevel = DefineString.FirstLevel;
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
+        string nextLevel = GetNextLevelByIndexName(lastestLevel);
+        if(nextLevel == "fin") {
+            currentLevel = lastestLevel;
+        } else {
+            currentLevel = nextLevel;
+        }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
+        
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
 
@@ -140,14 +129,14 @@ public class GameDirector : MonoBehaviour {
 
     public void EnterGameSceneState()
     {
-        playPanel.SetActive(true);
+        panelPlay.SetActive(true);
         levelMgr.LoadLevel(currentLevel);
         Debug.Log("GameDirector : Enter GameSceneState.");
     }
 
     public void ExitGameSceneState()
     {
-        playPanel.SetActive(false);
+        panelPlay.SetActive(false);
         Debug.Log("GameDirector : Exit GameSceneState.");
     }
 
@@ -216,6 +205,12 @@ public class GameDirector : MonoBehaviour {
         return catagoryInfo[catagory - 1];
     }
 
+    public string GetNextLevelByIndexName(string level)
+    {
+        int index = levelHash[level];
+        return GetLevelByIndex(index + 1);
+    }
+
     public string GetNextLevel()
     {
         int index = levelHash[currentLevel];
@@ -231,5 +226,16 @@ public class GameDirector : MonoBehaviour {
         return levelSelectInfo[index];
     }
 
+    public void FinishLevel(string levelName)
+    {
+        string nextLevel = GetNextLevel();
+        if(nextLevel == "fin") {
+            // Game ending
+            return;
+        }
+        PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
+        currentLevel = nextLevel;
+        currentCatagory = GetCatagoryIndex(currentLevel);
+    }
     #endregion
 }

@@ -36,28 +36,28 @@ class LinkedPair
 
 public class LevelPlayMgr : MonoBehaviour {
 
-    private List<LinkedPair> _linkedLineList;
-    private Dictionary<int, int> _starDictionary;
-    private List<int> _correctAnswerList;
-    private List<int> _answerList;
-    private GameObject _readyStar;
-    private GameObject _lineTemplate;
-    private GameObject _lineContainer;
-    private GameObject _gameContainer;
-    private EventController _eventController;
-    private UILocalize _labelLevelTitle;
-    private UILocalize _labelLevelLatin;
-    private UILocalize _labelLevelSeason;
-    private UILabel _labelLevelPosition;
-    private UILocalize _labelLevelInfo;
-
-    public GameObject _completeLabel;
-    public GameObject _menu;
-    public UILocalize _levelNameLabel;
-    public GameObject _levelComplete;
+    private List<LinkedPair> _linkedLineList;  // 已经连接的线的hash表
+    private Dictionary<int, int> _starDictionary; // 星星所连接线的hash表，之前用于显示颜色用
+    private List<int> _correctAnswerList; // 正确答案
+    private List<int> _answerList; // 当前答案
+    private GameObject _readyStar; // 选中的星星
+    private GameObject _lineTemplate; // 星星的模版
+    private GameObject _lineContainer; // 线的容器
+    private GameObject _gameContainer; // 关卡的容器
+    private EventController _eventController; 
+    private UILocalize _labelLevelTitle; // 关卡标题
+    private UILocalize _labelLevelLatin; // 星座拉丁文
+    private UILocalize _labelLevelSeason; // 星座季节
+    private UILabel _labelLevelPosition; // 关卡的星座坐标
+    private UILocalize _labelLevelInfo; // 星座介绍
+    public GameObject _completeLabel; // 完成游戏的说明
+    public GameObject _menu;  // 完成游戏后的菜单
+    public GameObject _lastMenu; // 最后一关的游戏菜单
+    public UILocalize _levelNameLabel; //星座名
+    public GameObject _levelComplete; // 完成游戏的对号
     public GameDirector director;
+
     private string _levelName;
-  
     public string levelName {
         get {
             return _levelName;
@@ -85,6 +85,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _completeLabel.SetActive(false);
         _levelComplete.SetActive(false);
         _menu.SetActive(false);
+        _lastMenu.SetActive(false);
     }
 
 	void Start () {
@@ -114,6 +115,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _levelComplete.SetActive(false);
         _levelComplete.GetComponent<TweenAlpha>().ResetToBeginning();
         _menu.SetActive(false);
+        _lastMenu.SetActive(false);
 
         // Load template data
         JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, name);
@@ -170,6 +172,7 @@ public class LevelPlayMgr : MonoBehaviour {
     public void ShowComplete()
     {
         _menu.SetActive(false);
+        _lastMenu.SetActive(false);
         _completeLabel.SetActive(true);
         _levelComplete.SetActive(true);
     }
@@ -178,7 +181,12 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         _completeLabel.SetActive(false);
         _levelComplete.GetComponent<TweenAlpha>().Play(true);
-        _menu.SetActive(true);
+        if(director.GetNextLevel == "fin") {
+            _lastMenu.SetActive(true);
+        } else {
+            _menu.SetActive(true);
+        }
+        
     }
 
     public void OnBackToLevelSelect()
@@ -234,6 +242,7 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
 
+    // Remove Answer from list
     private void RemoveAnswerFromList(int indexBegin, int indexEnd)
     {
         // Just remove from _answerList
@@ -271,7 +280,6 @@ public class LevelPlayMgr : MonoBehaviour {
             if (_linkedLineList[i].EqualPair(b, e)) {
                 return i;
             }
-
         }
         return -1;
     }
@@ -421,9 +429,6 @@ public class LevelPlayMgr : MonoBehaviour {
             else {
                 _starDictionary[indexE] = 1;
             }
-            // Draw Line
-            //linkedLine.GetComponent<LineDrawer>().Draw(goBegin, goEnd);
-
             //Add two star to answerList
             this.AddAnswerToList(indexB, indexE);
         }
