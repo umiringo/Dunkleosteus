@@ -34,7 +34,7 @@
     },
     "Gemini" : {
         "name" : "Gemini",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 305, 506, 107, 708, 809, 810, 1011, 1112, 1213],
         "position" : "7h / 22°",
         "season" : "LKWinter",
         "catagory" : 1

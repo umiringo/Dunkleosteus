@@ -181,7 +181,7 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         _completeLabel.SetActive(false);
         _levelComplete.GetComponent<TweenAlpha>().Play(true);
-        if(director.GetNextLevel == "fin") {
+        if(director.GetNextLevel() == "fin") {
             _lastMenu.SetActive(true);
         } else {
             _menu.SetActive(true);
