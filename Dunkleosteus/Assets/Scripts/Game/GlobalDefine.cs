@@ -46,6 +46,7 @@ namespace GlobalDefines
     public class PlayerPrefsKey
     {
         public static readonly string LatestLevel = "LatestLevel";
+        public static readonly string Coin = "Coin";
     }
 
     public class DefineString

@@ -10,6 +10,7 @@ public class GameDirector : MonoBehaviour {
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private int currentCatagory;
     private string currentLevel; // 当前正在进行的关卡
+    private int coin;
     private FiniteStateMachine _fsm;
 
     public GameObject panelStart; // 开始界面 
@@ -79,6 +80,7 @@ public class GameDirector : MonoBehaviour {
     private void LoadPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+        // Init lastestLevel
         string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         if(lastestLevel == "") {
             lastestLevel = DefineString.FirstLevel;
@@ -91,6 +93,9 @@ public class GameDirector : MonoBehaviour {
             currentLevel = nextLevel;
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
+        
+        // Init Coin
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 0);
         
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
@@ -236,6 +241,28 @@ public class GameDirector : MonoBehaviour {
         PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         currentLevel = nextLevel;
         currentCatagory = GetCatagoryIndex(currentLevel);
+    }
+
+    public int GetCoin()
+    {
+        return coin;
+    }
+
+    public void AddCoin(int num)
+    {
+        coin += num;
+        PlayerPrefs.SetInt(PlayerPrefsKey.Coin, coin);
+    }
+
+    public void SubCoin(int num)
+    {
+        if (coin < num) {
+            coin = 0;
+        }
+        else {
+            coin -= num;
+        }
+        PlayerPrefs.SetInt(PlayerPrefsKey.Coin, coin);
     }
     #endregion
 }

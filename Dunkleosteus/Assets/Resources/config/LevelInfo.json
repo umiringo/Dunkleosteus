@@ -27,7 +27,7 @@
     },
     "Capricornus" : {
         "name" : "Capricornus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 207, 708, 809, 910, 1011, 1112, 512],
         "position" : "23h / -20°",
         "season" : "LKAutumn",
         "catagory" : 1
@@ -90,7 +90,7 @@
     },
     "Virgo" : {
         "name" : "Virgo",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 407, 809, 910, 410, 1011, 1112, 1213, 1114, 1115],
         "position" : "13h / -2°",
         "season" : "LKSpring",
         "catagory" : 1
