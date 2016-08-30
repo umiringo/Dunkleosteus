@@ -220,7 +220,7 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         // Check if have coin
         if(director.GetCoin() > 0) {
-            this.DoTip()
+            this.DoTip();
         } 
         else {
             // Do charge
