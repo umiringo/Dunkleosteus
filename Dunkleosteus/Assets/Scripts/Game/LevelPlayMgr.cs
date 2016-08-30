@@ -36,12 +36,12 @@ class LinkedPair
 
 public class LevelPlayMgr : MonoBehaviour {
 
-    private List<LinkedPair> _linkedLineList;  // 已经连接的线的hash表
+    private List<LinkedPair> _linkedLineList;  // 已经连接的线表
     private Dictionary<int, int> _starDictionary; // 星星所连接线的hash表，之前用于显示颜色用
     private List<int> _correctAnswerList; // 正确答案
     private List<int> _answerList; // 当前答案
     private GameObject _readyStar; // 选中的星星
-    private GameObject _lineTemplate; // 星星的模版
+    private GameObject _lineTemplate; // 线的模版
     private GameObject _lineContainer; // 线的容器
     private GameObject _gameContainer; // 关卡的容器
     private EventController _eventController; 
@@ -149,6 +149,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _eventController = _gameContainer.GetComponent<EventController>();
     }
 
+    // Click star
     public void TriggerStar(GameObject goStar)
     {
         int index = goStar.GetComponent<Star>().index;
@@ -169,6 +170,7 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
     
+    // Show complete label 
     public void ShowComplete()
     {
         _menu.SetActive(false);
@@ -177,6 +179,7 @@ public class LevelPlayMgr : MonoBehaviour {
         _levelComplete.SetActive(true);
     }
 
+    // Show menu(next/back)
     public void ShowMenu()
     {
         _completeLabel.SetActive(false);
@@ -189,11 +192,13 @@ public class LevelPlayMgr : MonoBehaviour {
         
     }
 
+    // Click back
     public void OnBackToLevelSelect()
     {
         director.OnBackSelectLevel();
     }
 
+    // Click next
     public void OnNextLevel()
     {
         string nextLevel = director.GetNextLevel();
@@ -204,11 +209,23 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
 
+    // Win
     public void OnGameWin()
     {
         director.FinishLevel(_levelName);
     }
 
+    // Click tips
+    public void OnTips()
+    {
+        // Check if have coin
+        if(director.GetCoin() > 0) {
+            this.DoTip()
+        } 
+        else {
+            // Do charge
+        }
+    }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////
@@ -346,13 +363,11 @@ public class LevelPlayMgr : MonoBehaviour {
             }
             //delete the line
             Destroy(goLine);
-
             //remove two star from anwser
-            this.RemoveAnswerFromList(indexB, indexE);
+            RemoveAnswerFromList(indexB, indexE);
         }
         else {
             // Try to link two stars
-
             Transform beginTransform = goBegin.transform;
             Transform endTransform = goEnd.transform;
             // Instantiate line
@@ -405,14 +420,10 @@ public class LevelPlayMgr : MonoBehaviour {
             float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
             float containerScale = _gameContainer.transform.localScale.x;
             int width = (int)(distance / scale / containerScale);
-            //int width = (int)(distance / scale);
-
             TweenWidth lineTweenWidth = linkedLine.GetComponent<TweenWidth>();
             lineTweenWidth.from = 0;
             lineTweenWidth.to = width;
-
             linkedLine.SetActive(true);
-
             // Add record to List
             LinkedPair lp = new LinkedPair(indexB, indexE, linkedLine);
             _linkedLineList.Add(lp);
@@ -438,6 +449,38 @@ public class LevelPlayMgr : MonoBehaviour {
         // Refresh the stars state
         this.RefreshStar(goBegin);
         this.RefreshStar(goEnd);
+    }
+
+    private void TipLinkLine(int indexBegin, int indexEnd) {
+        GameObject goBegin = _gameContainer.transform.Find("Sky/SkyContainer/Star" + indexBegin).gameObject;
+        GameObject goEnd = _gameContainer.transform.Find("Sky/SkyContainer/Star" + indexEnd).gameObject;
+        TryLinkStar(goBegin, goEnd);
+    }
+
+    private void DoTip()
+    {
+        // Check if already
+        if(CheckAnswer()) {
+            return;
+        }
+        // Traverse the answer list for error one
+        foreach(int ans in _answerList) {
+            // Check ans whether is correct
+            if(!_correctAnswerList.Contains(ans)) {
+                // Wrong ans, try to remove it 
+                TipLinkLine(ans % 100, ans / 100);
+                return;
+            }
+        }
+
+        // Traverse correct answer to find a new line
+        foreach(int cans in _correctAnswerList) {
+            if(!_answerList.Contains(cans)) {
+                // Right ans, try to link it 
+                TipLinkLine(cans % 100, cans / 100);
+                return;
+            }
+        }
     }
 
     #endregion
