@@ -482,7 +482,5 @@ public class LevelPlayMgr : MonoBehaviour {
             }
         }
     }
-
     #endregion
-
 }
