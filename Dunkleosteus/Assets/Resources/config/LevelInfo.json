@@ -48,14 +48,14 @@
     },
     "Libra" : {
         "name" : "Libra",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 305, 405, 506],
         "position" : "15h / -14°",
         "season" : "LKSummer",
         "catagory" : 1
     },
     "Ophiuchus" : {
         "name" : "Ophiuchus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 507, 708, 809, 710, 1011, 1112, 112],
         "position" : "17h / -5°",
         "season" : "LKSummer",
         "catagory" : 1
@@ -69,7 +69,7 @@
     },
     "Sagittarius" : {
         "name" : "Sagittarius",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 305, 506, 607, 708, 609, 910, 911, 1112, 513, 1314, 1415, 1516, 1317, 1718, 1819],
         "position" : "19h / -25°",
         "season" : "LKSummer",
         "catagory" : 1
