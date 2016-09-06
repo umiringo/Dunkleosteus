@@ -82,15 +82,19 @@ public class GameDirector : MonoBehaviour {
         PlayerPrefs.DeleteAll();
         // Init lastestLevel
         string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        if(lastestLevel == "") {
+        if(lastestLevel == "" || lastestLevel == DefineString.FirstLevel) {
             lastestLevel = DefineString.FirstLevel;
-            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
+            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, lastestLevel);
+            currentLevel = DefineString.FirstLevel;
         }
-        string nextLevel = GetNextLevelByIndexName(lastestLevel);
-        if(nextLevel == "fin") {
-            currentLevel = lastestLevel;
-        } else {
-            currentLevel = nextLevel;
+        else {
+            string nextLevel = GetNextLevelByIndexName(lastestLevel);
+            if (nextLevel == "fin") {
+                currentLevel = lastestLevel;
+            }
+            else {
+                currentLevel = nextLevel;
+            }
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
         
@@ -192,6 +196,7 @@ public class GameDirector : MonoBehaviour {
     #region public interface
     public int CompareLevel(string level1, string level2) 
     {
+        Debug.Log("GameDirector : CompareLevel level1 = " + level1 + " | level2 = " + level2);
         return levelHash[level1] - levelHash[level2];
     }
 

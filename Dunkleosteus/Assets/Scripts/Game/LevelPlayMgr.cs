@@ -213,7 +213,7 @@ public class LevelPlayMgr : MonoBehaviour {
     public void OnGameWin()
     {
         director.FinishLevel(_levelName);
-        gameContainer.GameWin();
+        _gameContainer.GetComponent<GameContainer>().GameWin();
     }
 
     // Click tips
