@@ -34,6 +34,7 @@ namespace GlobalDefines
     public class DefineNumber
     {
         public static readonly int LineDepth = 39;
+        public static readonly int TipCost = 1;
     }
     
     public class ConfigKey

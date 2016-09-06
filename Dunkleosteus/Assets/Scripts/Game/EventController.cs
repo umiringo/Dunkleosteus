@@ -6,6 +6,8 @@ public class EventController : MonoBehaviour {
 
     public LevelPlayMgr gamePlay;
     public GameContainer gameContainer;
+    public GameDirector gameDirector;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -18,23 +20,23 @@ public class EventController : MonoBehaviour {
 	
 	}
 
+    #region Trigger by PanelLevel
     public void OnStarTouched(GameObject go)
     {
         gamePlay.TriggerStar(go);
     }
-    
+
     public void OnCardTouched(GameObject go)
     {
         gameContainer.BeginToFlop(go);
     }
-    
+
     public void OnGameWin()
     {
-        gameContainer.GameWin();
         // Do win logic
         gamePlay.OnGameWin();
     }
-    
+
     public void OnWinTweenPlayed()
     {
         gamePlay.ShowComplete();
@@ -45,4 +47,19 @@ public class EventController : MonoBehaviour {
         gamePlay.ShowMenu();
     }
 
+    public void OnTouchNext()
+    {
+        gamePlay.OnNextLevel();
+    }
+
+    public void OnTouchBack()
+    {
+        gamePlay.OnBackToLevelSelect();
+    }
+
+    public void OnTouchTips()
+    {
+        gamePlay.OnTips();
+    }
+    #endregion
 }

@@ -20,7 +20,7 @@ class LinkedPair
             indexEnd = b;
         }
         else {
-            Debug.LogError("GamePlayMgr:LinkedPair: Wired situation! indexBegin should euqals indexEnd! " + b.ToString() + e.ToString());
+            Debug.LogError("LevelPlayMgr:LinkedPair: Weird situation! indexBegin should euqals indexEnd! " + b.ToString() + e.ToString());
             return;
         }
         line = l;
@@ -203,7 +203,7 @@ public class LevelPlayMgr : MonoBehaviour {
     {
         string nextLevel = director.GetNextLevel();
         if(nextLevel == "fin") {
-            director.OnBackSelectLevel();
+            return;
         } else {
             director.OnStartNextLevel();  
         }
@@ -213,19 +213,21 @@ public class LevelPlayMgr : MonoBehaviour {
     public void OnGameWin()
     {
         director.FinishLevel(_levelName);
+        gameContainer.GameWin();
     }
 
     // Click tips
     public void OnTips()
     {
         // Check if have coin
-        if(director.GetCoin() > 0) {
+        if(director.GetCoin() >= DefineNumber.TipCost) {
             this.DoTip();
         } 
         else {
             // Do charge
         }
     }
+
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////
@@ -455,6 +457,7 @@ public class LevelPlayMgr : MonoBehaviour {
         GameObject goBegin = _gameContainer.transform.Find("Sky/SkyContainer/Star" + indexBegin).gameObject;
         GameObject goEnd = _gameContainer.transform.Find("Sky/SkyContainer/Star" + indexEnd).gameObject;
         TryLinkStar(goBegin, goEnd);
+        director.SubCoin(DefineNumber.TipCost);
     }
 
     private void DoTip()

@@ -8,6 +8,7 @@ public class Star : MonoBehaviour {
     public GameObject shineChild;
     public int index;
     private StarState _state;
+    private GameObject _controller;
 
     public string blueStarPath;
     public string yellowStarPath;

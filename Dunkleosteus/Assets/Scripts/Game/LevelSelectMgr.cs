@@ -20,7 +20,9 @@ public class LevelSelectMgr : MonoBehaviour {
     public void Show(string lastestlevel, string currentLevel) {
         string catagoryName = _director.GetCatagoryString(currentLevel);
         _labelCatagory.key = "LK" + catagoryName;
+
         // 显示特定的界面，还需要可以切换 TODO
+        
         // Circle to set visible
         foreach (Transform child in _levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
