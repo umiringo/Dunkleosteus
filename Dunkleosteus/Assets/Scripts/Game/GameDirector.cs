@@ -81,15 +81,15 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init lastestLevel
-        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        if(lastestLevel == "" || lastestLevel == DefineString.FirstLevel) {
-            lastestLevel = DefineString.FirstLevel;
+        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        // first level
+        if(lastestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, lastestLevel);
             currentLevel = DefineString.FirstLevel;
         }
         else {
             string nextLevel = GetNextLevelByIndexName(lastestLevel);
-            if (nextLevel == "fin") {
+            if(nextLevel == "fin") {
                 currentLevel = lastestLevel;
             }
             else {
@@ -97,7 +97,6 @@ public class GameDirector : MonoBehaviour {
             }
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
-        
         // Init Coin
         coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 0);
         
@@ -173,7 +172,7 @@ public class GameDirector : MonoBehaviour {
     public void OnSelectLevel(string level)
     {
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        if (CompareLevel(level, latestLevel) > 0) {
+        if (CompareLevel(level, latestLevel) > 1) {
             return;
         }
         // Check the level is availiable
@@ -196,7 +195,13 @@ public class GameDirector : MonoBehaviour {
     #region public interface
     public int CompareLevel(string level1, string level2) 
     {
-        Debug.Log("GameDirector : CompareLevel level1 = " + level1 + " | level2 = " + level2);
+        if(level1 == "begin") {
+            return 1;
+        }
+        if(level2 == "begin") {
+            return -1;
+        }
+
         return levelHash[level1] - levelHash[level2];
     }
 
@@ -238,12 +243,16 @@ public class GameDirector : MonoBehaviour {
 
     public void FinishLevel(string levelName)
     {
+        string lastestLevel = PlayerPrefsKey.GetString(PlayerPrefsKey.lastestLevel, "begin")
+        int ret = CompareLevel(lastestLevel, currentLevel);
+        if(ret == 1) {
+            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
+        }
         string nextLevel = GetNextLevel();
         if(nextLevel == "fin") {
             // Game ending
             return;
         }
-        PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         currentLevel = nextLevel;
         currentCatagory = GetCatagoryIndex(currentLevel);
     }

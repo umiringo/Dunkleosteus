@@ -30,6 +30,7 @@ public class LevelSelectMgr : MonoBehaviour {
             int ret = _director.CompareLevel(levelSelect.levelName, lastestlevel);
             if(ret > 1) {
                 levelSelect.Show(LevelState.Unabled);
+                // 设置一下不可点击
             } else if(ret < 1) {
                 levelSelect.Show(LevelState.Finished);
             } else {
