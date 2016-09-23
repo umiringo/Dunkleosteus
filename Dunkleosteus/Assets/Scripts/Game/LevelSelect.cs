@@ -22,6 +22,7 @@ public class LevelSelect : MonoBehaviour {
         shine = this.gameObject.transform.FindChild("Shine").gameObject;
         button = this.gameObject.GetComponent<UIButton>();
     }
+    
 	void Start () {
 
 	}

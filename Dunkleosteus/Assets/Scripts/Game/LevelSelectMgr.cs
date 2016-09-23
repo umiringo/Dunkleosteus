@@ -27,13 +27,12 @@ public class LevelSelectMgr : MonoBehaviour {
         foreach (Transform child in _levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
             // Check whether level avaliable
-            int ret = _director.CompareLevel(levelSelect.levelName, lastestlevel);
-            if(ret > 1) {
+            int state = _director.GetLevelState(levelSelect.levelName);
+            if(state == -1) {
                 levelSelect.Show(LevelState.Unabled);
-                // 设置一下不可点击
-            } else if(ret < 1) {
+            } else if(state == 1) {
                 levelSelect.Show(LevelState.Finished);
-            } else {
+            } else if(state == 0) {
                 levelSelect.Show(LevelState.Current);
             }
         }
