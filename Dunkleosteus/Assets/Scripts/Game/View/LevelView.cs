@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GlobalDefines;
-public class LevelSelect : MonoBehaviour {
+public class LevelView : MonoBehaviour {
 
     public string levelName;
     private UISprite levelSprite;

@@ -6,7 +6,7 @@ using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
-    public LevelSelectMgr levelSelectMgr;
+    public LevelSelectView levelSelectView;
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private int currentCatagory;
     private string currentLevel; // 当前正在进行的关卡
@@ -125,7 +125,7 @@ public class GameDirector : MonoBehaviour {
     {
         panelLevelSelect.SetActive(true);
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        levelSelectMgr.Show(latestLevel, currentLevel);
+        levelSelectView.Show(latestLevel, currentLevel);
         Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GlobalDefines;
-public class LevelSelectMgr : MonoBehaviour {
+public class LevelSelectView : MonoBehaviour {
 
     public GameDirector director;
     public GameObject levelContainer;
@@ -26,15 +26,15 @@ public class LevelSelectMgr : MonoBehaviour {
         
         // Circle to set visible
         foreach (Transform child in levelContainer.transform) {
-            LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
+            LevelView levelView = child.gameObject.GetComponent<LevelView>();
             // Check whether level avaliable
-            int state = director.GetLevelState(levelSelect.levelName);
+            int state = director.GetLevelState(levelView.levelName);
             if(state == -1) {
-                levelSelect.Show(LevelState.Unabled);
+                levelView.Show(LevelState.Unabled);
             } else if(state == 1) {
-                levelSelect.Show(LevelState.Finished);
+                levelView.Show(LevelState.Finished);
             } else if(state == 0) {
-                levelSelect.Show(LevelState.Current);
+                levelView.Show(LevelState.Current);
             }
         }
 
