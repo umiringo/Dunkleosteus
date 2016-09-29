@@ -8,7 +8,7 @@ public class GameContainer : MonoBehaviour {
     public GameObject detailGameObject;
     public GameObject starContainer;
 
-    private LevelPlayMgr levelPlay;
+    private LevelPlayModel levelPlayModel;
     private GameObject triggerGameObject;
     private TweenRotation skyTween;
     private TweenRotation detailTween;
@@ -56,7 +56,7 @@ public class GameContainer : MonoBehaviour {
         detailGameObject.GetComponent<BoxCollider>().enabled = false;
 
         // Set levelPlay
-        levelPlay = GameObject.Find("UI Root/PanelLevel").GetComponent<LevelPlayMgr>();
+        levelPlayModel = GameObject.Find("UI Root/PanelLevel").GetComponent<LevelPlayModel>();
 	}
 	
 	// Update is called once per frame
@@ -90,7 +90,7 @@ public class GameContainer : MonoBehaviour {
             skyTween.Play(true);
             if(!detailTriggered){
                 // Show the menu
-                levelPlay.ShowMenu();
+                levelPlayModel.FlopToCardBack();
                 detailTriggered = true;
             }
         }
@@ -123,7 +123,7 @@ public class GameContainer : MonoBehaviour {
         detailGameObject.GetComponent<BoxCollider>().enabled = true;
         
         // Show complete label
-        levelPlay.ShowComplete();
+        levelPlayModel.AfterWinTween();
     }
     
 }

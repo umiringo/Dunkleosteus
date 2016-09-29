@@ -5,7 +5,7 @@ using SimpleJSON;
 using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
-    public LevelPlayMgr levelPlayMgr;
+    public LevelPlayModel levelPlayModel;
     public LevelSelectMgr levelSelectMgr;
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private int currentCatagory;
@@ -138,7 +138,7 @@ public class GameDirector : MonoBehaviour {
     public void EnterGameSceneState()
     {
         panelPlay.SetActive(true);
-        levelPlayMgr.LoadLevel(currentLevel);
+        levelPlayModel.LoadLevel(currentLevel);
         Debug.Log("GameDirector : Enter GameSceneState.");
     }
 
@@ -188,7 +188,7 @@ public class GameDirector : MonoBehaviour {
     public void OnStartNextLevel()
     {
         // currentLevel is already next level
-        levelPlayMgr.LoadLevel(currentLevel);  
+        levelPlayModel.LoadLevel(currentLevel);  
     }
     #endregion
 
