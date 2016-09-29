@@ -3,9 +3,10 @@ using System.Collections;
 using GlobalDefines;
 public class LevelSelectMgr : MonoBehaviour {
 
-    public GameDirector _director;
-    public GameObject _levelContainer;
-    public UILocalize _labelCatagory;
+    public GameDirector director;
+    public GameObject levelContainer;
+    public UILocalize labelCatagory;
+    public UILabel labelCoin;
 	// Use this for initialization
 	void Start () {
 	
@@ -18,25 +19,27 @@ public class LevelSelectMgr : MonoBehaviour {
 
     // Show current catagory and level
     public void Show(string lastestlevel, string currentLevel) {
-        string catagoryName = _director.GetCatagoryString(currentLevel);
-        _labelCatagory.key = "LK" + catagoryName;
+        string catagoryName = director.GetCatagoryString(currentLevel);
+        labelCatagory.key = "LK" + catagoryName;
 
         // 显示特定的界面，还需要可以切换 TODO
         
         // Circle to set visible
-        foreach (Transform child in _levelContainer.transform) {
+        foreach (Transform child in levelContainer.transform) {
             LevelSelect levelSelect = child.gameObject.GetComponent<LevelSelect>();
             // Check whether level avaliable
-            int ret = _director.CompareLevel(levelSelect.levelName, lastestlevel);
-            if(ret > 1) {
+            int state = director.GetLevelState(levelSelect.levelName);
+            if(state == -1) {
                 levelSelect.Show(LevelState.Unabled);
-                // 设置一下不可点击
-            } else if(ret < 1) {
+            } else if(state == 1) {
                 levelSelect.Show(LevelState.Finished);
-            } else {
+            } else if(state == 0) {
                 levelSelect.Show(LevelState.Current);
             }
         }
+
+        // Coin
+        labelCoin.text = director.GetCoin().ToString();
 
     }
 }

@@ -80,17 +80,17 @@ public class GameDirector : MonoBehaviour {
     private void LoadPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
-        // Init lastestLevel
-        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        // Init latestLevel
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, DefineString.FirstLevel);
         // first level
-        if(lastestLevel == "begin") {
-            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, lastestLevel);
+        if(latestLevel == "begin") {
+            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
             currentLevel = DefineString.FirstLevel;
         }
         else {
-            string nextLevel = GetNextLevelByIndexName(lastestLevel);
+            string nextLevel = GetNextLevelByIndexName(latestLevel);
             if(nextLevel == "fin") {
-                currentLevel = lastestLevel;
+                currentLevel = latestLevel;
             }
             else {
                 currentLevel = nextLevel;
@@ -105,7 +105,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "Japanese";
+        Localization.language = "SChinese";
     }
 
     #region StateInterface
@@ -124,8 +124,8 @@ public class GameDirector : MonoBehaviour {
     public void EnterLevelSelectState()
     {
         panelLevelSelect.SetActive(true);
-        string lastestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        levelSelectMgr.Show(lastestLevel, currentLevel);
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+        levelSelectMgr.Show(latestLevel, currentLevel);
         Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
@@ -172,7 +172,7 @@ public class GameDirector : MonoBehaviour {
     public void OnSelectLevel(string level)
     {
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        if (CompareLevel(level, latestLevel) > 1) {
+        if (GetLevelState(level) < 0) {
             return;
         }
         // Check the level is availiable
@@ -193,16 +193,26 @@ public class GameDirector : MonoBehaviour {
     #endregion
 
     #region public interface
-    public int CompareLevel(string level1, string level2) 
+    // 检查关卡状态：－1，未开放，1，已经完成，0，当前
+    public int GetLevelState(string level)
     {
-        if(level1 == "begin") {
-            return 1;
-        }
-        if(level2 == "begin") {
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, DefineString.FirstLevel);
+        if(latestLevel == "begin") {
+            if(level == DefineString.FirstLevel) {
+                return 0;
+            }
             return -1;
         }
 
-        return levelHash[level1] - levelHash[level2];
+        int latestIndex = levelHash[latestLevel];
+        int levelIndex = levelHash[level];
+        if(levelIndex - latestIndex == 1) {
+            return 0;
+        }
+        if(levelIndex - latestIndex > 1) {
+            return -1;
+        }
+        return 1;
     }
 
     public int GetCatagoryIndex(string level)
@@ -243,9 +253,9 @@ public class GameDirector : MonoBehaviour {
 
     public void FinishLevel(string levelName)
     {
-        string lastestLevel = PlayerPrefsKey.GetString(PlayerPrefsKey.lastestLevel, "begin")
-        int ret = CompareLevel(lastestLevel, currentLevel);
-        if(ret == 1) {
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        int ret = GetLevelState(currentLevel);
+        if(ret == 0) {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
         }
         string nextLevel = GetNextLevel();

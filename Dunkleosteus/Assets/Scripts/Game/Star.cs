@@ -34,8 +34,13 @@ public class Star : MonoBehaviour {
         starSprite = starChild.GetComponent<UISprite>();
         shineSprite = shineChild.GetComponent<UISprite>();
         shineLogic = shineChild.GetComponent<Shine>();
-
         this.SetNormal();
+        // Set EventController
+        GameObject controller = GameObject.Find("UI Root/GameController");
+        UIEventTrigger trigger = this.gameObject.GetComponent<UIEventTrigger>();
+        EventDelegate eventDel = new EventDelegate(controller.GetComponent<EventController>(), "OnStarTouched");
+        eventDel.parameters[0] = new EventDelegate.Parameter(this, "gameObject");
+        trigger.onClick.Add(eventDel);
 	}
 	
 	// Update is called once per frame

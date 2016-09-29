@@ -44,7 +44,6 @@ public class LevelPlayMgr : MonoBehaviour {
     private GameObject _lineTemplate; // 线的模版
     private GameObject _lineContainer; // 线的容器
     private GameObject _gameContainer; // 关卡的容器
-    private EventController _eventController; 
     private UILocalize _labelLevelTitle; // 关卡标题
     private UILocalize _labelLevelLatin; // 星座拉丁文
     private UILocalize _labelLevelSeason; // 星座季节
@@ -53,8 +52,9 @@ public class LevelPlayMgr : MonoBehaviour {
     public GameObject _completeLabel; // 完成游戏的说明
     public GameObject _menu;  // 完成游戏后的菜单
     public GameObject _lastMenu; // 最后一关的游戏菜单
-    public UILocalize _levelNameLabel; //星座名
+    public GameObject _levelNameLabel; // 星座名的label
     public GameObject _levelComplete; // 完成游戏的对号
+    public UILabel labelCoin;
     public GameDirector director;
 
     private string _levelName;
@@ -75,7 +75,6 @@ public class LevelPlayMgr : MonoBehaviour {
         _lineTemplate = null;
         _lineContainer = null;
         _gameContainer = null;
-        _eventController = null;
         _labelLevelTitle = null;
         _labelLevelLatin = null;
         _labelLevelSeason = null;
@@ -100,7 +99,6 @@ public class LevelPlayMgr : MonoBehaviour {
     // Load Level Data
     public void LoadLevel(string name)
     {
-        Debug.Log("LevelPlayMgr:LoadLevel name = " + name);
         // clear all data
         _linkedLineList.Clear();
         _starDictionary.Clear();
@@ -110,7 +108,6 @@ public class LevelPlayMgr : MonoBehaviour {
         DestroyImmediate(_gameContainer); // Try to destroy the gamecontainer
         _lineContainer = null;
         _gameContainer = null;
-        _eventController = null;
         _completeLabel.SetActive(false);
         _levelComplete.SetActive(false);
         _levelComplete.GetComponent<TweenAlpha>().ResetToBeginning();
@@ -121,7 +118,9 @@ public class LevelPlayMgr : MonoBehaviour {
         JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, name);
         // Load name
         _levelName = jo["name"];
-        _levelNameLabel.key = "LK" + _levelName + "Title";
+        _levelNameLabel.GetComponent<UILocalize>().key = "LK" + _levelName + "Title";
+        _levelNameLabel.SetActive(false);
+        _levelNameLabel.SetActive(true);
         // Load answer
         JSONArray answerList = jo["answer"] as JSONArray;
         foreach (JSONNode answerObject in answerList) {
@@ -133,7 +132,6 @@ public class LevelPlayMgr : MonoBehaviour {
         _gameContainer.transform.parent = this.gameObject.transform;
         _gameContainer.transform.localPosition = Vector3.zero;
         _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
-        _gameContainer.GetComponent<EventController>().gamePlay = this;
         // Init gameContainer's component
         _labelLevelTitle = _gameContainer.transform.Find("Detail/LabelContainer/LabelName").gameObject.GetComponent<UILocalize>();
         _labelLevelTitle.key = "LK" + _levelName + "Title";
@@ -146,12 +144,13 @@ public class LevelPlayMgr : MonoBehaviour {
         _labelLevelInfo = _gameContainer.transform.Find("Detail/LabelContainer/LabelInfo").gameObject.GetComponent<UILocalize>();
         _labelLevelInfo.key = "LK" + _levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
-        _eventController = _gameContainer.GetComponent<EventController>();
+        labelCoin.text = director.GetCoin().ToString();
     }
 
     // Click star
     public void TriggerStar(GameObject goStar)
     {
+        Debug.Log("LevelPlayMgr:TriggerStar : goStar_name = " + goStar.name);
         int index = goStar.GetComponent<Star>().index;
         //Check whether ready
         if (_readyStar == null) {
@@ -170,6 +169,12 @@ public class LevelPlayMgr : MonoBehaviour {
         }
     }
     
+    // Click Card
+    public void TriggerCard(GameObject go)
+    {
+       _gameContainer.GetComponent<GameContainer>().BeginToFlop(go);
+    }
+
     // Show complete label 
     public void ShowComplete()
     {
@@ -257,7 +262,7 @@ public class LevelPlayMgr : MonoBehaviour {
         // Check whether sucess
         if (CheckAnswer()) {
             // Win
-            _eventController.OnGameWin();
+            this.OnGameWin();
         }
     }
 
@@ -277,7 +282,7 @@ public class LevelPlayMgr : MonoBehaviour {
         // Check whether sucess
         if (CheckAnswer()) {
             // Win
-            _eventController.OnGameWin();
+            this.OnGameWin();
         }
     }
 
