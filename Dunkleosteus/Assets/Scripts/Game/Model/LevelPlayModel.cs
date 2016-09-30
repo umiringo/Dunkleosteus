@@ -142,24 +142,6 @@ public class LevelPlayModel : MonoBehaviour {
         return gameDirector.GetNextLevel();
     }
 
-    // Click back
-    public void OnBackToLevelSelect()
-    {
-        gameDirector.OnBackSelectLevel();
-    }
-
-    // Click next
-    public void OnNextLevel()
-    {
-        string nextLevel = gameDirector.GetNextLevel();
-        if(nextLevel == "fin") {
-            return;
-        } else {
-            gameDirector.OnStartNextLevel();  
-        }
-    }
-
-
     // Win
     public void GameWin()
     {

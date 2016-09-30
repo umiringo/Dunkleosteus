@@ -158,18 +158,13 @@ public class GameDirector : MonoBehaviour {
         Debug.Log("GameDirector : Exit CardViewState.");
     }
 
-    #endregion
-
-
-    #region Callback
-
-    public void OnStarGame()
+    public void StartGame()
     {
         // Enter level select state
         _fsm.PerformTransition(StateTransition.PressStart);
     }
 
-    public void OnSelectLevel(string level)
+    public void SelectLevel(string level)
     {
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         if (GetLevelState(level) < 0) {
@@ -180,12 +175,12 @@ public class GameDirector : MonoBehaviour {
         _fsm.PerformTransition(StateTransition.ChoseLevel);
     }
 
-    public void OnBackSelectLevel()
+    public void BackSelectLevel()
     {
         _fsm.PerformTransition(StateTransition.BackToLevelSelect);
     }
 
-    public void OnStartNextLevel()
+    public void StartNextLevel()
     {
         // currentLevel is already next level
         levelPlayModel.LoadLevel(currentLevel);  

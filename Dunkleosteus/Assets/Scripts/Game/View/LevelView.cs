@@ -21,10 +21,16 @@ public class LevelView : MonoBehaviour {
         }
         shine = this.gameObject.transform.FindChild("Shine").gameObject;
         button = this.gameObject.GetComponent<UIButton>();
+
     }
     
 	void Start () {
-
+        // Set listener
+        GameObject controller = GameObject.Find("UI Root/GameController");
+        UIButton button = this.gameObject.GetComponent<UIButton>();
+        EventDelegate del = new EventDelegate(controller.GetComponent<EventController>(), "OnSelectLevel");
+        del.parameters[0] = new EventDelegate.Parameter(this, "levelName");
+        button.onClick.Add(del);
 	}
 	
 	// Update is called once per frame

@@ -35,4 +35,29 @@ public class EventController : MonoBehaviour {
         levelPlayModel.OnTips();
     }
     #endregion
+
+    public void OnStartGame()
+    {
+        gameDirector.StartGame();
+    }
+
+    public void OnSelectLevel(string level)
+    {
+        gameDirector.SelectLevel(level);
+    }
+
+    public void OnBackSelectLevel()
+    {
+        gameDirector.BackSelectLevel();
+    }
+
+    public void OnStartNextLevel()
+    {
+        string nextLevel = gameDirector.GetNextLevel();
+        if(nextLevel == "fin") {
+            return;
+        } else {
+            gameDirector.StartNextLevel();  
+        }
+    }
 }
