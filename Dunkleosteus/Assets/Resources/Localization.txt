@@ -283,3 +283,7 @@ LKOrion,Orion,猎户族,獵戶族,オリオン
 LKHeavenlyWaters,Heavenly Waters,幻之水,幻之水,天国の海
 LKBayer,Bayer,拜耳,拜耳,バイエル
 LKLaCaille,La Caille,拉卡伊,拉卡伊,ラカーユ
+LKNext,Next,继续,繼續,次へ
+LKBack,Back,返回,返回,戻る
+LKOK,OK,确定,確定,はい
+LKCancel,Cancel,取消,取消,いいえ
