@@ -13,3 +13,6 @@
 /Dunkleosteus/UnityVS.Dunkleosteus.CSharp.csproj
 /Dunkleosteus/UnityVS.Dunkleosteus.CSharp.Editor.csproj
 /Dunkleosteus/UnityVS.Dunkleosteus.CSharp.Plugins.csproj
+/Dunkleosteus/*.csproj
+/Dunkleosteus/*.suo
+/Dunkleosteus/*.sln
