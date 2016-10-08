@@ -98,7 +98,7 @@ public class GameDirector : MonoBehaviour {
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
         // Init Coin
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 0);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10);
         
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
@@ -112,13 +112,13 @@ public class GameDirector : MonoBehaviour {
     public void EnterMainMenuState()
     {
         panelMainMenu.SetActive(true);
-        Debug.Log("GameDirector : Enter MainMenuState.");
+        //Debug.Log("GameDirector : Enter MainMenuState.");
     }
 
     public void ExitMainMenuState()
     {
         panelMainMenu.SetActive(false);
-        Debug.Log("GameDirector : Exit MainMenuState.");
+        //Debug.Log("GameDirector : Exit MainMenuState.");
     }
 
     public void EnterLevelSelectState()
@@ -126,36 +126,36 @@ public class GameDirector : MonoBehaviour {
         panelLevelSelect.SetActive(true);
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
-        Debug.Log("GameDirector : Enter LevelSelectState.");
+        //Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
     public void ExitLevelSelectState()
     {
         panelLevelSelect.SetActive(false);
-        Debug.Log("GameDirector : Exit LevelSelectState.");
+        //Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
     public void EnterGameSceneState()
     {
         panelPlay.SetActive(true);
         levelPlayModel.LoadLevel(currentLevel);
-        Debug.Log("GameDirector : Enter GameSceneState.");
+        //Debug.Log("GameDirector : Enter GameSceneState.");
     }
 
     public void ExitGameSceneState()
     {
         panelPlay.SetActive(false);
-        Debug.Log("GameDirector : Exit GameSceneState.");
+        //Debug.Log("GameDirector : Exit GameSceneState.");
     }
 
     public void EnterCardViewState()
     {
-        Debug.Log("GameDirector : Enter CardViewState.");
+        //Debug.Log("GameDirector : Enter CardViewState.");
     }
 
     public void ExitCardViewState()
     {
-        Debug.Log("GameDirector : Exit CardViewState.");
+        //Debug.Log("GameDirector : Exit CardViewState.");
     }
 
     public void StartGame()

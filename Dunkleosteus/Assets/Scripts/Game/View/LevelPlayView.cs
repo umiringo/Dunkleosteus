@@ -15,7 +15,6 @@ public class LevelPlayView : MonoBehaviour {
     private UILocalize _labelLevelSeason; // 星座季节
     private UILabel _labelLevelPosition; // 关卡的星座坐标
     private UILocalize _labelLevelInfo; // 星座介绍
-    public GameObject completeLabel; // 完成游戏的说明
     public GameObject menu;  // 完成游戏后的菜单
     public GameObject lastMenu; // 最后一关的游戏菜单
     public GameObject levelNameLabel; // 星座名的label
@@ -36,7 +35,6 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelPosition = null;
         _labelLevelInfo = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        completeLabel.SetActive(false);
         levelComplete.SetActive(false);
         menu.SetActive(false);
         lastMenu.SetActive(false);
@@ -57,7 +55,6 @@ public class LevelPlayView : MonoBehaviour {
         DestroyImmediate(_gameContainer); // Try to destroy the gamecontainer
         _lineContainer = null;
         _gameContainer = null;
-        completeLabel.SetActive(false);
         levelComplete.SetActive(false);
         levelComplete.GetComponent<TweenAlpha>().ResetToBeginning();
         menu.SetActive(false);
@@ -104,14 +101,12 @@ public class LevelPlayView : MonoBehaviour {
     {
         menu.SetActive(false);
         lastMenu.SetActive(false);
-        completeLabel.SetActive(true);
         levelComplete.SetActive(true);
     }
 
     // Show menu(next/back)
     public void ShowMenu()
     {
-        completeLabel.SetActive(false);
         levelComplete.GetComponent<TweenAlpha>().Play(true);
         if(levelPlayModel.IsFin()) {
             lastMenu.SetActive(true);
@@ -184,9 +179,13 @@ public class LevelPlayView : MonoBehaviour {
 
     public GameObject GetStarGo(int index)
     {
-        return _gameContainer.transform.Find("Sky/SkyContainer/Star" + index).gameObject;
+        return _gameContainer.transform.Find("Sky/StarContainer/Star" + index).gameObject;
     }
 
+    public void UpdateCoinLabel()
+    {
+        labelCoin.text = levelPlayModel.GetCoin().ToString();
+    }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////

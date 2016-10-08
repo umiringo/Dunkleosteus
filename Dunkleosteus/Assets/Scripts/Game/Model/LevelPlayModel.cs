@@ -348,6 +348,7 @@ public class LevelPlayModel : MonoBehaviour {
         GameObject goEnd = levelPlayView.GetStarGo(indexEnd);
         TryLinkStar(goBegin, goEnd);
         gameDirector.SubCoin(DefineNumber.TipCost);
+        levelPlayView.UpdateCoinLabel();
     }
 
     private void DoTip()
