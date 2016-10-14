@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, DefineString.FirstLevel);
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -98,7 +98,7 @@ public class GameDirector : MonoBehaviour {
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
         // Init Coin
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 100);
         
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }

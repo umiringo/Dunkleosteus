@@ -20,17 +20,15 @@ public class LevelView : MonoBehaviour {
             lineSprite = lineChild.gameObject.GetComponent<UISprite>();
         }
         shine = this.gameObject.transform.FindChild("Shine").gameObject;
-        button = this.gameObject.GetComponent<UIButton>();
-
     }
     
 	void Start () {
         // Set listener
         GameObject controller = GameObject.Find("UI Root/GameController");
-        UIButton button = this.gameObject.GetComponent<UIButton>();
-        EventDelegate del = new EventDelegate(controller.GetComponent<EventController>(), "OnSelectLevel");
-        del.parameters[0] = new EventDelegate.Parameter(this, "levelName");
-        button.onClick.Add(del);
+        UIEventTrigger trigger = this.gameObject.GetComponent<UIEventTrigger>();
+        EventDelegate eventDel = new EventDelegate(controller.GetComponent<EventController>(), "OnSelectLevel");
+        eventDel.parameters[0] = new EventDelegate.Parameter(this, "levelName");
+        trigger.onClick.Add(eventDel);
 	}
 	
 	// Update is called once per frame
@@ -47,7 +45,6 @@ public class LevelView : MonoBehaviour {
                     lineSprite.spriteName = PathContainer.BlueSmallSquare;
                 }
                 shine.SetActive(false);
-                button.enabled = false;
                 break;
             case LevelState.Current:
                 levelSprite.spriteName = PathContainer.YellowCircle;
@@ -55,7 +52,6 @@ public class LevelView : MonoBehaviour {
                     lineSprite.spriteName = PathContainer.BlueSmallSquare;
                 }
                 shine.SetActive(true);
-                button.enabled = true;
                 break;
             case LevelState.Finished:
                 levelSprite.spriteName = PathContainer.GreenCircle;
@@ -63,7 +59,6 @@ public class LevelView : MonoBehaviour {
                     lineSprite.spriteName = PathContainer.GreenSmallSquare;
                 }
                 shine.SetActive(false);
-                button.enabled = true;
                 break;
             default:
                 break;
