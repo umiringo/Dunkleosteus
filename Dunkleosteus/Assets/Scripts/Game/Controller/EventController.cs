@@ -27,7 +27,6 @@ public class EventController : MonoBehaviour {
 
     public void OnCardTouched(GameObject go)
     {
-        Debug.Log("EventController.OnCardTouched");
         levelPlayModel.TriggerCard(go);
     }
 
