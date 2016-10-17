@@ -193,7 +193,6 @@ public class LevelPlayView : MonoBehaviour {
 
     public void ShowPreview(string levelName)
     {
-        Debug.Log("LevelPlayView.ShowPreview levelName = " + levelName);
         if(spritePreview.activeSelf) {
             spritePreview.SetActive(false);
         } else {
