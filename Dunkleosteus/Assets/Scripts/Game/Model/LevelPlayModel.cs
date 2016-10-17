@@ -176,6 +176,13 @@ public class LevelPlayModel : MonoBehaviour {
         return gameDirector.GetCoin();
     }
 
+    public void ShowPreview()
+    {
+        if(_levelName == null) {
+            return;
+        }
+        levelPlayView.ShowPreview(_levelName.ToLower());
+    }
     #endregion
 
     //////////////////////////////////////////////////////////////////////////

@@ -88,6 +88,7 @@ public class GameDirector : MonoBehaviour {
             currentLevel = DefineString.FirstLevel;
         }
         else {
+            PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
             string nextLevel = GetNextLevelByIndexName(latestLevel);
             if(nextLevel == "fin") {
                 currentLevel = latestLevel;

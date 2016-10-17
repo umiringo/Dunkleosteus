@@ -60,4 +60,9 @@ public class EventController : MonoBehaviour {
             gameDirector.StartNextLevel();  
         }
     }
+
+    public void OnClickTitle()
+    {
+        levelPlayModel.ShowPreview();
+    }
 }

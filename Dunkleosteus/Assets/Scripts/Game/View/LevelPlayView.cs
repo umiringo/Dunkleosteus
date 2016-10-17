@@ -20,6 +20,8 @@ public class LevelPlayView : MonoBehaviour {
     public GameObject levelNameLabel; // 星座名的label
     public GameObject levelComplete; // 完成游戏的对号
     public UILabel labelCoin;
+    public GameObject spritePreview;
+    public UITexture texturePreview;
 
     public LevelPlayModel levelPlayModel;
 
@@ -88,6 +90,7 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelInfo.key = "LK" + levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         labelCoin.text = levelPlayModel.GetCoin().ToString();
+        spritePreview.SetActive(false);
     }
 
     // Load Level Data
@@ -117,6 +120,7 @@ public class LevelPlayView : MonoBehaviour {
 
     public void ShowGameWin()
     {
+        spritePreview.SetActive(false);
         _gameContainer.GetComponent<GameContainer>().GameWin();
     }
 
@@ -185,6 +189,18 @@ public class LevelPlayView : MonoBehaviour {
     public void UpdateCoinLabel()
     {
         labelCoin.text = levelPlayModel.GetCoin().ToString();
+    }
+
+    public void ShowPreview(string levelName)
+    {
+        Debug.Log("LevelPlayView.ShowPreview levelName = " + levelName);
+        if(spritePreview.activeSelf) {
+            spritePreview.SetActive(false);
+        } else {
+            // Set texture
+            spritePreview.SetActive(true);
+            texturePreview.mainTexture = Resources.Load("Texture/" + levelName) as Texture;
+        }
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
