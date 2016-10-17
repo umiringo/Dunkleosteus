@@ -1,7 +1,8 @@
 {
-    "Catagory" : ["Zodiac", "Perseus" , "Hercules" , "Orion" , "HeavenlyWaters", "Bayer", "LaCaille"],
+    "Catagory" : ["Zodiac", "Orion", "Perseus", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
     "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius",
-                      "Leo", "Pisces", "Taurus", "Sagittarius"
+                      "Leo", "Pisces", "Taurus", "Sagittarius", 
+                      "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion" 
                     ],
 
     "Aquarius" : {
@@ -524,7 +525,7 @@
     },
     "CanisMajor" : {
         "name" : "CanisMajor",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 407, 708, 509, 910, 811, 1011, 1014, 1015, 1516, 812, 1213],
         "position" : "7h / -20°",
         "season" : "LKWinter",
         "catagory" : 7
@@ -538,21 +539,21 @@
     },
     "Lepus" : {
         "name" : "Lepus",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 405, 506, 407, 708, 409, 910, 709],
         "position" : "6h / -20°",
         "season" : "LKWinter",
         "catagory" : 7
     },
     "Monoceros" : {
         "name" : "Monoceros",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 205, 506, 607],
         "position" : "7h / -8°",
         "season" : "LKSpring",
         "catagory" : 7
     },
     "Orion" : {
         "name" : "Orion",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 407, 708, 809, 609, 711, 910, 1011, 612, 1213, 1314, 1415, 1516],
         "position" : "5h / 5°",
         "season" : "LKWinter",
         "catagory" : 7
