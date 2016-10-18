@@ -41,6 +41,7 @@ public class LevelPlayModel : MonoBehaviour {
     private List<int> _answerList; // 当前答案
     private string _levelName;
     private GameObject _readyStar; // 选中的星星
+    private bool _isWin;
 
     public GameDirector gameDirector;
     public LevelPlayView levelPlayView;
@@ -103,6 +104,7 @@ public class LevelPlayModel : MonoBehaviour {
             int tmpAnswer = answerObject.AsInt;
             _correctAnswerList.Add(tmpAnswer);
         }
+        _isWin = false;
     }
 
     // Click star
@@ -146,6 +148,7 @@ public class LevelPlayModel : MonoBehaviour {
     public void GameWin()
     {
         gameDirector.FinishLevel(_levelName);
+        _isWin = true;
         levelPlayView.ShowGameWin();
     }
 
@@ -178,7 +181,7 @@ public class LevelPlayModel : MonoBehaviour {
 
     public void ShowPreview()
     {
-        if(_levelName == null) {
+        if(_levelName == null || _isWin) {
             return;
         }
         levelPlayView.ShowPreview(_levelName.ToLower());
