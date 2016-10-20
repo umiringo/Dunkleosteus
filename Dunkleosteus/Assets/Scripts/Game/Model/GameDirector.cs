@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Aquarius");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Orion");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -184,6 +184,7 @@ public class GameDirector : MonoBehaviour {
     public void StartNextLevel()
     {
         // currentLevel is already next level
+        Debug.Log("GameDirector.StartNextLevel = " + currentLevel);
         levelPlayModel.LoadLevel(currentLevel);  
     }
     #endregion
@@ -247,7 +248,7 @@ public class GameDirector : MonoBehaviour {
         return levelSelectInfo[index];
     }
 
-    public void FinishLevel(string levelName)
+    public bool FinishLevel(string levelName)
     {
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         int ret = GetLevelState(currentLevel);
@@ -257,10 +258,11 @@ public class GameDirector : MonoBehaviour {
         string nextLevel = GetNextLevel();
         if(nextLevel == "fin") {
             // Game ending
-            return;
+            return true;
         }
         currentLevel = nextLevel;
         currentCatagory = GetCatagoryIndex(currentLevel);
+        return false;
     }
 
     public int GetCoin()

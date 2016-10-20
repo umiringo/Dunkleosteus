@@ -42,6 +42,7 @@ public class LevelPlayModel : MonoBehaviour {
     private string _levelName;
     private GameObject _readyStar; // 选中的星星
     private bool _isWin;
+    private bool _isFin;
 
     public GameDirector gameDirector;
     public LevelPlayView levelPlayView;
@@ -136,7 +137,7 @@ public class LevelPlayModel : MonoBehaviour {
 
     public bool IsFin()
     {
-        return gameDirector.GetNextLevel() == "fin";
+        return _isFin;
     }
 
     public string GetNextLevel()
@@ -147,7 +148,7 @@ public class LevelPlayModel : MonoBehaviour {
     // Win
     public void GameWin()
     {
-        gameDirector.FinishLevel(_levelName);
+        _isFin = gameDirector.FinishLevel(_levelName);
         _isWin = true;
         levelPlayView.ShowGameWin();
     }

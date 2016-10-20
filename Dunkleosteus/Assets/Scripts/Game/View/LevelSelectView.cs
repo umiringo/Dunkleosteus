@@ -40,6 +40,5 @@ public class LevelSelectView : MonoBehaviour {
 
         // Coin
         labelCoin.text = director.GetCoin().ToString();
-
     }
 }

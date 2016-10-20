@@ -53,12 +53,7 @@ public class EventController : MonoBehaviour {
 
     public void OnStartNextLevel()
     {
-        string nextLevel = gameDirector.GetNextLevel();
-        if(nextLevel == "fin") {
-            return;
-        } else {
-            gameDirector.StartNextLevel();  
-        }
+        gameDirector.StartNextLevel();  
     }
 
     public void OnClickTitle()
