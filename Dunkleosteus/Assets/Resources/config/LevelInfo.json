@@ -1,5 +1,5 @@
 {
-    "Catagory" : ["Zodiac", "Orion", "CanisMajor", "Perseus", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
+    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "Perseus", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
     "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius",
                       "Leo", "Pisces", "Taurus", "Sagittarius", 
                       "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion",
