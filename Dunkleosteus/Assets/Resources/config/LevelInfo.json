@@ -103,70 +103,70 @@
         "answer" : [102],
         "position" : "14h / 30°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "Camelopardalis" : {
         "name" : "Camelopardalis",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 204, 305, 406, 607],
         "position" : "5h / 70°",
         "season" : "LKWinter",
-        "catagory" : 2
+        "catagory" : 3
     },
     "CanesVenatici" : {
         "name" : "CanesVenatici",
-        "answer" : [102],
+        "answer" : [203],
         "position" : "13h / 40°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "ComaBerenices" : {
         "name" : "ComaBerenices",
         "answer" : [102],
         "position" : "13h / 22°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "CoronaBorealis" : {
         "name" : "CoronaBorealis",
         "answer" : [102],
         "position" : "15h / 16°",
         "season" : "LKSummer",
-        "catagory" : 2
+        "catagory" : 3
     },
     "Draco" : {
         "name" : "Draco",
         "answer" : [102],
         "position" : "17h / 65°",
         "season" : "LKSummer",
-        "catagory" : 2
+        "catagory" : 3
     },
     "LeoMinor" : {
         "name" : "LeoMinor",
         "answer" : [102],
         "position" : "9h / 11°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "Lynx" : {
         "name" : "Lynx",
         "answer" : [102],
         "position" : "8h / 45°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "UrsaMajor" : {
         "name" : "UrsaMajor",
         "answer" : [102],
         "position" : "11h / 55°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "UrsaMinor" : {
         "name" : "UrsaMinor",
         "answer" : [102],
         "position" : "15h / 78°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : 3
     },
     "Carina" : {
         "name" : "Carina",
