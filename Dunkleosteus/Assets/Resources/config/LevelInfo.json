@@ -121,14 +121,14 @@
     },
     "ComaBerenices" : {
         "name" : "ComaBerenices",
-        "answer" : [102],
+        "answer" : [102, 203],
         "position" : "13h / 22°",
         "season" : "LKSpring",
         "catagory" : 3
     },
     "CoronaBorealis" : {
         "name" : "CoronaBorealis",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "15h / 16°",
         "season" : "LKSummer",
         "catagory" : 3
@@ -142,7 +142,7 @@
     },
     "LeoMinor" : {
         "name" : "LeoMinor",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "9h / 11°",
         "season" : "LKSpring",
         "catagory" : 3
@@ -163,7 +163,7 @@
     },
     "UrsaMinor" : {
         "name" : "UrsaMinor",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "15h / 78°",
         "season" : "LKSpring",
         "catagory" : 3
