@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Orion");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "UrsaMajor");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -133,6 +133,7 @@ public class GameDirector : MonoBehaviour {
     public void ExitLevelSelectState()
     {
         panelLevelSelect.SetActive(false);
+        levelSelectView.BeforeExit();
         //Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
@@ -215,7 +216,22 @@ public class GameDirector : MonoBehaviour {
     public int GetCatagoryIndex(string level)
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
+       // Debug.Log("GameDirector.GetCatagoryIndex, level = " + level + " | index = " + levelInfoJo["catagory"]);
         return levelInfoJo["catagory"].AsInt;
+    }
+
+    public int GetNextLevelCatagoryIndex(string level)
+    {
+        if(level == "begin") {
+            return 0;
+        }
+        int index = levelHash[level];
+        string nextLevel = GetLevelByIndex(index + 1);
+        if(nextLevel == "fin") {
+            return GetCatagoryIndex(level);
+        } else {
+            return GetCatagoryIndex(nextLevel);
+        }
     }
 
     public string GetCatagoryString(string level)
@@ -225,6 +241,12 @@ public class GameDirector : MonoBehaviour {
 
         JSONNode catagoryInfo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, ConfigKey.Catagory);
         return catagoryInfo[catagory - 1];
+    }
+
+    public string GetCatagoryString(int index) 
+    {
+        JSONNode catagoryInfo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, ConfigKey.Catagory);
+        return catagoryInfo[index - 1];
     }
 
     public string GetNextLevelByIndexName(string level)

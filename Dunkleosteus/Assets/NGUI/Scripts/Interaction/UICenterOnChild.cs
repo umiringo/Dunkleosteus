@@ -277,8 +277,10 @@ public class UICenterOnChild : MonoBehaviour
 
 	public void CenterOn (Transform target)
 	{
+		Debug.Log("UICenterOnChild.CenterOn !");
 		if (mScrollView != null && mScrollView.panel != null)
 		{
+			Debug.Log("UICenterOnChild.CenterOn mScrollView not null!");
 			Vector3[] corners = mScrollView.panel.worldCorners;
 			Vector3 panelCenter = (corners[2] + corners[0]) * 0.5f;
 			CenterOn(target, panelCenter);
