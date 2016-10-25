@@ -100,7 +100,7 @@
     },
     "Bootes" : {
         "name" : "Bootes",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 207, 408, 709, 809, 910, 1011, 912, 1213],
         "position" : "14h / 30°",
         "season" : "LKSpring",
         "catagory" : 3
@@ -135,7 +135,7 @@
     },
     "Draco" : {
         "name" : "Draco",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1215, 1314, 1415],
         "position" : "17h / 65°",
         "season" : "LKSummer",
         "catagory" : 3
@@ -149,14 +149,14 @@
     },
     "Lynx" : {
         "name" : "Lynx",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "8h / 45°",
         "season" : "LKSpring",
         "catagory" : 3
     },
     "UrsaMajor" : {
         "name" : "UrsaMajor",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 407, 708, 809, 910, 810, 811, 1112, 1213, 1314, 1415, 516, 1216, 1617, 1718, 1819, 1620],
         "position" : "11h / 55°",
         "season" : "LKSpring",
         "catagory" : 3
