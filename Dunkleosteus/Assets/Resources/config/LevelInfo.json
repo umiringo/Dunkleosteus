@@ -1,10 +1,9 @@
 {
-    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "Perseus", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
-    "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius",
-                      "Leo", "Pisces", "Taurus", "Sagittarius", 
+    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
+    "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius", "Leo", "Pisces", "Taurus", "Sagittarius", 
                       "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion",
-                      "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis",
-                      "Lynx", "Bootes", "Draco", "UrsaMajor"
+                      "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
+                      "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus"
                     ],
 
     "Aquarius" : {
@@ -173,63 +172,63 @@
         "answer" : [102],
         "position" : "8h / -62°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Columba" : {
         "name" : "Columba",
         "answer" : [102],
         "position" : "5h / -34°",
         "season" : "LKWinter",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Delphinus" : {
         "name" : "Delphinus",
         "answer" : [102],
         "position" : "21h / 14°",
         "season" : "LKSummer",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Equuleus" : {
         "name" : "Equuleus",
         "answer" : [102],
         "position" : "21h / 10°",
         "season" : "LKAutumn",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Eridanus" : {
         "name" : "Eridanus",
         "answer" : [102],
         "position" : "3h / -29°",
         "season" : "LKWinter",
-        "catagory" : 3
+        "catagory" : 4
     },
     "PiscisAustrinus" : {
         "name" : "PiscisAustrinus",
         "answer" : [102],
         "position" : "22h / -30°",
         "season" : "LKAutumn",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Puppis" : {
         "name" : "Puppis",
         "answer" : [102],
         "position" : "7h / -32°",
         "season" : "LKWinter",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Pyxis" : {
         "name" : "Pyxis",
         "answer" : [102],
         "position" : "9h / -30°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Vela" : {
         "name" : "Vela",
         "answer" : [102],
         "position" : "9h / -50°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : 4
     },
     "Antlia" : {
         "name" : "Antlia",

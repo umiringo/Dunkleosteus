@@ -41,7 +41,6 @@ public class LevelSelectView : MonoBehaviour {
 
     public void AfterCenter(GameObject centerGo)
     {
-        Debug.Log("LevelSelectView.AfterCenter name = " + centerGo.GetComponent<CatagoryModel>().catagoryName);
         labelCatagory.gameObject.SetActive(false);
         labelCatagory.key = "LK" + centerGo.GetComponent<CatagoryModel>().catagoryName;
         labelCatagory.gameObject.SetActive(true);
