@@ -1,10 +1,11 @@
 {
-    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Perseus", "Hercules", "Bayer", "LaCaille"],
+    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Perseus", "Bayer", "Hercules", "LaCaille"],
     "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius", "Leo", "Pisces", "Taurus", "Sagittarius", 
                       "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion",
                       "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
                       "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus",
-                      "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus"
+                      "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus",
+                      "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo", "Hydra"
                     ],
 
     "Aquarius" : {
@@ -327,77 +328,77 @@
         "answer" : [102],
         "position" : "16h / -76°",
         "season" : "LKSummer",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Chamaeleon" : {
         "name" : "Chamaeleon",
         "answer" : [102],
         "position" : "11h / -80°",
         "season" : "LKSpring",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Dorado" : {
         "name" : "Dorado",
         "answer" : [102],
         "position" : "5h / -65°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Grus" : {
         "name" : "Grus",
         "answer" : [102],
         "position" : "22h / -47°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Hydrus" : {
         "name" : "Hydrus",
         "answer" : [102],
         "position" : "3h / -70°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Indus" : {
         "name" : "Indus",
         "answer" : [102],
         "position" : "22h / -60°",
         "season" : "LKAutumn",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Musca" : {
         "name" : "Musca",
         "answer" : [102],
         "position" : "12h / -70°",
         "season" : "LKSpring",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Pavo" : {
         "name" : "Pavo",
         "answer" : [102],
         "position" : "20h / -65°",
         "season" : "LKSummer",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Phoenix" : {
         "name" : "Phoenix",
         "answer" : [102],
         "position" : "0h / -50°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Tucana" : {
         "name" : "Tucana",
         "answer" : [102],
         "position" : "0h / -65°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Volans" : {
         "name" : "Volans",
         "answer" : [102],
         "position" : "8h / -70°",
         "season" : "LKSpring",
-        "catagory" : 5
+        "catagory" : 6
     },
     "Aquila" : {
         "name" : "Aquila",
