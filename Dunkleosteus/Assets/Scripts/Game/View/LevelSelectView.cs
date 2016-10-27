@@ -72,7 +72,8 @@ public class LevelSelectView : MonoBehaviour {
         if(catagoryHash.Count > 1) {
             offset = ((float)(currentIndex - 1)) / (catagoryHash.Count - 1);
         }
-        catagoryScrollView.SetDragAmount(offset, 0, false);
+        Debug.Log("LevelSelectView.Show offset = " + offset);
+        catagoryScrollView.SetDragAmount(offset, 0.5f, false);
         catagoryTable.GetComponent<UITable>().Reposition();
         centerOnChild.Recenter();
         // Show catagory name

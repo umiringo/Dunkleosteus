@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Equuleus");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Eridanus");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);

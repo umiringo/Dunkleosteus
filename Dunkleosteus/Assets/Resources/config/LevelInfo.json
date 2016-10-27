@@ -1,9 +1,10 @@
 {
-    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Hercules", "HeavenlyWaters", "Bayer", "LaCaille"],
+    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Perseus", "Hercules", "Bayer", "LaCaille"],
     "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius", "Leo", "Pisces", "Taurus", "Sagittarius", 
                       "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion",
                       "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
-                      "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus"
+                      "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus",
+                      "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus"
                     ],
 
     "Aquarius" : {
@@ -564,62 +565,62 @@
         "answer" : [102],
         "position" : "1h / 38°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Auriga" : {
         "name" : "Auriga",
         "answer" : [102],
         "position" : "6h / 40°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Cassiopeia" : {
         "name" : "Cassiopeia",
         "answer" : [102],
         "position" : "1h / 60°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Cepheus" : {
         "name" : "Cepheus",
         "answer" : [102],
         "position" : "22h / 70°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Cetus" : {
         "name" : "Cetus",
         "answer" : [102],
         "position" : "1h / -11°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Lacerta" : {
         "name" : "Lacerta",
         "answer" : [102],
         "position" : "22h / 45°",
         "season" : "LKAutumn",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Pegasus" : {
         "name" : "Pegasus",
         "answer" : [102],
         "position" : "23h / 15°",
         "season" : "LKAutumn",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Perseus" : {
         "name" : "Perseus",
         "answer" : [102],
         "position" : "3h / 45°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
     "Triangulum" : {
         "name" : "Triangulum",
         "answer" : [102],
         "position" : "2h / 30°",
         "season" : "LKWinter",
-        "catagory" : 8
+        "catagory" : 5
     },
 }
