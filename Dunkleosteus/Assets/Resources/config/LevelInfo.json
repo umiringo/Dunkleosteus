@@ -169,7 +169,7 @@
     },
     "Carina" : {
         "name" : "Carina",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 709, 308, 110, 910],
         "position" : "8h / -62°",
         "season" : "LKSpring",
         "catagory" : 4
@@ -190,7 +190,7 @@
     },
     "Equuleus" : {
         "name" : "Equuleus",
-        "answer" : [102],
+        "answer" : [102, 203, 204],
         "position" : "21h / 10°",
         "season" : "LKAutumn",
         "catagory" : 4
@@ -211,21 +211,21 @@
     },
     "Puppis" : {
         "name" : "Puppis",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 304, 305, 405, 408, 506, 607, 708],
         "position" : "7h / -32°",
         "season" : "LKWinter",
         "catagory" : 4
     },
     "Pyxis" : {
         "name" : "Pyxis",
-        "answer" : [102],
+        "answer" : [102, 203],
         "position" : "9h / -30°",
         "season" : "LKSpring",
         "catagory" : 4
     },
     "Vela" : {
         "name" : "Vela",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 109],
         "position" : "9h / -50°",
         "season" : "LKSpring",
         "catagory" : 4
