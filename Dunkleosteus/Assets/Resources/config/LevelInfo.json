@@ -5,7 +5,9 @@
                       "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
                       "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus",
                       "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus",
-                      "Hydrus", "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo"
+                      "Hydrus", "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo",
+                      "Circinus", "Octans", "Antlia", "Caelum", "Fornax", "Pictor", "Reticulum", "Telescopium", "Microscopium", "Horologium", "Mensa", "Sculptor", "Norma",
+                      "Scutum", "Sextans", "TriangulumAustrale", "Vulpecula", "Crux", "Sagitta", "Corvus", "Lyra", "CoronaAustralis", "Crater", "Ara", "Aquila", "Cygnus", "Lupus", "Serpens", "Hercules", "Hydra", "Centaurus"
                     ],
 
     "Aquarius" : {
