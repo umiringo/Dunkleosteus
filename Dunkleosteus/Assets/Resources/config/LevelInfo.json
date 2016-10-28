@@ -1,5 +1,5 @@
 {
-    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Perseus", "Bayer", "Hercules", "LaCaille"],
+    "Catagory" : ["Zodiac", "Orion", "UrsaMajor", "HeavenlyWaters", "Perseus", "Bayer", "LaCaille", "Hercules"],
     "LevelSelect" : [ "Aries", "Libra", "Cancer", "Ophiuchus", "Capricornus", "Gemini", "Virgo", "Scorpius", "Aquarius", "Leo", "Pisces", "Taurus", "Sagittarius", 
                       "CanisMinor", "Monoceros", "Lepus", "CanisMajor", "Orion",
                       "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
@@ -178,14 +178,14 @@
     },
     "Columba" : {
         "name" : "Columba",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 407],
         "position" : "5h / -34°",
         "season" : "LKWinter",
         "catagory" : 4
     },
     "Delphinus" : {
         "name" : "Delphinus",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 304, 405],
         "position" : "21h / 14°",
         "season" : "LKSummer",
         "catagory" : 4
