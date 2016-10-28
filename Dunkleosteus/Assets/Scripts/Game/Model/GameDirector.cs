@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Eridanus");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Perseus");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -168,7 +168,7 @@ public class GameDirector : MonoBehaviour {
 
     public void SelectLevel(string level)
     {
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
+     //   string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         if (GetLevelState(level) < 0) {
             return;
         }
@@ -185,7 +185,6 @@ public class GameDirector : MonoBehaviour {
     public void StartNextLevel()
     {
         // currentLevel is already next level
-        Debug.Log("GameDirector.StartNextLevel = " + currentLevel);
         levelPlayModel.LoadLevel(currentLevel);  
     }
     #endregion
@@ -216,7 +215,6 @@ public class GameDirector : MonoBehaviour {
     public int GetCatagoryIndex(string level)
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
-       // Debug.Log("GameDirector.GetCatagoryIndex, level = " + level + " | index = " + levelInfoJo["catagory"]);
         return levelInfoJo["catagory"].AsInt;
     }
 
