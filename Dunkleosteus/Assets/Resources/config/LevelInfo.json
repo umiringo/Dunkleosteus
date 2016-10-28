@@ -5,7 +5,7 @@
                       "CanesVenatici", "ComaBerenices", "LeoMinor", "UrsaMinor", "CoronaBorealis", "Camelopardalis", "Lynx", "Bootes", "Draco", "UrsaMajor", 
                       "Pyxis", "Equuleus", "Delphinus", "Columba", "PiscisAustrinus", "Puppis", "Vela", "Carina", "Eridanus",
                       "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus",
-                      "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo", "Hydra"
+                      "Hydrus", "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo"
                     ],
 
     "Aquarius" : {
@@ -237,91 +237,91 @@
         "answer" : [102],
         "position" : "9h / 11°",
         "season" : "LKSpring",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Caelum" : {
         "name" : "Caelum",
         "answer" : [102],
         "position" : "5h / -38°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Circinus" : {
         "name" : "Circinus",
         "answer" : [102],
         "position" : "15h / -63°",
         "season" : "LKSummer",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Fornax" : {
         "name" : "Fornax",
         "answer" : [102],
         "position" : "3h / -32°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Horologium" : {
         "name" : "Horologium",
         "answer" : [102],
         "position" : "3h / -60°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Mensa" : {
         "name" : "Mensa",
         "answer" : [102],
         "position" : "5h / -77°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Microscopium" : {
         "name" : "Microscopium",
         "answer" : [102],
         "position" : "21h / -36°",
         "season" : "LKAutumn",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Norma" : {
         "name" : "Norma",
         "answer" : [102],
         "position" : "16h / -50°",
         "season" : "LKSummer",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Octans" : {
         "name" : "Octans",
         "answer" : [102],
         "position" : "22h / -90°",
         "season" : "LKAutumn",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Pictor" : {
         "name" : "Pictor",
         "answer" : [102],
         "position" : "6h / -52°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Reticulum" : {
         "name" : "Reticulum",
         "answer" : [102],
         "position" : "4h / -60°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Sculptor" : {
         "name" : "Sculptor",
         "answer" : [102],
         "position" : "0h / -30°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Telescopium" : {
         "name" : "Telescopium",
         "answer" : [102],
         "position" : "19h / -50°",
         "season" : "LKSummer",
-        "catagory" : 4
+        "catagory" : 7
     },
     "Apus" : {
         "name" : "Apus",
@@ -405,126 +405,126 @@
         "answer" : [102],
         "position" : "20h / 5°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Ara" : {
         "name" : "Ara",
         "answer" : [102],
         "position" : "17h / -54°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Centaurus" : {
         "name" : "Centaurus",
         "answer" : [102],
         "position" : "13h / -50°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "CoronaAustralis" : {
         "name" : "CoronaAustralis",
         "answer" : [102],
         "position" : "19h / -40°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Corvus" : {
         "name" : "Corvus",
         "answer" : [102],
         "position" : "12h / -20°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Crater" : {
         "name" : "Crater",
         "answer" : [102],
         "position" : "11h / -16°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Crux" : {
         "name" : "Crux",
         "answer" : [102],
         "position" : "12h / -60°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Cygnus" : {
         "name" : "Cygnus",
         "answer" : [102],
         "position" : "23h / -42°",
         "season" : "LKAutumn",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Hercules" : {
         "name" : "Hercules",
         "answer" : [102],
         "position" : "17h / 30°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Hydra" : {
         "name" : "Hydra",
         "answer" : [102],
         "position" : "10h / -20°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Lupus" : {
         "name" : "Lupus",
         "answer" : [102],
         "position" : "15h / -43°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Lyra" : {
         "name" : "Lyra",
         "answer" : [102],
         "position" : "19h / 40°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Sagitta" : {
         "name" : "Sagitta",
         "answer" : [102, 203, 204],
         "position" : "20h / 19°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Scutum" : {
         "name" : "Scutum",
         "answer" : [102],
         "position" : "19h / -10°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Serpens" : {
         "name" : "Serpens",
         "answer" : [102],
         "position" : "16h~18h / 10°~-5°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Sextans" : {
         "name" : "Sextans",
         "answer" : [102],
         "position" : "10h / 0°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : 8
     },
     "TriangulumAustrale" : {
         "name" : "TriangulumAustrale",
         "answer" : [102],
         "position" : "16h / -65°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "Vulpecula" : {
         "name" : "Vulpecula",
         "answer" : [102],
         "position" : "20h / 25°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : 8
     },
     "CanisMajor" : {
         "name" : "CanisMajor",
