@@ -201,14 +201,14 @@
     },
     "Eridanus" : {
         "name" : "Eridanus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415, 1516, 1617, 1718, 1819],
         "position" : "3h / -29°",
         "season" : "LKWinter",
         "catagory" : 4
     },
     "PiscisAustrinus" : {
         "name" : "PiscisAustrinus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 107],
         "position" : "22h / -30°",
         "season" : "LKAutumn",
         "catagory" : 4
