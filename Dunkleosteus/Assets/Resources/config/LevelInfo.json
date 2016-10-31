@@ -355,7 +355,7 @@
     },
     "Hydrus" : {
         "name" : "Hydrus",
-        "answer" : [102],
+        "answer" : [102, 203, 103],
         "position" : "3h / -70°",
         "season" : "LKWinter",
         "catagory" : 6
@@ -565,63 +565,63 @@
     },
     "Andromeda" : {
         "name" : "Andromeda",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 405, 506, 607, 708, 709, 910, 1011, 1112, 1213, 914, 1415],
         "position" : "1h / 38°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Auriga" : {
         "name" : "Auriga",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 205, 506, 607, 107],
         "position" : "6h / 40°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Cassiopeia" : {
         "name" : "Cassiopeia",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405],
         "position" : "1h / 60°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Cepheus" : {
         "name" : "Cepheus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 407, 708, 809, 309],
         "position" : "22h / 70°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Cetus" : {
         "name" : "Cetus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 105, 306, 607, 708, 709, 910, 1011, 912, 1213, 1314, 1415],
         "position" : "1h / -11°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Lacerta" : {
         "name" : "Lacerta",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708],
         "position" : "22h / 45°",
         "season" : "LKAutumn",
         "catagory" : 5
     },
     "Pegasus" : {
         "name" : "Pegasus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 508, 809, 911, 1112, 810, 1013],
         "position" : "23h / 15°",
         "season" : "LKAutumn",
         "catagory" : 5
     },
     "Perseus" : {
         "name" : "Perseus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 513, 1314, 1415, 316, 1617, 1718, 1819, 1920],
         "position" : "3h / 45°",
         "season" : "LKWinter",
         "catagory" : 5
     },
     "Triangulum" : {
         "name" : "Triangulum",
-        "answer" : [102],
+        "answer" : [102, 203, 103],
         "position" : "2h / 30°",
         "season" : "LKWinter",
         "catagory" : 5
