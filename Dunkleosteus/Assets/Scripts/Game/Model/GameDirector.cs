@@ -81,7 +81,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Norma");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Aquarius");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -99,7 +99,7 @@ public class GameDirector : MonoBehaviour {
         }
         currentCatagory = this.GetCatagoryIndex(currentLevel);
         // Init Coin
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 100);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10000);
         
         Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
@@ -168,12 +168,14 @@ public class GameDirector : MonoBehaviour {
 
     public void SelectLevel(string level)
     {
+        Debug.Log("GameDirector.SelectLevel level = " + level);
      //   string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         if (GetLevelState(level) < 0) {
             return;
         }
         // Check the level is availiable
         currentLevel = level;
+        Debug.Log("GameDirector.SelectLevel currentlevel = " + currentLevel);
         _fsm.PerformTransition(StateTransition.ChoseLevel);
     }
 
