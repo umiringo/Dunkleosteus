@@ -334,21 +334,21 @@
     },
     "Chamaeleon" : {
         "name" : "Chamaeleon",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 305],
         "position" : "11h / -80°",
         "season" : "LKSpring",
         "catagory" : 6
     },
     "Dorado" : {
         "name" : "Dorado",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "5h / -65°",
         "season" : "LKWinter",
         "catagory" : 6
     },
     "Grus" : {
         "name" : "Grus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 305, 506, 307, 708, 809],
         "position" : "22h / -47°",
         "season" : "LKWinter",
         "catagory" : 6
@@ -376,7 +376,7 @@
     },
     "Pavo" : {
         "name" : "Pavo",
-        "answer" : [102],
+        "answer" : [102, 203, 204, 209, 405, 506, 607, 708, 809, 409],
         "position" : "20h / -65°",
         "season" : "LKSummer",
         "catagory" : 6
