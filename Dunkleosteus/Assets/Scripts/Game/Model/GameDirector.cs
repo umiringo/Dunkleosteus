@@ -8,6 +8,7 @@ public class GameDirector : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
+    private Dictionary<string, int> catagoryHash = new Dictionary<string, int>();
     private int currentCatagory;
     private string currentLevel; // 当前正在进行的关卡
     private int coin;
@@ -71,9 +72,14 @@ public class GameDirector : MonoBehaviour {
     private void InitLevelList()
     {
         // Build levelname to index Hash
-        JSONArray ja = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
-        for(int i = 0; i < ja.Count; ++i) {
-            levelHash.Add(ja[i], i);
+        JSONArray jaLevel = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
+        for(int i = 0; i < jaLevel.Count; ++i) {
+            levelHash.Add(jaLevel[i], i);
+        }
+
+        JSONArray jaCatagory = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory)
+        for(int i = 0; i < jaCatagory.Count; ++i) {
+            catagoryHash.Add(jaCatagory[i], i + 1);
         }
     }
 
