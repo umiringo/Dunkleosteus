@@ -327,7 +327,7 @@
     },
     "Apus" : {
         "name" : "Apus",
-        "answer" : [102],
+        "answer" : [102, 103, 204],
         "position" : "16h / -76°",
         "season" : "LKSummer",
         "catagory" : 6
@@ -362,14 +362,14 @@
     },
     "Indus" : {
         "name" : "Indus",
-        "answer" : [102],
+        "answer" : [102, 203, 305, 304],
         "position" : "22h / -60°",
         "season" : "LKAutumn",
         "catagory" : 6
     },
     "Musca" : {
         "name" : "Musca",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 304, 205, 506],
         "position" : "12h / -70°",
         "season" : "LKSpring",
         "catagory" : 6
@@ -383,21 +383,21 @@
     },
     "Phoenix" : {
         "name" : "Phoenix",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 106, 306, 307],
         "position" : "0h / -50°",
         "season" : "LKWinter",
         "catagory" : 6
     },
     "Tucana" : {
         "name" : "Tucana",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 106],
         "position" : "0h / -65°",
         "season" : "LKWinter",
         "catagory" : 6
     },
     "Volans" : {
         "name" : "Volans",
-        "answer" : [102],
+        "answer" : [102, 104, 203, 305, 506, 405],
         "position" : "8h / -70°",
         "season" : "LKSpring",
         "catagory" : 6

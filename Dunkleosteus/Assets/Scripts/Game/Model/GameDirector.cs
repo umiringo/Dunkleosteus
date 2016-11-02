@@ -77,7 +77,7 @@ public class GameDirector : MonoBehaviour {
             levelHash.Add(jaLevel[i], i);
         }
 
-        JSONArray jaCatagory = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory)
+        JSONArray jaCatagory = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory);
         for(int i = 0; i < jaCatagory.Count; ++i) {
             catagoryHash.Add(jaCatagory[i], i + 1);
         }
@@ -87,7 +87,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Grus");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Perseus");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
