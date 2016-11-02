@@ -106,8 +106,6 @@ public class GameDirector : MonoBehaviour {
         currentCatagory = this.GetCatagoryIndex(currentLevel);
         // Init Coin
         coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10000);
-        
-        Debug.Log("GameDirector.LoadPlayerPrefs: currentLevel = " + currentLevel + " | currentCatagory = " + currentCatagory);
     }
 
     private void InitLocalization()
@@ -174,14 +172,12 @@ public class GameDirector : MonoBehaviour {
 
     public void SelectLevel(string level)
     {
-        Debug.Log("GameDirector.SelectLevel level = " + level);
      //   string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         if (GetLevelState(level) < 0) {
             return;
         }
         // Check the level is availiable
         currentLevel = level;
-        Debug.Log("GameDirector.SelectLevel currentlevel = " + currentLevel);
         _fsm.PerformTransition(StateTransition.ChoseLevel);
     }
 
@@ -223,7 +219,8 @@ public class GameDirector : MonoBehaviour {
     public int GetCatagoryIndex(string level)
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
-        return levelInfoJo["catagory"].AsInt;
+        string catagory = levelInfoJo["catagory"];
+        return catagoryHash[catagory];
     }
 
     public int GetNextLevelCatagoryIndex(string level)
@@ -243,10 +240,7 @@ public class GameDirector : MonoBehaviour {
     public string GetCatagoryString(string level)
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
-        int catagory = levelInfoJo["catagory"].AsInt;
-
-        JSONNode catagoryInfo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, ConfigKey.Catagory);
-        return catagoryInfo[catagory - 1];
+        return levelInfoJo["catagory"];
     }
 
     public string GetCatagoryString(int index) 

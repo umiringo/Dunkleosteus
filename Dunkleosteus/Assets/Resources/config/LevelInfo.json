@@ -15,615 +15,615 @@
         "answer" : [102, 203, 104, 405, 106, 607, 708, 809, 810, 1011, 912, 1213, 1314, 1114],
         "position" : "23h / -15°",
         "season" : "LKAutumn",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Aries" : {
         "name" : "Aries",
         "answer" : [102, 203, 304],
         "position" : "3h / 20°",
         "season" : "LKAutumn",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Cancer" : {
         "name" : "Cancer",
         "answer" : [102, 203, 304, 506, 607, 206, 307],
         "position" : "9h / 30°",
         "season" : "LKSpring",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Capricornus" : {
         "name" : "Capricornus",
         "answer" : [102, 203, 304, 405, 506, 207, 708, 809, 910, 1011, 511],
         "position" : "23h / -20°",
         "season" : "LKAutumn",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Gemini" : {
         "name" : "Gemini",
         "answer" : [102, 203, 204, 305, 506, 107, 708, 809, 810, 1011, 1112],
         "position" : "7h / 22°",
         "season" : "LKWinter",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Leo" : {
         "name" : "Leo",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 611, 1112, 1213, 713, 1314, 1415, 1516],
         "position" : "11h / 15°",
         "season" : "LKSpring",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Libra" : {
         "name" : "Libra",
         "answer" : [102, 203, 204, 305, 405, 506],
         "position" : "15h / -14°",
         "season" : "LKSummer",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Ophiuchus" : {
         "name" : "Ophiuchus",
         "answer" : [102, 203, 304, 405, 506, 507, 708, 809, 710, 1011, 1112, 112],
         "position" : "17h / -5°",
         "season" : "LKSummer",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Pisces" : {
         "name" : "Pisces",
         "answer" : [102, 203, 304, 405, 506, 607, 108, 809, 910, 1011, 1112, 1213, 1314, 1215, 1516, 1617, 1417, 1718],
         "position" : " 0h / 10°",
         "season" : "LKAutumn",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Sagittarius" : {
         "name" : "Sagittarius",
         "answer" : [102, 203, 304, 305, 506, 607, 708, 709, 910, 911, 1112, 513, 1314, 1415, 516, 1617, 1718],
         "position" : "19h / -25°",
         "season" : "LKSummer",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Scorpius" : {
         "name" : "Scorpius",
         "answer" : [102, 203, 304, 205, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415],
         "position" : "17h / -40°",
         "season" : "LKSummer",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Taurus" : {
         "name" : "Taurus",
         "answer" : [102, 203, 304, 405, 506, 607, 508, 809, 910, 1011, 1112, 312, 313, 1314, 1415, 1516, 1217, 1718],
         "position" : "4h / 18°",
         "season" : "LKWinter",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Virgo" : {
         "name" : "Virgo",
         "answer" : [102, 203, 304, 405, 506, 407, 809, 910, 410, 1011, 1112, 1213, 1114, 1115],
         "position" : "13h / -2°",
         "season" : "LKSpring",
-        "catagory" : 1
+        "catagory" : "Zodiac"
     },
     "Bootes" : {
         "name" : "Bootes",
         "answer" : [102, 203, 304, 405, 506, 207, 408, 709, 809, 910, 1011, 912, 1213],
         "position" : "14h / 30°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "Camelopardalis" : {
         "name" : "Camelopardalis",
         "answer" : [102, 203, 304, 204, 305, 406, 607],
         "position" : "5h / 70°",
         "season" : "LKWinter",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "CanesVenatici" : {
         "name" : "CanesVenatici",
         "answer" : [203],
         "position" : "13h / 40°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "ComaBerenices" : {
         "name" : "ComaBerenices",
         "answer" : [102, 203],
         "position" : "13h / 22°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "CoronaBorealis" : {
         "name" : "CoronaBorealis",
         "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "15h / 16°",
         "season" : "LKSummer",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "Draco" : {
         "name" : "Draco",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1215, 1314, 1415],
         "position" : "17h / 65°",
         "season" : "LKSummer",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "LeoMinor" : {
         "name" : "LeoMinor",
         "answer" : [102, 203, 304],
         "position" : "9h / 11°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "Lynx" : {
         "name" : "Lynx",
         "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "8h / 45°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "UrsaMajor" : {
         "name" : "UrsaMajor",
         "answer" : [102, 203, 304, 405, 506, 607, 407, 708, 809, 910, 810, 811, 1112, 1213, 1314, 1415, 516, 1216, 1617, 1718, 1819, 1620],
         "position" : "11h / 55°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "UrsaMinor" : {
         "name" : "UrsaMinor",
         "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "15h / 78°",
         "season" : "LKSpring",
-        "catagory" : 3
+        "catagory" : "UrsaMajor"
     },
     "Carina" : {
         "name" : "Carina",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 709, 308, 110, 910],
         "position" : "8h / -62°",
         "season" : "LKSpring",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Columba" : {
         "name" : "Columba",
         "answer" : [102, 203, 304, 405, 506, 407],
         "position" : "5h / -34°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Delphinus" : {
         "name" : "Delphinus",
         "answer" : [102, 103, 204, 304, 405],
         "position" : "21h / 14°",
         "season" : "LKSummer",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Equuleus" : {
         "name" : "Equuleus",
         "answer" : [102, 203, 204],
         "position" : "21h / 10°",
         "season" : "LKAutumn",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Eridanus" : {
         "name" : "Eridanus",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415, 1516, 1617, 1718, 1819],
         "position" : "3h / -29°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "PiscisAustrinus" : {
         "name" : "PiscisAustrinus",
         "answer" : [102, 203, 304, 405, 506, 607, 107],
         "position" : "22h / -30°",
         "season" : "LKAutumn",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Puppis" : {
         "name" : "Puppis",
         "answer" : [102, 103, 204, 304, 305, 405, 408, 506, 607, 708],
         "position" : "7h / -32°",
         "season" : "LKWinter",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Pyxis" : {
         "name" : "Pyxis",
         "answer" : [102, 203],
         "position" : "9h / -30°",
         "season" : "LKSpring",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Vela" : {
         "name" : "Vela",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 109],
         "position" : "9h / -50°",
         "season" : "LKSpring",
-        "catagory" : 4
+        "catagory" : "HeavenlyWaters"
     },
     "Antlia" : {
         "name" : "Antlia",
         "answer" : [102],
         "position" : "9h / 11°",
         "season" : "LKSpring",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Caelum" : {
         "name" : "Caelum",
         "answer" : [102],
         "position" : "5h / -38°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Circinus" : {
         "name" : "Circinus",
         "answer" : [102],
         "position" : "15h / -63°",
         "season" : "LKSummer",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Fornax" : {
         "name" : "Fornax",
         "answer" : [102],
         "position" : "3h / -32°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Horologium" : {
         "name" : "Horologium",
         "answer" : [102],
         "position" : "3h / -60°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Mensa" : {
         "name" : "Mensa",
         "answer" : [102],
         "position" : "5h / -77°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Microscopium" : {
         "name" : "Microscopium",
         "answer" : [102],
         "position" : "21h / -36°",
         "season" : "LKAutumn",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Norma" : {
         "name" : "Norma",
         "answer" : [102],
         "position" : "16h / -50°",
         "season" : "LKSummer",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Octans" : {
         "name" : "Octans",
         "answer" : [102],
         "position" : "22h / -90°",
         "season" : "LKAutumn",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Pictor" : {
         "name" : "Pictor",
         "answer" : [102],
         "position" : "6h / -52°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Reticulum" : {
         "name" : "Reticulum",
         "answer" : [102],
         "position" : "4h / -60°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Sculptor" : {
         "name" : "Sculptor",
         "answer" : [102],
         "position" : "0h / -30°",
         "season" : "LKWinter",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Telescopium" : {
         "name" : "Telescopium",
         "answer" : [102],
         "position" : "19h / -50°",
         "season" : "LKSummer",
-        "catagory" : 7
+        "catagory" : "LaCaille"
     },
     "Apus" : {
         "name" : "Apus",
         "answer" : [102, 103, 204],
         "position" : "16h / -76°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Chamaeleon" : {
         "name" : "Chamaeleon",
         "answer" : [102, 103, 204, 305],
         "position" : "11h / -80°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Dorado" : {
         "name" : "Dorado",
         "answer" : [102, 203, 304],
         "position" : "5h / -65°",
         "season" : "LKWinter",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Grus" : {
         "name" : "Grus",
         "answer" : [102, 203, 304, 305, 506, 307, 708, 809],
         "position" : "22h / -47°",
         "season" : "LKWinter",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Hydrus" : {
         "name" : "Hydrus",
         "answer" : [102, 203, 103],
         "position" : "3h / -70°",
         "season" : "LKWinter",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Indus" : {
         "name" : "Indus",
         "answer" : [102, 203, 305, 304],
         "position" : "22h / -60°",
         "season" : "LKAutumn",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Musca" : {
         "name" : "Musca",
         "answer" : [102, 103, 204, 304, 205, 506],
         "position" : "12h / -70°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Pavo" : {
         "name" : "Pavo",
         "answer" : [102, 203, 204, 209, 405, 506, 607, 708, 809, 409],
         "position" : "20h / -65°",
         "season" : "LKSummer",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Phoenix" : {
         "name" : "Phoenix",
         "answer" : [102, 203, 304, 405, 106, 306, 307],
         "position" : "0h / -50°",
         "season" : "LKWinter",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Tucana" : {
         "name" : "Tucana",
         "answer" : [102, 203, 304, 405, 506, 106],
         "position" : "0h / -65°",
         "season" : "LKWinter",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Volans" : {
         "name" : "Volans",
         "answer" : [102, 104, 203, 305, 506, 405],
         "position" : "8h / -70°",
         "season" : "LKSpring",
-        "catagory" : 6
+        "catagory" : "Bayer"
     },
     "Aquila" : {
         "name" : "Aquila",
         "answer" : [102],
         "position" : "20h / 5°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Ara" : {
         "name" : "Ara",
         "answer" : [102],
         "position" : "17h / -54°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Centaurus" : {
         "name" : "Centaurus",
         "answer" : [102],
         "position" : "13h / -50°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "CoronaAustralis" : {
         "name" : "CoronaAustralis",
         "answer" : [102],
         "position" : "19h / -40°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Corvus" : {
         "name" : "Corvus",
         "answer" : [102],
         "position" : "12h / -20°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Crater" : {
         "name" : "Crater",
         "answer" : [102],
         "position" : "11h / -16°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Crux" : {
         "name" : "Crux",
         "answer" : [102],
         "position" : "12h / -60°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Cygnus" : {
         "name" : "Cygnus",
         "answer" : [102],
         "position" : "23h / -42°",
         "season" : "LKAutumn",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Hercules" : {
         "name" : "Hercules",
         "answer" : [102],
         "position" : "17h / 30°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Hydra" : {
         "name" : "Hydra",
         "answer" : [102],
         "position" : "10h / -20°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Lupus" : {
         "name" : "Lupus",
         "answer" : [102],
         "position" : "15h / -43°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Lyra" : {
         "name" : "Lyra",
         "answer" : [102],
         "position" : "19h / 40°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Sagitta" : {
         "name" : "Sagitta",
         "answer" : [102, 203, 204],
         "position" : "20h / 19°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Scutum" : {
         "name" : "Scutum",
         "answer" : [102],
         "position" : "19h / -10°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Serpens" : {
         "name" : "Serpens",
         "answer" : [102],
         "position" : "16h~18h / 10°~-5°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Sextans" : {
         "name" : "Sextans",
         "answer" : [102],
         "position" : "10h / 0°",
         "season" : "LKSpring",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "TriangulumAustrale" : {
         "name" : "TriangulumAustrale",
         "answer" : [102],
         "position" : "16h / -65°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "Vulpecula" : {
         "name" : "Vulpecula",
         "answer" : [102],
         "position" : "20h / 25°",
         "season" : "LKSummer",
-        "catagory" : 8
+        "catagory" : "Hercules"
     },
     "CanisMajor" : {
         "name" : "CanisMajor",
         "answer" : [102, 103, 203, 304, 405, 506, 407, 708, 509, 910, 811, 1011, 1014, 1015, 1516, 812, 1213],
         "position" : "7h / -20°",
         "season" : "LKWinter",
-        "catagory" : 2
+        "catagory" : "Orion"
     },
     "CanisMinor" : {
         "name" : "CanisMinor",
         "answer" : [102],
         "position" : "8h / 5°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : "Orion"
     },
     "Lepus" : {
         "name" : "Lepus",
         "answer" : [103, 203, 304, 405, 506, 407, 708, 409, 910, 709],
         "position" : "6h / -20°",
         "season" : "LKWinter",
-        "catagory" : 2
+        "catagory" : "Orion"
     },
     "Monoceros" : {
         "name" : "Monoceros",
         "answer" : [102, 203, 204, 205, 506, 607],
         "position" : "7h / -8°",
         "season" : "LKSpring",
-        "catagory" : 2
+        "catagory" : "Orion"
     },
     "Orion" : {
         "name" : "Orion",
         "answer" : [102, 203, 304, 405, 506, 407, 708, 809, 609, 710, 911, 1011, 612, 1213, 1314, 1415, 1516],
         "position" : "5h / 5°",
         "season" : "LKWinter",
-        "catagory" : 2
+        "catagory" : "Orion"
     },
     "Andromeda" : {
         "name" : "Andromeda",
         "answer" : [102, 203, 204, 405, 506, 607, 708, 709, 910, 1011, 1112, 1213, 914, 1415],
         "position" : "1h / 38°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Auriga" : {
         "name" : "Auriga",
         "answer" : [102, 203, 304, 205, 506, 607, 107],
         "position" : "6h / 40°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Cassiopeia" : {
         "name" : "Cassiopeia",
         "answer" : [102, 203, 304, 405],
         "position" : "1h / 60°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Cepheus" : {
         "name" : "Cepheus",
         "answer" : [102, 203, 304, 405, 506, 407, 708, 809, 309],
         "position" : "22h / 70°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Cetus" : {
         "name" : "Cetus",
         "answer" : [102, 203, 304, 405, 105, 306, 607, 708, 709, 910, 1011, 912, 1213, 1314, 1415],
         "position" : "1h / -11°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Lacerta" : {
         "name" : "Lacerta",
         "answer" : [102, 203, 304, 405, 506, 607, 708],
         "position" : "22h / 45°",
         "season" : "LKAutumn",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Pegasus" : {
         "name" : "Pegasus",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 508, 809, 911, 1112, 810, 1013],
         "position" : "23h / 15°",
         "season" : "LKAutumn",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Perseus" : {
         "name" : "Perseus",
         "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 513, 1314, 1415, 316, 1617, 1718, 1819, 1920],
         "position" : "3h / 45°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
     "Triangulum" : {
         "name" : "Triangulum",
         "answer" : [102, 203, 103],
         "position" : "2h / 30°",
         "season" : "LKWinter",
-        "catagory" : 5
+        "catagory" : "Perseus"
     },
 }

@@ -49,6 +49,7 @@ namespace GlobalDefines
     {
         public static readonly string LatestLevel = "LatestLevel";
         public static readonly string Coin = "Coin";
+        public static readonly string Language = "SChinese";
     }
 
     public class DefineString
