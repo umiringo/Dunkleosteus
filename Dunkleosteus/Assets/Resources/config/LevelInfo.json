@@ -236,35 +236,35 @@
     },
     "Antlia" : {
         "name" : "Antlia",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "9h / 11°",
         "season" : "LKSpring",
         "catagory" : "LaCaille"
     },
     "Caelum" : {
         "name" : "Caelum",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "5h / -38°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Circinus" : {
         "name" : "Circinus",
-        "answer" : [102],
+        "answer" : [102, 103],
         "position" : "15h / -63°",
         "season" : "LKSummer",
         "catagory" : "LaCaille"
     },
     "Fornax" : {
         "name" : "Fornax",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "3h / -32°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Horologium" : {
         "name" : "Horologium",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506],
         "position" : "3h / -60°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
