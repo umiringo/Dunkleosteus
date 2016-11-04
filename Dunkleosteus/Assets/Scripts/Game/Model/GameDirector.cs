@@ -87,7 +87,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Microscopium");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Pavo");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);

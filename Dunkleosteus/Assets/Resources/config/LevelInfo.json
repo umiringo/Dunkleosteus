@@ -271,56 +271,56 @@
     },
     "Mensa" : {
         "name" : "Mensa",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 106],
         "position" : "5h / -77°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Microscopium" : {
         "name" : "Microscopium",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405],
         "position" : "21h / -36°",
         "season" : "LKAutumn",
         "catagory" : "LaCaille"
     },
     "Norma" : {
         "name" : "Norma",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 304, 405, 506],
         "position" : "16h / -50°",
         "season" : "LKSummer",
         "catagory" : "LaCaille"
     },
     "Octans" : {
         "name" : "Octans",
-        "answer" : [102],
+        "answer" : [102, 203, 103],
         "position" : "22h / -90°",
         "season" : "LKAutumn",
         "catagory" : "LaCaille"
     },
     "Pictor" : {
         "name" : "Pictor",
-        "answer" : [102],
+        "answer" : [102, 203, 304],
         "position" : "6h / -52°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Reticulum" : {
         "name" : "Reticulum",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 105],
         "position" : "4h / -60°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Sculptor" : {
         "name" : "Sculptor",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 106],
         "position" : "0h / -30°",
         "season" : "LKWinter",
         "catagory" : "LaCaille"
     },
     "Telescopium" : {
         "name" : "Telescopium",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405],
         "position" : "19h / -50°",
         "season" : "LKSummer",
         "catagory" : "LaCaille"
