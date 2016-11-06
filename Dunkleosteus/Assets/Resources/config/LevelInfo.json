@@ -404,14 +404,14 @@
     },
     "Aquila" : {
         "name" : "Aquila",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 305, 506, 607, 508, 809, 910],
         "position" : "20h / 5°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
     },
     "Ara" : {
         "name" : "Ara",
-        "answer" : [102],
+        "answer" : [102, 103, 304, 405, 506, 607, 708, 208],
         "position" : "17h / -54°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
@@ -425,35 +425,35 @@
     },
     "CoronaAustralis" : {
         "name" : "CoronaAustralis",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607],
         "position" : "19h / -40°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
     },
     "Corvus" : {
         "name" : "Corvus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 104, 305],
         "position" : "12h / -20°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
     },
     "Crater" : {
         "name" : "Crater",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 108, 407],
         "position" : "11h / -16°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
     },
     "Crux" : {
         "name" : "Crux",
-        "answer" : [102],
+        "answer" : [103, 204],
         "position" : "12h / -60°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
     },
     "Cygnus" : {
         "name" : "Cygnus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 507, 708, 509, 910, 1011],
         "position" : "23h / -42°",
         "season" : "LKAutumn",
         "catagory" : "Hercules"
@@ -474,14 +474,14 @@
     },
     "Lupus" : {
         "name" : "Lupus",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 709, 310, 1011, 1112, 612, 1213, 1314],
         "position" : "15h / -43°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
     },
     "Lyra" : {
         "name" : "Lyra",
-        "answer" : [102],
+        "answer" : [102, 103, 204, 304, 406, 506],
         "position" : "19h / 40°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
@@ -495,7 +495,7 @@
     },
     "Scutum" : {
         "name" : "Scutum",
-        "answer" : [102],
+        "answer" : [102, 203],
         "position" : "19h / -10°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
@@ -509,21 +509,21 @@
     },
     "Sextans" : {
         "name" : "Sextans",
-        "answer" : [102],
+        "answer" : [102, 103],
         "position" : "10h / 0°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
     },
     "TriangulumAustrale" : {
         "name" : "TriangulumAustrale",
-        "answer" : [102],
+        "answer" : [102, 203, 103],
         "position" : "16h / -65°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
     },
     "Vulpecula" : {
         "name" : "Vulpecula",
-        "answer" : [102],
+        "answer" : [102, 203],
         "position" : "20h / 25°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
