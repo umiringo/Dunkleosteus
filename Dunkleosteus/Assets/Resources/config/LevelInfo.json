@@ -502,7 +502,7 @@
     },
     "Serpens" : {
         "name" : "Serpens",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 708, 809, 910, 1011, 1112, 1213, 1113],
         "position" : "16h~18h / 10°~-5°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
