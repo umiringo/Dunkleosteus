@@ -7,7 +7,7 @@
                       "Triangulum", "Cassiopeia", "Auriga", "Cepheus", "Lacerta", "Pegasus", "Andromeda", "Cetus", "Perseus",
                       "Hydrus", "Apus", "Dorado", "Chamaeleon", "Indus", "Musca", "Volans", "Tucana", "Phoenix", "Grus", "Pavo",
                       "Circinus", "Octans", "Antlia", "Caelum", "Fornax", "Pictor", "Reticulum", "Telescopium", "Microscopium", "Horologium", "Mensa", "Sculptor", "Norma",
-                      "Scutum", "Sextans", "TriangulumAustrale", "Vulpecula", "Crux", "Sagitta", "Corvus", "Lyra", "CoronaAustralis", "Crater", "Ara", "Aquila", "Cygnus", "Lupus", "Serpens", "Hercules", "Hydra", "Centaurus"
+                      "Scutum", "Sextans", "TriangulumAustrale", "Vulpecula", "Crux", "Sagitta", "Corvus", "Lyra", "CoronaAustralis", "Crater", "Ara", "Aquila", "Cygnus", "Lupus", "Serpens", "Hydra", "Hercules", "Centaurus"
                     ],
 
     "Aquarius" : {
@@ -418,7 +418,7 @@
     },
     "Centaurus" : {
         "name" : "Centaurus",
-        "answer" : [102],
+        "answer" : [102, 103, 304, 204, 305, 508, 809, 910, 506, 607, 511, 1112, 1213, 1314, 1115, 1516, 1617, 1718, 1819],
         "position" : "13h / -50°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
@@ -460,14 +460,14 @@
     },
     "Hercules" : {
         "name" : "Hercules",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 414, 611, 1112, 1213, 1218, 1219, 1315, 1314, 1516, 1617],
         "position" : "17h / 30°",
         "season" : "LKSummer",
         "catagory" : "Hercules"
     },
     "Hydra" : {
         "name" : "Hydra",
-        "answer" : [102],
+        "answer" : [102, 203, 304, 405, 506, 607, 708, 809, 910, 1011, 1112, 1213, 1314, 1415, 1416],
         "position" : "10h / -20°",
         "season" : "LKSpring",
         "catagory" : "Hercules"
