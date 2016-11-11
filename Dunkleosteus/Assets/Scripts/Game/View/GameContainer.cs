@@ -12,7 +12,8 @@ public class GameContainer : MonoBehaviour {
     private GameObject triggerGameObject;
     private TweenRotation skyTween;
     private TweenRotation detailTween;
-    
+    private UIWidget textureWidget;
+
     public float duration = 1.0f;
     
     private bool detailTriggered;
@@ -57,6 +58,9 @@ public class GameContainer : MonoBehaviour {
 
         // Set levelPlay
         levelPlayModel = GameObject.Find("UI Root/PanelLevel").GetComponent<LevelPlayModel>();
+
+        // Set texture widget
+        textureWidget = skyGameObject.transform.FindChild("StarChart").gameObject.GetComponent<UIWidget>();
 	}
 	
 	// Update is called once per frame
@@ -67,6 +71,7 @@ public class GameContainer : MonoBehaviour {
 
     public void GameWin()
     {
+        textureWidget.alpha = 0;
         // Unable star touch
         SwitchStarsBoxCollider(false);
         // Start scale
@@ -80,6 +85,15 @@ public class GameContainer : MonoBehaviour {
         }
     }
 
+    public void ShowPreview()
+    {
+        if (textureWidget.alpha <= 0) {
+            textureWidget.alpha = 1;
+        }
+        else {
+            textureWidget.alpha = 0;
+        }
+    }
     ///////////////////////////////////////////////////////////////
     // delegate                                                  //
     ///////////////////////////////////////////////////////////////
