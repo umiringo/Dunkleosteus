@@ -270,6 +270,11 @@ public class GameDirector : MonoBehaviour {
         return levelSelectInfo[index];
     }
 
+    public int GetLevelIndex(string levelName)
+    {
+        return levelHash[levelName];
+    }
+
     public bool FinishLevel(string levelName)
     {
        // string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");

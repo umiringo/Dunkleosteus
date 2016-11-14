@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GlobalDefines;
+
 public class LevelSelectView : MonoBehaviour {
 
     public GameDirector director;
@@ -13,11 +14,14 @@ public class LevelSelectView : MonoBehaviour {
     private Dictionary<string, GameObject> catagoryHash;
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
+    private List<GameObject> levelList;
 
     void Awake() {
         catagoryHash = new Dictionary<string, GameObject>();
         centerOnChild = catagoryTable.GetComponent<UICenterOnChild>();
         centerOnChild.onCenter = this.AfterCenter;
+
+        levelList = new List<GameObject>();
     }
 
 	// Use this for initialization
@@ -96,4 +100,87 @@ public class LevelSelectView : MonoBehaviour {
         // Coin
         labelCoin.text = director.GetCoin().ToString();
     }
+
+
+    public void _Show(string lastestlevel, string currentLevel)
+    {
+        foreach(Transform child in levelContainer) {
+            LevelView levelView = child.gameObject.GetComponent<LevelView>();
+            int state = director.GetLevelState(levelView.levelName);
+            if(state == -1) {
+                levelView.Show(LevelState.Unabled);
+            } else if(state == 1) {
+                levelView.Show(LevelState.Finished);
+                levelList.Add(levelView.gameObject);
+            } else if(state == 0) {
+                levelView.Show(LevelState.Current);
+                levelList.Add(levelView.gameObject);
+            }
+        }
+
+        // Sort list
+        levelList.Sort( (x, y) => director.GetLevelIndex(x.GetComponent<LevelView>.levelName).CompareTo(director.GetLevelIndex(y.GetComponent<LevelView>.levelName));
+        
+        // AddLine
+    
+    }
+
+    /*
+    public void AddLevelLine(Transform beginTransform, Transform endTransform)
+    {
+        GameObject linkedLine = Instantiate(_lineTemplate);
+        linkedLine.transform.parent = levelContainer.transform;
+        UISprite lineSprite = linkedLine.GetComponent<UISprite>();
+        lineSprite.pivot = UIWidget.Pivot.Center;
+        lineSprite.depth = DefineNumber.LineDepth;
+        // Modify pivot
+        if (beginTransform.position.x > endTransform.position.x) {
+            if (beginTransform.position.y > endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.TopRight;
+            }
+            else if (beginTransform.position.y < endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.BottomRight;
+            }
+            else {
+                lineSprite.pivot = UIWidget.Pivot.Right;
+            }
+        }
+        else if (beginTransform.position.x < endTransform.position.x) {
+            if (beginTransform.position.y > endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.TopLeft;
+            }
+            else if (beginTransform.position.y < endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.BottomLeft;
+            }
+            else {
+                lineSprite.pivot = UIWidget.Pivot.Left;
+            }
+        }
+        else {
+            if (beginTransform.position.y > endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.Top;
+            }
+            else if (beginTransform.position.y < endTransform.position.y) {
+                lineSprite.pivot = UIWidget.Pivot.Bottom;
+            }
+            else {
+                lineSprite.pivot = UIWidget.Pivot.Center;
+            }
+        }
+        float angle = this.CaculateAngle(beginTransform, endTransform);
+        linkedLine.transform.position = beginTransform.position;
+        linkedLine.transform.rotation = Quaternion.Euler(0, 0, angle);
+        linkedLine.transform.localScale = new Vector3(1, 1, 1);
+
+        float distance = Vector3.Distance(beginTransform.position, endTransform.position);
+        float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
+        float containerScale = _gameContainer.transform.localScale.x;
+        int width = (int)(distance / scale / containerScale);
+
+        //modify line width
+
+        linkedLine.SetActive(true)
+    }
+    */
+    
 }
