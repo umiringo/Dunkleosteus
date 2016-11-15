@@ -101,7 +101,7 @@ public class LevelSelectView : MonoBehaviour {
         labelCoin.text = director.GetCoin().ToString();
     }
 
-
+/*
     public void _Show(string lastestlevel, string currentLevel)
     {
         foreach(Transform child in levelContainer) {
@@ -125,7 +125,6 @@ public class LevelSelectView : MonoBehaviour {
     
     }
 
-    /*
     public void AddLevelLine(Transform beginTransform, Transform endTransform)
     {
         GameObject linkedLine = Instantiate(_lineTemplate);
