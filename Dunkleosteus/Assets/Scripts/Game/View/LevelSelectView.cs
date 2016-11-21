@@ -15,13 +15,15 @@ public class LevelSelectView : MonoBehaviour {
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
     private List<GameObject> levelList;
+    private List<GameObject> levelDuplicateList;
 
     void Awake() {
         catagoryHash = new Dictionary<string, GameObject>();
         centerOnChild = catagoryTable.GetComponent<UICenterOnChild>();
         centerOnChild.onCenter = this.AfterCenter;
-
         levelList = new List<GameObject>();
+        levelDuplicateList = new List<GameObject>();
+        //将占位用的go添加到levelDuplicateList
     }
 
 	// Use this for initialization
@@ -41,6 +43,7 @@ public class LevelSelectView : MonoBehaviour {
             Destroy(catagoryHash[key]);
         }
         catagoryHash.Clear();
+        levelList.Clear();
     }
 
     public void AfterCenter(GameObject centerGo)
@@ -99,6 +102,15 @@ public class LevelSelectView : MonoBehaviour {
 
         // Coin
         labelCoin.text = director.GetCoin().ToString();
+    }
+
+    // Show levels
+    public void _Show(string lastestlevel, string currentLevel)
+    {
+        // 把所有关卡按顺序加入list
+        // 循环显示
+        // 添加连接线
+        // 根据需要来决定占位go的显示
     }
 
 /*
