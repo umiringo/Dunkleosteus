@@ -27,13 +27,11 @@ public class LevelSelectView : MonoBehaviour {
         levelDuplicateList = new List<GameObject>();
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         // 把所有关卡按顺序加入list
-       foreach (Transform child in catagoryScrollView.gameObject.transform)
-       {
-           Debug.Log("child name = " + child.gameObject.name);
-       }
         JSONArray jaLevel = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
         for(int i = 1; i <= jaLevel.Count; ++i) {
             GameObject go = catagoryScrollView.gameObject.transform.Find("Level" + i).gameObject;
+            go.SetActive(true);
+            go.GetComponent<LevelView>().Init(jaLevel[i-1]);
             levelList.Add(go);
         }
         //将占位用的go添加到levelDuplicateList
@@ -77,6 +75,7 @@ public class LevelSelectView : MonoBehaviour {
         // 循环显示
         for(int i = 0; i < levelList.Count; i++) {
             int state = director.GetLevelState(levelList[i].GetComponent<LevelView>().levelName);
+            //Debug.Log("levelName = " + levelList[i].GetComponent<LevelView>().levelName + " | i = " + i + "goName = " + levelList[i].name);
             LevelView levelView = levelList[i].GetComponent<LevelView>();
             if(state == -1) {
                 levelView.Show(LevelState.Unabled);

@@ -12,10 +12,6 @@ public class LevelView : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
-        levelSprite = this.gameObject.GetComponent<UISprite>();
-        label = this.gameObject.transform.FindChild("Label").gameObject;
-        labelUnderline = this.gameObject.transform.FindChild("Label_UnderLine").gameObject;
-        shine = this.gameObject.transform.FindChild("Shine").gameObject;
     }
     
 	void Start () {
@@ -32,6 +28,13 @@ public class LevelView : MonoBehaviour {
 	
 	}
 
+    public void Init(string name) {
+        levelSprite = this.gameObject.GetComponent<UISprite>();
+        label = this.gameObject.transform.Find("Label").gameObject;
+        labelUnderline = this.gameObject.transform.Find("Label_UnderLine").gameObject;
+        shine = this.gameObject.transform.Find("Shine").gameObject;
+        levelName = name;
+    }
     public void Show(LevelState state)
     {
         switch (state) {
