@@ -130,7 +130,7 @@ public class GameDirector : MonoBehaviour {
     {
         panelLevelSelect.SetActive(true);
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        //levelSelectView.Show(latestLevel, currentLevel);
+        levelSelectView.Show(latestLevel, currentLevel);
         //Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
@@ -272,6 +272,9 @@ public class GameDirector : MonoBehaviour {
 
     public int GetLevelIndex(string levelName)
     {
+        if(levelName == "begin") {
+            return -1;
+        }
         return levelHash[levelName];
     }
 

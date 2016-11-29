@@ -5,20 +5,16 @@ public class LevelView : MonoBehaviour {
 
     public string levelName;
     private UISprite levelSprite;
-    private UISprite lineSprite;
+    private GameObject label;
+    private GameObject labelUnderline;
     private GameObject shine;
     private UIButton button;
 	// Use this for initialization
     void Awake()
     {
         levelSprite = this.gameObject.GetComponent<UISprite>();
-        Transform lineChild = this.gameObject.transform.FindChild("Line");
-        if (lineChild == null) {
-            lineSprite = null;
-        }
-        else {
-            lineSprite = lineChild.gameObject.GetComponent<UISprite>();
-        }
+        label = this.gameObject.transform.FindChild("Label").gameObject;
+        labelUnderline = this.gameObject.transform.FindChild("Label_UnderLine").gameObject;
         shine = this.gameObject.transform.FindChild("Shine").gameObject;
     }
     
@@ -42,26 +38,27 @@ public class LevelView : MonoBehaviour {
             case LevelState.Unabled:
                 levelSprite.gameObject.SetActive(false);
                 shine.SetActive(false);
+                label.SetActive(false);
+                labelUnderline.SetActive(false);
                 break;
             case LevelState.Current:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.YellowCircle;
-                lineSprite.gameObject.SetActive(false);
-                if (lineSprite != null) {
-                    lineSprite.spriteName = PathContainer.BlueSmallSquare;
-                }
+                //lineSprite.gameObject.SetActive(false);
                 shine.SetActive(true);
+                label.SetActive(false);
+                labelUnderline.SetActive(false);
                 break;
             case LevelState.Finished:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.BlueCircle;
-                if (lineSprite != null) {
-                    lineSprite.spriteName = PathContainer.BlueSmallSquare;
-                }
                 shine.SetActive(false);
+                label.SetActive(false);
+                labelUnderline.SetActive(false);
                 break;
             default:
                 break;
         }
     }
+
 }
