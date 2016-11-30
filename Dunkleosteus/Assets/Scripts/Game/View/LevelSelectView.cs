@@ -75,7 +75,6 @@ public class LevelSelectView : MonoBehaviour {
         // 循环显示
         for(int i = 0; i < levelList.Count; i++) {
             int state = director.GetLevelState(levelList[i].GetComponent<LevelView>().levelName);
-            //Debug.Log("levelName = " + levelList[i].GetComponent<LevelView>().levelName + " | i = " + i + "goName = " + levelList[i].name);
             LevelView levelView = levelList[i].GetComponent<LevelView>();
             if(state == -1) {
                 levelView.Show(LevelState.Unabled);
@@ -83,21 +82,28 @@ public class LevelSelectView : MonoBehaviour {
                 levelView.Show(LevelState.Finished);
             } else if(state == 0) {
                 levelView.Show(LevelState.Current);
-            } 
+            } else {
+                levelView.Show(LevelState.Spot);
+            }
         }
 
         int index = director.GetLevelIndex(lastestlevel);
         // 根据需要来决定占位go的显示
-        int duplicateNum = index + levelDuplicateList.Count - levelList.Count;
+        int duplicateNum = index + levelDuplicateList.Count - levelList.Count + 1;
         if(duplicateNum < 0) duplicateNum = 0;
         for(int i = 0; i < duplicateNum; i++) {
             levelDuplicateList[i].SetActive(true);
         }
         
         // 添加连接线
-        for(int i = 0; i < index-1; i++) {
+        for(int i = 0; i <= index; i++) {
+            if(i+1 >= levelList.Count) {
+                break;
+            }
             AddLevelLine(levelList[i].transform, levelList[i+1].transform);
         }
+
+        catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
     }
 
     private void HideAllStar()
@@ -115,7 +121,7 @@ public class LevelSelectView : MonoBehaviour {
         GameObject linkedLine = beginTransform.FindChild("Line").gameObject;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
-        lineSprite.depth = DefineNumber.LineDepth;
+        //lineSprite.depth = DefineNumber.LineDepth;
         // Modify pivot
         if (beginTransform.position.x > endTransform.position.x) {
             if (beginTransform.position.y > endTransform.position.y) {

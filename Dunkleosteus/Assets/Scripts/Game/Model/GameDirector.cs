@@ -211,7 +211,10 @@ public class GameDirector : MonoBehaviour {
             return 0;
         }
         if(levelIndex - latestIndex > 1) {
-            return -1;
+            if(levelIndex - latestIndex > 4) {
+                return -1;
+            }
+            return levelIndex - latestIndex;
         }
         return 1;
     }

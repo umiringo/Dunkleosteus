@@ -59,6 +59,13 @@ public class LevelView : MonoBehaviour {
                 label.SetActive(false);
                 labelUnderline.SetActive(false);
                 break;
+            case LevelState.Spot:
+                levelSprite.gameObject.SetActive(true);
+                levelSprite.spriteName = PathContainer.SpotSquare;
+                shine.SetActive(false);
+                label.SetActive(false);
+                labelUnderline.SetActive(false);
+                break;
             default:
                 break;
         }
