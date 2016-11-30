@@ -103,7 +103,9 @@ public class LevelSelectView : MonoBehaviour {
             AddLevelLine(levelList[i].transform, levelList[i+1].transform);
         }
 
-        catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
+        if(index > 10) {
+            catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
+        }
     }
 
     private void HideAllStar()
