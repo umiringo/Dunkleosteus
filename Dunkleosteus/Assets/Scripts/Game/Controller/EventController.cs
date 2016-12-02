@@ -43,7 +43,6 @@ public class EventController : MonoBehaviour {
 
     public void OnSelectLevel(string level)
     {
-        Debug.Log("EventController.OnSelectLevel level = " + level);
         gameDirector.SelectLevel(level);
     }
 

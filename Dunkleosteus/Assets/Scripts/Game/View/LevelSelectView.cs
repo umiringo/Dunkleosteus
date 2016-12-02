@@ -35,7 +35,7 @@ public class LevelSelectView : MonoBehaviour {
             levelList.Add(go);
         }
         //将占位用的go添加到levelDuplicateList
-        for(int i = 1; i <= 4; ++i) {
+        for(int i = 1; i <= DefineNumber.DuplicateStarNum; ++i) {
             GameObject go = catagoryScrollView.gameObject.transform.Find("LevelDuplicate" + i).gameObject;
             levelDuplicateList.Add(go);
         }
@@ -103,7 +103,7 @@ public class LevelSelectView : MonoBehaviour {
             AddLevelLine(levelList[i].transform, levelList[i+1].transform);
         }
 
-        if(index > 10) {
+        if(index > DefineNumber.LevelSelectStarThreshold) {
             catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
         }
     }

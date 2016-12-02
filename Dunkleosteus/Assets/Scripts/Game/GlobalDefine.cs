@@ -39,6 +39,9 @@ namespace GlobalDefines
     {
         public static readonly int LineDepth = 39;
         public static readonly int TipCost = 1;
+        public static readonly int DuplicateStarNum = 4;
+        public static readonly int LevelSelectStarThreshold = 10;
+
     }
     
     public class ConfigKey
