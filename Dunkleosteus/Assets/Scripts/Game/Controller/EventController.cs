@@ -60,4 +60,9 @@ public class EventController : MonoBehaviour {
     {
         levelPlayModel.ShowPreview();
     }
+
+    public void OnClickButtonCard()
+    {
+        gameDirector.StartCardView();
+    }
 }

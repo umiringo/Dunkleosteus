@@ -5,8 +5,6 @@ using SimpleJSON;
 using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
-    public LevelPlayModel levelPlayModel;
-    public LevelSelectView levelSelectView;
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private Dictionary<string, int> catagoryHash = new Dictionary<string, int>();
     private int currentCatagory;
@@ -14,7 +12,10 @@ public class GameDirector : MonoBehaviour {
     private int coin;
     private FiniteStateMachine _fsm;
 
-    public GameObject panelStart; // 开始界面 
+    public LevelPlayModel levelPlayModel;
+    public LevelSelectView levelSelectView;
+    public CardView cardView;
+    //public GameObject panelStart; // 开始界面 
     public GameObject panelMainMenu; // 主菜单界面
     public GameObject panelLevelSelect; // 关卡选择界面
     public GameObject panelPlay; // 游戏界面
@@ -152,11 +153,13 @@ public class GameDirector : MonoBehaviour {
     public void EnterCardViewState()
     {
         panelCard.SetActive(true);
+        cardView.Show("Zodiac");
     }
 
     public void ExitCardViewState()
     {
         panelCard.SetActive(false);
+        cardView.BeforeExit();
     }
 
     public void StartGame()
@@ -185,6 +188,11 @@ public class GameDirector : MonoBehaviour {
     {
         // currentLevel is already next level
         levelPlayModel.LoadLevel(currentLevel);  
+    }
+
+    public void StartCardView()
+    {
+        _fsm.PerformTransition(StateTransition.ViewCard);
     }
     #endregion
 
@@ -289,7 +297,7 @@ public class GameDirector : MonoBehaviour {
             return true;
         }
         currentLevel = nextLevel;
-        currentCatagory = GetCatagoryIndex(currentLevel);
+//        currentCatagory = GetCatagoryIndex(currentLevel);
         return false;
     }
 

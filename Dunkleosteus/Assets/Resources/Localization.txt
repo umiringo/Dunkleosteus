@@ -287,3 +287,4 @@ LKNext,Next,继续,繼續,次へ
 LKBack,Back,返回,返回,戻る
 LKOK,OK,确定,確定,はい
 LKCancel,Cancel,取消,取消,いいえ
+LKCardView,Star Card,星座卡片,星座卡片,星座カッド

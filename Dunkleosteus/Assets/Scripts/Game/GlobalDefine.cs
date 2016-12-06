@@ -61,5 +61,6 @@ namespace GlobalDefines
     public class DefineString
     {
         public static readonly string FirstLevel = "Aries";
+        public static readonly string DefaultCatagory = "Zodiac";
     }
 }
