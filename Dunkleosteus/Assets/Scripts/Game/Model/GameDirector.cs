@@ -18,6 +18,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelMainMenu; // 主菜单界面
     public GameObject panelLevelSelect; // 关卡选择界面
     public GameObject panelPlay; // 游戏界面
+    public GameObject panelCard; // 卡片浏览界面
 
     void Awake() {
         // Init template data
@@ -117,13 +118,11 @@ public class GameDirector : MonoBehaviour {
     public void EnterMainMenuState()
     {
         panelMainMenu.SetActive(true);
-        //Debug.Log("GameDirector : Enter MainMenuState.");
     }
 
     public void ExitMainMenuState()
     {
         panelMainMenu.SetActive(false);
-        //Debug.Log("GameDirector : Exit MainMenuState.");
     }
 
     public void EnterLevelSelectState()
@@ -131,37 +130,33 @@ public class GameDirector : MonoBehaviour {
         panelLevelSelect.SetActive(true);
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
-        //Debug.Log("GameDirector : Enter LevelSelectState.");
     }
 
     public void ExitLevelSelectState()
     {
         panelLevelSelect.SetActive(false);
         levelSelectView.BeforeExit();
-        //Debug.Log("GameDirector : Exit LevelSelectState.");
     }
 
     public void EnterGameSceneState()
     {
         panelPlay.SetActive(true);
         levelPlayModel.LoadLevel(currentLevel);
-        //Debug.Log("GameDirector : Enter GameSceneState.");
     }
 
     public void ExitGameSceneState()
     {
         panelPlay.SetActive(false);
-        //Debug.Log("GameDirector : Exit GameSceneState.");
     }
 
     public void EnterCardViewState()
     {
-        //Debug.Log("GameDirector : Enter CardViewState.");
+        panelCard.SetActive(true);
     }
 
     public void ExitCardViewState()
     {
-        //Debug.Log("GameDirector : Exit CardViewState.");
+        panelCard.SetActive(false);
     }
 
     public void StartGame()
