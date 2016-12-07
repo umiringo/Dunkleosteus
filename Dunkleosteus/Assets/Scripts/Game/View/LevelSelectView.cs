@@ -12,7 +12,6 @@ public class LevelSelectView : MonoBehaviour {
     public UIScrollView catagoryScrollView;
     //public GameObject catagoryTable;
 
-    private Dictionary<string, GameObject> catagoryHash;
     private GameObject _lineTemplate;
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
@@ -20,7 +19,6 @@ public class LevelSelectView : MonoBehaviour {
     private List<GameObject> levelDuplicateList;
 
     void Awake() {
-        catagoryHash = new Dictionary<string, GameObject>();
         //centerOnChild = catagoryTable.GetComponent<UICenterOnChild>();
         //centerOnChild.onCenter = this.AfterCenter;
         levelList = new List<GameObject>();
@@ -55,10 +53,6 @@ public class LevelSelectView : MonoBehaviour {
     public void BeforeExit()
     {
         // Clear containerTable
-        foreach(var key in catagoryHash.Keys) {
-            Destroy(catagoryHash[key]);
-        }
-        catagoryHash.Clear();
         HideAllStar();
     }
 

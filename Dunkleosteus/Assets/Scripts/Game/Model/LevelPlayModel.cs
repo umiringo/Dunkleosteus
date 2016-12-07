@@ -148,7 +148,7 @@ public class LevelPlayModel : MonoBehaviour {
     // Win
     public void GameWin()
     {
-        _isFin = gameDirector.FinishLevel(_levelName);
+        _isFin = gameDirector.FinishLevel();
         _isWin = true;
         levelPlayView.ShowGameWin();
     }

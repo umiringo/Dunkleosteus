@@ -78,11 +78,6 @@ public class GameDirector : MonoBehaviour {
         for(int i = 0; i < jaLevel.Count; ++i) {
             levelHash.Add(jaLevel[i], i);
         }
-
-        JSONArray jaCatagory = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.Catagory);
-        for(int i = 0; i < jaCatagory.Count; ++i) {
-            catagoryHash.Add(jaCatagory[i], i + 1);
-        }
     }
 
     private void LoadPlayerPrefs()
@@ -105,14 +100,21 @@ public class GameDirector : MonoBehaviour {
                 currentLevel = nextLevel;
             }
         }
-        currentCatagory = this.GetCatagoryIndex(currentLevel);
         // Init Coin
         coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10000);
+        this.InitCatagoryHash(latestLevel);
     }
 
     private void InitLocalization()
     {
         Localization.language = "SChinese";
+    }
+
+    private void InitCatagoryHash(string latestLevel)
+    {
+        // TODO
+        // 将当前已经完成的关卡组织放入hash
+        // 遍历已经完成的所有关卡，依次插入到对应的list中
     }
 
     #region StateInterface
@@ -222,27 +224,6 @@ public class GameDirector : MonoBehaviour {
         return 1;
     }
 
-    public int GetCatagoryIndex(string level)
-    {
-        JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
-        string catagory = levelInfoJo["catagory"];
-        return catagoryHash[catagory];
-    }
-
-    public int GetNextLevelCatagoryIndex(string level)
-    {
-        if(level == "begin") {
-            return 0;
-        }
-        int index = levelHash[level];
-        string nextLevel = GetLevelByIndex(index + 1);
-        if(nextLevel == "fin") {
-            return GetCatagoryIndex(level);
-        } else {
-            return GetCatagoryIndex(nextLevel);
-        }
-    }
-
     public string GetCatagoryString(string level)
     {
         JSONNode levelInfoJo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, level);
@@ -284,7 +265,7 @@ public class GameDirector : MonoBehaviour {
         return levelHash[levelName];
     }
 
-    public bool FinishLevel(string levelName)
+    public bool FinishLevel()
     {
        // string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         int ret = GetLevelState(currentLevel);
@@ -297,7 +278,8 @@ public class GameDirector : MonoBehaviour {
             return true;
         }
         currentLevel = nextLevel;
-//        currentCatagory = GetCatagoryIndex(currentLevel);
+
+        // TODO 将完成的关卡加入到已经完成的关卡列表中(catagoryHash)
         return false;
     }
 

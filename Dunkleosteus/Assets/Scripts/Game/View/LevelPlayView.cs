@@ -28,7 +28,6 @@ public class LevelPlayView : MonoBehaviour {
 	// Use this for initialization
     void Awake()
     {
-        _lineTemplate = null;
         _lineContainer = null;
         _gameContainer = null;
         _labelLevelTitle = null;

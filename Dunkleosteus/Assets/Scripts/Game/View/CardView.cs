@@ -6,12 +6,14 @@ using SimpleJSON;
 
 public class CardView : MonoBehaviour {
     private Dictionary<string, GameObject> menuHash;
-    private string selectedCatagory;
+    private string _currentCatagory;
+    private GameObject _cardInfoTemplate;
 
     public GameObject containerMenu;
 
     void Awake() {
        menuHash = new Dictionary<string, GameObject>();
+       _cardInfoTemplate = Resources.Load(PathContainer.CardInfoPrefabPath) as GameObject;
     }
 
 	// Use this for initialization
@@ -29,8 +31,9 @@ public class CardView : MonoBehaviour {
         // 获取Catagory的名称列表
     }
 
-    public void Show(string selectedCatagory)
+    public void Show(string catagory)
     {
+        _currentCatagory = catagory;
         // 构造各个catagory的CatagoryInfo对象
 
         // 确定显示的catagory
