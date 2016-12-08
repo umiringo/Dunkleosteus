@@ -6,7 +6,7 @@ using GlobalDefines;
 
 public class GameDirector : MonoBehaviour {
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
-    private Dictionary<string, int> catagoryHash = new Dictionary<string, int>();
+    private Dictionary<string, List<string> > catagoryHash = new Dictionary<string, List<string> >();
     private int currentCatagory;
     private string currentLevel; // 当前正在进行的关卡
     private int coin;
@@ -112,9 +112,28 @@ public class GameDirector : MonoBehaviour {
 
     private void InitCatagoryHash(string latestLevel)
     {
-        // TODO
-        // 将当前已经完成的关卡组织放入hash
         // 遍历已经完成的所有关卡，依次插入到对应的list中
+        int index = this.GetLevelIndex(latestLevel);
+        for(int i = 0; i < index; i++) {
+            // 获取关卡数据
+            string levelName = this.GetLevelByIndex(i);
+            JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, levelName);
+            string catagory = jo["catagory"];
+            // 如果找不到key，则初始化一个
+            if(!catagoryHash.ContainsKey(catagory)) {
+                catagoryHash[catagory] = new List<string>();
+            }
+            // 添加
+            catagoryHash[catagory].Add(levelName);
+        }
+
+        // Dump出来 for test
+        foreach(var item in catagoryHash) {
+            Debug.Log("----- " + item.Key + " -------");
+            foreach(var v in item.Value) {
+                Debug.Log(v);
+            }
+        }
     }
 
     #region StateInterface
