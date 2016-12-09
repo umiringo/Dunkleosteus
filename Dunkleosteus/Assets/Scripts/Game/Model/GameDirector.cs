@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 using GlobalDefines;
+using System.Linq;
 
 public class GameDirector : MonoBehaviour {
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
@@ -11,6 +12,7 @@ public class GameDirector : MonoBehaviour {
     private string currentLevel; // 当前正在进行的关卡
     private int coin;
     private FiniteStateMachine _fsm;
+    private Dictionary<string, string> abbrHash = new Dictionary<string, string>();
 
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
@@ -32,6 +34,8 @@ public class GameDirector : MonoBehaviour {
         LoadPlayerPrefs();
         // Init Localization
         InitLocalization();
+        // Init abbreviation
+        InitAbbrHash();
     }
 
     void Start () {   
@@ -82,9 +86,9 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "CoronaAustralis");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Capricornus");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -126,14 +130,18 @@ public class GameDirector : MonoBehaviour {
             // 添加
             catagoryHash[catagory].Add(levelName);
         }
+    }
 
-        // Dump出来 for test
-        foreach(var item in catagoryHash) {
-            Debug.Log("----- " + item.Key + " -------");
-            foreach(var v in item.Value) {
-                Debug.Log(v);
-            }
-        }
+    private void InitAbbrHash()
+    {
+        abbrHash["Zodiac"] = "Z";
+        abbrHash["Orion"] = "O";
+        abbrHash["UrsaMajor"] = "U";
+        abbrHash["HeavenlyWaters"] = "W";
+        abbrHash["Perseus"] = "P";
+        abbrHash["Bayer"] = "B";
+        abbrHash["LaCaille"] = "L";
+        abbrHash["Hercules"] = "H";
     }
 
     #region StateInterface
@@ -215,6 +223,11 @@ public class GameDirector : MonoBehaviour {
     {
         _fsm.PerformTransition(StateTransition.ViewCard);
     }
+
+    public void CardViewSwitchCatagory(string catagory)
+    {
+        cardView.SwitchCatagory(catagory);
+    }
     #endregion
 
     #region public interface
@@ -290,6 +303,14 @@ public class GameDirector : MonoBehaviour {
         int ret = GetLevelState(currentLevel);
         if(ret == 0) {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, currentLevel);
+            // 将完成的关卡加入到已经完成的关卡列表中(catagoryHash)
+            JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, currentLevel);
+            string catagory = jo["catagory"];
+            if(!catagoryHash.ContainsKey(catagory)) {
+                catagoryHash[catagory] = new List<string>();
+            }
+            // 添加
+            catagoryHash[catagory].Add(currentLevel);
         }
         string nextLevel = GetNextLevel();
         if(nextLevel == "fin") {
@@ -297,8 +318,6 @@ public class GameDirector : MonoBehaviour {
             return true;
         }
         currentLevel = nextLevel;
-
-        // TODO 将完成的关卡加入到已经完成的关卡列表中(catagoryHash)
         return false;
     }
 
@@ -322,6 +341,19 @@ public class GameDirector : MonoBehaviour {
             coin -= num;
         }
         PlayerPrefs.SetInt(PlayerPrefsKey.Coin, coin);
+    }
+
+    public List<string> GetEnableLevelList(string catagory)
+    {
+        if(!catagoryHash.ContainsKey(catagory)) {
+            return new List<string>();
+        }
+        return catagoryHash[catagory];
+    }
+
+    public string GetAbbreviation(string catagory) 
+    {
+        return abbrHash[catagory];
     }
     #endregion
 }

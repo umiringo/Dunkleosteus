@@ -193,15 +193,6 @@ public class LevelPlayView : MonoBehaviour {
 
     public void ShowPreview(string levelName)
     {
-        /*
-        if(spritePreview.activeSelf) {
-            spritePreview.SetActive(false);
-        } else {
-            // Set texture
-            spritePreview.SetActive(true);
-            texturePreview.mainTexture = Resources.Load("Texture/" + levelName) as Texture;
-        }
-        */
         _gameContainer.GetComponent<GameContainer>().ShowPreview();
     }
     ///////////////////////////////////////////////////////////////////////////////////

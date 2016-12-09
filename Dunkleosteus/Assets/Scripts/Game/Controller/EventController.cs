@@ -65,4 +65,14 @@ public class EventController : MonoBehaviour {
     {
         gameDirector.StartCardView();
     }
+
+    public void OnClickCardInfo(string level)
+    {
+        
+    }
+
+    public void OnClickCardMenu(string catagory)
+    {
+        gameDirector.CardViewSwitchCatagory(catagory);
+    }
 }
