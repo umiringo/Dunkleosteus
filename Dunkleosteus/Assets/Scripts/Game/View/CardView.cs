@@ -85,4 +85,9 @@ public class CardView : MonoBehaviour {
         this.RefreshTableCard();
         this.RefreshMenu();
     }
+
+    public string GetCurrentCatagory()
+    {
+        return _currentCatagory;
+    }
 }

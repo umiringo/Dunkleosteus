@@ -75,4 +75,14 @@ public class EventController : MonoBehaviour {
     {
         gameDirector.CardViewSwitchCatagory(catagory);
     }
+
+    public void OnShowCatagoryNotify()
+    {
+        gameDirector.OnShowCatagoryNotify();
+    }
+
+    public void OnCloseNotify()
+    {
+        gameDirector.CloseNotify();
+    }
 }

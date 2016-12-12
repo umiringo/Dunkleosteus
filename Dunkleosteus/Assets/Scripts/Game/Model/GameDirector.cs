@@ -22,6 +22,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelLevelSelect; // 关卡选择界面
     public GameObject panelPlay; // 游戏界面
     public GameObject panelCard; // 卡片浏览界面
+    public GameObject panelNotify;
 
     void Awake() {
         // Init template data
@@ -111,7 +112,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "SChinese";
+        Localization.language = "English";
     }
 
     private void InitCatagoryHash(string latestLevel)
@@ -228,6 +229,25 @@ public class GameDirector : MonoBehaviour {
     {
         cardView.SwitchCatagory(catagory);
     }
+
+    public void OnShowCatagoryNotify()
+    {
+        string catagory = cardView.GetCurrentCatagory();
+        this.ShowNotify("LK" + catagory, "LK" + catagory + "Content");
+    }
+
+    public void ShowNotify(string title, string content)
+    {
+        panelNotify.SetActive(false);
+        panelNotify.GetComponent<NotifyView>().Init(title, content);
+        panelNotify.SetActive(true);
+    }
+
+    public void CloseNotify()
+    {
+        panelNotify.SetActive(false);
+    }
+
     #endregion
 
     #region public interface

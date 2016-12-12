@@ -276,13 +276,21 @@ LKAutumn,Autumn,秋季,秋季,秋
 LKWinter,Winter,冬季,冬季,冬
 LKNotifyTapCard,Press the Card to Continue,点击卡片继续,點擊卡片繼續,タップ　ザ　カッド
 LKUrsaMajor,Ursa Major,大熊族,大熊族,おおぐま
+LKUrsaMajorContent, "The Ursa Major Family includes northern constellations in the vicinity of Ursa Major: Ursa Major itself, Ursa Minor, Draco, Canes Venatici, Boötes, Coma Berenices, Corona Borealis, Camelopardalis, Lynx, and Leo Minor. The eponymous constellation Ursa Major contains the famous Big Dipper.", 大熊族包括大熊座及周围属于北半球的星座，大多都是与神话无关的动物，共有10个星座。, 大熊族介绍，大熊族介绍
 LKZodiac,Zodiac,黄道,黃道,黄道
+LKZodiacContent, "The Zodiac is a group of 12 constellations: Leo, Virgo, Libra, Scorpius, Sagittarius, Capricornus, Aquarius, Pisces, Aries, Taurus, Gemini, and Cancer. Some version of these constellations are found in traditions around the world, for this band around the celestial sphere includes the ecliptic, the apparent path of the sun through the year.", 黄道介绍, 黄道介绍, 黄道介绍
 LKPerseus,Perseus,英仙族,英仙族,ペルセウス
+LKPerseusContent, "The Perseus Family includes several constellations associated with the Perseus myth: Cassiopeia, Cepheus, Andromeda, Perseus, Pegasus, and Cetus (representing the monster sent to devour Andromeda).", 英仙族介绍, 英仙族介绍, 英仙族介绍
 LKHercules,Hercules,武仙族,武仙族,ヘルクレス
+LKHerculesContent, "The Hercules Family is a group of constellations connected mainly by their adjacency on the celestial sphere. It includes Hercules, Sagitta, Aquila, Lyra, Cygnus, Vulpecula, Hydra, Sextans, Crater, Corvus, Ophiuchus, Serpens, Scutum, Centaurus, Lupus, Corona Australis, Ara, Triangulum Australe, and Crux.", 武仙族, 武仙族, 武仙族
 LKOrion,Orion,猎户族,獵戶族,オリオン
+LKOrionContent, "The Orion Family, on the opposite side of the sky from the Hercules Family, includes Orion, Canis Major, Canis Minor, Lepus, and Monoceros. This group of constellations draws from Greek myth, representing the hunter (Orion) and his two dogs (Canis Major and Canis Minor) chasing the hare (Lepus).", 猎户族, 猎户族, 猎户族
 LKHeavenlyWaters,Heavenly Waters,幻之水,幻之水,天国の海
+LKHeavenlyWatersContent, "The Heavenly Waters draws from the Mesopotamian tradition associating the dim area between Sagittarius and Orion with the god Ea and the Waters of the Abyss, associated with water in some form: Delphinus, Equuleus, Eridanus, Piscis Austrinus, Carina, Puppis, Vela, Pyxis, and Columba.", 幻之水, 幻之水, 幻之水
 LKBayer,Bayer,拜耳,拜耳,バイエル
+LKBayerContent, "The Bayer Family collects several southern constellations first introduced by Petrus Plancius on several celestial globes in the late 16th century, based on astronomical observations by the Dutch explorers Pieter Dirkszoon Keyser and Frederick de Houtman.", 拜耳, 拜耳, 拜耳
 LKLaCaille,La Caille,拉卡伊,拉卡伊,ラカーユ
+LKLaCailleContent, "The La Caille Family includes Norma, Circinus, Telescopium, Microscopium, Sculptor, Fornax, Caelum, Horologium, Octans, Mensa, Reticulum, Pictor, and Antlia. These dim constellations are scattered throughout the far southern sky, and their stars were mostly not visible to the ancient Greeks and Romans.", 拉卡伊, 拉卡伊, 拉卡伊
 LKNext,Next,继续,繼續,次へ
 LKBack,Back,返回,返回,戻る
 LKOK,OK,确定,確定,はい
