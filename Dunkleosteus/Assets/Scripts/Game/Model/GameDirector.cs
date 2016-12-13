@@ -112,7 +112,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "English";
+        Localization.language = "SChinese";
     }
 
     private void InitCatagoryHash(string latestLevel)
