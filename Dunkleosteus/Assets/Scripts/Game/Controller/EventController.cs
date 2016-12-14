@@ -6,6 +6,7 @@ public class EventController : MonoBehaviour {
 
     public LevelPlayModel levelPlayModel;
     public GameDirector gameDirector;
+    public CardModel cardModel;
 
 	// Use this for initialization
 	void Start () 
@@ -68,7 +69,8 @@ public class EventController : MonoBehaviour {
 
     public void OnClickCardInfo(string level)
     {
-        
+        Debug.Log("OnClickCardInfo level = " + level);
+        cardModel.ShowCardPreview(level);
     }
 
     public void OnClickCardMenu(string catagory)
@@ -84,5 +86,10 @@ public class EventController : MonoBehaviour {
     public void OnCloseNotify()
     {
         gameDirector.CloseNotify();
+    }
+
+    public void OnClickButtonOption()
+    {
+        gameDirector.StartOptionView();
     }
 }

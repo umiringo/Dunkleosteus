@@ -23,6 +23,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelPlay; // 游戏界面
     public GameObject panelCard; // 卡片浏览界面
     public GameObject panelNotify;
+    public GameObject panelOption;
 
     void Awake() {
         // Init template data
@@ -61,6 +62,8 @@ public class GameDirector : MonoBehaviour {
         LevelSelectState levelSelect = new LevelSelectState(this);
         levelSelect.AddTransition(StateTransition.ViewCard, StateID.CardView);
         levelSelect.AddTransition(StateTransition.ChoseLevel, StateID.GameScene);
+        levelSelect.AddTransition(StateTransition.ViewOption, StateID.OptionView);
+        levelSelect.AddTransition(StateTransition.ViewPay, StateID.PayView);
 
         CardViewState cardView = new CardViewState(this);
         cardView.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
@@ -68,12 +71,20 @@ public class GameDirector : MonoBehaviour {
         GameSceneState gameScene = new GameSceneState(this);
         gameScene.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
 
+        OptionViewState optionView = new OptionViewState(this);
+        optionView.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
+
+        PayViewState payView = new PayViewState(this);
+        payView.AddTransition(StateTransition.BackToLevelSelect, StateID.LevelSelect);
+
         // Init finite state machine
         _fsm = new FiniteStateMachine();
         _fsm.AddFiniteState(mainMenu);
         _fsm.AddFiniteState(levelSelect);
         _fsm.AddFiniteState(cardView);
         _fsm.AddFiniteState(gameScene);
+        _fsm.AddFiniteState(optionView);
+        _fsm.AddFiniteState(payView);
     }
 
     private void InitLevelList()
@@ -89,7 +100,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Capricornus");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Corvus");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -119,7 +130,7 @@ public class GameDirector : MonoBehaviour {
     {
         // 遍历已经完成的所有关卡，依次插入到对应的list中
         int index = this.GetLevelIndex(latestLevel);
-        for(int i = 0; i < index; i++) {
+        for(int i = 0; i <= index; i++) {
             // 获取关卡数据
             string levelName = this.GetLevelByIndex(i);
             JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, levelName);
@@ -188,8 +199,28 @@ public class GameDirector : MonoBehaviour {
 
     public void ExitCardViewState()
     {
-        panelCard.SetActive(false);
         cardView.BeforeExit();
+        panelCard.SetActive(false);
+    }
+
+    public void EnterOptionViewState()
+    {
+        panelOption.SetActive(true);
+    }
+
+    public void ExitOptionViewState()
+    {
+        panelOption.SetActive(false);
+    }
+
+    public void EnterPayViewState()
+    {
+
+    }
+
+    public void ExitPayViewState()
+    {
+
     }
 
     public void StartGame()
@@ -246,6 +277,11 @@ public class GameDirector : MonoBehaviour {
     public void CloseNotify()
     {
         panelNotify.SetActive(false);
+    }
+
+    public void StartOptionView()
+    {
+        _fsm.PerformTransition(StateTransition.ViewOption);
     }
 
     #endregion

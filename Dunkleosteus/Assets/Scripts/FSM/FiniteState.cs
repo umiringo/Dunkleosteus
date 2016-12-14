@@ -10,6 +10,8 @@ public enum StateTransition
     ViewCard = 2,
     ChoseLevel = 3,
     BackToLevelSelect = 4,
+    ViewPay = 5,
+    ViewOption = 6,
 }
 
 public enum StateID
@@ -19,6 +21,8 @@ public enum StateID
     LevelSelect = 2,
     CardView = 3,
     GameScene = 4,
+    OptionView = 5,
+    PayView = 6,
 }
 
 public abstract class FiniteState

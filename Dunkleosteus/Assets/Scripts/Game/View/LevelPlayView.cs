@@ -56,8 +56,6 @@ public class LevelPlayView : MonoBehaviour {
         DestroyImmediate(_gameContainer); // Try to destroy the gamecontainer
         _lineContainer = null;
         _gameContainer = null;
-        //levelComplete.SetActive(false);
-        //levelComplete.GetComponent<TweenAlpha>().ResetToBeginning();
         menu.SetActive(false);
         lastMenu.SetActive(false);
     }
