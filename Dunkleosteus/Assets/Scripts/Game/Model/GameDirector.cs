@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
@@ -123,7 +123,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "TChinese";
+        Localization.language = "English";
     }
 
     private void InitCatagoryHash(string latestLevel)
