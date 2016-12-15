@@ -20,4 +20,9 @@ public class CardModel : MonoBehaviour {
         cardPreview.Init(level);
         cardPreviewGameObject.SetActive(true);
     }
+
+    public void CloseCardPreview()
+    {
+        cardPreviewGameObject.SetActive(false);
+    }
 }

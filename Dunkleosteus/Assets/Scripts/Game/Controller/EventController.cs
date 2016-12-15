@@ -69,8 +69,12 @@ public class EventController : MonoBehaviour {
 
     public void OnClickCardInfo(string level)
     {
-        Debug.Log("OnClickCardInfo level = " + level);
         cardModel.ShowCardPreview(level);
+    }
+
+    public void OnClickCloseCardInfo()
+    {
+        cardModel.CloseCardPreview();
     }
 
     public void OnClickCardMenu(string catagory)
