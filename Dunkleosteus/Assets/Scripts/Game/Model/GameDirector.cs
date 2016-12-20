@@ -17,6 +17,7 @@ public class GameDirector : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
     public CardView cardView;
+    
     //public GameObject panelStart; // 开始界面 
     public GameObject panelMainMenu; // 主菜单界面
     public GameObject panelLevelSelect; // 关卡选择界面

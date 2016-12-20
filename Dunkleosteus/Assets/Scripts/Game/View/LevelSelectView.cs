@@ -159,7 +159,6 @@ public class LevelSelectView : MonoBehaviour {
 
         float distance = Vector3.Distance(beginTransform.position, endTransform.position);
         float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
-        //float containerScale = _gameContainer.transform.localScale.x;
         int width = (int)(distance / scale);
         lineSprite.width = width;
         linkedLine.SetActive(true);
