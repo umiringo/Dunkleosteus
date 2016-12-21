@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using GlobalDefines;
 using SimpleJSON;
 
-
-
 public class LevelPlayView : MonoBehaviour {
     private GameObject _lineTemplate; // 线的模版
     private GameObject _lineContainer; // 线的容器
@@ -22,9 +20,7 @@ public class LevelPlayView : MonoBehaviour {
     public UILabel labelCoin;
     public GameObject spritePreview;
     public UITexture texturePreview;
-
     public LevelPlayModel levelPlayModel;
-
 	// Use this for initialization
     void Awake()
     {

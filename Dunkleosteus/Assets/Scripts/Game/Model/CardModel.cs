@@ -16,7 +16,6 @@ public class CardModel : MonoBehaviour {
 
     public void ShowCardPreview(string level)
     {
-        Debug.Log("ShowCardPreview level = " + level);
         cardPreview.Init(level);
         cardPreviewGameObject.SetActive(true);
     }
@@ -24,5 +23,10 @@ public class CardModel : MonoBehaviour {
     public void CloseCardPreview()
     {
         cardPreviewGameObject.SetActive(false);
+    }
+
+    public void TriggerCardPreview(GameObject go)
+    {
+        cardPreview.FlopCard(go);
     }
 }

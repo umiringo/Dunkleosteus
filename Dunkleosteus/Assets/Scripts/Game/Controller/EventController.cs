@@ -96,4 +96,9 @@ public class EventController : MonoBehaviour {
     {
         gameDirector.StartOptionView();
     }
+
+    public void OnCardPreviewTouched(GameObject go)
+    {
+        cardModel.TriggerCardPreview(go);
+    }
 }
