@@ -65,7 +65,6 @@ public class Card : MonoBehaviour {
     ///////////////////////////////////////////////////////////////
     public void BeginToFlop(GameObject touchedGameObject)
     {
-        Debug.Log("Card.BeginToFlop");
         triggerGameObject = touchedGameObject;
         if (touchedGameObject == skyGameObject) {
             skyTween.Play(true);
@@ -107,7 +106,6 @@ public class Card : MonoBehaviour {
 
         // Draw Line
         foreach(int ans in _correctAnswerList) {
-            Debug.Log("Card.AutoLinkLine ans = " + ans);
             GameObject beginAns = starContainer.transform.Find("Star" + ans / 100).gameObject;
             GameObject endAns = starContainer.transform.Find("Star" + ans % 10).gameObject;
             AddStarLine(beginAns.transform, endAns.transform);
@@ -116,8 +114,7 @@ public class Card : MonoBehaviour {
 
     private void AddStarLine(Transform beginTransform, Transform endTransform)
     {
-        Debug.Log("Card.AddStarLine");
-        GameObject linkedLine = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
+        GameObject linkedLine = Instantiate(Resources.Load(PathContainer.CardLinkedLinePrefabPath)) as GameObject;
         linkedLine.transform.parent = lineContainer.transform;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
@@ -163,7 +160,8 @@ public class Card : MonoBehaviour {
 
         float distance = Vector3.Distance(beginTransform.position, endTransform.position);
         float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
-        int width = (int)(distance / scale);
+        float containerScale = lineContainer.transform.localScale.x;
+        int width = (int)(distance / scale / containerScale / 0.6);
         lineSprite.width = width;
         linkedLine.SetActive(true);
     }

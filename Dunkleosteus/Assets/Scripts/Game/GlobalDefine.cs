@@ -19,6 +19,7 @@ namespace GlobalDefines
     public class PathContainer
     {
         public static readonly string LinkedLinePrefabPath = "Prefabs/StarLine/LinkedLine";
+        public static readonly string CardLinkedLinePrefabPath = "Prefabs/StarLine/CardLinkedLine";
         public static readonly string CardInfoPrefabPath = "Prefabs/CardView/CardInfoTemplate";
         public static readonly string LineContainerPath = "LineContainer";
         public static readonly string UIRootPath = "UI Root";
