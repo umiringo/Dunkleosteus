@@ -4,15 +4,15 @@ using UnityEditor;
 using System.IO;
 using SimpleJSON;
 
-public class BatchTool 
+public class BatchTool : MonoBehaviour
 {
     [MenuItem("Assets/批处理工具/打开字体选择面板", false, 0)]
-    static public void OpenConnectAtlasPanel()
+    public static void OpenConnectAtlasPanel()
     {
         EditorWindow.GetWindow<BatchFontWindow>(false, "ConnectAtlasPanel", true);
     }
     
-    [MenuItem("Assets/批处理工具/重新指定字体", false, 2)]
+    [MenuItem("Assets/批处理工具/重新指定字体", false, 0)]
     public static void CorrectionPublicFontFunction()
     {
         if (NGUISettings.ambigiousFont == null)
@@ -80,5 +80,89 @@ public class BatchTool
             }
             AssetDatabase.Refresh();
         }
+    }
+
+    [MenuItem("BatchTool/生成卡牌预览的Prefab")]
+    public static void GenerateCardPreviewPrefab()
+    {
+        string cardPath = "Assets/Resources/Prefabs/CardView/CardPreview";
+        string constellationPath = "Assets/Resources/Prefabs/Constellation";
+        // 删除掉Prefabs/CardView/CardPreview下所有文件
+        /*
+        foreach(string d in Directory.GetFileSystemEntries(cardPath)) {
+            if(File.Exists(d)) {
+                Debug.Log("d = " + d);
+                File.Delete(d);
+            }
+        }
+        */
+
+        // 遍历Prefabs/Constellation生成card的prefab
+        foreach(string d in Directory.GetFileSystemEntries(constellationPath, "*.prefab")) {
+
+            if(File.Exists(d)) {
+                string fileName = Path.GetFileName(d);
+                string newName = fileName.Replace("Container", "Card");
+                string newPath = cardPath + '/' + newName;
+
+                Object obj = AssetDatabase.LoadAssetAtPath(d, typeof(GameObject));
+                GameObject clone = GameObject.Instantiate(obj) as GameObject;
+                // 修改
+                ModifyContainerToCard(clone);
+                // 写入
+                GameObject targetObj = AssetDatabase.LoadAssetAtPath(newPath, typeof(GameObject)) as GameObject;
+                if (targetObj != null) {
+                    PrefabUtility.ReplacePrefab(clone, targetObj);
+                }
+                else {
+                    PrefabUtility.CreatePrefab(newPath, clone);   
+                }
+               // DestroyImmediate(targetObj);
+                DestroyImmediate(clone);
+                AssetDatabase.ImportAsset(newPath);
+                AssetImporter importer = AssetImporter.GetAtPath(newPath);
+                importer.SaveAndReimport();
+            }
+        }
+        
+        AssetDatabase.SaveAssets();
+    }
+
+    private static void ModifyContainerToCard(GameObject containerObj)
+    {
+        // 获取所有的孩子object
+        GameObject skyGameObject = containerObj.transform.Find("Sky").gameObject;
+        GameObject detailGameObject = containerObj.transform.Find("Detail").gameObject;
+        GameObject starContainer = containerObj.transform.Find("Sky/StarContainer").gameObject;
+        GameObject lineContainer = containerObj.transform.Find("Sky/LineContainer").gameObject;
+
+        // 删除container上的组件
+        DestroyImmediate(containerObj.GetComponent<GameContainer>());
+        DestroyImmediate(containerObj.GetComponent<UIPlayTween>());
+        DestroyImmediate(containerObj.GetComponent<TweenScale>());
+        // 添加container于组件
+        var cardComp = containerObj.AddComponent<Card>();
+        string levelName = containerObj.name.Replace("Container", "").Replace("(Clone)", "");
+        Debug.Log("levelName = " + levelName);
+        cardComp.skyGameObject = skyGameObject;
+        cardComp.detailGameObject = detailGameObject;
+        cardComp.starContainer = starContainer;
+        cardComp.lineContainer = lineContainer;
+        cardComp.levelName = levelName;
+
+        // 删除sky的组件
+        DestroyImmediate(skyGameObject.GetComponent<Sky>());
+        // 添加sky的组件
+        skyGameObject.AddComponent<CardFront>();
+
+        // 删除detail的组件
+        DestroyImmediate(detailGameObject.GetComponent<StarDetail>());
+        // 添加detail的组件
+        detailGameObject.AddComponent<CardBack>();
+
+        // 循环修改star
+        // 删除star的组件
+        // 删除shine的GameObject
+        // 修改star的spriteName
     }
 }
