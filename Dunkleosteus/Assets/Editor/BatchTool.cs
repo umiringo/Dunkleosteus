@@ -161,8 +161,30 @@ public class BatchTool : MonoBehaviour
         detailGameObject.AddComponent<CardBack>();
 
         // 循环修改star
-        // 删除star的组件
-        // 删除shine的GameObject
-        // 修改star的spriteName
+        foreach (Transform child in starContainer.transform) {
+            GameObject childGo = child.gameObject;
+            // 删除star的组件
+            DestroyImmediate(childGo.GetComponent<BoxCollider>());
+            DestroyImmediate(childGo.GetComponent<Star>());
+            DestroyImmediate(childGo.GetComponent<UIEventTrigger>());
+            // 删除shine的GameObject
+            GameObject shine = childGo.transform.Find("Sprite_Shine").gameObject;
+            DestroyImmediate(shine);
+            // 修改star的spriteName
+            GameObject star = childGo.transform.Find("Sprite_Star").gameObject;
+            if (star.GetComponent<UISprite>().spriteName == "circle_30_30_50cce5") {
+                star.GetComponent<UISprite>().spriteName = "circle_30_30_f8b711";
+            }
+            else if (star.GetComponent<UISprite>().spriteName == "circle_40_40_50cce5") {
+                star.GetComponent<UISprite>().spriteName = "circle_30_30_f8b711";
+            }
+            else if (star.GetComponent<UISprite>().spriteName == "circle_50_50_50cce5") {
+                star.GetComponent<UISprite>().spriteName = "circle_40_40_f8b711";
+            }
+            else if (star.GetComponent<UISprite>().spriteName == "circle_60_60_50cce5") {
+                star.GetComponent<UISprite>().spriteName = "circle_40_40_f8b711";
+            }
+        }
+
     }
 }
