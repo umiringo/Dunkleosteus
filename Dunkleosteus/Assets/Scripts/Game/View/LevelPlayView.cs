@@ -69,7 +69,7 @@ public class LevelPlayView : MonoBehaviour {
         _gameContainer = Instantiate(Resources.Load(PathContainer.ContainerPath + name + "Container" )) as GameObject;
         _gameContainer.transform.parent = this.gameObject.transform;
         _gameContainer.transform.localPosition = Vector3.zero;
-        _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
+        _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 1.0f);
         // Init gameContainer's component
         _labelLevelTitle = _gameContainer.transform.Find("Detail/LabelContainer/LabelName").gameObject.GetComponent<UILocalize>();
         _labelLevelTitle.key = "LK" + levelName + "Title";

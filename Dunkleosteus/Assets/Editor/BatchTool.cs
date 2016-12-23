@@ -135,6 +135,7 @@ public class BatchTool : MonoBehaviour
         GameObject detailGameObject = containerObj.transform.Find("Detail").gameObject;
         GameObject starContainer = containerObj.transform.Find("Sky/StarContainer").gameObject;
         GameObject lineContainer = containerObj.transform.Find("Sky/LineContainer").gameObject;
+        GameObject starChart = containerObj.transform.Find("Sky/StarChart").gameObject;
 
         // 删除container上的组件
         DestroyImmediate(containerObj.GetComponent<GameContainer>());
@@ -185,6 +186,9 @@ public class BatchTool : MonoBehaviour
                 star.GetComponent<UISprite>().spriteName = "circle_40_40_f8b711";
             }
         }
-
+        // 删除starchart的tween
+        DestroyImmediate(starChart.GetComponent<TweenAlpha>());
+        // 修改starChart的alpha
+        starChart.GetComponent<UIWidget>().alpha = 1;
     }
 }

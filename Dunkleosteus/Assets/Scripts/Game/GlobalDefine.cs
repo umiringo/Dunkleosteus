@@ -26,6 +26,7 @@ namespace GlobalDefines
 
         public static readonly string ContainerPath = "Prefabs/Constellation/";
         public static readonly string CatagoryPath = "Prefabs/LevelContainer/";
+        public static readonly string CardPath = "Prefabs/CardView/CardPreview/";
 
         public static readonly string YellowCircle = "circle_80_80_f8b711";
         public static readonly string BlueCircle = "circle_80_80_50cce5";

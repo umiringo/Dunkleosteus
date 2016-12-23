@@ -60,6 +60,11 @@ public class Card : MonoBehaviour {
     {
     
     }
+
+    public void Init(string level)
+    {
+        levelName = level;
+    }
     ///////////////////////////////////////////////////////////////
     // delegate                                                  //
     ///////////////////////////////////////////////////////////////
