@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using GlobalDefines;
 using SimpleJSON;
 
-
-
 public class LevelPlayView : MonoBehaviour {
     private GameObject _lineTemplate; // 线的模版
     private GameObject _lineContainer; // 线的容器
@@ -20,11 +18,8 @@ public class LevelPlayView : MonoBehaviour {
     public GameObject levelNameLabel; // 星座名的label
     // public GameObject levelComplete; // 完成游戏的对号
     public UILabel labelCoin;
-    public GameObject spritePreview;
     public UITexture texturePreview;
-
     public LevelPlayModel levelPlayModel;
-
 	// Use this for initialization
     void Awake()
     {
@@ -73,7 +68,7 @@ public class LevelPlayView : MonoBehaviour {
         _gameContainer = Instantiate(Resources.Load(PathContainer.ContainerPath + name + "Container" )) as GameObject;
         _gameContainer.transform.parent = this.gameObject.transform;
         _gameContainer.transform.localPosition = Vector3.zero;
-        _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 0.0f);
+        _gameContainer.transform.localScale = new Vector3(1.3f, 1.3f, 1.0f);
         // Init gameContainer's component
         _labelLevelTitle = _gameContainer.transform.Find("Detail/LabelContainer/LabelName").gameObject.GetComponent<UILocalize>();
         _labelLevelTitle.key = "LK" + levelName + "Title";
@@ -87,7 +82,6 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelInfo.key = "LK" + levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         labelCoin.text = levelPlayModel.GetCoin().ToString();
-        spritePreview.SetActive(false);
     }
 
     // Load Level Data
@@ -118,7 +112,6 @@ public class LevelPlayView : MonoBehaviour {
 
     public void ShowGameWin()
     {
-        spritePreview.SetActive(false);
         _gameContainer.GetComponent<GameContainer>().GameWin();
     }
 

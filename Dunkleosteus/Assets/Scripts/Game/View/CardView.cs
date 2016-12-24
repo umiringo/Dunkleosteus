@@ -18,7 +18,7 @@ public class CardView : MonoBehaviour {
     void Awake() {
         menuHash = new Dictionary<string, GameObject>();
         _cardInfoTemplate = Resources.Load(PathContainer.CardInfoPrefabPath) as GameObject;
-        tableCard = this.gameObject.transform.Find("PanelCardList/TableCard").gameObject;
+        tableCard = this.gameObject.transform.Find("PanelCardList/PanelCardTable/TableCard").gameObject;
     }
 
 	// Use this for initialization
@@ -59,6 +59,9 @@ public class CardView : MonoBehaviour {
             cardInfo.transform.localScale = new Vector3(1, 1, 1);         
         }
         tableCard.GetComponent<UITable>().Reposition();
+        scrollViewGameObject.GetComponent<UIScrollView>().ResetPosition();
+
+
     }
 
     public void RefreshMenu()

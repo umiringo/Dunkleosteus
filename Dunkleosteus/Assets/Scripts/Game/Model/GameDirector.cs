@@ -17,6 +17,7 @@ public class GameDirector : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
     public CardView cardView;
+    
     //public GameObject panelStart; // 开始界面 
     public GameObject panelMainMenu; // 主菜单界面
     public GameObject panelLevelSelect; // 关卡选择界面
@@ -98,9 +99,9 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Crater");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -123,7 +124,7 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "English";
+        Localization.language = "SChinese";
     }
 
     private void InitCatagoryHash(string latestLevel)
