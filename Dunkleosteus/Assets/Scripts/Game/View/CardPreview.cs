@@ -23,7 +23,7 @@ public class CardPreview : MonoBehaviour {
         _card = Instantiate(Resources.Load(PathContainer.CardPath + levelName + "Card")) as GameObject;
         _card.transform.parent = this.gameObject.transform;
         _card.transform.localPosition = Vector3.zero;
-        _card.transform.localScale = new Vector3(0.6f, 0.6f, 1.0f);
+        _card.transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
         _card.GetComponent<Card>().Init(levelName);
     }
 
