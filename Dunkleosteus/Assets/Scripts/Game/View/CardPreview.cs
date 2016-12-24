@@ -27,7 +27,7 @@ public class CardPreview : MonoBehaviour {
         _card.GetComponent<Card>().Init(levelName);
     }
 
-    public void ClearCard()
+    public void ClearPreview()
     {
         Destroy(_card);
     }
@@ -35,5 +35,12 @@ public class CardPreview : MonoBehaviour {
     public void FlopCard(GameObject go)
     {
         _card.GetComponent<Card>().BeginToFlop(go);
+    }
+
+    public void Shake()
+    {
+        Debug.Log("CardPreview Shake");
+        GameObject front = _card.transform.Find("Sky").gameObject;
+        iTween.ShakeRotation(front, new Vector3(0.0f, 30.0f, 0.0f), 0.3f);
     }
 }

@@ -64,6 +64,18 @@ public class Card : MonoBehaviour {
     public void Init(string level)
     {
         levelName = level;
+        // 设置文字
+        JSONNode jo = TemplateMgr.Instance.GetTemplateString(ConfigKey.LevelInfo, levelName);
+        var labelLevelTitle = gameObject.transform.Find("Detail/LabelContainer/LabelName").gameObject.GetComponent<UILocalize>();
+        labelLevelTitle.key = "LK" + levelName + "Title";
+        var labelLevelLatin = gameObject.transform.Find("Detail/LabelContainer/ContainerInfo/LabelLatin").gameObject.GetComponent<UILocalize>();
+        labelLevelLatin.key = "LK" + levelName + "Latin";
+        var labelLevelSeason = gameObject.transform.Find("Detail/LabelContainer/ContainerInfo/LabelSeason").gameObject.GetComponent<UILocalize>();
+        labelLevelSeason.key = jo["season"];
+        var labelLevelPosition = gameObject.transform.Find("Detail/LabelContainer/ContainerInfo/LabelPosition").gameObject.GetComponent<UILabel>();
+        labelLevelPosition.text = jo["position"];
+        var labelLevelInfo = gameObject.transform.Find("Detail/LabelContainer/LabelInfo").gameObject.GetComponent<UILocalize>();
+        labelLevelInfo.key = "LK" + levelName + "Info";
     }
     ///////////////////////////////////////////////////////////////
     // delegate                                                  //
@@ -112,7 +124,7 @@ public class Card : MonoBehaviour {
         // Draw Line
         foreach(int ans in _correctAnswerList) {
             GameObject beginAns = starContainer.transform.Find("Star" + ans / 100).gameObject;
-            GameObject endAns = starContainer.transform.Find("Star" + ans % 10).gameObject;
+            GameObject endAns = starContainer.transform.Find("Star" + ans % 100).gameObject;
             AddStarLine(beginAns.transform, endAns.transform);
         }
     }

@@ -18,7 +18,6 @@ public class LevelPlayView : MonoBehaviour {
     public GameObject levelNameLabel; // 星座名的label
     // public GameObject levelComplete; // 完成游戏的对号
     public UILabel labelCoin;
-    public GameObject spritePreview;
     public UITexture texturePreview;
     public LevelPlayModel levelPlayModel;
 	// Use this for initialization
@@ -83,7 +82,6 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelInfo.key = "LK" + levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         labelCoin.text = levelPlayModel.GetCoin().ToString();
-        spritePreview.SetActive(false);
     }
 
     // Load Level Data
@@ -114,7 +112,6 @@ public class LevelPlayView : MonoBehaviour {
 
     public void ShowGameWin()
     {
-        spritePreview.SetActive(false);
         _gameContainer.GetComponent<GameContainer>().GameWin();
     }
 
