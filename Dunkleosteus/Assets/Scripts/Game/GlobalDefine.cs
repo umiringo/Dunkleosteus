@@ -58,12 +58,16 @@ namespace GlobalDefines
     {
         public static readonly string LatestLevel = "LatestLevel";
         public static readonly string Coin = "Coin";
-        public static readonly string Language = "SChinese";
+        public static readonly string Language = "Language";
+        public static readonly string Music = "Music";
+        public static readonly string Sound = "Sound";
     }
 
     public class DefineString
     {
         public static readonly string FirstLevel = "Aries";
         public static readonly string DefaultCatagory = "Zodiac";
+        public static readonly string DarkBlueColor = "[465F6C]";
+        public static readonly string NormalBlueColor = "[50CCE5]";
     }
 }
