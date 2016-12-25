@@ -7,6 +7,7 @@ public class EventController : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
     public GameDirector gameDirector;
     public CardModel cardModel;
+    public OptionModel optionModel;
 
 	// Use this for initialization
 	void Start () 
@@ -101,4 +102,40 @@ public class EventController : MonoBehaviour {
     {
         cardModel.TriggerCardPreview(go);
     }
+
+    public void OnMusicOptionTouched() {
+        optionModel.MusicOption();
+    }
+
+    public void OnSoundOptionTouched()
+    {
+        optionModel.SoundOption();
+    }
+
+    public void OnLanguageOptionTouched()
+    {
+        optionModel.LanguageOption();
+    }
+
+    public void OnSelectLanguage(string language)
+    {
+        optionModel.SelectLanguage(language);
+    }
+
+    public void OnCloseLanguage()
+    {
+        optionModel.CloseLanguageOption();
+    }
+
+    public void OnCreditorOptionTouched()
+    {
+
+    }
+
+    public void OnResetOptionTouched()
+    {
+        optionModel.ResetOption();
+    }
+
+
 }

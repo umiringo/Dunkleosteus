@@ -103,7 +103,6 @@ public class LevelPlayView : MonoBehaviour {
     {
         //levelComplete.GetComponent<TweenAlpha>().Play(true);
         if(levelPlayModel.IsFin()) {
-            Debug.Log("LevelPlayView.ShowMenu, IsFin");
             lastMenu.SetActive(true);
         } else {
             menu.SetActive(true);

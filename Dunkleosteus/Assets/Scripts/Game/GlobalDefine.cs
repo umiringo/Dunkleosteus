@@ -36,6 +36,9 @@ namespace GlobalDefines
         public static readonly string GreenSmallSquare = "square_10_10_28ed7b";
 
         public static readonly string SpotSquare = "square_256_256_353c44";
+
+        public static readonly string normalBlueSquare = "80_80_square_5_ 50cce5";
+        public static readonly string darkBlueSquare = "80_80_square_5_ 465F6C";
     }
 
     public class DefineNumber

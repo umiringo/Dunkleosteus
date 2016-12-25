@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using SimpleJSON;
 using GlobalDefines;
 using System.Linq;
-using System.Threading;
 
 public class GameDirector : MonoBehaviour {
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
@@ -125,11 +124,13 @@ public class GameDirector : MonoBehaviour {
 
     private void InitLocalization()
     {
-        Localization.language = "SChinese";
+        // TODO 需要修改成本机的语言设置
+        Localization.language = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");       
     }
 
     private void InitCatagoryHash(string latestLevel)
     {
+        catagoryHash.Clear();
         // 遍历已经完成的所有关卡，依次插入到对应的list中
         int index = this.GetLevelIndex(latestLevel);
         for(int i = 0; i <= index; i++) {
@@ -166,53 +167,59 @@ public class GameDirector : MonoBehaviour {
 
     public void ExitMainMenuState()
     {
-        panelMainMenu.SetActive(false);
+        panelMainMenu.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void EnterLevelSelectState()
     {
-        panelLevelSelect.SetActive(true);
+        panelLevelSelect.GetComponent<FadeInOut>().FadeIn();
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
     }
 
     public void ExitLevelSelectState()
     {
-        panelLevelSelect.SetActive(false);
+        // panelLevelSelect.SetActive(false);
+        panelLevelSelect.GetComponent<FadeInOut>().FadeOut();
         levelSelectView.BeforeExit();
     }
 
     public void EnterGameSceneState()
     {
-        panelPlay.SetActive(true);
+        //panelPlay.SetActive(true);
+        panelPlay.GetComponent<FadeInOut>().FadeIn();
         levelPlayModel.LoadLevel(currentLevel);
     }
 
     public void ExitGameSceneState()
     {
-        panelPlay.SetActive(false);
+       // panelPlay.SetActive(false);
+        panelPlay.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void EnterCardViewState()
     {
-        panelCard.SetActive(true);
+       // panelCard.SetActive(true);
+        panelCard.GetComponent<FadeInOut>().FadeIn();
         cardView.Show("Zodiac");
     }
 
     public void ExitCardViewState()
     {
+        panelCard.GetComponent<FadeInOut>().FadeOut();
         cardView.BeforeExit();
-        panelCard.SetActive(false);
+       // panelCard.SetActive(false);
     }
 
     public void EnterOptionViewState()
     {
-        panelOption.SetActive(true);
+       // panelOption.SetActive(true);
+        panelOption.GetComponent<FadeInOut>().FadeIn();
     }
 
     public void ExitOptionViewState()
     {
-        panelOption.SetActive(false);
+        panelOption.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void EnterPayViewState()
@@ -273,19 +280,18 @@ public class GameDirector : MonoBehaviour {
     {
         panelNotify.SetActive(false);
         panelNotify.GetComponent<NotifyView>().Init(title, content);
-        panelNotify.SetActive(true);
+        panelNotify.GetComponent<FadeInOut>().FadeIn();
     }
 
     public void CloseNotify()
     {
-        panelNotify.SetActive(false);
+        panelNotify.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void StartOptionView()
     {
         _fsm.PerformTransition(StateTransition.ViewOption);
     }
-
     #endregion
 
     #region public interface

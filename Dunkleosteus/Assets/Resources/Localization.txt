@@ -297,3 +297,10 @@ LKOK,OK,确定,確定,はい
 LKCancel,Cancel,取消,取消,いいえ
 LKCardView,Star Card,星座卡片,星座卡片,星座カッド
 LKOptionTitle,Option,选项,選項,オブション
+LKMusic,Music,背景音乐,音樂,BGM
+LKSound,Sound,游戏音效,音效,サウンド
+LKLanguage,Language,语言,語言,言語
+LKCreditor,Creditor,制作组,制作組,クレジット
+LKReset,Reset Data,清空存档,清理數據,リセット
+LKOn,ON,开,開,オン
+LKOff,OFF,关,關,オフ
