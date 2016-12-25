@@ -44,7 +44,6 @@ public class CardModel : MonoBehaviour {
             cardPreviewGameObject.SetActive(false);
         } else {
             cardListGameObject.SetActive(false);
-            //cardPreview.Shake();
         }
     }
 }

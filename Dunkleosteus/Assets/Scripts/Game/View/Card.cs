@@ -178,7 +178,7 @@ public class Card : MonoBehaviour {
         float distance = Vector3.Distance(beginTransform.position, endTransform.position);
         float scale = GameObject.Find(PathContainer.UIRootPath).transform.localScale.x;
         float containerScale = lineContainer.transform.localScale.x;
-        int width = (int)(distance / scale / containerScale / 0.6);
+        int width = (int)(distance / scale / containerScale / 0.7);
         lineSprite.width = width;
         linkedLine.SetActive(true);
     }

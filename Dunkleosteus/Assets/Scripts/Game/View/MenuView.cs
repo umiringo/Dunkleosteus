@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GlobalDefines;
 
 public class MenuView : MonoBehaviour {
     public string catagory;
@@ -28,10 +29,10 @@ public class MenuView : MonoBehaviour {
     {
         if(catagory == catagoryName) {
             // dark
-            labelSelf.text = "[465F6C]" + abbr + "[-]";
+            labelSelf.text = DefineString.DarkBlueColor + abbr + "[-]";
         } else {
             // bright
-            labelSelf.text = "[50CCE5]" + abbr + "[-]";
+            labelSelf.text = DefineString.NormalBlueColor + abbr + "[-]";
         }
     }
 }
