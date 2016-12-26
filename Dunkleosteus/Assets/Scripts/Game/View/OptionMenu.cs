@@ -7,10 +7,10 @@ using GlobalDefines;
 public class OptionMenu : MonoBehaviour {
     public UILocalize musicMenu;
     public UILabel labelMusic;
-    //public UISprite musicSprite;
+    public UILabel labelMusicTitle;
     public UILocalize soundMenu;
     public UILabel labelSound;
-    //public UISprite soundSprite;
+    public UILabel labelSoundTitle;
 
 	// Use this for initialization
 	void Start () {
@@ -28,24 +28,32 @@ public class OptionMenu : MonoBehaviour {
 
         int musicOption = PlayerPrefs.GetInt(PlayerPrefsKey.Music, 1);
         if (musicOption == 1) {
-            labelMusic.color = new Color(0.31f, 0.8f, 0.9f);
+            // Normal
+            labelMusic.color = new Color(0.973f, 0.718f, 0.067f);
+            labelMusicTitle.color = new Color(0.973f, 0.718f, 0.067f);
             musicMenu.key = "LKOn";
         }
         else {
-            labelMusic.color = new Color(0.27f, 0.37f, 0.42f);
+            // Dark
+            labelMusic.color = new Color(0.447f, 0.416f, 0.239f);
+            labelMusicTitle.color = new Color(0.447f, 0.416f, 0.239f);
             musicMenu.key = "LKOff";
         }
 
         int soundOption = PlayerPrefs.GetInt(PlayerPrefsKey.Sound, 1);
         if (soundOption == 1) {
-            labelSound.color = new Color(0.31f, 0.8f, 0.9f);
+            // Normal
+            labelSound.color = new Color(0.973f, 0.718f, 0.067f);
+            labelSoundTitle.color = new Color(0.973f, 0.718f, 0.067f);
             soundMenu.key = "LKOn";
         }
         else {
-            labelSound.color = new Color(0.27f, 0.37f, 0.42f);
+            // Dark
+            labelSound.color = new Color(0.447f, 0.416f, 0.239f);
+            labelSoundTitle.color = new Color(0.447f, 0.416f, 0.239f);
             soundMenu.key = "LKOff";
         }
-        
+
         gameObject.SetActive(true);
     }
 }
