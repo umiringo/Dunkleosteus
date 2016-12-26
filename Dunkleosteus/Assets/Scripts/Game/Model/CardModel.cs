@@ -5,8 +5,6 @@ public class CardModel : MonoBehaviour {
     public GameObject cardPreviewGameObject;
     public CardPreview cardPreview;
     public GameObject cardListGameObject;
-
-    private bool isClose = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,31 +17,18 @@ public class CardModel : MonoBehaviour {
 
     public void ShowCardPreview(string level)
     {
-        isClose = false;
         cardPreview.Init(level);
-        cardPreviewGameObject.SetActive(true);
-        cardPreviewGameObject.GetComponent<TweenPosition>().PlayForward();
+        cardPreview.GetComponent<MoveInOut>().MoveIn();
     }
 
     public void CloseCardPreview()
     {
-        cardListGameObject.SetActive(true);
-        isClose = true;
-        cardPreviewGameObject.GetComponent<TweenPosition>().PlayReverse();
+        cardPreview.GetComponent<MoveInOut>().MoveOut();
+        cardPreview.ClearPreview();
     }
 
     public void TriggerCardPreview(GameObject go)
     {
         cardPreview.FlopCard(go);
-    }
-
-    public void OnFinishTween()
-    {
-        if (isClose) {
-            cardPreview.ClearPreview();
-            cardPreviewGameObject.SetActive(false);
-        } else {
-            cardListGameObject.SetActive(false);
-        }
     }
 }

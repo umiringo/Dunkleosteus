@@ -276,9 +276,9 @@ LKAutumn,Autumn,秋季,秋季,秋
 LKWinter,Winter,冬季,冬季,冬
 LKNotifyTapCard,Press the Card to Continue,点击卡片继续,點擊卡片繼續,タップ　ザ　カッド
 LKUrsaMajor,Ursa Major,大熊族,大熊族,おおぐま
-LKUrsaMajorContent,"The Ursa Major Family includes northern constellations in the vicinity of Ursa Major: Ursa Major itself, Ursa Minor, Draco, Canes Venatici, Boötes, Coma Berenices, Corona Borealis, Camelopardalis, Lynx, and Leo Minor. The eponymous constellation Ursa Major contains the famous Big Dipper.",大熊族是有10个星座的集团，包括大熊座、小熊座、天龙座、猎犬座、牧夫座、后发座、北冕座、鹿豹座、天猫座和小狮座。这些星座环绕着北天极，据以命名的大熊座包含了著名的，由7颗恒星组成，状似勺子形状的北斗七星。它跨越的范围从北球天极至–30°，春天大曲线横越这个家族。,大熊族是有10個星座的集團，包括大熊座、小熊座、天龍座、獵犬座、牧夫座、后髮座、北冕座、鹿豹座、天貓座和小獅座。這些星座環繞著北天極，據以命名的大熊座包含了著名的，由7顆恆星組成，狀似勺子形狀的北斗七星。它跨越的範圍從北球天極至–30°，春天大曲線橫越這個家族。,おおぐまファミりーはおおぐま座、こぐま座、りょうけん座、かみのけ座、こじし座、かんむり座、きりん座、やまねこ座、うしかい座、りゅう座など１０つ星座を含める。この星座らは北天をめぐている。 このファミりーの名前の由来のおおぐま座の中に、有名的な北斗七星もある。          
+LKUrsaMajorContent,"The Ursa Major Family includes northern constellations in the vicinity of Ursa Major: Ursa Major itself, Ursa Minor, Draco, Canes Venatici, Boötes, Coma Berenices, Corona Borealis, Camelopardalis, Lynx, and Leo Minor. The eponymous constellation Ursa Major contains the famous Big Dipper.",大熊族是有10个星座的集团，包括大熊座、小熊座、天龙座、猎犬座、牧夫座、后发座、北冕座、鹿豹座、天猫座和小狮座。这些星座环绕着北天极，据以命名的大熊座包含了著名的，由7颗恒星组成，状似勺子形状的北斗七星。它跨越的范围从北球天极至–30°，春天大曲线横越这个家族。,大熊族是有10個星座的集團，包括大熊座、小熊座、天龍座、獵犬座、牧夫座、后髮座、北冕座、鹿豹座、天貓座和小獅座。這些星座環繞著北天極，據以命名的大熊座包含了著名的，由7顆恆星組成，狀似勺子形狀的北斗七星。它跨越的範圍從北球天極至–30°，春天大曲線橫越這個家族。,おおぐまファミリーはおおぐま座、こぐま座、りょうけん座、かみのけ座、こじし座、かんむり座、きりん座、やまねこ座、うしかい座、りゅう座など１０つ星座を含める。この星座らは北天をめぐている。 このファミリーの名前の由来のおおぐま座の中に、有名的な北斗七星もある。          
 LKZodiac,Zodiac,黄道族,黃道族,黄道
-LKZodiacContent, "The Zodiac is a group of 13 constellations: Leo, Virgo, Libra, Scorpius, Sagittarius, Capricornus, Aquarius, Pisces, Aries, Taurus, Gemini, Ophiuchus, and Cancer. Some version of these constellations are found in traditions around the world, for this band around the celestial sphere includes the ecliptic, the apparent path of the sun through the year.",黄道族包括在黄道上的13个星座。狮子座、处女座、天秤座、天蝎座、射手座、摩羯座、水瓶座、双鱼座、白羊座、金牛座、蛇夫座、双子座和巨蟹座，这些星座都有黄道符号。黄道是太阳经过的星座，北半球的黄道星座在东天球，南半球的黄道星座在西天球。,黃道族包括在黃道上的13個星座。獅子座、室女座、天秤座、天蠍座、人馬座、摩羯座、水瓶座、雙魚座、白羊座、金牛座、蛇夫座、雙子座和巨蟹座，這些星座都有黃道符號。黃道是太陽經過的星座，北半球的黃道星座在東天球，南半球的黃道星座在西天球。,黄道ファミりーは天球上における太陽の見かけ上の通り道に通っていく星座たちという、しし座、おとめ座、てんびん座、さそり座、いて座、やぎ座、みずがめ座、うお座、おひつじ座、おうし座、へびつかい座、ふたご座、かに座など１３つ星座を含める。
+LKZodiacContent, "The Zodiac is a group of 13 constellations: Leo, Virgo, Libra, Scorpius, Sagittarius, Capricornus, Aquarius, Pisces, Aries, Taurus, Gemini, Ophiuchus, and Cancer. Some version of these constellations are found in traditions around the world, for this band around the celestial sphere includes the ecliptic, the apparent path of the sun through the year.",黄道族包括在黄道上的13个星座。狮子座、处女座、天秤座、天蝎座、射手座、摩羯座、水瓶座、双鱼座、白羊座、金牛座、蛇夫座、双子座和巨蟹座，这些星座都有黄道符号。黄道是太阳经过的星座，北半球的黄道星座在东天球，南半球的黄道星座在西天球。,黃道族包括在黃道上的13個星座。獅子座、室女座、天秤座、天蠍座、人馬座、摩羯座、水瓶座、雙魚座、白羊座、金牛座、蛇夫座、雙子座和巨蟹座，這些星座都有黃道符號。黃道是太陽經過的星座，北半球的黃道星座在東天球，南半球的黃道星座在西天球。,黄道ファミリーは天球上における太陽の見かけ上の通り道に通っていく星座たちという、しし座、おとめ座、てんびん座、さそり座、いて座、やぎ座、みずがめ座、うお座、おひつじ座、おうし座、へびつかい座、ふたご座、かに座など１３つ星座を含める。
 LKPerseus,Perseus,英仙族,英仙族,ペルセウス
 LKPerseusContent, "The Perseus Family includes several constellations associated with the Perseus myth: Cassiopeia, Cepheus, Andromeda, Perseus, Pegasus, and Cetus (representing the monster sent to devour Andromeda).", 英仙族是9个星座的团体，包括英仙座以及与英仙珀耳修斯的故事有关的星座：仙后座、仙王座、仙女座、英仙座、天马座、鲸鱼座、御夫座、蜥蜴座和三角座。,英仙族是9個星座的團體，包括英仙座以及英仙帕爾修斯的故事有關的星座：仙后座、仙王座、仙女座、英仙座、飛馬座、鯨魚座、御夫座、蜥蜴座和三角座。,ペルセウスファミリーはペルセウス座とペルセウスの神話に関する星座たちといって、ペルセウス座、カシオペヤ座、ケフェウス座、アンドロメダ座、ペガスス座、くじら座、ぎょしゃ座、さんかく座、とかげ座など９つ星座を含める。  
 LKHercules,Hercules,武仙族,武仙族,ヘルクレス
@@ -297,3 +297,15 @@ LKOK,OK,确定,確定,はい
 LKCancel,Cancel,取消,取消,いいえ
 LKCardView,Star Card,星座卡片,星座卡片,星座カッド
 LKOptionTitle,Option,选项,選項,オブション
+LKMusic,Music,背景音乐,音樂,BGM
+LKSound,Sounds,游戏音效,音效,SFX
+LKLanguage,Language,语言,語言,言語
+LKCreditor,Credits,制作组,制作組,クレジット
+LKReset,Reset,清空存档,清理數據,リセット
+LKOn,ON,开,開,オン
+LKOff,OFF,关,關,オフ
+LKProgramming,Programming,程序,程式,プログラミング
+LKGraphics,Graphics,美术,美術,デザイン
+LKIcon,Icon,图标设计,圖標設計,アイコン
+LKMusicDegisn,Music,音乐,音樂,ミュージック
+LKStarImage,Constellation Graphic Design,星图设计,星圖設計,星座画像デザイン
