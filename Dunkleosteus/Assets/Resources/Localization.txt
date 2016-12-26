@@ -306,6 +306,6 @@ LKOn,ON,开,開,オン
 LKOff,OFF,关,關,オフ
 LKProgramming,Programming,程序,程式,プログラミング
 LKGraphics,Graphics,美术,美術,デザイン
-LKIcon,Icon,图标设计,圖標設計,アイコン
-LKMusicDegisn,Music,音乐,音樂,ミュージック
-LKStarImage,Constellation Graphic Design,星图设计,星圖設計,星座画像デザイン
+LKIcon,Icon,图标素材,圖標素材,アイコン素材
+LKMusicDegisn,Music,音乐素材,音樂素材,ミュージック素材
+LKStarImage,Constellation Graphic Design,星图设计素材,星圖設計素材,星座画像デザイン素材
