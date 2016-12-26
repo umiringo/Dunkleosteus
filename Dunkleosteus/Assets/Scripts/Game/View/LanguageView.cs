@@ -29,11 +29,11 @@ public class LanguageView : MonoBehaviour {
         string currentLang = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");
         if (currentLang == lang) {
             selfLabel.color = new Color(0.27f, 0.37f, 0.42f);
-            selfSprite.spriteName = PathContainer.darkBlueSquare;
+            //selfSprite.spriteName = PathContainer.darkBlueSquare;
         }
         else {
             selfLabel.color = new Color(0.31f, 0.8f, 0.9f);
-            selfSprite.spriteName = PathContainer.normalBlueSquare;
+            //selfSprite.spriteName = PathContainer.normalBlueSquare;
         }
     }
 }

@@ -55,8 +55,7 @@ public class OptionModel : MonoBehaviour {
     {
         PlayerPrefs.SetString(PlayerPrefsKey.Language, language);
         Localization.language = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");
-        GameObject languageContainer = languageOptionView.transform.Find("PanelTable").gameObject;
-        foreach (Transform child in languageContainer.transform) {
+        foreach (Transform child in languageOptionView.transform) {
             child.gameObject.GetComponent<LanguageView>().Show();
         }
     }
