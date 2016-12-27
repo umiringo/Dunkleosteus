@@ -39,30 +39,45 @@ public class EventController : MonoBehaviour {
     // 提示点击
     public void OnTouchTips()
     {
-        audioPlayer.PlayClickSound();
         levelPlayModel.OnTips();
     }
     #endregion
 
+    //定义 WaitAndPrint（）方法  
+    IEnumerator StarGameCoroutine(float waitTime)  
+    {  
+        yield return new WaitForSeconds(waitTime);  
+        gameDirector.StartGame();
+    }    
     // 点击开始
     public void OnStartGame()
     {
         audioPlayer.PlayClickSound();
-        gameDirector.StartGame();
+        StartCoroutine(StarGameCoroutine(0.1f));   
     }
 
+    IEnumerator SelectLevelCoroutine(float waitTime, string level)
+    {
+        yield return new WaitForSeconds(waitTime);
+        gameDirector.SelectLevel(level);
+    }    
     // 选择关卡
     public void OnSelectLevel(string level)
     {
         audioPlayer.PlayClickSound();
-        gameDirector.SelectLevel(level);
+        StartCoroutine(SelectLevelCoroutine(0.1f, level));
     }
 
+    IEnumerator BackSelectLevelCoroutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        gameDirector.BackSelectLevel();
+    }    
     // 返回选关
     public void OnBackSelectLevel()
     {
         audioPlayer.PlayClickSound();
-        gameDirector.BackSelectLevel();
+        StartCoroutine(BackSelectLevelCoroutine(0.1f));
     }
 
     // 继续下一关
@@ -75,7 +90,6 @@ public class EventController : MonoBehaviour {
     // 点击游戏中标题
     public void OnClickTitle()
     {
-        audioPlayer.PlayClickSound();
         levelPlayModel.ShowPreview();
     }
 
@@ -135,24 +149,29 @@ public class EventController : MonoBehaviour {
         gameDirector.StartOptionView();
     }
 
+    IEnumerator MusicOptionCoroutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        optionModel.MusicOption();
+    }  
     // 点选音乐
     public void OnMusicOptionTouched() 
     {
-        audioPlayer.PlayClickSound();
-        optionModel.MusicOption();
+        audioPlayer.PlaySwitchSound();
+        StartCoroutine(MusicOptionCoroutine(0.1f));
     }
 
     // 点选音效
     public void OnSoundOptionTouched()
     {
-        audioPlayer.PlayClickSound();
+        audioPlayer.PlaySwitchSound();
         optionModel.SoundOption();
     }
 
     // 选择语言
     public void OnSelectLanguage(string language)
     {
-        audioPlayer.PlayClickSound();
+        audioPlayer.PlaySwitchSound();
         optionModel.SelectLanguage(language);
     }
 }

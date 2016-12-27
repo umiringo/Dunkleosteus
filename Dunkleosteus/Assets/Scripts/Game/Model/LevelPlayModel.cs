@@ -93,6 +93,7 @@ public class LevelPlayModel : MonoBehaviour {
         _correctAnswerList.Clear();
         _answerList.Clear();
         _readyStar = null;
+        audioPlayer.ClearLittleStarIndex();
     }
 
     void Load(string name)
@@ -118,7 +119,7 @@ public class LevelPlayModel : MonoBehaviour {
             //first one
             _readyStar = goStar;
             RefreshStar(goStar);
-            audioPlayer.PlayChoseSound();
+            audioPlayer.PlayLittleStar();
         }
         else {
             if (_readyStar.GetComponent<Star>().index == index) {
@@ -127,7 +128,6 @@ public class LevelPlayModel : MonoBehaviour {
                 audioPlayer.PlayUnChoseSound();
             }
             else {
-                audioPlayer.PlayChoseSound();
                 TryLinkStar(_readyStar, goStar);
             }
         }
@@ -191,6 +191,7 @@ public class LevelPlayModel : MonoBehaviour {
             return;
         }
         levelPlayView.ShowPreview(_levelName.ToLower());
+        audioPlayer.PlayClickSound();
     }
     #endregion
 
@@ -223,6 +224,9 @@ public class LevelPlayModel : MonoBehaviour {
         if (CheckAnswer()) {
             // Win
             this.GameWin();
+        }
+        else {
+            audioPlayer.PlayLittleStar();
         }
     }
 

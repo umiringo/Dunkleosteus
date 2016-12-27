@@ -13,11 +13,19 @@ public class AudioPlayerModel : MonoBehaviour {
     public AudioClip winSound;
     public AudioClip flopCardSound;
     public AudioClip switchSound;
-    public List<AudioClip> littleStar;
+
+    public AudioClip p1;
+    public AudioClip p2;
+    public AudioClip p3;
+    public AudioClip p4;
+    public AudioClip p5;
+    public AudioClip p6;
+    public AudioClip p7;
 
     private int littleStarIndex = 0; 
     private bool isPlayMusic = true;
     private bool isPlaySound = true;
+    private List<AudioClip> littleStar = new List<AudioClip>();
 
     private AudioSource audioSource;
 
@@ -37,6 +45,41 @@ public class AudioPlayerModel : MonoBehaviour {
 	void Update () {
 	}
 
+    private void InitLittleStar()
+    {
+        littleStar.Add(p1);
+        littleStar.Add(p1);
+        littleStar.Add(p5);
+        littleStar.Add(p5);
+        littleStar.Add(p6);
+        littleStar.Add(p6);
+        littleStar.Add(p5);
+
+        littleStar.Add(p4);
+        littleStar.Add(p4);
+        littleStar.Add(p3);
+        littleStar.Add(p3);
+        littleStar.Add(p2);
+        littleStar.Add(p2);
+        littleStar.Add(p1);
+
+        littleStar.Add(p5);
+        littleStar.Add(p5);
+        littleStar.Add(p4);
+        littleStar.Add(p4);
+        littleStar.Add(p3);
+        littleStar.Add(p3);
+        littleStar.Add(p2);
+
+        littleStar.Add(p5);
+        littleStar.Add(p5);
+        littleStar.Add(p4);
+        littleStar.Add(p4);
+        littleStar.Add(p3);
+        littleStar.Add(p3);
+        littleStar.Add(p2);
+    }
+
     public void SetIsPlayMusic(bool value) 
     {
         isPlayMusic = value;
@@ -55,7 +98,7 @@ public class AudioPlayerModel : MonoBehaviour {
 
     public void PlayOpBGM()
     {
-        audioSource.Pause();
+        //audioSource.Pause();
         audioSource.clip = opBgm;
         if(isPlayMusic) {
             audioSource.Play();
@@ -64,7 +107,7 @@ public class AudioPlayerModel : MonoBehaviour {
 
     public void PlaySelectBGM()
     {
-        audioSource.Pause();
+       // audioSource.Pause();
         audioSource.clip = selectBgm;
         if(isPlayMusic) {
             audioSource.Play();
@@ -73,7 +116,7 @@ public class AudioPlayerModel : MonoBehaviour {
 
     public void PlayGameBGM()
     {
-        audioSource.Pause();
+        //audioSource.Pause();
         audioSource.clip = gameBgm;
         if(isPlayMusic) {
             audioSource.Play();          
@@ -119,6 +162,7 @@ public class AudioPlayerModel : MonoBehaviour {
     {
         if (!isPlaySound) return;
         audioSource.PlayOneShot(littleStar[littleStarIndex]);
+        littleStarIndex++;
         if (littleStarIndex >= littleStar.Count) {
             littleStarIndex = 0;
         }
@@ -127,5 +171,11 @@ public class AudioPlayerModel : MonoBehaviour {
     public void ClearLittleStarIndex()
     {
         littleStarIndex = 0;
+    }
+
+    public void PlaySwitchSound()
+    {
+        if (!isPlaySound) return;
+        audioSource.PlayOneShot(switchSound);
     }
 }

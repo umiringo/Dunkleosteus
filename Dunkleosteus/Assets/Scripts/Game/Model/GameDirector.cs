@@ -44,7 +44,7 @@ public class GameDirector : MonoBehaviour {
     }
 
     void Start () {
-        audioplayer.PlayOpBGM();
+        InitSounds();
 	}
 	
 	// Update is called once per frame
@@ -102,7 +102,7 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();
+       // PlayerPrefs.DeleteAll();
         // Init latestLevel
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Crater");
         // first level
@@ -162,6 +162,25 @@ public class GameDirector : MonoBehaviour {
         abbrHash["Hercules"] = "H";
     }
 
+    private void InitSounds()
+    {
+        int musicOption = PlayerPrefs.GetInt(PlayerPrefsKey.Music, 1);
+        if (musicOption > 0) {
+            audioplayer.SetIsPlayMusic(true);
+        }
+        else {
+            audioplayer.SetIsPlayMusic(false);
+        }
+
+        int soundOption = PlayerPrefs.GetInt(PlayerPrefsKey.Sound, 1);
+        if (soundOption > 0) {
+            audioplayer.SetIsPlaySound(true);
+        }
+        else {
+            audioplayer.SetIsPlaySound(false);
+        }
+        audioplayer.PlayOpBGM();
+    }
     #region StateInterface
     public void EnterMainMenuState()
     {
