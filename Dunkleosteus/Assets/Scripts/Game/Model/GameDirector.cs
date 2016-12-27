@@ -162,6 +162,7 @@ public class GameDirector : MonoBehaviour {
     #region StateInterface
     public void EnterMainMenuState()
     {
+        Debug.Log("EnterMainMenuState");
         panelMainMenu.SetActive(true);
     }
 
@@ -175,6 +176,7 @@ public class GameDirector : MonoBehaviour {
         panelLevelSelect.GetComponent<FadeInOut>().FadeIn();
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
+        // TODO 播放Select音乐
     }
 
     public void ExitLevelSelectState()
@@ -189,6 +191,7 @@ public class GameDirector : MonoBehaviour {
         //panelPlay.SetActive(true);
         panelPlay.GetComponent<FadeInOut>().FadeIn();
         levelPlayModel.LoadLevel(currentLevel);
+        // TODO 播放Game音乐
     }
 
     public void ExitGameSceneState()
