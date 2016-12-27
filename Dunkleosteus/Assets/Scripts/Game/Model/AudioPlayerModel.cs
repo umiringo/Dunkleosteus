@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using GlobalDefines;
 
 public class AudioPlayerModel : MonoBehaviour {
     public AudioClip opBgm;
@@ -10,9 +12,12 @@ public class AudioPlayerModel : MonoBehaviour {
     public AudioClip unchoseSound;
     public AudioClip winSound;
     public AudioClip flopCardSound;
+    public AudioClip switchSound;
+    public List<AudioClip> littleStar;
 
-    private bool isPlayMusic;
-    private bool isPlaySound;
+    private int littleStarIndex = 0; 
+    private bool isPlayMusic = true;
+    private bool isPlaySound = true;
 
     private AudioSource audioSource;
 
@@ -20,6 +25,7 @@ public class AudioPlayerModel : MonoBehaviour {
         audioSource = this.gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.volume = 1.0f;
+        InitLittleStar();
     } 
 
 	// Use this for initialization
@@ -29,14 +35,17 @@ public class AudioPlayerModel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	   if(!isPlayMusic) {
-            audioSource.Pause();
-       }
 	}
 
     public void SetIsPlayMusic(bool value) 
     {
         isPlayMusic = value;
+        if (value) {
+            audioSource.Play();
+        }
+        else {
+            audioSource.Stop();
+        }
     }
 
     public void SetIsPlaySound(bool value)
@@ -104,5 +113,19 @@ public class AudioPlayerModel : MonoBehaviour {
     public void StopMusic()
     {
         audioSource.Stop();
+    }
+
+    public void PlayLittleStar()
+    {
+        if (!isPlaySound) return;
+        audioSource.PlayOneShot(littleStar[littleStarIndex]);
+        if (littleStarIndex >= littleStar.Count) {
+            littleStarIndex = 0;
+        }
+    }
+
+    public void ClearLittleStarIndex()
+    {
+        littleStarIndex = 0;
     }
 }

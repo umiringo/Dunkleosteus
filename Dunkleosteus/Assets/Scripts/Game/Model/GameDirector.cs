@@ -26,6 +26,8 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelNotify;
     public GameObject panelOption;
 
+    public AudioPlayerModel audioplayer;
+
     void Awake() {
         // Init template data
         TemplateMgr.Instance.Init();
@@ -41,7 +43,8 @@ public class GameDirector : MonoBehaviour {
         InitAbbrHash();
     }
 
-    void Start () {   
+    void Start () {
+        audioplayer.PlayOpBGM();
 	}
 	
 	// Update is called once per frame
@@ -176,7 +179,8 @@ public class GameDirector : MonoBehaviour {
         panelLevelSelect.GetComponent<FadeInOut>().FadeIn();
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
-        // TODO 播放Select音乐
+        audioplayer.PlaySelectBGM();
+        
     }
 
     public void ExitLevelSelectState()
@@ -191,7 +195,7 @@ public class GameDirector : MonoBehaviour {
         //panelPlay.SetActive(true);
         panelPlay.GetComponent<FadeInOut>().FadeIn();
         levelPlayModel.LoadLevel(currentLevel);
-        // TODO 播放Game音乐
+        audioplayer.PlayGameBGM();
     }
 
     public void ExitGameSceneState()

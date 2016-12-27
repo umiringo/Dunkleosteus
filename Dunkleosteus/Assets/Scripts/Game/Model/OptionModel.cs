@@ -7,7 +7,7 @@ using GlobalDefines;
 public class OptionModel : MonoBehaviour {
     public OptionMenu optionMenuView;
     public GameObject languageOptionView;
-
+    public AudioPlayerModel audioPlayer;
 	// Use this for initialization
 	void Start () {
 	}
@@ -22,9 +22,11 @@ public class OptionModel : MonoBehaviour {
         int musicOption = PlayerPrefs.GetInt(PlayerPrefsKey.Music, 1);
         if(musicOption == 1) {
             PlayerPrefs.SetInt(PlayerPrefsKey.Music, 0);
+            audioPlayer.SetIsPlayMusic(false);
         } 
         else {
             PlayerPrefs.SetInt(PlayerPrefsKey.Music, 1);
+            audioPlayer.SetIsPlayMusic(true);
         }
         optionMenuView.RefreshMenu();
     }
@@ -34,9 +36,11 @@ public class OptionModel : MonoBehaviour {
         int soundOption = PlayerPrefs.GetInt(PlayerPrefsKey.Sound, 1);
         if (soundOption == 1) {
             PlayerPrefs.SetInt(PlayerPrefsKey.Sound, 0);
+            audioPlayer.SetIsPlaySound(false);
         }
         else {
             PlayerPrefs.SetInt(PlayerPrefsKey.Sound, 1);
+            audioPlayer.SetIsPlaySound(true);
         }
         optionMenuView.RefreshMenu();
     }

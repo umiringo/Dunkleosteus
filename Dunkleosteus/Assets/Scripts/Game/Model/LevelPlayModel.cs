@@ -46,7 +46,8 @@ public class LevelPlayModel : MonoBehaviour {
 
     public GameDirector gameDirector;
     public LevelPlayView levelPlayView;
-    
+    public AudioPlayerModel audioPlayer;
+
     public string levelName {
         get {
             return _levelName;
@@ -58,7 +59,7 @@ public class LevelPlayModel : MonoBehaviour {
         _starDictionary = new Dictionary<int, int>();
         _correctAnswerList = new List<int>();
         _answerList = new List<int>(); 
-        _readyStar = null;       
+        _readyStar = null;
     }
 	// Use this for initialization
 	void Start () {
@@ -117,13 +118,16 @@ public class LevelPlayModel : MonoBehaviour {
             //first one
             _readyStar = goStar;
             RefreshStar(goStar);
+            audioPlayer.PlayChoseSound();
         }
         else {
             if (_readyStar.GetComponent<Star>().index == index) {
                 _readyStar = null;
                 RefreshStar(goStar);
+                audioPlayer.PlayUnChoseSound();
             }
             else {
+                audioPlayer.PlayChoseSound();
                 TryLinkStar(_readyStar, goStar);
             }
         }
@@ -151,6 +155,7 @@ public class LevelPlayModel : MonoBehaviour {
         _isFin = gameDirector.FinishLevel();
         _isWin = true;
         levelPlayView.ShowGameWin();
+        audioPlayer.PlayWinSound();
     }
 
     // Click tips
