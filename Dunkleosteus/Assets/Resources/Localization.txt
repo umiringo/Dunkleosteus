@@ -300,7 +300,7 @@ LKOptionTitle,Option,选项,選項,オブション
 LKMusic,Music,背景音乐,音樂,BGM
 LKSound,Sounds,游戏音效,音效,SFX
 LKLanguage,Language,语言,語言,言語
-LKCreditor,Credits,制作组,制作組,クレジット
+LKCredits,Credits,制作组,制作組,クレジット
 LKReset,Reset,清空存档,清理數據,リセット
 LKOn,ON,开,開,オン
 LKOff,OFF,关,關,オフ
@@ -309,3 +309,4 @@ LKGraphics,Graphics,美术,美術,デザイン
 LKIcon,Icon,图标素材,圖標素材,アイコン素材
 LKMusicDegisn,Music,音乐素材,音樂素材,ミュージック素材
 LKStarImage,Constellation Graphic Design,星图设计素材,星圖設計素材,星座画像デザイン素材
+LKConstellationInfo,Constellation Info,星座资料,星座資料,星座データ
