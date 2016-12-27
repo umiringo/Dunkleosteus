@@ -171,7 +171,6 @@ public class EventController : MonoBehaviour {
     // 选择语言
     public void OnSelectLanguage(string language)
     {
-        audioPlayer.PlaySwitchSound();
         optionModel.SelectLanguage(language);
     }
 }

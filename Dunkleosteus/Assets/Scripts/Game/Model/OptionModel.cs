@@ -57,6 +57,8 @@ public class OptionModel : MonoBehaviour {
 
     public void SelectLanguage(string language)
     {
+        if(language == Localization.language) return;
+        audioPlayer.PlaySwitchSound();
         PlayerPrefs.SetString(PlayerPrefsKey.Language, language);
         Localization.language = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");
         foreach (Transform child in languageOptionView.transform) {
