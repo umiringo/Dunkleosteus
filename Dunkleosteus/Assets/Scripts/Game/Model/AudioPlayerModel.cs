@@ -100,4 +100,9 @@ public class AudioPlayerModel : MonoBehaviour {
         if(!isPlaySound) return;
         audioSource.PlayOneShot(flopCardSound);
     }
+
+    public void StopMusic()
+    {
+        audioSource.Stop();
+    }
 }
