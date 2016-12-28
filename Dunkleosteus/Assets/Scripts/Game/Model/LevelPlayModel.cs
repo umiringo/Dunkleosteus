@@ -43,6 +43,7 @@ public class LevelPlayModel : MonoBehaviour {
     private GameObject _readyStar; // 选中的星星
     private bool _isWin;
     private bool _isFin;
+    private bool _isNew;
 
     public GameDirector gameDirector;
     public LevelPlayView levelPlayView;
@@ -108,6 +109,12 @@ public class LevelPlayModel : MonoBehaviour {
             _correctAnswerList.Add(tmpAnswer);
         }
         _isWin = false;
+        if(gameDirector.GetLevelState(name) == 0) {
+            _isNew = true;
+        }
+        else {
+            _isNew =false;
+        }
     }
 
     // Click star
@@ -156,6 +163,10 @@ public class LevelPlayModel : MonoBehaviour {
         _isWin = true;
         levelPlayView.ShowGameWin();
         audioPlayer.PlayWinSound();
+        if(_isNew) {
+            gameDirector.AddCoin(DefineNumber.WinBonusNum);
+            levelPlayView.UpdateCoinLabel();
+        }
     }
 
     // Click tips
@@ -193,6 +204,12 @@ public class LevelPlayModel : MonoBehaviour {
         levelPlayView.ShowPreview(_levelName.ToLower());
         audioPlayer.PlayClickSound();
     }
+
+    public bool IsNewLevel()
+    {
+        return _isNew;
+    }
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////
@@ -396,4 +413,5 @@ public class LevelPlayModel : MonoBehaviour {
             }
         }
     }
+
 }

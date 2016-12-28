@@ -310,3 +310,8 @@ LKIcon,Icon,图标素材,圖標素材,アイコン素材
 LKMusicDegisn,Music,音乐素材,音樂素材,ミュージック素材
 LKStarImage,Constellation Graphic Design,星图设计素材,星圖設計素材,星座画像デザイン素材
 LKConstellationInfo,Constellation Info,星座资料,星座資料,星座データ
+LKPay,Purchase,充值,充值,ショップ
+LKPrice6,$1.00,￥6.00,$1.00,￥120
+LKPrice18,$3.00,￥18.00,$3.00,￥360
+LKPrice68,$12.00,￥68.00,$12.00,￥1500
+LKPrice198,$30.00,￥198.00,$30.00,￥5000

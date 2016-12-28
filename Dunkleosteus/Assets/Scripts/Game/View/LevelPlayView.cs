@@ -18,8 +18,8 @@ public class LevelPlayView : MonoBehaviour {
     public GameObject levelNameLabel; // 星座名的label
     // public GameObject levelComplete; // 完成游戏的对号
     public UILabel labelCoin;
-    public UITexture texturePreview;
     public LevelPlayModel levelPlayModel;
+    public GameObject winBonus;
 	// Use this for initialization
     void Awake()
     {
@@ -31,7 +31,7 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelPosition = null;
         _labelLevelInfo = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        // levelComplete.SetActive(false);
+        winBonus.SetActive(false);
         menu.SetActive(false);
         lastMenu.SetActive(false);
     }
@@ -53,6 +53,7 @@ public class LevelPlayView : MonoBehaviour {
         _gameContainer = null;
         menu.SetActive(false);
         lastMenu.SetActive(false);
+        winBonus.SetActive(false);
     }
 
     public void LoadLevelUI(string name)
@@ -95,13 +96,15 @@ public class LevelPlayView : MonoBehaviour {
     {
         menu.SetActive(false);
         lastMenu.SetActive(false);
-        //levelComplete.SetActive(true);
+        if(levelPlayModel.IsNewLevel()) {
+            winBonus.SetActive(true);
+        }
     }
 
     // Show menu(next/back)
     public void ShowMenu()
     {
-        //levelComplete.GetComponent<TweenAlpha>().Play(true);
+        winBonus.SetActive(false);
         if(levelPlayModel.IsFin()) {
             lastMenu.SetActive(true);
         } else {
@@ -185,6 +188,7 @@ public class LevelPlayView : MonoBehaviour {
     {
         _gameContainer.GetComponent<GameContainer>().ShowPreview();
     }
+
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////

@@ -48,6 +48,7 @@ namespace GlobalDefines
         public static readonly int DuplicateStarNum = 4;
         public static readonly int LevelSelectStarThreshold = 10;
         public static readonly int LittleStarCount = 28;
+        public static readonly int WinBonusNum = 1;
 
     }
     

@@ -102,9 +102,9 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-       // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Crater");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -181,6 +181,7 @@ public class GameDirector : MonoBehaviour {
         }
         audioplayer.PlayOpBGM();
     }
+
     #region StateInterface
     public void EnterMainMenuState()
     {
