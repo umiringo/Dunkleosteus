@@ -158,7 +158,7 @@ public class EventController : MonoBehaviour {
     public void OnMusicOptionTouched() 
     {
         audioPlayer.PlaySwitchSound();
-        StartCoroutine(MusicOptionCoroutine(0.1f));
+        StartCoroutine(MusicOptionCoroutine(0.25f));
     }
 
     // 点选音效
@@ -172,5 +172,12 @@ public class EventController : MonoBehaviour {
     public void OnSelectLanguage(string language)
     {
         optionModel.SelectLanguage(language);
+    }
+
+    // 点击进入内购界面
+    public void OnClickButtonPay()
+    {
+        audioPlayer.PlayClickSound();
+        gameDirector.StartPayView();
     }
 }

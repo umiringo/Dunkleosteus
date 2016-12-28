@@ -17,6 +17,7 @@ public class GameDirector : MonoBehaviour {
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
     public CardView cardView;
+    public PayView payView;
     
     //public GameObject panelStart; // 开始界面 
     public GameObject panelMainMenu; // 主菜单界面
@@ -25,6 +26,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelCard; // 卡片浏览界面
     public GameObject panelNotify;
     public GameObject panelOption;
+    public GameObject panelPay;
 
     public AudioPlayerModel audioplayer;
 
@@ -251,12 +253,13 @@ public class GameDirector : MonoBehaviour {
 
     public void EnterPayViewState()
     {
-
+        payView.RefreshView();
+        panelPay.GetComponent<FadeInOut>().FadeIn();
     }
 
     public void ExitPayViewState()
     {
-
+        panelPay.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void StartGame()
@@ -318,6 +321,11 @@ public class GameDirector : MonoBehaviour {
     public void StartOptionView()
     {
         _fsm.PerformTransition(StateTransition.ViewOption);
+    }
+
+    public void StartPayView()
+    {
+        _fsm.PerformTransition(StateTransition.ViewPay);
     }
     #endregion
 
