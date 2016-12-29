@@ -265,6 +265,9 @@ public class LevelPlayModel : MonoBehaviour {
             // Win
             this.GameWin();
         }
+        else {
+            audioPlayer.PlayLittleStar();  
+        }
     }
 
     // Check whether line(b,e) is already existed

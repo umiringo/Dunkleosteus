@@ -34,6 +34,8 @@ namespace GlobalDefines
         public static readonly string YellowSmallSquare = "square_10_10_f8b711";
         public static readonly string BlueSmallSquare = "square_10_10_50cce5";
         public static readonly string GreenSmallSquare = "square_10_10_28ed7b";
+        public static readonly string YellowLargeCircle = "100_100_f8b711_circle";
+        public static readonly string BlueLargeCircle = "100_100_50cce5 circle";
 
         public static readonly string SpotSquare = "square_256_256_353c44";
 
