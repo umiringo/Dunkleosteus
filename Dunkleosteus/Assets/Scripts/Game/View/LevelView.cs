@@ -5,8 +5,6 @@ public class LevelView : MonoBehaviour {
 
     public string levelName;
     private UISprite levelSprite;
-    private GameObject label;
-    private GameObject labelUnderline;
     private GameObject shine;
     private UIButton button;
 	// Use this for initialization
@@ -30,8 +28,6 @@ public class LevelView : MonoBehaviour {
 
     public void Init(string name) {
         levelSprite = this.gameObject.GetComponent<UISprite>();
-        label = this.gameObject.transform.Find("Label").gameObject;
-        labelUnderline = this.gameObject.transform.Find("Label_UnderLine").gameObject;
         shine = this.gameObject.transform.Find("Shine").gameObject;
         levelName = name;
     }
@@ -41,30 +37,22 @@ public class LevelView : MonoBehaviour {
             case LevelState.Unabled:
                 levelSprite.gameObject.SetActive(false);
                 shine.SetActive(false);
-                label.SetActive(false);
-                labelUnderline.SetActive(false);
                 break;
             case LevelState.Current:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.YellowCircle;
                 //lineSprite.gameObject.SetActive(false);
                 shine.SetActive(true);
-                label.SetActive(false);
-                labelUnderline.SetActive(false);
                 break;
             case LevelState.Finished:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.BlueCircle;
                 shine.SetActive(false);
-                label.SetActive(false);
-                labelUnderline.SetActive(false);
                 break;
             case LevelState.Spot:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.SpotSquare;
                 shine.SetActive(false);
-                label.SetActive(false);
-                labelUnderline.SetActive(false);
                 break;
             default:
                 break;
