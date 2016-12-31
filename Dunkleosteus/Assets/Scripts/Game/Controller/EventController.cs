@@ -110,7 +110,7 @@ public class EventController : MonoBehaviour {
     // 关闭卡牌预览
     public void OnClickCloseCardInfo()
     {
-        audioPlayer.PlayClickSound();
+        audioPlayer.PlayUnChoseSound();
         cardModel.CloseCardPreview();
     }
 
@@ -179,5 +179,11 @@ public class EventController : MonoBehaviour {
     {
         audioPlayer.PlayClickSound();
         gameDirector.StartPayView();
+    }
+
+    // 支付
+    public void OnClickPurchase()
+    {
+        gameDirector.Purchase();
     }
 }

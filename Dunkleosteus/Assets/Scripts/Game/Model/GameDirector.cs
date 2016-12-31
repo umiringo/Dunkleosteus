@@ -27,6 +27,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelNotify;
     public GameObject panelOption;
     public GameObject panelPay;
+    public GameObject panelLoading;
 
     public AudioPlayerModel audioplayer;
 
@@ -47,6 +48,7 @@ public class GameDirector : MonoBehaviour {
 
     void Start () {
         InitSounds();
+        panelMainMenu.GetComponent<FadeInOut>().FadeIn();
 	}
 	
 	// Update is called once per frame
@@ -104,9 +106,9 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "TriangulumAustrale");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -122,15 +124,39 @@ public class GameDirector : MonoBehaviour {
                 currentLevel = nextLevel;
             }
         }
-        // Init Coin
+        // Init Coin TODO
         coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10000);
         this.InitCatagoryHash(latestLevel);
     }
 
     private void InitLocalization()
     {
-        // TODO 需要修改成本机的语言设置
-        Localization.language = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");       
+        SystemLanguage localLanguage = OCBridge.GetSystemLanguage();
+        string savedLanguage = PlayerPrefs.GetString(PlayerPrefsKey.Language, "notset");
+        if(savedLanguage == "notset") {
+            Debug.Log("saveLanguase = " + savedLanguage + ", localLanguage = " + localLanguage.ToString());
+            // 没有设置过, 则尝试使用系统语言
+            if(localLanguage == SystemLanguage.Chinese)
+            {
+                Localization.language = "SChinese";
+            }
+            else if (localLanguage == SystemLanguage.ChineseSimplified) {
+                Localization.language = "SChinese";
+            }
+            else if (localLanguage == SystemLanguage.ChineseTraditional) {
+                Localization.language = "TChinese";
+            }
+            else if (localLanguage == SystemLanguage.Japanese) {
+                Localization.language = "Japanese";
+            }
+            else {
+                Localization.language = "English";
+            }
+        }
+        else {
+            Localization.language = savedLanguage;
+        }
+            
     }
 
     private void InitCatagoryHash(string latestLevel)
@@ -187,8 +213,7 @@ public class GameDirector : MonoBehaviour {
     #region StateInterface
     public void EnterMainMenuState()
     {
-        Debug.Log("EnterMainMenuState");
-        panelMainMenu.SetActive(true);
+        panelMainMenu.GetComponent<FadeInOut>().FadeIn();
     }
 
     public void ExitMainMenuState()
@@ -347,7 +372,7 @@ public class GameDirector : MonoBehaviour {
             return 0;
         }
         if(levelIndex - latestIndex > 1) {
-            if(levelIndex - latestIndex > 4) {
+            if(levelIndex - latestIndex > 6) {
                 return -1;
             }
             return levelIndex - latestIndex;
@@ -454,5 +479,11 @@ public class GameDirector : MonoBehaviour {
     {
         return abbrHash[catagory];
     }
+
+    public void Purchase()
+    {
+        panelLoading.GetComponent<LoadingView>().Show();
+    }
+
     #endregion
 }

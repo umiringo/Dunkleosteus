@@ -47,10 +47,11 @@ namespace GlobalDefines
     {
         public static readonly int LineDepth = 39;
         public static readonly int TipCost = 1;
-        public static readonly int DuplicateStarNum = 4;
+        public static readonly int DuplicateStarNum = 6;
         public static readonly int LevelSelectStarThreshold = 10;
         public static readonly int LittleStarCount = 28;
         public static readonly int WinBonusNum = 1;
+        public static readonly int CardLineDepth = 399;
 
     }
     

@@ -10,7 +10,6 @@ public class LevelSelectView : MonoBehaviour {
     public UILocalize labelCatagory;
     public UILabel labelCoin;
     public UIScrollView catagoryScrollView;
-    //public GameObject catagoryTable;
 
     private GameObject _lineTemplate;
     private GameObject levelContainer;
@@ -19,8 +18,6 @@ public class LevelSelectView : MonoBehaviour {
     private List<GameObject> levelDuplicateList;
 
     void Awake() {
-        //centerOnChild = catagoryTable.GetComponent<UICenterOnChild>();
-        //centerOnChild.onCenter = this.AfterCenter;
         levelList = new List<GameObject>();
         levelDuplicateList = new List<GameObject>();
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
@@ -117,7 +114,7 @@ public class LevelSelectView : MonoBehaviour {
         GameObject linkedLine = beginTransform.FindChild("Line").gameObject;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
-        //lineSprite.depth = DefineNumber.LineDepth;
+        
         // Modify pivot
         if (beginTransform.position.x > endTransform.position.x) {
             if (beginTransform.position.y > endTransform.position.y) {

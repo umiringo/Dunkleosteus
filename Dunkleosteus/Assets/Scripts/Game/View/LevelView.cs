@@ -41,7 +41,6 @@ public class LevelView : MonoBehaviour {
             case LevelState.Current:
                 levelSprite.gameObject.SetActive(true);
                 levelSprite.spriteName = PathContainer.YellowLargeCircle;
-                //lineSprite.gameObject.SetActive(false);
                 shine.SetActive(true);
                 break;
             case LevelState.Finished:

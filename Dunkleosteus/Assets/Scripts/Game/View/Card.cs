@@ -135,7 +135,7 @@ public class Card : MonoBehaviour {
         linkedLine.transform.parent = lineContainer.transform;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
-        //lineSprite.depth = DefineNumber.LineDepth;
+        lineSprite.depth = DefineNumber.CardLineDepth;
         // Modify pivot
         if (beginTransform.position.x > endTransform.position.x) {
             if (beginTransform.position.y > endTransform.position.y) {
