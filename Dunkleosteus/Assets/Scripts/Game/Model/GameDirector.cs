@@ -480,21 +480,26 @@ public class GameDirector : MonoBehaviour {
         return abbrHash[catagory];
     }
 
-    public void Purchase()
+    public void Purchase(string purchaseId)
     {
+        Debug.Log("GameDirector.Purchase purchaseId = " + purchaseId);
         panelLoading.GetComponent<LoadingView>().Show();
+    }
+
+    public void ConfirmPurchase(string purchaseId)
+    {
+        panelConfirm.SetActive(false);
+        this.Purchase(purchaseId);
     }
 
     public void ShowPurchaseConfirm()
     {
-        string titleKey = "LKPay";
-        string contentKey = "LKPurchaseInGame";
-        this.ShowConfirm(titleKey, contentKey);
+        this.ShowConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10);
     }
 
-    public void ShowConfirm(string title, string content)
+    public void ShowConfirm(string title, string content, string delegateName, string param)
     {
-        panelConfirm.GetComponent<ConfirmView>().Show(title, content);
+        panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param);
     }
 
     public void OnCancelConfirm()

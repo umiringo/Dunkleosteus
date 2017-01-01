@@ -78,4 +78,12 @@ namespace GlobalDefines
         public static readonly string DarkBlueColor = "[465F6C]";
         public static readonly string NormalBlueColor = "[50CCE5]";
     }
+
+    public class DefinePurchaseId
+    {
+        public static readonly string PurchaseId10 = "com.umiringo.com.purchase.10";
+        public static readonly string PurchaseId40 = "com.umiringo.com.purchase.40";
+        public static readonly string PurchaseId160 = "com.umiringo.com.purchase.160";
+        public static readonly string PurchaseId360 = "com.umiringo.com.purchase.360";
+    }
 }

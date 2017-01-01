@@ -4,6 +4,7 @@ using System.Collections;
 public class ConfirmView : MonoBehaviour {
     public UILocalize labelTitle;
     public UILocalize labelContent;
+    public GameObject buttonOk;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,10 +15,17 @@ public class ConfirmView : MonoBehaviour {
 	
 	}
 
-    public void Show(string title, string content)
+    public void Show(string title, string content, string delegateName, string param)
     {
         labelTitle.key = title;
         labelContent.key = content;
+
+        GameObject controller = GameObject.Find("UI Root/GameController");
+        UIButton btn = buttonOk.GetComponent<UIButton>();
+        EventDelegate eventDel = new EventDelegate(controller.GetComponent<EventController>(), delegateName);
+        eventDel.parameters[0] = new EventDelegate.Parameter(param);
+        btn.onClick.Clear();
+        btn.onClick.Add(eventDel);
         gameObject.SetActive(true);
     }
 }

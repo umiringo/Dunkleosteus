@@ -182,10 +182,11 @@ public class EventController : MonoBehaviour {
     }
 
     // 支付
-    public void OnClickPurchase()
+    public void OnClickPurchase(string purchaseId)
     {
+        Debug.Log("EventController.OnClickPurchase purchaseId = " + purchaseId);
         audioPlayer.PlayClickSound();
-        gameDirector.Purchase();
+        gameDirector.Purchase(purchaseId);
     }
 
     // 确认取消
@@ -195,4 +196,10 @@ public class EventController : MonoBehaviour {
         gameDirector.OnCancelConfirm();
     }
 
+    public void OnOkConfirmPurchase(string purchaseId)
+    {
+        Debug.Log("EventController.OnOkConfirmPurchase purchaseId = " + purchaseId);
+        audioPlayer.PlayClickSound();
+        gameDirector.ConfirmPurchase(purchaseId);
+    }
 }
