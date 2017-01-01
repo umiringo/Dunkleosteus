@@ -28,6 +28,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelOption;
     public GameObject panelPay;
     public GameObject panelLoading;
+    public GameObject panelConfirm;
 
     public AudioPlayerModel audioplayer;
 
@@ -106,9 +107,9 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Antlia");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -125,7 +126,7 @@ public class GameDirector : MonoBehaviour {
             }
         }
         // Init Coin TODO
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10000);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 0);
         this.InitCatagoryHash(latestLevel);
     }
 
@@ -134,7 +135,6 @@ public class GameDirector : MonoBehaviour {
         SystemLanguage localLanguage = OCBridge.GetSystemLanguage();
         string savedLanguage = PlayerPrefs.GetString(PlayerPrefsKey.Language, "notset");
         if(savedLanguage == "notset") {
-            Debug.Log("saveLanguase = " + savedLanguage + ", localLanguage = " + localLanguage.ToString());
             // 没有设置过, 则尝试使用系统语言
             if(localLanguage == SystemLanguage.Chinese)
             {
@@ -483,6 +483,23 @@ public class GameDirector : MonoBehaviour {
     public void Purchase()
     {
         panelLoading.GetComponent<LoadingView>().Show();
+    }
+
+    public void ShowPurchaseConfirm()
+    {
+        string titleKey = "LKPay";
+        string contentKey = "LKPurchaseInGame";
+        this.ShowConfirm(titleKey, contentKey);
+    }
+
+    public void ShowConfirm(string title, string content)
+    {
+        panelConfirm.GetComponent<ConfirmView>().Show(title, content);
+    }
+
+    public void OnCancelConfirm()
+    {
+        panelConfirm.SetActive(false);
     }
 
     #endregion

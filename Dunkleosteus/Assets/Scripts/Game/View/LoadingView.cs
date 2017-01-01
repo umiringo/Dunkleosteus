@@ -21,6 +21,7 @@ public class LoadingView : MonoBehaviour {
 
     public void Show()
     {
+        if (gameObject.activeSelf) return;
         gameObject.SetActive(true);
         loadingTween.ResetToBeginning();
         loadingTween.enabled = true;

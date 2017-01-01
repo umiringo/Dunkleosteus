@@ -95,6 +95,7 @@ public class LevelSelectView : MonoBehaviour {
         }
 
         if(index > DefineNumber.LevelSelectStarThreshold) {
+            catagoryScrollView.ResetPosition();
             catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
         }
     }

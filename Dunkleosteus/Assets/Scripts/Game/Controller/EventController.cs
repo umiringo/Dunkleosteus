@@ -184,6 +184,15 @@ public class EventController : MonoBehaviour {
     // 支付
     public void OnClickPurchase()
     {
+        audioPlayer.PlayClickSound();
         gameDirector.Purchase();
     }
+
+    // 确认取消
+    public void OnCancelConfirm()
+    {
+        audioPlayer.PlayUnChoseSound();
+        gameDirector.OnCancelConfirm();
+    }
+
 }

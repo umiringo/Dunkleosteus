@@ -25,8 +25,8 @@ public class LanguageView : MonoBehaviour {
 
     public void Show()
     {
- 
-        string currentLang = PlayerPrefs.GetString(PlayerPrefsKey.Language, "English");
+
+        string currentLang = Localization.language;
         if (currentLang == lang) {
             // Dark
             selfLabel.color = new Color(0.447f, 0.416f, 0.239f);

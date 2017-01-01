@@ -177,7 +177,8 @@ public class LevelPlayModel : MonoBehaviour {
             this.DoTip();
         } 
         else {
-            // Do charge
+            Debug.Log("LevelPlayModel.OnTips");
+            gameDirector.ShowPurchaseConfirm();
         }
     }
 
