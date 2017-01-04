@@ -7,15 +7,15 @@ using SimpleJSON;
 public class LevelSelectView : MonoBehaviour {
 
     public GameDirector director;
-    public UILocalize labelCatagory;
-    public UILabel labelCoin;
     public UIScrollView catagoryScrollView;
+    public GameObject saleButton;
 
     private GameObject _lineTemplate;
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
     private List<GameObject> levelList;
     private List<GameObject> levelDuplicateList;
+
 
     void Awake() {
         levelList = new List<GameObject>();
@@ -51,13 +51,6 @@ public class LevelSelectView : MonoBehaviour {
     {
         // Clear containerTable
         HideAllStar();
-    }
-
-    public void AfterCenter(GameObject centerGo)
-    {
-        labelCatagory.gameObject.SetActive(false);
-        labelCatagory.key = "LK" + centerGo.GetComponent<CatagoryModel>().catagoryName;
-        labelCatagory.gameObject.SetActive(true);
     }
 
     // Show levels
@@ -97,6 +90,13 @@ public class LevelSelectView : MonoBehaviour {
         if(index > DefineNumber.LevelSelectStarThreshold) {
             catagoryScrollView.ResetPosition();
             catagoryScrollView.SetDragAmount(0.0f, 0.0f, false);
+        }
+
+        int sale12 = PlayerPrefs.GetInt(PlayerPrefsKey.Sale12, 0);
+        if(sale12 < 1){
+            saleButton.SetActive(true);
+        } else {
+            saleButton.SetActive(false);
         }
     }
 

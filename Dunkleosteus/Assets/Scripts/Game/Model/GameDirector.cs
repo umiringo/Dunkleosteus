@@ -126,7 +126,7 @@ public class GameDirector : MonoBehaviour {
             }
         }
         // Init Coin TODO
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 0);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 100);
         this.InitCatagoryHash(latestLevel);
     }
 
@@ -495,6 +495,11 @@ public class GameDirector : MonoBehaviour {
     public void ShowPurchaseConfirm()
     {
         this.ShowConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10);
+    }
+
+    public void ShowSale12Confirm()
+    {
+        this.ShowConfirm("LKSale", "LKSale12InGame", "OnSale12ConfirmPurchase", DefinePurchaseId.PurchaseIdSale12);
     }
 
     public void ShowConfirm(string title, string content, string delegateName, string param)

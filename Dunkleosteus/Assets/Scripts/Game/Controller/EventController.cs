@@ -196,9 +196,20 @@ public class EventController : MonoBehaviour {
         gameDirector.OnCancelConfirm();
     }
 
+    public void OnClickSale12()
+    {
+        audioPlayer.PlayClickSound();
+        gameDirector.ShowSale12Confirm();
+    }
+
     public void OnOkConfirmPurchase(string purchaseId)
     {
-        Debug.Log("EventController.OnOkConfirmPurchase purchaseId = " + purchaseId);
+        audioPlayer.PlayClickSound();
+        gameDirector.ConfirmPurchase(purchaseId);
+    }
+
+    public void OnSale12ConfirmPurchase(string purchaseId)
+    {
         audioPlayer.PlayClickSound();
         gameDirector.ConfirmPurchase(purchaseId);
     }

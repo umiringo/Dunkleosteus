@@ -69,6 +69,7 @@ namespace GlobalDefines
         public static readonly string Language = "Language";
         public static readonly string Music = "Music";
         public static readonly string Sound = "Sound";
+        public static readonly string Sale12 = "Sale12";
     }
 
     public class DefineString
@@ -81,9 +82,10 @@ namespace GlobalDefines
 
     public class DefinePurchaseId
     {
-        public static readonly string PurchaseId10 = "com.umiringo.com.purchase.10";
-        public static readonly string PurchaseId40 = "com.umiringo.com.purchase.40";
-        public static readonly string PurchaseId160 = "com.umiringo.com.purchase.160";
-        public static readonly string PurchaseId360 = "com.umiringo.com.purchase.360";
+        public static readonly string PurchaseId10 = "constellationpainter.umiringo.com.purchase.10";
+        public static readonly string PurchaseId40 = "constellationpainter.umiringo.com.purchase.40";
+        public static readonly string PurchaseId160 = "constellationpainter.umiringo.com.purchase.160";
+        public static readonly string PurchaseId360 = "constellationpainter.umiringo.com.purchase.360";
+        public static readonly string PurchaseIdSale12 = "constellationpainter.umiringo.com.purchase.sale.12";
     }
 }
