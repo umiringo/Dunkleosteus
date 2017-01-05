@@ -311,10 +311,10 @@ LKMusicDegisn,Music,音乐素材,音樂素材,ミュージック素材
 LKStarImage,Constellation Graphic Design,星图设计素材,星圖設計素材,星座画像デザイン素材
 LKConstellationInfo,Constellation Info,星座资料,星座資料,星座データ
 LKPay,Purchase,充值,充值,ショップ
-LKPrice6,$0.99,￥6.00,$0.99,￥120
-LKPrice18,$2.99,￥18.00,$2.99,￥360
-LKPrice68,$9.99,￥68.00,$9.99,￥1200
-LKPrice128,$19.99,￥128.00,$19.99,￥2400
-LKPurchaseInGame,You have no coin left.\nGet 10 coins for purchasing $0.99,您已经没有提示硬币了，\n支付￥6.00购买10个提示硬币,您已經沒有提示硬幣了，\n支付￥6.00購買10個提示硬幣,コインもうないんですね。\n￥120でコイン10枚を購入します。
+LKPrice6,$0.99,￥6.00,NT$30.00,￥120
+LKPrice18,$2.99,￥18.00,NT$90.00,￥360
+LKPrice68,$9.99,￥68.00,NT$300.00,￥1200
+LKPrice128,$19.99,￥128.00,NT$590.00,￥2400
+LKPurchaseInGame,You have no coin left.\nGet 10 coins for purchasing $0.99,您已经没有提示硬币了，\n支付￥6.00购买10个提示硬币,您已經沒有提示硬幣了，\n支付NT$30.00購買10個提示硬幣,コインもうないんですね。\n￥120でコイン10枚を購入します。
 LKSale,On Sale!,优惠！,優惠！,割引
-LKSale12InGame,A Discount for once! 75% OFF!\nGet 100 coins by purchasing $1.99!,优惠购买，可享受一次！2.5折!\n获取100个硬币现在只需要12元,只能享受一次的優惠購買！2.5折！\n現在獲取100個硬幣只需要支付$1.99.,\n一期一会の割引、75％ OFF!\n240円でコイン100枚を購入しましょう！
+LKSale12InGame,A Discount for once! 75% OFF!\nGet 100 coins by purchasing $1.99!,优惠购买，可享受一次！2.5折!\n获取100个硬币现在只需要12元,只能享受一次的優惠購買！2.5折！\n現在獲取100個硬幣只需要支付NT$60.00.,\n一期一会の割引、75％ OFF!\n240円でコイン100枚を購入しましょう！

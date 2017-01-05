@@ -35,6 +35,8 @@ public class GameDirector : MonoBehaviour {
     void Awake() {
         // Init template data
         TemplateMgr.Instance.Init();
+        // Init Localize data
+        LocalizeMgr.Instance.Init();
         // Init finite state machine
         InitFiniteStateMachine();
         // Init level list;

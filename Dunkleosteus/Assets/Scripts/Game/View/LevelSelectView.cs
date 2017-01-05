@@ -29,7 +29,7 @@ public class LevelSelectView : MonoBehaviour {
             go.GetComponent<LevelView>().Init(jaLevel[i-1]);
             levelList.Add(go);
         }
-        //将占位用的go添加到levelDuplicateList
+        // 将占位用的go添加到levelDuplicateList
         for(int i = 1; i <= DefineNumber.DuplicateStarNum; ++i) {
             GameObject go = catagoryScrollView.gameObject.transform.Find("LevelDuplicate" + i).gameObject;
             levelDuplicateList.Add(go);

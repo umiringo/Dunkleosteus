@@ -60,6 +60,7 @@ namespace GlobalDefines
         public static readonly string LevelInfo = "LevelInfo";
         public static readonly string LevelSelect = "LevelSelect";
         public static readonly string Catagory = "Catagory";
+        public static readonly string LocalizeJson = "Localize";
     }
 
     public class PlayerPrefsKey
@@ -87,5 +88,10 @@ namespace GlobalDefines
         public static readonly string PurchaseId160 = "constellationpainter.umiringo.com.purchase.160";
         public static readonly string PurchaseId360 = "constellationpainter.umiringo.com.purchase.360";
         public static readonly string PurchaseIdSale12 = "constellationpainter.umiringo.com.purchase.sale.12";
+    }
+
+    public class LocalizeStringKey
+    {
+        public static readonly string NotificationMessage = "NotificationMessage";
     }
 }

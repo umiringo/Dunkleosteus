@@ -12,7 +12,7 @@ public class OCBridge {
     public static SystemLanguage GetSystemLanguage()
     {
         SystemLanguage lang = Application.systemLanguage;
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_IPHONE
     if (Application.platform == RuntimePlatform.IPhonePlayer) {
       if (lang == SystemLanguage.Chinese) {
         string name = CurIOSLang();
