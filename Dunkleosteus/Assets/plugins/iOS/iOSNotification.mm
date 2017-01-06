@@ -36,32 +36,62 @@ extern "C"
             UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
             [center removeAllPendingNotificationRequests];
             [center removeAllDeliveredNotifications];
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         } else {
             UILocalNotification *localNotif = [[UILocalNotification alloc] init];
             localNotif.applicationIconBadgeNumber = 0;
-            [[UIApplication sharedApplication]presentLocalNotificationNow:localNotif];
-            [[UIApplication sharedApplication]cancelAllLocalNotifications];
+            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
         }
     }
 
-    void LocalRepeatWeekNotificationMessage(const char* title, const char* message)
+    void NotificationMessageRepeatWeek(const char* title, const char* message)
     {
         if (SYSTEM_VERSION_GREATER_OR_EQUAL_TO(@"10.0")) {
-            NSLog(@"------NotificationMessage greater than 10.0 interval = %d", interval);
-            UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+            NSDate *now = [NSDate date];
+            // Get yesterday
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *components = [gregorian components:NSCalendarUnitWeekday | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
+            [components setDay:([components day]+1)];
+
+            NSDateComponents *triggerDate = [[NSDateComponents alloc] init];
+            triggerDate.weekday = components.weekday;
+            triggerDate.hour = 19;
+            UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate repeats:YES];
+            
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
             content.badge = [NSNumber numberWithInteger:1];
+            content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
             content.body = [NSString localizedUserNotificationStringForKey:__makeNSString(message) arguments:nil];
-            content.sound = [UNNotificationSound defaultSound];         
+            content.sound = [UNNotificationSound defaultSound];
+            
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"repeatweek" content:content trigger:trigger];
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if(error) {
+                    NSLog(@"%@", error);
+                }
+            }];
         } else {
             
         }
     }
 
-    void LocalIntervalNotificationMessage(const char* title, const char* message, int interval)
+    void NotificationMessageInterval(const char* title, const char* message, int interval)
     {
         if (SYSTEM_VERSION_GREATER_OR_EQUAL_TO(@"10.0")) {
+            UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+            content.badge = [NSNumber numberWithInteger:1];
+            content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
+            content.body = [NSString localizedUserNotificationStringForKey:__makeNSString(message) arguments:nil];
+            content.sound = [UNNotificationSound defaultSound];
             
+            UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"interval notification" content:content trigger:trigger];
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if(error) {
+                    NSLog(@"%@", error);
+                }
+            }];
         } else {
 
         }
