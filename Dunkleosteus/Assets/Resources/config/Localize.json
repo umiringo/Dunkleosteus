@@ -4,5 +4,11 @@
         "Japanese" : "Japanese NotificationMessage",
         "TChinese" : "TChinese NotificationMessage",
         "SChinese" : "SChinese NotificationMessage"
+    },
+    "NotificationTitle" : {
+        "English" : "English NotificationMessage",
+        "Japanese" : "Japanese NotificationMessage",
+        "TChinese" : "TChinese NotificationMessage",
+        "SChinese" : "SChinese NotificationMessage"
     }
 }

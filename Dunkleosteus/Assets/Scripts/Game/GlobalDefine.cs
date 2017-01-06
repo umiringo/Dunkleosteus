@@ -93,5 +93,6 @@ namespace GlobalDefines
     public class LocalizeStringKey
     {
         public static readonly string NotificationMessage = "NotificationMessage";
+        public static readonly string NotificationTitle = "NotificationTitle";
     }
 }
