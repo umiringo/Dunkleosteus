@@ -20,62 +20,59 @@ public class OCBridge {
     private static extern void NotificationMessageInterval(string title, string message, int interval);
 #endif
 
-public static SystemLanguage GetSystemLanguage()
-{
-    SystemLanguage lang = Application.systemLanguage;
+    public static SystemLanguage GetSystemLanguage()
+    {
+        SystemLanguage lang = Application.systemLanguage;
 #if UNITY_IOS || UNITY_IPHONE
-    if (Application.platform == RuntimePlatform.IPhonePlayer) {
-        if (lang == SystemLanguage.Chinese) {
-            string name = CurIOSLang();
-            if (name.StartsWith("zh-Hans")) {
-                return SystemLanguage.ChineseSimplified;
-            }  
-        return SystemLanguage.ChineseTraditional;
-      }
+        if (Application.platform == RuntimePlatform.IPhonePlayer) {
+            if (lang == SystemLanguage.Chinese) {
+                string name = CurIOSLang();
+                if (name.StartsWith("zh-Hans")) {
+                    return SystemLanguage.ChineseSimplified;
+                }  
+            return SystemLanguage.ChineseTraditional;
+            }
+        }
+#elif UNITY_ANDROID
+#elif UNITY_EDITOR || UNITY_STANDALONE
+#endif
+
+        return lang;
     }
-#elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
-#endif
 
-    return lang;
-}
-
-public static void RegisterLocalNotification()
-{
+    public static void RegisterLocalNotification()
+    {
 #if UNITY_IOS || UNITY_IPHONE
-  RegisterNotification();
+        RegisterNotification();
 #elif UNITY_ANDROID
 #elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
-}
+    }
 
-public static void ClearLocalNotification()
-{
+    public static void ClearLocalNotification()
+    {
 #if UNITY_IOS || UNITY_IPHONE
-  ClearNotification();
+        ClearNotification();
 #elif UNITY_ANDROID
 #elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
-}
+    }
 
-public static void LocalRepeatWeekNotificationMessage(string title, string message)
-{
+    public static void LocalRepeatWeekNotificationMessage(string title, string message)
+    {
 #if UNITY_IOS || UNITY_IPHONE
-      NotificationMessageRepeatWeek(title, message);
+        NotificationMessageRepeatWeek(title, message);
 #elif UNITY_ANDROID
 #elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
-}
+    }
 
-public static void LocalIntervalNotificationMessage(string title, string message, int interval)
-{
+    public static void LocalIntervalNotificationMessage(string title, string message, int interval)
+    {
 #if UNITY_IOS || UNITY_IPHONE
-      NotificationMessageInterval(title, message, interval);
+        NotificationMessageInterval(title, message, interval);
 #elif UNITY_ANDROID
 #elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
-}
-
-
-
+    }
 }

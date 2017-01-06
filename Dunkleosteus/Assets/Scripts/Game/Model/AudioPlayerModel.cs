@@ -32,7 +32,7 @@ public class AudioPlayerModel : MonoBehaviour {
     void Awake() {
         audioSource = this.gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
-        audioSource.volume = 1.0f;
+        audioSource.volume = 0.5f;
         InitLittleStar();
     } 
 
