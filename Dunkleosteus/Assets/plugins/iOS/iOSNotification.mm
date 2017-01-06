@@ -52,7 +52,7 @@ extern "C"
             // Get yesterday
             NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
             NSDateComponents *components = [gregorian components:NSCalendarUnitWeekday | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
-            [components setDay:([components day]+1)];
+            [components setDay:([components day]-1)];
 
             NSDateComponents *triggerDate = [[NSDateComponents alloc] init];
             triggerDate.weekday = components.weekday;
@@ -60,7 +60,6 @@ extern "C"
             UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate repeats:YES];
             
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-            content.badge = [NSNumber numberWithInteger:1];
             content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
             content.body = [NSString localizedUserNotificationStringForKey:__makeNSString(message) arguments:nil];
             content.sound = [UNNotificationSound defaultSound];
@@ -72,43 +71,21 @@ extern "C"
                 }
             }];
         } else {
-
-                UILocalNotification *notification = [[UILocalNotification alloc] init];
-    // 设置触发通知的时间
-    //需要使用时间戳
-    NSDate *fireDate = [NSDate dateWithTimeIntervalSince1970:alertTime];
-    NSLog(@"fireDate=%@",fireDate);
-    notification.fireDate = fireDate;
-    // 时区
-    notification.timeZone = [NSTimeZone defaultTimeZone];
-    // 设置重复的间隔
-    notification.repeatInterval = 0;//0表示不重复
-    // 通知内容
-    notification.alertBody =  string;
-    notification.applicationIconBadgeNumber = 1;
-    // 通知被触发时播放的声音
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    // 通知参数
-
-    NSDictionary *userDict = [NSDictionary dictionaryWithObject:string forKey:key];
-    notification.userInfo = userDict;
-
-    // ios8后，需要添加这个注册，才能得到授权
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
-                                                                                 categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        // 通知重复提示的单位，可以是天、周、月
-        //        notification.repeatInterval = NSCalendarUnitDay;
-    } else {
-        // 通知重复提示的单位，可以是天、周、月
-        //        notification.repeatInterval = NSDayCalendarUnit; //ios7使用
-    }
-
-    // 执行通知注册
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+            NSDate *now = [NSDate date];
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *components = [gregorian components:NSCalendarUnitWeekday | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
+            [components setDay:([components day]-1)];
+            [components setWeekday:([components weekOfYear] + 1)];
+            NSDate *triggerDate = [gregorian dateFromComponents:components];
             
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            notification.fireDate = triggerDate;
+            notification.timeZone = [NSTimeZone defaultTimeZone];
+            notification.repeatInterval = NSCalendarUnitWeekday;
+            notification.alertBody = __makeNSString(message);
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
     }
 
