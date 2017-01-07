@@ -17,7 +17,7 @@ public class XcodeProjectMod : MonoBehaviour
             proj.ReadFromString(File.ReadAllText(projPath));
             string target = proj.TargetGuidByName("Unity-iPhone");
 
-            proj.AddFrameworkToProject(target, "UserNotification.framework", false);
+            proj.AddFrameworkToProject(target, "UserNotifications.framework", false);
 
             File.WriteAllText(projPath, proj.WriteToString());
         }
