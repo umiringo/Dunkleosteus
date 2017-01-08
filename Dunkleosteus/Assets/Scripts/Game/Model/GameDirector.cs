@@ -13,6 +13,7 @@ public class GameDirector : MonoBehaviour {
     private int coin;
     private FiniteStateMachine _fsm;
     private Dictionary<string, string> abbrHash = new Dictionary<string, string>();
+    private Dictionary<string, int> starNumHash = new Dictionary<string, int>();
 
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
@@ -190,6 +191,15 @@ public class GameDirector : MonoBehaviour {
         abbrHash["Bayer"] = "B";
         abbrHash["LaCaille"] = "L";
         abbrHash["Hercules"] = "H";
+
+        starNumHash["Zodiac"] = 13;
+        starNumHash["Orion"] = 5;
+        starNumHash["UrsaMajor"] = 10;
+        starNumHash["HeavenlyWaters"] = 9;
+        starNumHash["Perseus"] = 9;
+        starNumHash["Bayer"] = 11;
+        starNumHash["LaCaille"] = 13;
+        starNumHash["Hercules"] = 18;
     }
 
     private void InitSounds()
@@ -480,6 +490,11 @@ public class GameDirector : MonoBehaviour {
     public string GetAbbreviation(string catagory) 
     {
         return abbrHash[catagory];
+    }
+
+    public int GetStarAllNum(string catagory)
+    {
+        return starNumHash[catagory];
     }
 
     public void Purchase(string purchaseId)

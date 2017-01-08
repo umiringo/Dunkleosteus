@@ -31,7 +31,6 @@ public class NotificationMgr : MonoBehaviour {
             //OCBridge.LocalIntervalNotificationMessage(title, message, 10);
         }
         else {
-            gameObject.GetComponent<GameDirector>().AddCoin(100);
             OCBridge.ClearLocalNotification();
         }
     }

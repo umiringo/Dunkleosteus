@@ -15,7 +15,7 @@ public class LevelSelectView : MonoBehaviour {
     private UICenterOnChild centerOnChild;
     private List<GameObject> levelList;
     private List<GameObject> levelDuplicateList;
-
+    public UILabel labelLevel;
 
     void Awake() {
         levelList = new List<GameObject>();
@@ -56,6 +56,7 @@ public class LevelSelectView : MonoBehaviour {
     // Show levels
     public void Show(string lastestlevel, string currentLevel)
     {
+        int finishCount = 0;
         // 循环显示
         for(int i = 0; i < levelList.Count; i++) {
             int state = director.GetLevelState(levelList[i].GetComponent<LevelView>().levelName);
@@ -64,6 +65,7 @@ public class LevelSelectView : MonoBehaviour {
                 levelView.Show(LevelState.Unabled);
             } else if(state == 1) {
                 levelView.Show(LevelState.Finished);
+                finishCount++;
             } else if(state == 0) {
                 levelView.Show(LevelState.Current);
             } else {
@@ -97,6 +99,13 @@ public class LevelSelectView : MonoBehaviour {
             saleButton.SetActive(true);
         } else {
             saleButton.SetActive(false);
+        }
+
+        if (finishCount >= DefineNumber.MaxLevel) {
+            labelLevel.text = DefineString.DarkBlueColor + finishCount + " / " + DefineNumber.MaxLevel + "[-]";
+        }
+        else {
+            labelLevel.text = DefineString.NormalBlueColor + finishCount + "[-]" + DefineString.DarkBlueColor + " / " + DefineNumber.MaxLevel + "[-]";
         }
     }
 

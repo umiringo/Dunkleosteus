@@ -52,6 +52,7 @@ namespace GlobalDefines
         public static readonly int LittleStarCount = 28;
         public static readonly int WinBonusNum = 1;
         public static readonly int CardLineDepth = 399;
+        public static readonly int MaxLevel = 88;
 
     }
     
@@ -79,6 +80,7 @@ namespace GlobalDefines
         public static readonly string DefaultCatagory = "Zodiac";
         public static readonly string DarkBlueColor = "[465F6C]";
         public static readonly string NormalBlueColor = "[50CCE5]";
+        public static readonly string NormalYellowColor = "[F8B711]";
     }
 
     public class DefinePurchaseId

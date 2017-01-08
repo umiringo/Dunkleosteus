@@ -14,6 +14,7 @@ public class CardView : MonoBehaviour {
     public GameDirector director;
     public GameObject scrollViewGameObject;
     public UILocalize labelTitle;
+    public UILabel labelLevel;
 
     void Awake() {
         menuHash = new Dictionary<string, GameObject>();
@@ -61,7 +62,14 @@ public class CardView : MonoBehaviour {
         tableCard.GetComponent<UITable>().Reposition();
         scrollViewGameObject.GetComponent<UIScrollView>().ResetPosition();
 
-
+        int finishCount = levelList.Count;
+        int allCount = director.GetStarAllNum(_currentCatagory);
+        if (finishCount >= allCount) {
+            labelLevel.text = DefineString.DarkBlueColor + finishCount + " / " + allCount + "[-]";
+        }
+        else {
+            labelLevel.text = DefineString.NormalBlueColor + finishCount + "[-]" + DefineString.DarkBlueColor + " / " + allCount + "[-]";
+        }
     }
 
     public void RefreshMenu()
