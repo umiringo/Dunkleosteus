@@ -27,8 +27,8 @@ public class NotificationMgr : MonoBehaviour {
         string title = LocalizeMgr.Instance.GetLocalizeStr(LocalizeStringKey.NotificationTitle);
         string message = LocalizeMgr.Instance.GetLocalizeStr(LocalizeStringKey.NotificationMessage);
         if(paused) {
-            //OCBridge.LocalRepeatWeekNotificationMessage(title, message);
-            OCBridge.LocalIntervalNotificationMessage(title, message, 10);
+            OCBridge.LocalRepeatWeekNotificationMessage(title, message);
+            //OCBridge.LocalIntervalNotificationMessage(title, message, 10);
         }
         else {
             gameObject.GetComponent<GameDirector>().AddCoin(100);
@@ -40,8 +40,8 @@ public class NotificationMgr : MonoBehaviour {
     {
         string title = LocalizeMgr.Instance.GetLocalizeStr(LocalizeStringKey.NotificationTitle);
         string message = LocalizeMgr.Instance.GetLocalizeStr(LocalizeStringKey.NotificationMessage);
-        //OCBridge.LocalRepeatWeekNotificationMessage(title, message);
-        OCBridge.LocalIntervalNotificationMessage(title, message, 10);
+        OCBridge.LocalRepeatWeekNotificationMessage(title, message);
+        //OCBridge.LocalIntervalNotificationMessage(title, message, 10);
     }
 
 }
