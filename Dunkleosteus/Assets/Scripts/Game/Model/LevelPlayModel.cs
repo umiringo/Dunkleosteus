@@ -44,11 +44,11 @@ public class LevelPlayModel : MonoBehaviour {
     private bool _isWin;
     private bool _isFin;
     private bool _isNew;
+    private LevelGuideModel _levelGuide;
 
     public GameDirector gameDirector;
     public LevelPlayView levelPlayView;
     public AudioPlayerModel audioPlayer;
-    public GameObject panelGuide;
 
     public string levelName {
         get {
@@ -62,6 +62,7 @@ public class LevelPlayModel : MonoBehaviour {
         _correctAnswerList = new List<int>();
         _answerList = new List<int>(); 
         _readyStar = null;
+        _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
     }
 	// Use this for initialization
 	void Start () {
@@ -86,6 +87,12 @@ public class LevelPlayModel : MonoBehaviour {
         // Load data and UI of this level
         this.Load(name);
         levelPlayView.LoadLevelUI(name);
+
+        int guideLevel = PlayerPrefs.GetInt(PlayerPrefsKey.GuideLevel);
+        if (guideLevel <= 0 && _levelName == "Triangulum") {
+            _levelGuide.InitPanelView();
+            _levelGuide.TriggerLevelGuide(1);
+        }
     }
 
     void Clear() 
@@ -211,36 +218,6 @@ public class LevelPlayModel : MonoBehaviour {
         return _isNew;
     }
 
-    public void ShowGuide(int step){
-        switch(step) {
-            case 1:
-                // 提示点击一个星星
-                Debug.Log("LevelPlayModel.ShowGuide");
-                GameObject star3 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star3").gameObject;
-                panelGuide.GetComponent<GuideView>().ShowTap(star3);
-            break;
-            case 2:
-            // 提示点击另一个星星
-            break;
-            case 3:
-            // 提示点击出preview
-            break;
-            case 4:
-            // 提示点击tips
-            break;
-            case 5:
-            // 最后提示点击连线了
-            case 6:
-            // 提示废话
-            default:
-            break;
-        }
-    }
-
-    public void CloseGuide()
-    {
-        panelGuide.SetActive(false);
-    }
     #endregion
 
     //////////////////////////////////////////////////////////////////////////
