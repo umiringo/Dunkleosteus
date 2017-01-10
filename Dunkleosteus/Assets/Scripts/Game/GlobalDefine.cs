@@ -72,11 +72,13 @@ namespace GlobalDefines
         public static readonly string Music = "Music";
         public static readonly string Sound = "Sound";
         public static readonly string Sale12 = "Sale12";
+        public static readonly string GuideLevel = "GuideLevel";
+        public static readonly string GuideCard = "GuideCard";
     }
 
     public class DefineString
     {
-        public static readonly string FirstLevel = "Aries";
+        public static readonly string FirstLevel = "Triangulum";
         public static readonly string DefaultCatagory = "Zodiac";
         public static readonly string DarkBlueColor = "[465F6C]";
         public static readonly string NormalBlueColor = "[50CCE5]";

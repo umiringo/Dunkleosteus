@@ -158,8 +158,7 @@ public class GameDirector : MonoBehaviour {
         }
         else {
             Localization.language = savedLanguage;
-        }
-            
+        }            
     }
 
     private void InitCatagoryHash(string latestLevel)
@@ -244,14 +243,12 @@ public class GameDirector : MonoBehaviour {
 
     public void ExitLevelSelectState()
     {
-        // panelLevelSelect.SetActive(false);
         panelLevelSelect.GetComponent<FadeInOut>().FadeOut();
         levelSelectView.BeforeExit();
     }
 
     public void EnterGameSceneState()
     {
-        //panelPlay.SetActive(true);
         panelPlay.GetComponent<FadeInOut>().FadeIn();
         levelPlayModel.LoadLevel(currentLevel);
         audioplayer.PlayGameBGM();
@@ -259,13 +256,11 @@ public class GameDirector : MonoBehaviour {
 
     public void ExitGameSceneState()
     {
-       // panelPlay.SetActive(false);
         panelPlay.GetComponent<FadeInOut>().FadeOut();
     }
 
     public void EnterCardViewState()
     {
-       // panelCard.SetActive(true);
         panelCard.GetComponent<FadeInOut>().FadeIn();
         cardView.Show("Zodiac");
     }
@@ -274,12 +269,10 @@ public class GameDirector : MonoBehaviour {
     {
         panelCard.GetComponent<FadeInOut>().FadeOut();
         cardView.BeforeExit();
-       // panelCard.SetActive(false);
     }
 
     public void EnterOptionViewState()
     {
-       // panelOption.SetActive(true);
         panelOption.GetComponent<FadeInOut>().FadeIn();
     }
 
@@ -528,6 +521,7 @@ public class GameDirector : MonoBehaviour {
     {
         panelConfirm.SetActive(false);
     }
+
 
     #endregion
 }

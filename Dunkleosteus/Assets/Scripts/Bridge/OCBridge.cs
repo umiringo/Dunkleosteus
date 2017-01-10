@@ -23,7 +23,8 @@ public class OCBridge {
     public static SystemLanguage GetSystemLanguage()
     {
         SystemLanguage lang = Application.systemLanguage;
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
         if (Application.platform == RuntimePlatform.IPhonePlayer) {
             if (lang == SystemLanguage.Chinese) {
                 string name = CurIOSLang();
@@ -34,7 +35,6 @@ public class OCBridge {
             }
         }
 #elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
 
         return lang;
@@ -42,37 +42,38 @@ public class OCBridge {
 
     public static void RegisterLocalNotification()
     {
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
         RegisterNotification();
 #elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
+
 #endif
     }
 
     public static void ClearLocalNotification()
     {
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
         ClearNotification();
 #elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
     }
 
     public static void LocalRepeatWeekNotificationMessage(string title, string message)
     {
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
         NotificationMessageRepeatWeek(title, message);
 #elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
     }
 
     public static void LocalIntervalNotificationMessage(string title, string message, int interval)
     {
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
         NotificationMessageInterval(title, message, interval);
 #elif UNITY_ANDROID
-#elif UNITY_EDITOR || UNITY_STANDALONE
 #endif
     }
 }
