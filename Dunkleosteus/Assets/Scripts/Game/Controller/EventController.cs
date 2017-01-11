@@ -213,4 +213,11 @@ public class EventController : MonoBehaviour {
         audioPlayer.PlayClickSound();
         gameDirector.ConfirmPurchase(purchaseId);
     }
+
+    #region
+    public void OnLevelGuideStep1()
+    {
+        levelPlayModel.OnLevelGuide(1);
+    }
+    #endregion
 }

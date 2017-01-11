@@ -25,7 +25,7 @@ public class LevelGuideModel : MonoBehaviour {
                 // 提示点击第一颗星星
                 Debug.Log("LevelGuideModel.TriggleLevelGuide step = " + step);
                 GameObject star = gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star3").gameObject;
-                levelGuideView.GetComponent<GuideView>().ShowTap(star);
+                levelGuideView.GetComponent<GuideView>().ShowTap(star, "LKGuideLevel1", "OnLevelGuideStep1");
                 break;
             case 2:
                 // 提示点击第二颗星星

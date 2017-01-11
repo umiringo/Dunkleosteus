@@ -218,6 +218,15 @@ public class LevelPlayModel : MonoBehaviour {
         return _isNew;
     }
 
+    public bool OnLevelGuide(int step)
+    {
+        switch(step) {
+            case 1:
+                break;
+            default:
+                break;
+        }
+    }
     #endregion
 
     //////////////////////////////////////////////////////////////////////////
