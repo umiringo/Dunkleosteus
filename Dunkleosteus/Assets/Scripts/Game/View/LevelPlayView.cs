@@ -20,6 +20,7 @@ public class LevelPlayView : MonoBehaviour {
     public UILabel labelCoin;
     public LevelPlayModel levelPlayModel;
     public GameObject winBonus;
+    public GameObject backButton;
 	// Use this for initialization
     void Awake()
     {
@@ -83,6 +84,7 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelInfo.key = "LK" + levelName + "Info";
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         labelCoin.text = levelPlayModel.GetCoin().ToString();
+        backButton.SetActive(true);
     }
 
     // Load Level Data
@@ -110,11 +112,13 @@ public class LevelPlayView : MonoBehaviour {
         } else {
             menu.SetActive(true);
         }
+        backButton.SetActive(true);
     }
 
     public void ShowGameWin()
     {
         _gameContainer.GetComponent<GameContainer>().GameWin();
+        backButton.SetActive(false);
     }
 
     public GameObject AddLine(Transform beginTransform, Transform endTransform)

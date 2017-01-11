@@ -90,8 +90,10 @@ public class LevelPlayModel : MonoBehaviour {
 
         int guideLevel = PlayerPrefs.GetInt(PlayerPrefsKey.GuideLevel);
         if (guideLevel <= 0 && _levelName == "Triangulum") {
-            _levelGuide.InitPanelView();
             _levelGuide.TriggerLevelGuide(1);
+        }
+        if (guideLevel <= 1 && _levelName == "Aries") {
+            _levelGuide.TriggerLevelGuide(7);
         }
     }
 
@@ -217,11 +219,55 @@ public class LevelPlayModel : MonoBehaviour {
     {
         return _isNew;
     }
-
-    public bool OnLevelGuide(int step)
+    
+    IEnumerator TriggerLevelGuideStep(float waitTime, int step)
     {
+        yield return new WaitForSeconds(waitTime);
+        _levelGuide.TriggerLevelGuide(step);
+    }    
+
+    public void OnLevelGuide(int step)
+    {
+        Debug.Log("LevelPlayModel.OnLevelGuide step = " + step);
         switch(step) {
             case 1:
+                GameObject goStep1 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star3").gameObject;
+                this.TriggerStar(goStep1);
+                audioPlayer.PlayLittleStar();
+                StartCoroutine(TriggerLevelGuideStep(0.1f, 2));
+                break;
+            case 2:
+                GameObject goStep2 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star1").gameObject;
+                this.TriggerStar(goStep2);
+                audioPlayer.PlayLittleStar();
+                StartCoroutine(TriggerLevelGuideStep(0.1f, 3));
+                break;
+            case 3:
+                audioPlayer.PlayClickSound();
+                this.ShowPreview();
+                StartCoroutine(TriggerLevelGuideStep(0.1f, 4));
+                break;
+            case 4:
+                audioPlayer.PlayClickSound();
+                this.DoTip();
+                StartCoroutine(TriggerLevelGuideStep(0.1f, 5));
+                break;
+            case 5:
+                audioPlayer.PlayLittleStar();
+                GameObject goStep5 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star3").gameObject;
+                this.TriggerStar(goStep5);
+                StartCoroutine(TriggerLevelGuideStep(0.1f, 6));
+                break;
+            case 6:
+                audioPlayer.PlayLittleStar();
+                GameObject goStep6 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star2").gameObject;
+                _levelGuide.StopGuide();
+                PlayerPrefs.SetInt(PlayerPrefsKey.GuideLevel, 1);
+                this.TriggerStar(goStep6);
+                break;
+            case 7:
+                _levelGuide.StopGuide();
+                PlayerPrefs.SetInt(PlayerPrefsKey.GuideLevel, 2);
                 break;
             default:
                 break;

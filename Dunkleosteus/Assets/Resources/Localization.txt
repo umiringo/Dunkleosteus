@@ -322,3 +322,7 @@ LKGuideLevel1,LKGuideLevel1,LKGuideLevel1,LKGuideLevel1,LKGuideLevel1
 LKGuideLevel2,LKGuideLevel2,LKGuideLevel2,LKGuideLevel2,LKGuideLevel2
 LKGuideLevel3,LKGuideLevel3,LKGuideLevel3,LKGuideLevel3,LKGuideLevel3
 LKGuideLevel4,LKGuideLevel4,LKGuideLevel4,LKGuideLevel4,LKGuideLevel4
+LKGuideLevel5,LKGuideLevel5,LKGuideLevel5,LKGuideLevel5,LKGuideLevel5
+LKGuideLevel6,LKGuideLevel6,LKGuideLevel6,LKGuideLevel6,LKGuideLevel6
+LKGuideLevel7,LKGuideLevel7,LKGuideLevel7,LKGuideLevel7,LKGuideLevel7
+LKGuideLevel8,LKGuideLevel8,LKGuideLevel8,LKGuideLevel8,LKGuideLevel8

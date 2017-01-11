@@ -219,5 +219,35 @@ public class EventController : MonoBehaviour {
     {
         levelPlayModel.OnLevelGuide(1);
     }
+
+    public void OnLevelGuideStep2()
+    {
+        levelPlayModel.OnLevelGuide(2);
+    }
+
+    public void OnLevelGuideStep3()
+    {
+        levelPlayModel.OnLevelGuide(3);
+    }
+
+    public void OnLevelGuideStep4()
+    {
+        levelPlayModel.OnLevelGuide(4);
+    }
+
+    public void OnLevelGuideStep5()
+    {
+        levelPlayModel.OnLevelGuide(5);
+    }
+
+    public void OnLevelGuideStep6()
+    {
+        levelPlayModel.OnLevelGuide(6);
+    }
+
+    public void OnLevelGuideStep7()
+    {
+        levelPlayModel.OnLevelGuide(7);
+    }
     #endregion
 }
