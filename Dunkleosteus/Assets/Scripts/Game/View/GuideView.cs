@@ -25,6 +25,8 @@ public class GuideView : MonoBehaviour {
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
         }
+        spriteTap.SetActive(true);
+        spriteTarget.SetActive(true);
         if (spriteBg) {
             spriteBg.GetComponent<UIEventTrigger>().onClick.Clear();
         }

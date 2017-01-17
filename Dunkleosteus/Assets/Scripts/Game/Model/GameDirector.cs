@@ -32,6 +32,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelConfirm;
 
     public AudioPlayerModel audioplayer;
+    private LevelGuideModel _levelGuide;
 
     void Awake() {
         // Init template data
@@ -48,6 +49,8 @@ public class GameDirector : MonoBehaviour {
         InitLocalization();
         // Init abbreviation
         InitAbbrHash();
+
+        _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
     }
 
     void Start () {
@@ -237,6 +240,9 @@ public class GameDirector : MonoBehaviour {
         panelLevelSelect.GetComponent<FadeInOut>().FadeIn();
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
         levelSelectView.Show(latestLevel, currentLevel);
+        if (IsCardGuideEnable()) {
+            _levelGuide.TriggerCardGuide();
+        }
         audioplayer.PlaySelectBGM();
         
     }
@@ -522,6 +528,14 @@ public class GameDirector : MonoBehaviour {
         panelConfirm.SetActive(false);
     }
 
+    public bool IsCardGuideEnable()
+    {
+        int guideCard = PlayerPrefs.GetInt(PlayerPrefsKey.GuideCard, 0);
+        if (currentLevel != "Triangulum" && currentLevel != "Aries" && guideCard <= 0) {
+            return true;
+        }
+        return false;
+    }
 
     #endregion
 }

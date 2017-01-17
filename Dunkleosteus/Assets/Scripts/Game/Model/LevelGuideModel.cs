@@ -65,9 +65,11 @@ public class LevelGuideModel : MonoBehaviour {
         }
     }
 
-    public void TriggerCardGuide(int step)
+    public void TriggerCardGuide()
     {
-
+        levelGuideView = GameObject.Find("UI Root").transform.Find("PanelGuide").gameObject;
+        GameObject target = GameObject.Find("UI Root/PanelLevelSelect/PanelLevel/MenuContainer/ButtonCard").gameObject;
+        levelGuideView.GetComponent<GuideView>().ShowTap(target, "LKGuideCard", "OnCardGuide", false);
     }
 
     public void StopGuide()

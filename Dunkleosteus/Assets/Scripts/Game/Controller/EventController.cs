@@ -249,5 +249,10 @@ public class EventController : MonoBehaviour {
     {
         levelPlayModel.OnLevelGuide(7);
     }
+
+    public void OnCardGuide()
+    {
+
+    }
     #endregion
 }
