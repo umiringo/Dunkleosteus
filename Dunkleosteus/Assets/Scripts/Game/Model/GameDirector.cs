@@ -31,7 +31,7 @@ public class GameDirector : MonoBehaviour {
     public GameObject panelLoading;
     public GameObject panelConfirm;
 
-    public AudioPlayerModel audioplayer;
+    public AudioPlayerModel audioPlayer;
     private LevelGuideModel _levelGuide;
 
     void Awake() {
@@ -208,20 +208,20 @@ public class GameDirector : MonoBehaviour {
     {
         int musicOption = PlayerPrefs.GetInt(PlayerPrefsKey.Music, 1);
         if (musicOption > 0) {
-            audioplayer.SetIsPlayMusic(true);
+            audioPlayer.SetIsPlayMusic(true);
         }
         else {
-            audioplayer.SetIsPlayMusic(false);
+            audioPlayer.SetIsPlayMusic(false);
         }
 
         int soundOption = PlayerPrefs.GetInt(PlayerPrefsKey.Sound, 1);
         if (soundOption > 0) {
-            audioplayer.SetIsPlaySound(true);
+            audioPlayer.SetIsPlaySound(true);
         }
         else {
-            audioplayer.SetIsPlaySound(false);
+            audioPlayer.SetIsPlaySound(false);
         }
-        audioplayer.PlayOpBGM();
+        audioPlayer.PlayOpBGM();
     }
 
     #region StateInterface
@@ -243,7 +243,7 @@ public class GameDirector : MonoBehaviour {
         if (IsCardGuideEnable()) {
             _levelGuide.TriggerCardGuide();
         }
-        audioplayer.PlaySelectBGM();
+        audioPlayer.PlaySelectBGM();
         
     }
 
@@ -257,7 +257,7 @@ public class GameDirector : MonoBehaviour {
     {
         panelPlay.GetComponent<FadeInOut>().FadeIn();
         levelPlayModel.LoadLevel(currentLevel);
-        audioplayer.PlayGameBGM();
+        audioPlayer.PlayGameBGM();
     }
 
     public void ExitGameSceneState()
@@ -537,5 +537,11 @@ public class GameDirector : MonoBehaviour {
         return false;
     }
 
+    public void OnFinishCardGuide()
+    {
+        audioPlayer.PlayClickSound();
+        _levelGuide.StopGuide();
+        this.StartCardView();
+    }
     #endregion
 }

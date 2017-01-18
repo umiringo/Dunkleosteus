@@ -252,7 +252,7 @@ public class EventController : MonoBehaviour {
 
     public void OnCardGuide()
     {
-
+        gameDirector.OnFinishCardGuide();
     }
     #endregion
 }
