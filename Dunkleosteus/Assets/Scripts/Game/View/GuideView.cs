@@ -8,6 +8,7 @@ public class GuideView : MonoBehaviour {
     private EventController controller;
     private Vector3 prePosition = Vector3.zero;
     public GameObject spriteBg;
+    public GameObject spriteContent;
     void Awake() {
         controller = GameObject.Find("UI Root/GameController").GetComponent<EventController>();
     }
@@ -20,7 +21,7 @@ public class GuideView : MonoBehaviour {
 	
 	}
 
-    public void ShowTap(GameObject star, string content, string callback, bool isMove)
+    public void ShowTap(GameObject star, string content, string callback, bool isMove, bool isMiddle)
     {
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
@@ -33,7 +34,11 @@ public class GuideView : MonoBehaviour {
         TweenPosition tapTween = spriteTap.GetComponent<TweenPosition>();
         tapTween.enabled = false;
         Vector3 starPosition = star.transform.localPosition;
-
+        if(isMiddle) {
+            spriteContent.transform.localPosition = Vector3.zero;
+        } else {
+            spriteContent.transform.localPosition = new Vector3(0, -500, 0);
+        }
         spriteTarget.transform.localPosition = new Vector3(starPosition.x, starPosition.y, starPosition.z);
         labelGuide.gameObject.SetActive(false);
         labelGuide.key = content;
@@ -54,7 +59,7 @@ public class GuideView : MonoBehaviour {
         prePosition = spriteTap.transform.localPosition;
     }
 
-    public void ShowIntro(string content, string callback)
+    public void ShowIntro(string content, string callback, bool isMiddle)
     {
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
@@ -71,6 +76,11 @@ public class GuideView : MonoBehaviour {
         labelGuide.gameObject.SetActive(true);
         spriteTap.SetActive(false);
         spriteTarget.SetActive(false);
+        if(isMiddle) {
+            spriteContent.transform.localPosition = Vector3.zero;
+        } else {
+            spriteContent.transform.localPosition = new Vector3(0, -500, 0);
+        }
     }
     public void Hide()
     {
