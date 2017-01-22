@@ -27,6 +27,6 @@ public class LoadingView : MonoBehaviour {
         loadingTween.enabled = true;
         loadingTween.PlayForward();
         loadingTween.duration = 3;
-        StartCoroutine(LoadingOverTime(10));
+        StartCoroutine(LoadingOverTime(15));
     }
 }

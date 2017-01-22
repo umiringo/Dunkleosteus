@@ -33,8 +33,11 @@ public class GameDirector : MonoBehaviour {
 
     public AudioPlayerModel audioPlayer;
     private LevelGuideModel _levelGuide;
+    private IAPMgr _iapMgr;
 
     void Awake() {
+        _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
+        _iapMgr = this.gameObject.GetComponent<IAPMgr>();
         // Init template data
         TemplateMgr.Instance.Init();
         // Init Localize data
@@ -50,7 +53,7 @@ public class GameDirector : MonoBehaviour {
         // Init abbreviation
         InitAbbrHash();
 
-        _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
+        _iapMgr.Init();
     }
 
     void Start () {
@@ -500,6 +503,7 @@ public class GameDirector : MonoBehaviour {
     {
         Debug.Log("GameDirector.Purchase purchaseId = " + purchaseId);
         panelLoading.GetComponent<LoadingView>().Show();
+        _iapMgr.Purchase(purchaseId);
     }
 
     public void ConfirmPurchase(string purchaseId)
@@ -541,6 +545,7 @@ public class GameDirector : MonoBehaviour {
     {
         audioPlayer.PlayClickSound();
         _levelGuide.StopGuide();
+        PlayerPrefs.SetInt(PlayerPrefsKey.GuideCard, 1);
         this.StartCardView();
     }
     #endregion

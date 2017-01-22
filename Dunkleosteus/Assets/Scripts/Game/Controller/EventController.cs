@@ -255,4 +255,14 @@ public class EventController : MonoBehaviour {
         gameDirector.OnFinishCardGuide();
     }
     #endregion
+
+    #region IAP
+    public void OnProductsRequest(string s) {
+        Debug.Log("OnProductsRequest s = " + s);
+    }
+
+    public void OnPurchaseSuccess(string s) {
+        Debug.Log("OnProvideContent s = " + s);
+    }
+    #endregion
 }
