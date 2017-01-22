@@ -18,6 +18,18 @@ public class OCBridge {
 
     [DllImport("__Internal")]
     private static extern void NotificationMessageInterval(string title, string message, int interval);
+
+    [DllImport("__Internal")]
+    private static extern void InitIAPManager();
+
+    [DllImport("__Internal")]
+    private static extern void IsProductAvailable();
+
+    [DllImport("__Internal")]
+    private static extern void RequestProductInfo(string s);
+
+    [DllImport("__Internal")]
+    private static extern void BuyProduct(string s);
 #endif
 
     public static SystemLanguage GetSystemLanguage()
@@ -75,5 +87,45 @@ public class OCBridge {
         NotificationMessageInterval(title, message, interval);
 #elif UNITY_ANDROID
 #endif
+    }
+
+    public static void InitIAP()
+    {
+        Debug.Log("InitIAP");
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
+        InitIAPManager();
+#elif UNITY_ANDROID
+#endif
+    }
+
+    public static void IsIAPAvailable()
+    {
+        Debug.Log("IsIAPAvailable");
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
+        IsProductAvailable();
+#elif UNITY_ANDROID
+#endif
+    }
+
+    public static void RequestProductInfoById(string productId)
+    {
+        Debug.Log("RequestProductInfoById productId = " + productId);
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
+        RequestProductInfo(productId);
+#elif UNITY_ANDROID
+#endif       
+    }
+
+    public static void PurchaseProduct(string productId)
+    {
+        Debug.Log("PurchaseProduct productId = " + productId);
+#if UNITY_EDITOR || UNITY_STANDALONE
+#elif UNITY_IOS || UNITY_IPHONE
+        BuyProduct(productId);
+#elif UNITY_ANDROID
+#endif       
     }
 }
