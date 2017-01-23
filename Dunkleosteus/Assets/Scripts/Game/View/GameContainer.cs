@@ -14,7 +14,7 @@ public class GameContainer : MonoBehaviour {
     private TweenRotation detailTween;
     private UIWidget textureWidget;
 
-    public float duration = 1.0f;
+    private float duration = 0.8f;
     
     private bool detailTriggered;
 

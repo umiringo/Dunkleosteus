@@ -193,6 +193,10 @@ public class LevelPlayView : MonoBehaviour {
         _gameContainer.GetComponent<GameContainer>().ShowPreview();
     }
 
+    public void RefreshCoin()
+    {
+        labelCoin.text = levelPlayModel.GetCoin().ToString();
+    }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///
     ///////////////////////////////////////////////////////////////////////////////////

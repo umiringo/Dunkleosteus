@@ -583,10 +583,14 @@ public class GameDirector : MonoBehaviour {
         }
         else if(s == DefinePurchaseId.PurchaseIdSale12) {
             AddCoin(100);
+            PlayerPrefs.SetInt(PlayerPrefsKey.Sale12, 1);
         }
         // 刷新界面
         if(panelPay.activeSelf) {
             panelPay.GetComponent<PayView>().RefreshCoin();
+        }
+        if(panelPlay.activeSelf) {
+            panelPlay.GetComponent<LevelPlayView>().RefreshCoin();
         }
     }
 

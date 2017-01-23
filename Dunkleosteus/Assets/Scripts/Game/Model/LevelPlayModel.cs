@@ -228,7 +228,6 @@ public class LevelPlayModel : MonoBehaviour {
 
     public void OnLevelGuide(int step)
     {
-        Debug.Log("LevelPlayModel.OnLevelGuide step = " + step);
         switch(step) {
             case 1:
                 GameObject goStep1 = this.gameObject.transform.Find("TriangulumContainer(Clone)/Sky/StarContainer/Star3").gameObject;

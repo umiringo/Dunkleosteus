@@ -15,7 +15,6 @@ public class LevelGuideModel : MonoBehaviour {
 
     public void TriggerLevelGuide(int step)
     {
-        Debug.Log("LevelGuideModel.TriggleLevelGuide step = " + step);
         switch (step) {
             case 1:
                 levelGuideView = gameObject.transform.Find("TriangulumContainer(Clone)/Sky/PanelGuide").gameObject;
