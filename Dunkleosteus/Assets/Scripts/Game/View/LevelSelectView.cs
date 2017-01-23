@@ -9,18 +9,16 @@ public class LevelSelectView : MonoBehaviour {
     public GameDirector director;
     public UIScrollView catagoryScrollView;
     public GameObject saleButton;
+    public UILabel labelLevel;
 
-    private GameObject _lineTemplate;
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
     private List<GameObject> levelList;
     private List<GameObject> levelDuplicateList;
-    public UILabel labelLevel;
-
+    
     void Awake() {
         levelList = new List<GameObject>();
         levelDuplicateList = new List<GameObject>();
-        _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
         // 把所有关卡按顺序加入list
         JSONArray jaLevel = TemplateMgr.Instance.GetTemplateArray(ConfigKey.LevelInfo, ConfigKey.LevelSelect);
         for(int i = 1; i <= jaLevel.Count; ++i) {

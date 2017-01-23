@@ -29,4 +29,9 @@ public class LoadingView : MonoBehaviour {
         loadingTween.duration = 3;
         StartCoroutine(LoadingOverTime(15));
     }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

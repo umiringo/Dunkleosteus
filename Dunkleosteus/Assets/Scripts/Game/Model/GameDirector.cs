@@ -8,6 +8,7 @@ using System.Linq;
 public class GameDirector : MonoBehaviour {
     private Dictionary<string, int> levelHash = new Dictionary<string, int>();
     private Dictionary<string, List<string> > catagoryHash = new Dictionary<string, List<string> >();
+    private Dictionary<string, string> localPriceHash = new Dictionary<string, string>();
     private int currentCatagory;
     private string currentLevel; // 当前正在进行的关卡
     private int coin;
@@ -548,5 +549,49 @@ public class GameDirector : MonoBehaviour {
         PlayerPrefs.SetInt(PlayerPrefsKey.GuideCard, 1);
         this.StartCardView();
     }
+
+    public string GetLocalPrice(string productId)
+    {
+        if(!localPriceHash.ContainsKey(productId)){
+            return "";
+        }
+        return localPriceHash[productId];
+    }
+
+    public void RegisterProduct(string s)
+    {
+        string[] sArray = s.Split('\t');
+        localPriceHash[sArray[3]] = sArray[2];
+    }
+
+    public void PurchaseSuccess(string s)
+    {
+        panelLoading.GetComponent<LoadingView>().Hide();
+        if(s == DefinePurchaseId.PurchaseId10) {
+            AddCoin(10);
+        }
+        else if(s == DefinePurchaseId.PurchaseId40) {
+            AddCoin(40);
+        }
+        else if(s == DefinePurchaseId.PurchaseId160) {
+            AddCoin(160);
+        }
+        else if(s == DefinePurchaseId.PurchaseId360) {
+            AddCoin(360);
+        }
+        else if(s == DefinePurchaseId.PurchaseIdSale12) {
+            AddCoin(100);
+        }
+        // 刷新界面
+        if(panelPay.activeSelf) {
+            panelPay.GetComponent<PayView>().RefreshCoin();
+        }
+    }
+
+    public void HideLoading()
+    {
+        panelLoading.GetComponent<LoadingView>().Hide();
+    }
+    
     #endregion
 }

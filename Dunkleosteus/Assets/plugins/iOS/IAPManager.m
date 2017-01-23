@@ -45,13 +45,19 @@
     SKProduct *p = mProductHash[productIdentifier];
     if( nil == p ) {
         UnitySendMessage("GameController", "OnProductNotExisted", [productIdentifier UTF8String]);
+        return;
     }
     SKPayment *payment = [SKPayment paymentWithProduct:p];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
 -(NSString *)productInfo:(SKProduct *)product {
-    NSArray *info = [NSArray arrayWithObjects:product.localizedTitle, product.localizedDescription, product.priceLocale, product.productIdentifier,nil];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:product.priceLocale];
+    NSString *formattedString = [numberFormatter stringFromNumber:product.price];
+    NSArray *info = [NSArray arrayWithObjects:product.localizedTitle, product.localizedDescription, formattedString, product.productIdentifier,nil];
     return [info componentsJoinedByString:@"\t"];
 }
 
@@ -85,11 +91,13 @@
     if(transaction.error.code != SKErrorPaymentCancelled) {
         NSLog(@"!Cancelled");
     }
+     UnitySendMessage("GameController", "OnPurchaseEnd", [[NSString stringWithFormat:@"%@", transaction.payment.productIdentifier] UTF8String]);
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
 -(void)restoreTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"Restore transaction : %@", transaction.transactionIdentifier);
+     UnitySendMessage("GameController", "OnPurchaseEnd", [[NSString stringWithFormat:@"%@", transaction.payment.productIdentifier] UTF8String]);
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 

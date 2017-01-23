@@ -259,10 +259,21 @@ public class EventController : MonoBehaviour {
     #region IAP
     public void OnProductsRequest(string s) {
         Debug.Log("OnProductsRequest s = " + s);
+        gameDirector.RegisterProduct(s);
     }
 
     public void OnPurchaseSuccess(string s) {
         Debug.Log("OnProvideContent s = " + s);
+        gameDirector.PurchaseSuccess(s);
+    }
+
+    public void OnProductNotExisted(string s)
+    {
+
+    }
+    public void OnPurchaseEnd()
+    {
+        gameDirector.HideLoading();
     }
     #endregion
 }
