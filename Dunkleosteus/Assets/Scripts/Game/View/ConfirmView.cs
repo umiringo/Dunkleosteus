@@ -5,6 +5,8 @@ public class ConfirmView : MonoBehaviour {
     public UILocalize labelTitle;
     public UILocalize labelContent;
     public GameObject buttonOk;
+    public UILabel labelNum;
+    public UILabel labelPrice;
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +17,7 @@ public class ConfirmView : MonoBehaviour {
 	
 	}
 
-    public void Show(string title, string content, string delegateName, string param)
+    public void Show(string title, string content, string delegateName, string param, string num, string price)
     {
         labelTitle.key = title;
         labelContent.key = content;
@@ -27,5 +29,7 @@ public class ConfirmView : MonoBehaviour {
         btn.onClick.Clear();
         btn.onClick.Add(eventDel);
         gameObject.SetActive(true);
+        labelNum.text = " X " + num + " =";
+        labelPrice.text = price;
     }
 }

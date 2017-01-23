@@ -136,7 +136,7 @@ public class GameDirector : MonoBehaviour {
             }
         }
         // Init Coin TODO
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 100);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10);
         this.InitCatagoryHash(latestLevel);
     }
 
@@ -515,17 +515,19 @@ public class GameDirector : MonoBehaviour {
 
     public void ShowPurchaseConfirm()
     {
-        this.ShowConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10);
+        string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseId10);
+        this.ShowConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10, "10", localPrice);
     }
 
     public void ShowSale12Confirm()
     {
-        this.ShowConfirm("LKSale", "LKSale12InGame", "OnSale12ConfirmPurchase", DefinePurchaseId.PurchaseIdSale12);
+        string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseIdSale12);
+        this.ShowConfirm("LKSale", "LKSale12InGame", "OnSale12ConfirmPurchase", DefinePurchaseId.PurchaseIdSale12, "100", localPrice);
     }
 
-    public void ShowConfirm(string title, string content, string delegateName, string param)
+    public void ShowConfirm(string title, string content, string delegateName, string param, string num, string price)
     {
-        panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param);
+        panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param, num, price);
     }
 
     public void OnCancelConfirm()
