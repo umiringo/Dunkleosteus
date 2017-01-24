@@ -559,7 +559,7 @@ public class GameDirector : MonoBehaviour {
     public string GetLocalPrice(string productId)
     {
         if(!localPriceHash.ContainsKey(productId)){
-            return "Loading...";
+            return "";
         }
         return localPriceHash[productId];
     }
