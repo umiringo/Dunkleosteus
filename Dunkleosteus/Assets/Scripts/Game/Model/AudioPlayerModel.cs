@@ -13,6 +13,7 @@ public class AudioPlayerModel : MonoBehaviour {
     public AudioClip winSound;
     public AudioClip flopCardSound;
     public AudioClip switchSound;
+    public AudioClip purchaseSound;
 
     public AudioClip p1;
     public AudioClip p2;
@@ -177,5 +178,11 @@ public class AudioPlayerModel : MonoBehaviour {
     {
         if (!isPlaySound) return;
         audioSource.PlayOneShot(switchSound);
+    }
+
+    public void PlayPurchaseSound()
+    {
+        if(!isPlaySound) return;
+        audioSource.PlayOneShot(purchaseSound);
     }
 }

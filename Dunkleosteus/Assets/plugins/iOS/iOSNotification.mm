@@ -16,7 +16,6 @@ extern "C"
     void RegisterNotification()
     {
         if (SYSTEM_VERSION_GREATER_OR_EQUAL_TO(@"10.0")) {
-            NSLog(@"----------------RegisterNotification");
             UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
             [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
                 if(!error) {
@@ -32,7 +31,6 @@ extern "C"
     void ClearNotification()
     {
         if (SYSTEM_VERSION_GREATER_OR_EQUAL_TO(@"10.0")) {
-            NSLog(@"------------------------ClearNotification------------------");
             UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
             [center removeAllPendingNotificationRequests];
             [center removeAllDeliveredNotifications];

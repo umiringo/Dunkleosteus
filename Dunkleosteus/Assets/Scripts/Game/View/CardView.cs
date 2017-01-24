@@ -5,7 +5,6 @@ using GlobalDefines;
 using SimpleJSON;
 
 public class CardView : MonoBehaviour {
-    private Dictionary<string, GameObject> menuHash;
     private string _currentCatagory;
     private GameObject _cardInfoTemplate;
     private GameObject tableCard;
@@ -17,7 +16,6 @@ public class CardView : MonoBehaviour {
     public UILabel labelLevel;
 
     void Awake() {
-        menuHash = new Dictionary<string, GameObject>();
         _cardInfoTemplate = Resources.Load(PathContainer.CardInfoPrefabPath) as GameObject;
         tableCard = this.gameObject.transform.Find("PanelCardList/PanelCardTable/TableCard").gameObject;
     }

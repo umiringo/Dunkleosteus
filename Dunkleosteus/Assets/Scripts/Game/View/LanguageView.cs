@@ -5,11 +5,9 @@ using GlobalDefines;
 public class LanguageView : MonoBehaviour {
     public string lang;
     private UILabel selfLabel;
-    private UISprite selfSprite;
 	// Use this for initialization
 	void Start () {
         selfLabel = gameObject.transform.Find("Label").GetComponent<UILabel>();
-        selfSprite = gameObject.GetComponent<UISprite>();
         GameObject controller = GameObject.Find("UI Root/GameController");
         UIEventTrigger trigger = gameObject.GetComponent<UIEventTrigger>();
         EventDelegate eventDel = new EventDelegate(controller.GetComponent<EventController>(), "OnSelectLanguage");

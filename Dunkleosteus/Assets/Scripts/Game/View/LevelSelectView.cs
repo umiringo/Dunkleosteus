@@ -93,7 +93,7 @@ public class LevelSelectView : MonoBehaviour {
         }
 
         int sale12 = PlayerPrefs.GetInt(PlayerPrefsKey.Sale12, 0);
-        if(sale12 < 1){
+        if(sale12 < 1 && director.IsProductRegister(DefinePurchaseId.PurchaseIdSale12)){
             saleButton.SetActive(true);
         } else {
             saleButton.SetActive(false);
@@ -117,6 +117,16 @@ public class LevelSelectView : MonoBehaviour {
         }
     }
 
+    public void RefreshSale()
+    {
+        int sale12 = PlayerPrefs.GetInt(PlayerPrefsKey.Sale12, 0);
+        if(sale12 < 1 && director.IsProductRegister(DefinePurchaseId.PurchaseIdSale12)){
+            saleButton.SetActive(true);
+        } else {
+            saleButton.SetActive(false);
+        }
+    }
+    
     private void AddLevelLine(Transform beginTransform, Transform endTransform)
     {
         GameObject linkedLine = beginTransform.FindChild("Line").gameObject;
@@ -175,4 +185,5 @@ public class LevelSelectView : MonoBehaviour {
         angle = Mathf.Rad2Deg * Mathf.Atan((begin.position.y - end.position.y) / (begin.position.x - end.position.x));
         return angle;
     }
+
 }

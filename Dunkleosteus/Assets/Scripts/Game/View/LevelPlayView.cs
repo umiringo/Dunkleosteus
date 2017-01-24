@@ -19,8 +19,8 @@ public class LevelPlayView : MonoBehaviour {
     // public GameObject levelComplete; // 完成游戏的对号
     public UILabel labelCoin;
     public LevelPlayModel levelPlayModel;
-    public GameObject winBonus;
     public GameObject backButton;
+    public UILabel labelNum;
 	// Use this for initialization
     void Awake()
     {
@@ -32,7 +32,6 @@ public class LevelPlayView : MonoBehaviour {
         _labelLevelPosition = null;
         _labelLevelInfo = null;
         _lineTemplate = Resources.Load(PathContainer.LinkedLinePrefabPath) as GameObject;
-        winBonus.SetActive(false);
         menu.SetActive(false);
         lastMenu.SetActive(false);
     }
@@ -54,7 +53,6 @@ public class LevelPlayView : MonoBehaviour {
         _gameContainer = null;
         menu.SetActive(false);
         lastMenu.SetActive(false);
-        winBonus.SetActive(false);
     }
 
     public void LoadLevelUI(string name)
@@ -85,6 +83,8 @@ public class LevelPlayView : MonoBehaviour {
         _lineContainer = GameObject.Find(_gameContainer.name + "/Sky/LineContainer");
         labelCoin.text = levelPlayModel.GetCoin().ToString();
         backButton.SetActive(true);
+        labelNum.gameObject.SetActive(true);
+        RefreshLabelNum();
     }
 
     // Load Level Data
@@ -98,15 +98,11 @@ public class LevelPlayView : MonoBehaviour {
     {
         menu.SetActive(false);
         lastMenu.SetActive(false);
-        if(levelPlayModel.IsNewLevel()) {
-            winBonus.SetActive(true);
-        }
     }
 
     // Show menu(next/back)
     public void ShowMenu()
     {
-        winBonus.SetActive(false);
         if(levelPlayModel.IsFin()) {
             lastMenu.SetActive(true);
         } else {
@@ -119,6 +115,7 @@ public class LevelPlayView : MonoBehaviour {
     {
         _gameContainer.GetComponent<GameContainer>().GameWin();
         backButton.SetActive(false);
+        labelNum.gameObject.SetActive(false);
     }
 
     public GameObject AddLine(Transform beginTransform, Transform endTransform)
@@ -196,6 +193,13 @@ public class LevelPlayView : MonoBehaviour {
     public void RefreshCoin()
     {
         labelCoin.text = levelPlayModel.GetCoin().ToString();
+    }
+
+    public void RefreshLabelNum()
+    {
+        int nowLinkedNum = levelPlayModel.GetLinkedLineNum();
+        int allLinkedNum = levelPlayModel.GetAllLineNum();
+        labelNum.text = nowLinkedNum.ToString() + "/" + allLinkedNum.ToString();
     }
     ///////////////////////////////////////////////////////////////////////////////////
     /// Inner logic function                                                        ///

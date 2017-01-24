@@ -135,7 +135,7 @@ public class GameDirector : MonoBehaviour {
                 currentLevel = nextLevel;
             }
         }
-        // Init Coin TODO
+        // Init Coin
         coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10);
         this.InitCatagoryHash(latestLevel);
     }
@@ -502,7 +502,6 @@ public class GameDirector : MonoBehaviour {
 
     public void Purchase(string purchaseId)
     {
-        Debug.Log("GameDirector.Purchase purchaseId = " + purchaseId);
         panelLoading.GetComponent<LoadingView>().Show();
         _iapMgr.Purchase(purchaseId);
     }
@@ -552,10 +551,15 @@ public class GameDirector : MonoBehaviour {
         this.StartCardView();
     }
 
+    public bool IsProductRegister(string productId)
+    {
+        return localPriceHash.ContainsKey(productId);
+    }
+
     public string GetLocalPrice(string productId)
     {
         if(!localPriceHash.ContainsKey(productId)){
-            return "";
+            return "Loading...";
         }
         return localPriceHash[productId];
     }
@@ -564,25 +568,22 @@ public class GameDirector : MonoBehaviour {
     {
         string[] sArray = s.Split('\t');
         localPriceHash[sArray[3]] = sArray[2];
+        if(sArray[3] == DefinePurchaseId.PurchaseIdSale12) {
+            if(panelLevelSelect.activeSelf) {
+                levelSelectView.RefreshSale();
+            }
+        }
     }
 
     public void PurchaseSuccess(string s)
     {
+        audioPlayer.PlayPurchaseSound();
         panelLoading.GetComponent<LoadingView>().Hide();
         if(s == DefinePurchaseId.PurchaseId10) {
             AddCoin(10);
         }
-        else if(s == DefinePurchaseId.PurchaseId40) {
-            AddCoin(40);
-        }
-        else if(s == DefinePurchaseId.PurchaseId160) {
-            AddCoin(160);
-        }
-        else if(s == DefinePurchaseId.PurchaseId360) {
-            AddCoin(360);
-        }
         else if(s == DefinePurchaseId.PurchaseIdSale12) {
-            AddCoin(100);
+            AddCoin(30);
             PlayerPrefs.SetInt(PlayerPrefsKey.Sale12, 1);
         }
         // 刷新界面

@@ -43,7 +43,6 @@ public class LevelPlayModel : MonoBehaviour {
     private GameObject _readyStar; // 选中的星星
     private bool _isWin;
     private bool _isFin;
-    private bool _isNew;
     private LevelGuideModel _levelGuide;
 
     public GameDirector gameDirector;
@@ -119,12 +118,6 @@ public class LevelPlayModel : MonoBehaviour {
             _correctAnswerList.Add(tmpAnswer);
         }
         _isWin = false;
-        if(gameDirector.GetLevelState(name) == 0) {
-            _isNew = true;
-        }
-        else {
-            _isNew =false;
-        }
     }
 
     // Click star
@@ -173,10 +166,6 @@ public class LevelPlayModel : MonoBehaviour {
         _isWin = true;
         levelPlayView.ShowGameWin();
         audioPlayer.PlayWinSound();
-        if(_isNew) {
-            gameDirector.AddCoin(DefineNumber.WinBonusNum);
-            levelPlayView.UpdateCoinLabel();
-        }
     }
 
     // Click tips
@@ -215,11 +204,6 @@ public class LevelPlayModel : MonoBehaviour {
         audioPlayer.PlayClickSound();
     }
 
-    public bool IsNewLevel()
-    {
-        return _isNew;
-    }
-    
     IEnumerator TriggerLevelGuideStep(float waitTime, int step)
     {
         yield return new WaitForSeconds(waitTime);
@@ -271,6 +255,16 @@ public class LevelPlayModel : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public int GetLinkedLineNum()
+    {
+        return _answerList.Count;
+    }
+
+    public int GetAllLineNum()
+    {
+        return _correctAnswerList.Count;
     }
     #endregion
 
@@ -442,6 +436,7 @@ public class LevelPlayModel : MonoBehaviour {
         // Refresh the stars state
         this.RefreshStar(goBegin);
         this.RefreshStar(goEnd);
+        levelPlayView.RefreshLabelNum();
     }
 
     private void TipLinkLine(int indexBegin, int indexEnd) 
