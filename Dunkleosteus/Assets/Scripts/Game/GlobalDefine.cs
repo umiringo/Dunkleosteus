@@ -53,6 +53,7 @@ namespace GlobalDefines
         public static readonly int WinBonusNum = 1;
         public static readonly int CardLineDepth = 399;
         public static readonly int MaxLevel = 88;
+        public static readonly int DefaultCoin = 5;
 
     }
     
@@ -90,7 +91,6 @@ namespace GlobalDefines
         public static readonly string PurchaseId10 = "constellationpainter.umiringo.com.purchase.10";
         public static readonly string PurchaseId40 = "constellationpainter.umiringo.com.purchase.40";
         public static readonly string PurchaseId160 = "constellationpainter.umiringo.com.purchase.160";
-        public static readonly string PurchaseId360 = "constellationpainter.umiringo.com.purchase.360";
         public static readonly string PurchaseIdSale12 = "constellationpainter.umiringo.com.purchase.sale.12";
     }
 
@@ -99,4 +99,18 @@ namespace GlobalDefines
         public static readonly string NotificationMessage = "NotificationMessage";
         public static readonly string NotificationTitle = "NotificationTitle";
     }
+
+	public class GameCenterKey
+	{
+		public static readonly string LadderId = "cxpainter.umiringo.com.ladder";
+		public static readonly string AchieveZodiac = "achieve.umiringo.com.zodiac";
+		public static readonly string AchieveOrion = "achieve.umiringo.com.orion";
+		public static readonly string AchieveUrsaMajor = "achieve.umiringo.com.ursamajor";
+		public static readonly string AchieveHeavenlyWaters = "achieve.umiringo.com.heavenlywaters";
+		public static readonly string AchievePerseus = "achieve.umiringo.com.perseus";
+		public static readonly string AchieveBayer = "achieve.umiringo.com.bayer";
+		public static readonly string AchieveLaCaille = "achieve.umiringo.com.lacaille";
+		public static readonly string AchieveHercules = "achieve.umiringo.com.hercules";
+		public static readonly string AchieveAll = "achieve.umiringo.com.all";
+	}
 }

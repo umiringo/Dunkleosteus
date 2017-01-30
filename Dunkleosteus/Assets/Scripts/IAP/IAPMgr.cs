@@ -25,8 +25,7 @@ public class IAPMgr : MonoBehaviour {
     public void Init() {
         OCBridge.InitIAP();
         this.GetProductInfo(DefinePurchaseId.PurchaseId10 + "\t" + DefinePurchaseId.PurchaseId40 + "\t" +
-                            DefinePurchaseId.PurchaseId160 + "\t" + DefinePurchaseId.PurchaseId360 + "\t" + 
-                            DefinePurchaseId.PurchaseIdSale12);
+                            DefinePurchaseId.PurchaseId160 + "\t" + DefinePurchaseId.PurchaseIdSale12);
     }
 
     public void IsAvailable()

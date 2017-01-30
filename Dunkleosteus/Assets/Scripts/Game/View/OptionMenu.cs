@@ -11,6 +11,8 @@ public class OptionMenu : MonoBehaviour {
     public UILocalize soundMenu;
     public UILabel labelSound;
     public UILabel labelSoundTitle;
+	public GameObject buttonAchieve;
+	public GameDirector gameDirector;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +55,13 @@ public class OptionMenu : MonoBehaviour {
             labelSoundTitle.color = new Color(0.447f, 0.416f, 0.239f);
             soundMenu.key = "LKOff";
         }
+
+		if(gameDirector.IsGameCenterOK()) {
+			buttonAchieve.SetActive(true);
+		}
+		else {
+			buttonAchieve.SetActive(false);
+		}
 
         gameObject.SetActive(true);
     }

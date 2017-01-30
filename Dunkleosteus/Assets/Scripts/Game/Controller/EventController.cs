@@ -214,7 +214,12 @@ public class EventController : MonoBehaviour {
         gameDirector.ConfirmPurchase(purchaseId);
     }
 
-    #region
+	public void OnCommentConfirm()
+	{
+		Debug.Log("EventController.OnCommentConfirm");
+	}
+
+    #region Guide
     public void OnLevelGuideStep1()
     {
         levelPlayModel.OnLevelGuide(1);
@@ -254,6 +259,7 @@ public class EventController : MonoBehaviour {
     {
         gameDirector.OnFinishCardGuide();
     }
+
     #endregion
 
     #region IAP
@@ -271,9 +277,17 @@ public class EventController : MonoBehaviour {
     {
 
     }
+
     public void OnPurchaseEnd()
     {
         gameDirector.HideLoading();
     }
+
+    public void OnButtonAchievement()
+    {
+        gameDirector.OpenAchievement();
+    }
     #endregion
+
+
 }

@@ -23,7 +23,7 @@ public class OCBridge {
     private static extern void InitIAPManager();
 
     [DllImport("__Internal")]
-    private static extern void IsProductAvailable();
+    private static extern bool IsProductAvailable();
 
     [DllImport("__Internal")]
     private static extern void RequestProductInfo(string s);
@@ -99,19 +99,20 @@ public class OCBridge {
 #endif
     }
 
-    public static void IsIAPAvailable()
+    public static bool IsIAPAvailable()
     {
-        Debug.Log("IsIAPAvailable");
 #if UNITY_EDITOR || UNITY_STANDALONE
+        return false;
 #elif UNITY_IOS || UNITY_IPHONE
-        IsProductAvailable();
+        return IsProductAvailable();
 #elif UNITY_ANDROID
+        return false;
 #endif
+        return false;
     }
 
     public static void RequestProductInfoById(string productId)
     {
-        Debug.Log("RequestProductInfoById productId = " + productId);
 #if UNITY_EDITOR || UNITY_STANDALONE
 #elif UNITY_IOS || UNITY_IPHONE
         RequestProductInfo(productId);
@@ -121,11 +122,22 @@ public class OCBridge {
 
     public static void PurchaseProduct(string productId)
     {
-        Debug.Log("PurchaseProduct productId = " + productId);
 #if UNITY_EDITOR || UNITY_STANDALONE
 #elif UNITY_IOS || UNITY_IPHONE
         BuyProduct(productId);
 #elif UNITY_ANDROID
 #endif       
+    }
+
+		public static bool IsGameCenterAvailable()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        return false;
+#elif UNITY_IOS || UNITY_IPHONE
+        return true;
+#elif UNITY_ANDROID
+        return false;
+#endif
+        return false;        
     }
 }

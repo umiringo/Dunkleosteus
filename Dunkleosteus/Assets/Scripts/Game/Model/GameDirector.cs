@@ -15,6 +15,7 @@ public class GameDirector : MonoBehaviour {
     private FiniteStateMachine _fsm;
     private Dictionary<string, string> abbrHash = new Dictionary<string, string>();
     private Dictionary<string, int> starNumHash = new Dictionary<string, int>();
+	private Dictionary<string, string> achieveHash = new Dictionary<string, string>();
 
     public LevelPlayModel levelPlayModel;
     public LevelSelectView levelSelectView;
@@ -35,10 +36,13 @@ public class GameDirector : MonoBehaviour {
     public AudioPlayerModel audioPlayer;
     private LevelGuideModel _levelGuide;
     private IAPMgr _iapMgr;
+	private SocialManager _socialMgr;
 
     void Awake() {
         _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
         _iapMgr = this.gameObject.GetComponent<IAPMgr>();
+		_socialMgr = this.gameObject.GetComponent<SocialManager>();
+
         // Init template data
         TemplateMgr.Instance.Init();
         // Init Localize data
@@ -53,7 +57,7 @@ public class GameDirector : MonoBehaviour {
         InitLocalization();
         // Init abbreviation
         InitAbbrHash();
-
+		// Init IAP
         _iapMgr.Init();
     }
 
@@ -119,7 +123,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Tucana");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -136,7 +140,7 @@ public class GameDirector : MonoBehaviour {
             }
         }
         // Init Coin
-        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, 10);
+        coin = PlayerPrefs.GetInt(PlayerPrefsKey.Coin, DefineNumber.DefaultCoin);
         this.InitCatagoryHash(latestLevel);
     }
 
@@ -206,6 +210,15 @@ public class GameDirector : MonoBehaviour {
         starNumHash["Bayer"] = 11;
         starNumHash["LaCaille"] = 13;
         starNumHash["Hercules"] = 18;
+
+		achieveHash["Zodiac"] = GameCenterKey.AchieveZodiac;
+		achieveHash["Orion"] = GameCenterKey.AchieveOrion;
+		achieveHash["UrsaMajor"] = GameCenterKey.AchieveUrsaMajor;
+		achieveHash["HeavenlyWaters"] = GameCenterKey.AchieveHeavenlyWaters;
+		achieveHash["Perseus"] = GameCenterKey.AchievePerseus;
+		achieveHash["Bayer"] = GameCenterKey.AchieveBayer;
+		achieveHash["LaCaille"] = GameCenterKey.AchieveLaCaille;
+		achieveHash["Hercules"] = GameCenterKey.AchieveHercules;
     }
 
     private void InitSounds()
@@ -227,7 +240,7 @@ public class GameDirector : MonoBehaviour {
         }
         audioPlayer.PlayOpBGM();
     }
-
+		
     #region StateInterface
     public void EnterMainMenuState()
     {
@@ -248,7 +261,8 @@ public class GameDirector : MonoBehaviour {
             _levelGuide.TriggerCardGuide();
         }
         audioPlayer.PlaySelectBGM();
-        
+		_socialMgr.Login();
+		// Update All GameCenter Data
     }
 
     public void ExitLevelSelectState()
@@ -457,6 +471,7 @@ public class GameDirector : MonoBehaviour {
             return true;
         }
         currentLevel = nextLevel;
+		UpdateAllGameCenterData();
         return false;
     }
 
@@ -490,6 +505,23 @@ public class GameDirector : MonoBehaviour {
         return catagoryHash[catagory];
     }
 
+	public int GetEnableLevelListNum(string catagory)
+	{
+		if(!catagoryHash.ContainsKey(catagory)) {
+			return 0;
+		}
+		return catagoryHash[catagory].Count;
+	}
+
+	public int GetAllEnableLevelListNum()
+	{
+		int count = 0;
+		foreach(string key in abbrHash.Keys){
+			count += GetEnableLevelListNum(key);
+		}
+		return count;
+	}
+
     public string GetAbbreviation(string catagory) 
     {
         return abbrHash[catagory];
@@ -515,19 +547,29 @@ public class GameDirector : MonoBehaviour {
     public void ShowPurchaseConfirm()
     {
         string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseId10);
-        this.ShowConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10, "10", localPrice);
+        this.ShowPayConfirm("LKPay", "LKPurchaseInGame", "OnOkConfirmPurchase", DefinePurchaseId.PurchaseId10, "10", localPrice);
     }
 
     public void ShowSale12Confirm()
     {
         string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseIdSale12);
-        this.ShowConfirm("LKSale", "LKSale12InGame", "OnSale12ConfirmPurchase", DefinePurchaseId.PurchaseIdSale12, "100", localPrice);
+		this.ShowPayConfirm("LKSale", "LKSale12InGame", "OnSale12ConfirmPurchase", DefinePurchaseId.PurchaseIdSale12, "40", localPrice);
     }
 
-    public void ShowConfirm(string title, string content, string delegateName, string param, string num, string price)
+	public void ShowCommentConfirm()
+	{
+		this.ShowConfirm("LKCommentTitle", "LKCommentContent", "OnCommentConfirm", null);
+	}
+
+    public void ShowPayConfirm(string title, string content, string delegateName, string param, string num, string price)
     {
-        panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param, num, price);
+        panelConfirm.GetComponent<ConfirmView>().ShowPay(title, content,  delegateName, param, num, price);
     }
+
+	public void ShowConfirm(string title, string content, string delegateName, string param)
+	{
+		panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param);
+	}
 
     public void OnCancelConfirm()
     {
@@ -559,7 +601,7 @@ public class GameDirector : MonoBehaviour {
     public string GetLocalPrice(string productId)
     {
         if(!localPriceHash.ContainsKey(productId)){
-            return "Loading...";
+            return "";
         }
         return localPriceHash[productId];
     }
@@ -582,8 +624,14 @@ public class GameDirector : MonoBehaviour {
         if(s == DefinePurchaseId.PurchaseId10) {
             AddCoin(10);
         }
+        else if(s == DefinePurchaseId.PurchaseId40) {
+            AddCoin(35);
+        }
+        else if(s == DefinePurchaseId.PurchaseId160) {
+            AddCoin(60);
+        }
         else if(s == DefinePurchaseId.PurchaseIdSale12) {
-            AddCoin(30);
+            AddCoin(40);
             PlayerPrefs.SetInt(PlayerPrefsKey.Sale12, 1);
         }
         // 刷新界面
@@ -600,5 +648,28 @@ public class GameDirector : MonoBehaviour {
         panelLoading.GetComponent<LoadingView>().Hide();
     }
     
+    public void OpenAchievement()
+    {
+		_socialMgr.ShowGameCenter();
+    }
+
+	public bool IsGameCenterOK()
+	{
+		return _socialMgr.isGameCenterSuccess && OCBridge.IsGameCenterAvailable();
+	}
+		
+	public void UpdateAllGameCenterData()
+	{
+		// Update Ladder
+		int finishedLevel = GetAllEnableLevelListNum();
+		_socialMgr.UpdateScore(finishedLevel);
+
+		// Update Achieve
+		foreach(var item in achieveHash) {
+			int count = GetEnableLevelListNum(item.Key);
+			_socialMgr.UpdateReportProgress(item.Value, count, starNumHash[item.Key]);
+		}
+		_socialMgr.UpdateReportProgress(GameCenterKey.AchieveAll, finishedLevel, DefineNumber.MaxLevel);
+	}
     #endregion
 }

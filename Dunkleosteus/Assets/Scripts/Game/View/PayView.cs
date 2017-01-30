@@ -25,7 +25,6 @@ public class PayView : MonoBehaviour {
         labelPrice10.text = gameDirector.GetLocalPrice(DefinePurchaseId.PurchaseId10);
         labelPrice40.text = gameDirector.GetLocalPrice(DefinePurchaseId.PurchaseId40);
         lablePrice160.text = gameDirector.GetLocalPrice(DefinePurchaseId.PurchaseId160);
-        labelPrice360.text = gameDirector.GetLocalPrice(DefinePurchaseId.PurchaseId360);
     }
 
     public void RefreshCoin()
