@@ -450,6 +450,13 @@ public class LevelPlayModel : MonoBehaviour {
 
     private void DoTip()
     {
+        // Restore the ready one
+        if(_readyStar) {
+            GameObject tmp = _readyStar;
+            _readyStar = null;
+            RefreshStar(tmp);
+        }
+        
         // Check if already
         if(CheckAnswer()) {
             return;
