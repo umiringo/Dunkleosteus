@@ -66,11 +66,13 @@ public class SocialManager : MonoBehaviour {
 
 	public void Login()
 	{
+        if (!OCBridge.IsGameCenterAvailable()) return;
 		Social.localUser.Authenticate(HandleAuthenticated);
 	}
 
 	public void ShowGameCenter()
 	{
+        if (!OCBridge.IsGameCenterAvailable()) return;
 		if(isGameCenterSuccess && Social.localUser.authenticated) {
 			Social.ShowAchievementsUI();
 		}
@@ -78,6 +80,7 @@ public class SocialManager : MonoBehaviour {
 
 	public void UpdateScore(int score)
 	{
+        if (!OCBridge.IsGameCenterAvailable()) return;
 		if (Social.localUser.authenticated) {  
 			Social.ReportScore(score, GameCenterKey.LadderId, HandleScoreReported);   
 		}  
@@ -85,6 +88,7 @@ public class SocialManager : MonoBehaviour {
 
 	public void UpdateReportProgress(string achieveId, int score, int totalScore)
 	{
+        if (!OCBridge.IsGameCenterAvailable()) return;
 		if (Social.localUser.authenticated) {  
 			Social.ReportProgress(achieveId, (double)score/(double)totalScore * 100, HandleProgressReported);
 		}  

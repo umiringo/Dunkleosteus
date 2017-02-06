@@ -104,7 +104,7 @@ public class LevelSelectView : MonoBehaviour {
         }
         else {
             labelLevel.text = DefineString.NormalBlueColor + finishCount + "[-]" + DefineString.DarkBlueColor + " / " + DefineNumber.MaxLevel + "[-]";
-        }
+        }        
     }
 
     private void HideAllStar()

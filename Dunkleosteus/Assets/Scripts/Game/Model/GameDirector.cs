@@ -37,6 +37,7 @@ public class GameDirector : MonoBehaviour {
     private LevelGuideModel _levelGuide;
     private IAPMgr _iapMgr;
 	private SocialManager _socialMgr;
+    private int currentPlayedLevel;
 
     void Awake() {
         _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
@@ -59,6 +60,8 @@ public class GameDirector : MonoBehaviour {
         InitAbbrHash();
 		// Init IAP
         _iapMgr.Init();
+
+        currentPlayedLevel = 0;
     }
 
     void Start () {
@@ -123,7 +126,7 @@ public class GameDirector : MonoBehaviour {
     {
         PlayerPrefs.DeleteAll();
         // Init latestLevel
-        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Tucana");
+        string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "Cancer");
         // first level
         if(latestLevel == "begin") {
             PlayerPrefs.SetString(PlayerPrefsKey.LatestLevel, latestLevel);
@@ -259,6 +262,9 @@ public class GameDirector : MonoBehaviour {
         levelSelectView.Show(latestLevel, currentLevel);
         if (IsCardGuideEnable()) {
             _levelGuide.TriggerCardGuide();
+        }
+        else {
+            ShowCommentConfirm();
         }
         audioPlayer.PlaySelectBGM();
 		_socialMgr.Login();
@@ -472,6 +478,7 @@ public class GameDirector : MonoBehaviour {
         }
         currentLevel = nextLevel;
 		UpdateAllGameCenterData();
+        currentPlayedLevel++;
         return false;
     }
 
@@ -557,8 +564,13 @@ public class GameDirector : MonoBehaviour {
     }
 
 	public void ShowCommentConfirm()
-	{
-		this.ShowConfirm("LKCommentTitle", "LKCommentContent", "OnCommentConfirm", null);
+    {
+        int comment = PlayerPrefs.GetInt(PlayerPrefsKey.Comment, 0);
+
+        if (OCBridge.IsCommentAvailable() && currentPlayedLevel >= 5 && comment < 1) {
+            this.ShowConfirm("", "LKCommentContent", "OnCommentConfirm");
+            currentPlayedLevel = 0;
+        }
 	}
 
     public void ShowPayConfirm(string title, string content, string delegateName, string param, string num, string price)
@@ -566,14 +578,22 @@ public class GameDirector : MonoBehaviour {
         panelConfirm.GetComponent<ConfirmView>().ShowPay(title, content,  delegateName, param, num, price);
     }
 
-	public void ShowConfirm(string title, string content, string delegateName, string param)
+	public void ShowConfirm(string title, string content, string delegateName)
 	{
-		panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName, param);
+		panelConfirm.GetComponent<ConfirmView>().Show(title, content,  delegateName);
 	}
 
     public void OnCancelConfirm()
     {
         panelConfirm.SetActive(false);
+    }
+
+    public void DoComment()
+    {
+        if (OCBridge.IsCommentAvailable()) {
+            PlayerPrefs.SetInt(PlayerPrefsKey.Comment, 1);
+            OCBridge.JumpToComment();
+        }
     }
 
     public bool IsCardGuideEnable()

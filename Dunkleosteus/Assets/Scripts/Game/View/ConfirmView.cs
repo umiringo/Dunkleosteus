@@ -38,7 +38,7 @@ public class ConfirmView : MonoBehaviour {
         labelPrice.text = price;
     }
 
-	public void Show(string title, string content, string delegateName, string param)
+	public void Show(string title, string content, string delegateName)
 	{
 		labelNum.gameObject.SetActive(false);
 		labelPrice.gameObject.SetActive(false);
@@ -50,7 +50,6 @@ public class ConfirmView : MonoBehaviour {
 		GameObject controller = GameObject.Find("UI Root/GameController");
 		UIButton btn = buttonOk.GetComponent<UIButton>();
 		EventDelegate eventDel = new EventDelegate(controller.GetComponent<EventController>(), delegateName);
-		eventDel.parameters[0] = new EventDelegate.Parameter(param);
 		btn.onClick.Clear();
 		btn.onClick.Add(eventDel);
 		gameObject.SetActive(true);

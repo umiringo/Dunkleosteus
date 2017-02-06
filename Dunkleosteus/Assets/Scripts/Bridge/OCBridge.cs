@@ -129,7 +129,7 @@ public class OCBridge {
 #endif       
     }
 
-		public static bool IsGameCenterAvailable()
+	public static bool IsGameCenterAvailable()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE
         return false;
@@ -137,7 +137,31 @@ public class OCBridge {
         return true;
 #elif UNITY_ANDROID
         return false;
+#endif  
+    }
+
+    public static bool IsCommentAvailable()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        return true;
+#elif UNITY_IOS || UNITY_IPHONE
+        return true;
+#elif UNITY_ANDROID
+        return false;
+#endif  
+    }
+
+    public static void JumpToComment()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        Debug.Log("OCBridge.JumpToComment");
+#elif UNITY_IOS || UNITY_IPHONE
+        const string APP_ID = "";
+        var url = string.Format(
+        "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id={0}",
+        APP_ID);
+        Application.OpenURL(url);
+#elif UNITY_ANDROID
 #endif
-        return false;        
     }
 }

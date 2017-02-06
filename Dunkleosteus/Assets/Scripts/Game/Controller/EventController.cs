@@ -217,6 +217,7 @@ public class EventController : MonoBehaviour {
 	public void OnCommentConfirm()
 	{
 		Debug.Log("EventController.OnCommentConfirm");
+        gameDirector.DoComment();
 	}
 
     #region Guide

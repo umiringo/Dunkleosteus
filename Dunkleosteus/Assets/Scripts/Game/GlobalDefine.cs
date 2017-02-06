@@ -53,7 +53,7 @@ namespace GlobalDefines
         public static readonly int WinBonusNum = 1;
         public static readonly int CardLineDepth = 399;
         public static readonly int MaxLevel = 88;
-        public static readonly int DefaultCoin = 5;
+        public static readonly int DefaultCoin = 105;
 
     }
     
@@ -75,6 +75,7 @@ namespace GlobalDefines
         public static readonly string Sale12 = "Sale12";
         public static readonly string GuideLevel = "GuideLevel";
         public static readonly string GuideCard = "GuideCard";
+        public static readonly string Comment = "Comment";
     }
 
     public class DefineString
