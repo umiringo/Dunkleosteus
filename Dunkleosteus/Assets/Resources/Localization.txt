@@ -315,9 +315,9 @@ LKPrice6,$0.99,￥6.00,NT$30.00,￥120
 LKPrice18,$2.99,￥18.00,NT$90.00,￥360
 LKPrice68,$9.99,￥68.00,NT$300.00,￥1200
 LKPrice128,$19.99,￥128.00,NT$590.00,￥2400
-LKPurchaseInGame,You have no coin left.\nWill you get some more now?,您已经没有提示硬币了，\n现在是否购买10个硬币？,您已經沒有提示硬幣了，\n是否購買10個提示硬幣？,コインもうないんですね。\nコイン10枚を購入しますか？
+LKPurchaseInGame,You have no coin left.\nWill you get 10 more now?,您已经没有提示硬币了，\n现在是否购买10个硬币？,您已經沒有提示硬幣了，\n是否購買10個提示硬幣？,コインもうないんですね。\nコイン10枚を購入しますか？
 LKSale,On Sale!,优惠！,優惠！,割引
-LKSale12InGame,A Discount for once! 75% OFF!\nGet 100 coins by super low price now?,优惠购买，可享受一次！2.5折!\n现在就以超低价格购买100个硬币吗？,只能享受一次的優惠購買！2.5折！\n現在以優惠價格購買嗎？,\n一期一会の割引、75％ OFF!\n今はコイン100枚を購入しましょうか？
+LKSale12InGame,A Discount for once! 50% OFF!\nGet 40 coins by super low price now?,优惠购买，可享受一次！5折!\n现在就以超低价格购买40个硬币吗？,只能享受一次的優惠購買！5折！\n現在以優惠價格購買40枚硬币嗎？,\n一期一会の割引、50％ OFF!\n今はコイン40枚を購入しましょうか？
 LKGuideLevel1,Tap to select one star,点击以选取一颗星星,點擊以選取一顆星星,星をタップしてください。
 LKGuideLevel2,Tap another star to connect both,再点击另一颗星星来形成一根连线,再點擊另外一顆，連結兩顆星星,別の星をタップして、二つ星をリンクしましょう。
 LKGuideLevel3,"Connect stars to form constellation, you also can tap the title to preview star chart",连接星星来组成星座，也可以点击星座名来预览星图,連結星星來組成星座，也可以點擊星座名來預覽星圖,星たちをリンクして星座になります。タイトルをタップして、星図見えますよ。
