@@ -109,9 +109,12 @@ public class AudioPlayerModel : MonoBehaviour {
     public void PlaySelectBGM()
     {
        // audioSource.Pause();
-        audioSource.clip = selectBgm;
+        
         if(isPlayMusic) {
-            audioSource.Play();
+            if(audioSource.clip.name != "select_bgm" || !audioSource.isPlaying) {
+                audioSource.clip = selectBgm;
+                audioSource.Play();
+            }
         } 
     }
 
