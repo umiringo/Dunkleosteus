@@ -325,4 +325,5 @@ LKGuideLevel4,"If you meet with difficulties, tap the coin to get tips, which wi
 LKGuideLevel5,"One linked line comes out by tips, now connect the last two stars to finish the Triangulum",你获得了一条提示出来的连线，来连接最后两颗星星完成三角座吧,你獲得了一條提示出來的連線，連結最後兩顆星星來完成三角座吧,ヒントとして、リンクライン出ました！そして、最後の二つの星をリンクして、三角座を完成しましょう！
 LKGuideLevel6,"The last one, finish the level!",最后一颗星星，即将完成,最後一顆星星，即將完成,最後の星よ、今にもできますよ。
 LKGuideLevel7,"Give play to your imagination, connect stars to form constellations just as the ancient Greeks",发挥你的脑洞，和古希腊人一样将星星连接成星座吧！,發揮妳的腦洞，和古希臘人一樣將星星連結成各種星座吧！,想像力をたくましくして、古代ギリシア人ように星たちをリンクして星座になりましょう！
-LKGuideCard,"When you finish a constellation, it will become a card, and kept in here",完成之后的星座会形成星座卡，并保存在此。,完成之後的星座會形成星座卡，並保存在此。,完成した星座がカッドになります。その星座カッドはここに見えますよ。
+LKGuideCard,"When you finish a constellation, it will become a card, and kept in here",完成之后的星座会形成星座卡，并保存在此。,完成之後的星座會形成星座卡，並保存在此。,完成した星座がカッドになりますし、ここにおいていますよ。
+LKCommentContent,"Congratulations! You finished several star charts! Will you take a moment to make a comment for this game please?","恭喜你完成了不少星座图，可以花一点时间来对本游戏做一个评论吗？：）","恭喜你完成了不少星座圖，可以花一點時間來對本遊戲做一個評論嗎？：）","一部の星座を完成したおめでとう！少し時間をかかり、本ゲームをコメントしてよろしいですか？"

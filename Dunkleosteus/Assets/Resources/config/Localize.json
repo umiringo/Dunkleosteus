@@ -1,14 +1,14 @@
 {
     "NotificationMessage" : {
-        "English" : "English NotificationMessage",
-        "Japanese" : "Japanese NotificationMessage",
-        "TChinese" : "TChinese NotificationMessage",
-        "SChinese" : ""
+        "English" : "Paint the sky, make constellations shine again!",
+        "Japanese" : "夜空を見上げて、星座を描いて、星空もとキラキラに成らせる",
+        "TChinese" : "仰望夜空，來親手塗繪一個個星座，讓星空變得更璀璨吧！",
+        "SChinese" : "仰望夜空，来亲手涂绘一个个星座，让星空变得更璀璨吧！"
     },
     "NotificationTitle" : {
-        "English" : "English NotificationMessage",
-        "Japanese" : "Japanese NotificationMessage",
-        "TChinese" : "TChinese NotificationMessage",
-        "SChinese" : "SChinese NotificationMessage"
+        "English" : "English NotificationTitle",
+        "Japanese" : "Japanese NotificationTitle",
+        "TChinese" : "TChinese NotificationTitle",
+        "SChinese" : "SChinese NotificationTitle"
     }
 }
