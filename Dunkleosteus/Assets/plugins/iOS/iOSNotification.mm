@@ -58,7 +58,7 @@ extern "C"
             UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate repeats:YES];
             
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-            content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
+            //content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
             content.body = [NSString localizedUserNotificationStringForKey:__makeNSString(message) arguments:nil];
             content.sound = [UNNotificationSound defaultSound];
             
@@ -92,7 +92,7 @@ extern "C"
         if (SYSTEM_VERSION_GREATER_OR_EQUAL_TO(@"10.0")) {
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
             content.badge = [NSNumber numberWithInteger:1];
-            content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
+            //content.title = [NSString localizedUserNotificationStringForKey:__makeNSString(title) arguments:nil];
             content.body = [NSString localizedUserNotificationStringForKey:__makeNSString(message) arguments:nil];
             content.sound = [UNNotificationSound defaultSound];
             
