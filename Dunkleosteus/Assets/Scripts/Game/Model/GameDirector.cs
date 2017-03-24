@@ -124,7 +124,7 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        // PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         // Init latestLevel
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
