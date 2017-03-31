@@ -1,7 +1,7 @@
 KEY,English,SChinese,TChinese,Japanese
 Language,English,SChinese,TChinese,Japanese
-LKStartGame,Tap to Start,点击开始,点击开始,Tap to Start
-LKTitle,Constellation          Painter,星座画家,星座画家,星座画家
+LKStartGame,Tap to Start,点击开始,點擊開始,Tap to Start
+LKTitle,Sky Painter,星座画家,星座畫家,星座画師
 LKAquariusTitle,Aquarius,水瓶座,水瓶座,みずがめ座
 LKAquariusLatin,Water Bearer,Aquarius,Aquarius,Aquarius
 LKAquariusInfo,"In Greek mythology, Aquarius is identified with beautiful Ganymede, a youth in Greek mythology and the son of Trojan king Tros, who was taken to Mount Olympus by Zeus to act as cup-carrier to the gods.Neighboring Aquila represents the eagle, under Zeus' command, that snatched the young boy.",水瓶座的形象是一个持着瓶子斟酒的美少年，少年名叫伽倪墨得斯，据说是特洛伊的王子。有一天，伽倪墨得斯正在替父亲放羊，宙斯从天空经过，对他一见钟情，于是变身成为一只老鹰将伽倪墨得斯掳到奥林匹斯山，少年从此成为了宙斯身旁的倒酒僮。\n也有说法称宝瓶座为雅典创立者刻克罗普斯（Cecrops），他曾以水对诸神作出献祭。,水瓶座的形象是一個持著瓶子斟酒的美少年，少年名叫伽倪墨得斯，據說是特洛伊的王子。有一天，伽倪墨得斯正在替父親放羊，宙斯在天空經過，對他一見鐘情，於是變身成為一只老鷹將伽倪墨得斯擄到奧林匹斯山，少年從此成為了宙斯身旁的倒酒童。\n也有說法稱寶瓶座為雅典創立者刻克羅普斯（Cecrops），他曾以水對諸神作出獻祭。,メソポタミアではアッカドの英雄とエンキが結びついたグラ（Gulla、偉大なるもの）が原型と考えられている。ギリシア神話では、ガニュメーデース（わし座を参照）の持つ水がめであるとされる。星図には、水を流す水がめとそれを持つ男性の姿として描かれ、流れ出した水はみなみのうお座の口に注ぎ込んでいる。

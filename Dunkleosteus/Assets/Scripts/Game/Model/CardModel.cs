@@ -19,6 +19,7 @@ public class CardModel : MonoBehaviour {
     {
         cardPreview.Init(level);
         cardPreview.GetComponent<MoveInOut>().MoveIn();
+        //cardPreview.Init(level);
     }
 
     public void CloseCardPreview()

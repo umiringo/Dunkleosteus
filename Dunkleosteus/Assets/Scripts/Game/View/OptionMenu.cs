@@ -56,13 +56,15 @@ public class OptionMenu : MonoBehaviour {
             soundMenu.key = "LKOff";
         }
 
+        /*
 		if(gameDirector.IsGameCenterOK()) {
 			buttonAchieve.SetActive(true);
 		}
 		else {
 			buttonAchieve.SetActive(false);
 		}
-
+        */
+        
         gameObject.SetActive(true);
     }
 }
