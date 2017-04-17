@@ -289,5 +289,18 @@ public class EventController : MonoBehaviour {
     }
     #endregion
 
+    #region Ads
+    public void OnClickButtonAds()
+    {
+        audioPlayer.PlayClickSound();
+        gameDirector.ShowAdsConfirm();
+    }
+
+    public void OnAdsConfirm()
+    {
+        
+    }
+    #endregion
+
 
 }

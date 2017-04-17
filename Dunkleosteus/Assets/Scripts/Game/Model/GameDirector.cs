@@ -124,7 +124,6 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
-        //PlayerPrefs.DeleteAll();
         // Init latestLevel
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
@@ -572,6 +571,12 @@ public class GameDirector : MonoBehaviour {
             currentPlayedLevel = 0;
         }
 	}
+
+    public void ShowAdsConfirm()
+    {
+        string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseIdSale12);
+        this.ShowConfirm("", "LKAdsConfirm", "OnAdsConfirm");
+    }
 
     public void ShowPayConfirm(string title, string content, string delegateName, string param, string num, string price)
     {

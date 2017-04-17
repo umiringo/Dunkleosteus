@@ -53,7 +53,7 @@ namespace GlobalDefines
         public static readonly int WinBonusNum = 1;
         public static readonly int CardLineDepth = 399;
         public static readonly int MaxLevel = 88;
-        public static readonly int DefaultCoin = 50000;
+        public static readonly int DefaultCoin = 5;
 
     }
     
