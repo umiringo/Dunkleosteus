@@ -76,6 +76,7 @@ namespace GlobalDefines
         public static readonly string GuideLevel = "GuideLevel";
         public static readonly string GuideCard = "GuideCard";
         public static readonly string Comment = "Comment";
+        public static readonly string GuideAds = "GuideAds";
     }
 
     public class DefineString

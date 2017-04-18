@@ -64,6 +64,10 @@ public class EventController : MonoBehaviour {
     // 选择关卡
     public void OnSelectLevel(string level)
     {
+        int levelState = gameDirector.GetLevelState(level);
+        if (levelState < 0 || levelState > 1) {
+            return;
+        }
         audioPlayer.PlayClickSound();
         StartCoroutine(SelectLevelCoroutine(0.1f, level));
     }
@@ -184,7 +188,6 @@ public class EventController : MonoBehaviour {
     // 支付
     public void OnClickPurchase(string purchaseId)
     {
-        Debug.Log("EventController.OnClickPurchase purchaseId = " + purchaseId);
         audioPlayer.PlayClickSound();
         gameDirector.Purchase(purchaseId);
     }
@@ -216,7 +219,6 @@ public class EventController : MonoBehaviour {
 
 	public void OnCommentConfirm()
 	{
-		Debug.Log("EventController.OnCommentConfirm");
         gameDirector.DoComment();
 	}
 
@@ -261,6 +263,11 @@ public class EventController : MonoBehaviour {
         gameDirector.OnFinishCardGuide();
     }
 
+    public void OnAdsGuide()
+    {
+        gameDirector.OnFinishAdsGuide();
+    }
+
     #endregion
 
     #region IAP
@@ -298,7 +305,7 @@ public class EventController : MonoBehaviour {
 
     public void OnAdsConfirm()
     {
-        
+        gameDirector.PlayAds();
     }
     #endregion
 

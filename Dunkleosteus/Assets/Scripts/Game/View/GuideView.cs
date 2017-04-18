@@ -59,7 +59,7 @@ public class GuideView : MonoBehaviour {
         prePosition = spriteTap.transform.localPosition;
     }
 
-    public void ShowIntro(string content, string callback, bool isMiddle)
+    public void ShowIntro(GameObject star, string content, string callback, bool isMiddle)
     {
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
@@ -75,7 +75,13 @@ public class GuideView : MonoBehaviour {
         labelGuide.key = content;
         labelGuide.gameObject.SetActive(true);
         spriteTap.SetActive(false);
-        spriteTarget.SetActive(false);
+        spriteTarget.SetActive(true);
+        Vector3 starPosition = star.transform.localPosition;
+        spriteTarget.transform.localPosition = new Vector3(starPosition.x, starPosition.y, starPosition.z);
+        UIEventTrigger targetTrigger = spriteTarget.GetComponent<UIEventTrigger>();
+        EventDelegate targetDel = new EventDelegate(controller, callback);
+        targetTrigger.onClick.Clear();
+        targetTrigger.onClick.Add(targetDel);
         if(isMiddle) {
             spriteContent.transform.localPosition = Vector3.zero;
         } else {

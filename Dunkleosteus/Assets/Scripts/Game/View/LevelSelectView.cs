@@ -10,6 +10,7 @@ public class LevelSelectView : MonoBehaviour {
     public UIScrollView catagoryScrollView;
     public GameObject saleButton;
     public UILabel labelLevel;
+    public GameObject adsButton;
 
     private GameObject levelContainer;
     private UICenterOnChild centerOnChild;
@@ -126,7 +127,24 @@ public class LevelSelectView : MonoBehaviour {
             saleButton.SetActive(false);
         }
     }
+
+    public void ShowAdsButton(bool isShow)
+    {
+        if(isShow) {
+            adsButton.SetActive(true);
+        } else {
+            adsButton.SetActive(false);
+        }
+    }
     
+    public bool IsButtonAdsVisible()
+    {
+        if(adsButton.activeSelf) {
+            return true;
+        }
+        return false;
+    }
+
     private void AddLevelLine(Transform beginTransform, Transform endTransform)
     {
         GameObject linkedLine = beginTransform.FindChild("Line").gameObject;

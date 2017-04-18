@@ -324,7 +324,8 @@ LKGuideLevel3,"Connect stars to form constellation, you also can tap the title t
 LKGuideLevel4,"If you meet with difficulties, tap the coin to get tips, which will cost one coin",如果陷入迷思，可以点击硬币来获取一个提示，此举会消耗一个硬币,如果遇到困難，可以點擊硬幣來獲取一個提示，此舉會消耗一個硬幣,もし困難にぶつかれば、コインをタップして、ヒントが出で、コインが一つかかりますね。
 LKGuideLevel5,"One linked line comes out by tips, now connect the last two stars to finish the Triangulum",你获得了一条提示出来的连线，来连接最后两颗星星完成三角座吧,你獲得了一條提示出來的連線，連結最後兩顆星星來完成三角座吧,ヒントとして、リンクライン出ました！そして、最後の二つの星をリンクして、三角座を完成しましょう！
 LKGuideLevel6,"The last one, finish the level!",最后一颗星星，即将完成,最後一顆星星，即將完成,最後の星よ、今にもできますよ。
-LKGuideLevel7,"Give play to your imagination, connect stars to form constellations just as the ancient Greeks",发挥你的脑洞，和古希腊人一样将星星连接成星座吧！,發揮妳的腦洞，和古希臘人一樣將星星連結成各種星座吧！,想像力をたくましくして、古代ギリシア人ように星たちをリンクして星座になりましょう！
+LKGuideLevel7,"Give play to your imagination, connect stars to constellations! On bottom right of screen, you can see the total lines and current linked lines of this constellation.",发挥你的脑洞，和古希腊人一样将星星连接成星座吧！\n 画面右下角可以看到当前已有连线数量和该星座的总连线数量,發揮妳的腦洞，和古希臘人一樣將星星連結成各種星座吧！\n畫面的右下角可以看到當前已有的連線數量和該星座的總連線數量,想像力をたくましくして、古代ギリシア人ように星たちをリンクして星座になりましょう！画面の右下に今のリンクした線の数と当星座のすべでの線の数を見えますね。
 LKGuideCard,"When you finish a constellation, it will become a card, and kept in here",完成之后的星座会形成星座卡，并保存在此。,完成之後的星座會形成星座卡，並保存在此。,完成した星座がカッドになりますし、ここにおいていますよ。
 LKCommentContent,"Congratulations! You finished several star charts! Will you take a moment to make a comment for this game please?","恭喜你完成了不少星座图，可以花一点时间来对本游戏做一个评论吗？：）","恭喜你完成了不少星座圖，可以花一點時間來對本遊戲做一個評論嗎？：）","一部の星座を完成したおめでとう！少し時間をかかり、本ゲームをコメントしてよろしいですか？"
-LKAdsConfirm,"","","",""
+LKAdsConfirm,"Would you see a ads video to get one coin for free?","观看广告可以免费获得一个提示硬币，\n是否继续？","觀看廣告可以免費獲得一個提示硬幣，\n是否繼續？","広告ビデオをみって、無料でコイン一つをもらえます。\nご覧になりますか？"
+LKGuideAds, "If you are lack of coin, you can buy some or click here to get free one by viewing a ads video.","如果你缺少提示硬币，你可以进行购买，或者点击此处观看广告来获取免费的硬币。",＂如果您缺少提示硬幣，您可以進行購買，或者點擊此處觀看廣告來獲取免費的硬幣。＂，＂もしコイン不足になれば、購入してやここにタップして広告ビデオをみって、コインを入手できます。＂

@@ -22,7 +22,6 @@ public class FiniteStateMachine
     public void AddFiniteState(FiniteState fs)
     {
         if( fs == null ) {
-            Debug.LogError("FiniteStateMachine Error: Null reference is not allowed");
             return;
         }
 
@@ -35,7 +34,6 @@ public class FiniteStateMachine
 
         foreach( FiniteState fState in _stateList ) {
             if( fState.ID == fs.ID ) {
-                Debug.LogError("FiniteStateMachine Error: Impossible to add state " + fs.ID.ToString() + " because state has already been added !");
                 return;
             }
         }
@@ -45,7 +43,6 @@ public class FiniteStateMachine
     public void DeleteFiniteState(StateID id)
     {
         if( id == StateID.NullStateID ) {
-            Debug.LogError("FiniteStateMachine Error: NullStateID is not allowed for a real state!");
             return;
         }
 
@@ -55,19 +52,16 @@ public class FiniteStateMachine
                 return;
             }
         }
-        Debug.LogError("FiniteStateMachine Error: Impossible to delete state " + id.ToString() + " because state was not existed!");
     }
 
     public void PerformTransition(StateTransition trans)
     {
         if( trans == StateTransition.NullTransition ) {
-            Debug.LogError("FiniteStateMachine Error: NullTransition is not allowed for a real transition!");
             return;
         }
 
         StateID id = _currentState.GetTargetState(trans);
         if( id == StateID.NullStateID ) {
-            Debug.LogError("FiniteStateMachine Error: " + _currentStateID.ToString() + " does not have a target state for transition " + trans.ToString() + "!");
             return;
         }
 

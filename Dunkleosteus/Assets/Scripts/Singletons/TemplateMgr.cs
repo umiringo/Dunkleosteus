@@ -32,18 +32,15 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     {
         if (_templatePool.ContainsKey(fileName)) {
             // Already loaded, log and return
-            Debug.Log("TemplateMgr.Load : Template file " + fileName + " already loaded! ");
             return false;
         }
         string filePath = "config/" + fileName;
         TextAsset file = Resources.Load<TextAsset>(filePath);
         if (file == null) {
-            Debug.Log("TemplateMgr.Load Failed! Cant find file : " + filePath);
             return false;
         }
         var jo = JSON.Parse(file.text) as JSONClass;
         _templatePool[fileName] = jo;
-        Debug.Log("TemplateMgr Load fileName = " + fileName + " Success!");
         return true;
     }
     
@@ -54,7 +51,6 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     {
         var levelDictionary = _templatePool[fileName];
         if(levelDictionary == null) {
-            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
         return levelDictionary[name];
@@ -64,7 +60,6 @@ public class TemplateMgr : Singleton<TemplateMgr> {
     {
         var levelDictionary = _templatePool[fileName];
         if(levelDictionary == null) {
-            Debug.LogError("TemplateMgr.GetTemplateString Error! Cant find fileName = " + fileName);
             return null;
         }
         return levelDictionary[name] as JSONArray;

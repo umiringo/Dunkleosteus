@@ -38,11 +38,13 @@ public class GameDirector : MonoBehaviour {
     private IAPMgr _iapMgr;
 	private SocialManager _socialMgr;
     private int currentPlayedLevel;
+    private AdsManager _adsMgr;
 
     void Awake() {
         _levelGuide = this.gameObject.GetComponent<LevelGuideModel>();
         _iapMgr = this.gameObject.GetComponent<IAPMgr>();
 		_socialMgr = this.gameObject.GetComponent<SocialManager>();
+        _adsMgr = this.gameObject.GetComponent<AdsManager>();
 
         // Init template data
         TemplateMgr.Instance.Init();
@@ -124,6 +126,7 @@ public class GameDirector : MonoBehaviour {
 
     private void LoadPlayerPrefs()
     {
+		//PlayerPrefs.DeleteAll();
         // Init latestLevel
         string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel, "begin");
         // first level
@@ -262,6 +265,9 @@ public class GameDirector : MonoBehaviour {
         if (IsCardGuideEnable()) {
             _levelGuide.TriggerCardGuide();
         }
+        else if(IsAdsGuideEnable()) {
+            _levelGuide.TriggerAdsGuide();
+        }
         else {
             ShowCommentConfirm();
         }
@@ -329,8 +335,8 @@ public class GameDirector : MonoBehaviour {
 
     public void SelectLevel(string level)
     {
-     //   string latestLevel = PlayerPrefs.GetString(PlayerPrefsKey.LatestLevel);
-        if (GetLevelState(level) < 0) {
+        int levelState = GetLevelState(level);
+        if (levelState < 0 || levelState > 1) {
             return;
         }
         // Check the level is availiable
@@ -574,7 +580,6 @@ public class GameDirector : MonoBehaviour {
 
     public void ShowAdsConfirm()
     {
-        string localPrice = GetLocalPrice(DefinePurchaseId.PurchaseIdSale12);
         this.ShowConfirm("", "LKAdsConfirm", "OnAdsConfirm");
     }
 
@@ -610,12 +615,32 @@ public class GameDirector : MonoBehaviour {
         return false;
     }
 
+    public bool IsAdsGuideEnable()
+    {
+        int guideCard = PlayerPrefs.GetInt(PlayerPrefsKey.GuideCard, 0);
+        int guideAds = PlayerPrefs.GetInt(PlayerPrefsKey.GuideAds, 0);
+        bool adsVisible = levelSelectView.IsButtonAdsVisible();
+        if(guideCard > 0 && guideAds <= 0 && adsVisible) {
+            return true;
+        }
+        return false;
+    }
+
+
     public void OnFinishCardGuide()
     {
         audioPlayer.PlayClickSound();
         _levelGuide.StopGuide();
         PlayerPrefs.SetInt(PlayerPrefsKey.GuideCard, 1);
         this.StartCardView();
+    }
+
+    public void OnFinishAdsGuide()
+    {
+        audioPlayer.PlayClickSound();
+        _levelGuide.StopGuide();
+        PlayerPrefs.SetInt(PlayerPrefsKey.GuideAds, 1);
+        this.ShowAdsConfirm();
     }
 
     public bool IsProductRegister(string productId)
@@ -696,5 +721,17 @@ public class GameDirector : MonoBehaviour {
 		}
 		_socialMgr.UpdateReportProgress(GameCenterKey.AchieveAll, finishedLevel, DefineNumber.MaxLevel);
 	}
+
+    public void ShowAdsButton(bool isShow)
+    {
+        levelSelectView.ShowAdsButton(isShow);
+    }
+
+    public void PlayAds()
+    {
+        panelConfirm.SetActive(false);
+        _adsMgr.PlayRewardBasedVideo();
+    }
+
     #endregion
 }

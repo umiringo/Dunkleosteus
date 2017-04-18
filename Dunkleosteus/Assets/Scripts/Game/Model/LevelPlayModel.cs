@@ -20,7 +20,6 @@ class LinkedPair
             indexEnd = b;
         }
         else {
-            Debug.LogError("LevelPlayMgr:LinkedPair: Weird situation! indexBegin should euqals indexEnd! " + b.ToString() + e.ToString());
             return;
         }
         line = l;
@@ -289,7 +288,6 @@ public class LevelPlayModel : MonoBehaviour {
             answerMark = indexBegin * 100 + indexEnd;
         }
         if (_answerList.Contains(answerMark)) {
-            Debug.LogError("GamePlayMgr.AddAnswerToList: Some is rong, answerMark exist. mark = " + answerMark);
             return;
         }
         _answerList.Add(answerMark);

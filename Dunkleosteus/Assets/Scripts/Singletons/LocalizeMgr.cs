@@ -28,12 +28,10 @@ public class LocalizeMgr : Singleton<LocalizeMgr> {
         string filePath = "config/" + fileName;
         TextAsset file = Resources.Load<TextAsset>(filePath);
         if (file == null) {
-            Debug.Log("LocalizeMgr.Load Failed! Cant find file : " + filePath);
             return false;
         }
         var jo = JSON.Parse(file.text) as JSONClass;
         _localizeJson = jo;
-        Debug.Log("LocalizeMgr Load fileName = " + fileName + " Success!");
         return true;
     }
     

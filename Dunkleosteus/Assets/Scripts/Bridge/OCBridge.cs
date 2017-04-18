@@ -91,7 +91,6 @@ public class OCBridge {
 
     public static void InitIAP()
     {
-        Debug.Log("InitIAP");
 #if UNITY_EDITOR || UNITY_STANDALONE
 #elif UNITY_IOS || UNITY_IPHONE
         InitIAPManager();
@@ -154,7 +153,6 @@ public class OCBridge {
     public static void JumpToComment()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE
-        Debug.Log("OCBridge.JumpToComment");
 #elif UNITY_IOS || UNITY_IPHONE
         const string APP_ID = "";
         var url = string.Format(

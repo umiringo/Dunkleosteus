@@ -34,16 +34,13 @@ public abstract class FiniteState
     public void AddTransition(StateTransition trans, StateID id)
     {
         if( trans == StateTransition.NullTransition ) {
-            Debug.LogError("FiniteState Error: NullTransition is not allowed for a real transition");
             return;
         }
         if( id == StateID.NullStateID ) {
-            Debug.LogError("FiniteState Error: NullStateID is not allowed for a real ID");
             return;
         }
 
         if( _stateTransitionMap.ContainsKey(trans) ) {
-            Debug.LogError("FiniteState Error: State " + _stateID.ToString() + " already has transition " + trans.ToString() + "! Cant Insert another one !");
             return;
         }
         _stateTransitionMap.Add(trans, id);
@@ -53,7 +50,6 @@ public abstract class FiniteState
     {
         if( trans == StateTransition.NullTransition )
         {
-            Debug.LogError("FiniteState Error: NullTransition is not allowed for a real transition");
             return;
         }
 
@@ -62,7 +58,6 @@ public abstract class FiniteState
             _stateTransitionMap.Remove(trans);
             return;
         }
-        Debug.LogError("FiniteState Error: Transition " + trans.ToString() + " - " + _stateID.ToString() + " was not existed! ");
     }
 
     public StateID GetTargetState(StateTransition trans)

@@ -11,20 +11,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get {
             if (applicationIsQutting) {
-                Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-                                "' already destroyed on application quit." +
-                                " Won't create again - returning null.");
                 return null;
             }
             lock(_lock)
             {
                 if(_instance == null) {
-                    Debug.Log("Begin to create Instantce");
                     _instance = (T)FindObjectOfType(typeof(T));
                     if(FindObjectsOfType(typeof(T)).Length > 1) {
-                        Debug.LogError("[Singleton] Something went really wrong " +
-                                " - there should never be more than 1 singleton!" +
-                                " Reopening the scene might fix it. " + typeof(T));
                         return _instance;
                     }
                     if (_instance == null) {

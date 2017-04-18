@@ -57,7 +57,8 @@ public class LevelGuideModel : MonoBehaviour {
                 break;
             case 7:
                 levelGuideView = GameObject.Find("UI Root").transform.Find("PanelGuide").gameObject;
-                levelGuideView.GetComponent<GuideView>().ShowIntro("LKGuideLevel7", "OnLevelGuideStep7", true);
+                target = GameObject.Find("UI Root").transform.Find("PanelLevel/LabelNum").gameObject;
+                levelGuideView.GetComponent<GuideView>().ShowIntro(target, "LKGuideLevel7", "OnLevelGuideStep7", true);
                 break;
             default:
                 break;
@@ -69,6 +70,13 @@ public class LevelGuideModel : MonoBehaviour {
         levelGuideView = GameObject.Find("UI Root").transform.Find("PanelGuide").gameObject;
         GameObject target = GameObject.Find("UI Root/PanelLevelSelect/PanelLevel/MenuContainer/ButtonCard").gameObject;
         levelGuideView.GetComponent<GuideView>().ShowTap(target, "LKGuideCard", "OnCardGuide", false, true);
+    }
+
+    public void TriggerAdsGuide()
+    {
+        levelGuideView = GameObject.Find("UI Root").transform.Find("PanelGuide").gameObject;
+        GameObject target = GameObject.Find("UI Root/PanelLevelSelect/PanelLevel/ButtonAds").gameObject;
+        levelGuideView.GetComponent<GuideView>().ShowTap(target, "LKGuideAds", "OnAdsGuide", false, true);
     }
 
     public void StopGuide()
