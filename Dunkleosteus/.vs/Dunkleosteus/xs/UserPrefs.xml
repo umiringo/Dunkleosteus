@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{0F5C4CEB-C2C5-342F-5F59-0D88D506A3A1}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/Scripts/UI/UIPanel.cs">
+    <Files>
+      <File FileName="Assets/NGUI/Scripts/UI/UIInput.cs" Line="890" Column="22" />
+      <File FileName="Assets/NGUI/Scripts/Internal/NGUITools.cs" Line="57" Column="25" />
+      <File FileName="Assets/NGUI/Scripts/UI/UIPanel.cs" Line="901" Column="54" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Dunkleosteus" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="NGUI" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Internal" expanded="True" />
+                  <Node name="UI" expanded="True">
+                    <Node name="UIPanel.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="71fd9ed3-cba1-4feb-aa05-983fe2317ec9" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

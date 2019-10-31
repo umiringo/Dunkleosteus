@@ -60,7 +60,7 @@ public class GameContainer : MonoBehaviour {
         levelPlayModel = GameObject.Find("UI Root/PanelLevel").GetComponent<LevelPlayModel>();
 
         // Set texture widget
-        textureWidget = skyGameObject.transform.FindChild("StarChart").gameObject.GetComponent<UIWidget>();
+        textureWidget = skyGameObject.transform.Find("StarChart").gameObject.GetComponent<UIWidget>();
 	}
 	
 	// Update is called once per frame

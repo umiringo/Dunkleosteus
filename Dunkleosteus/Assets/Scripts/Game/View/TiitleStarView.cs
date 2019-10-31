@@ -22,7 +22,7 @@ public class TiitleStarView : MonoBehaviour {
 
     private void AddLine(Transform beginTransform, Transform endTransform)
     {
-        GameObject linkedLine = beginTransform.FindChild("Line").gameObject;
+        GameObject linkedLine = beginTransform.Find("Line").gameObject;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
 

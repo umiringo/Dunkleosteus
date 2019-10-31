@@ -147,7 +147,7 @@ public class LevelSelectView : MonoBehaviour {
 
     private void AddLevelLine(Transform beginTransform, Transform endTransform)
     {
-        GameObject linkedLine = beginTransform.FindChild("Line").gameObject;
+        GameObject linkedLine = beginTransform.Find("Line").gameObject;
         UISprite lineSprite = linkedLine.GetComponent<UISprite>();
         lineSprite.pivot = UIWidget.Pivot.Center;
         
